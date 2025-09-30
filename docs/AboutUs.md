@@ -9,51 +9,52 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Isaac Lim De Wei
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/isaaclim01.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Shananth Sivakumar
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/shockingly134.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/shockingly134)]
+[[portfolio](team/johndoe.md)]
 
-* Role: Developer
+* Role: Documentation
+* Responsibilities: Storage
+
+### Timothy Lee
+
+<img src="images/timothyleejin.png" width="200px">
+
+[[github](http://github.com/timothyleejin)] [[portfolio](team/johndoe.md)]
+
+* Role: Code Quality & Testing
 * Responsibilities: Data
 
-### Jean Doe
+### Kien
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/kineeeeee.jpg" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/kineeeeee)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Chen Dong Jun
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/strikerprv.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/strikerprv)]
+[[portfolio](team/strikerprv.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Model
