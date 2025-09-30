@@ -9,6 +9,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+
 ### Lee Jin Timothy
 
 <img src="images/timothyleejin.png" width="200px">
@@ -16,7 +17,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/timothyleejin)]
 [[portfolio](team/timothyleejin.md)]
 
-* Role: Project Advisor
+* Role: Team Lead
+* Responsibilities: UI
 
 ### Isaac Lim
 
@@ -25,34 +27,38 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/isaaclim01)]
 [[portfolio](team/isaaclim.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+
+* Role: Documentation
+* Responsibilities: Storage
 
 ### Shananth Sivakumar
 
 <img src="images/shockingly134.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
 
-* Role: Developer
+[[github](http://github.com/shockingly134)] [[portfolio](team/johndoe.md)]
+
+* Role: Code Quality & Testing
 * Responsibilities: Data
 
-### Jean Doe
+### Kien
 
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### Dinh Kien Nguyen
-
-<img src="images/kineeeeee.png" width="200px">
+<img src="images/kineeeeee.jpg" width="200px">
 
 [[github](http://github.com/kineeeeee)]
 [[portfolio](team/dinhkiennguyen.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Dev Ops + Threading
+
+
+### Chen Dong Jun
+
+<img src="images/strikerprv.png" width="200px">
+
+[[github](http://github.com/strikerprv)]
+[[portfolio](team/strikerprv.md)]
+
+
+* Role: Developer
+* Responsibilities: Model
