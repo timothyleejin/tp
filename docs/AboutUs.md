@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/shockingly134.png" width="200px">
 
 
-[[github](http://github.com/shockingly134)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/shockingly134)] [[portfolio](team/shockingly134.md)]
 
 * Role: Code Quality & Testing
 * Responsibilities: Data
