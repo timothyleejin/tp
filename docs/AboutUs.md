@@ -43,7 +43,7 @@ You can reach us at the email ``
 
 ### Kien
 
-<img src="images/kineeeeee.jpg" width="200px">
+<img src="images/kineeeeee.png" width="200px">
 
 [[github](http://github.com/kineeeeee)]
 [[portfolio](team/dinhkiennguyen.md)]
