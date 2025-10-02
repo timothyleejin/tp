@@ -13,9 +13,58 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Target user profile, value proposition, and user stories**
+## **Target user profile**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+Our product is designed for small-scale leaders and organizers who need a lightweight but effective way to manage and access 
+their contacts without relying on large enterprise tools.
+
+- Primary Users:
+    * Community & Club Leaders (e.g., student societies, cultural clubs, sports teams)
+    * Non-Profit & Volunteer Leads (e.g., NGO project leads, charity group organizers)
+    * Small Organization / Business Team Leads (e.g., startups, tuition centers, hobby groups)
+
+User Persona: Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them.
+He needs to store and access many contacts easily, but does not require integrated communication features.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Value proposition**
+
+- Our product provides a lightweight and simple contact management tool.
+- It helps small organizations and student leaders organize their contacts more effectively than spreadsheets.
+- Unlike enterprise CRMs, it avoids unnecessary complexity while still supporting features like search, labeling, and grouping.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **User stories**
+
+Must-have:
+1. As a user, I can add a contact so that I can record down people’s details.
+2. As a user, I can delete a contact so that I can remove unnecessary entries.
+3. As a user, I can view the contact list so that I see all contacts.
+
+Nice-to-have:
+1. As a user, I can edit a contact so that I can update their details.
+2. As a user, I can search a contact by name/number so that I can find them quickly.
+3. As a user, I can label contacts by team/project so I can filter them easily.
+4. As a user, I can add event/role information to contacts so I know their context.
+5. As a user, I can export contacts in a clear format so I can share them.
+6. As a new user, I can see example commands/help so I can get started quickly.
+7. As a new user, I can undo my last action so I can explore safely.
+8. As a new user, I can test with sample contacts so I learn the features.
+9. As a new user, I can see hints/help when using commands incorrectly so I can recover.
+10. As an experienced user, I can chain commands together so I can work faster.
+11. As an experienced user, I can use command shortcuts so I can speed up workflow.
+12. As a leader, I can filter people under my team so I can contact only them.
+13. As an organization leader, I can bulk add contacts so I can onboard quickly.
+14. As an NPO leader, I can prioritize contacts so I can access key people easily.
+15. As a volunteer coordinator, I can tag contacts with skills so I can assign them to tasks.
+16. As a volunteer coordinator, I can see when a contact was last updated so I know if it’s current.
+17. As a small business lead, I can separate client and supplier contacts so I avoid mix-ups.
+18. As a small business lead, I can sort contacts alphabetically/chronologically so I can clean data.
+
+Unlikely-to-have:
+1. As a charity lead, I can send updates to volunteers so they don’t miss events.
 
 ----------------------------------------------------------------------
 
