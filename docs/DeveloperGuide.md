@@ -398,8 +398,11 @@ Actor: User
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+1. Mainstream OS**: Windows, Linux, Unix, MacOS
+2. Non tech-savy : Someone who has low experience and skill in using technology
+3. Private contact detail: A contact detail that is not meant to be shared with others
+4. PDPA : Personal Data Protection Agreement, data collection with consent 
+
 
 --------------------------------------------------------------------------------------------------------------------
 
