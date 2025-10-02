@@ -260,29 +260,66 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
+* are small-scale leaders and organizers who need a lightweight but effective way to manage and access
+  their contacts without relying on large enterprise tools
 * has a need to manage a significant number of contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Primary Users**:
 
+* Community & Club Leaders (e.g., student societies, cultural clubs, sports teams)
+* Non-Profit & Volunteer Leads (e.g., NGO project leads, charity group organizers)
+* Small Organization / Business Team Leads (e.g., startups, tuition centers, hobby groups)
+
+**User Persona**: 
+
+* Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them.
+He needs to store and access many contacts easily, but does not require integrated communication features.
+
+**Value proposition**: 
+
+* provides a lightweight and simple contact management tool
+* manage contacts faster than a typical mouse/GUI driven app
+* helps small organizations and student leaders organize their contacts more effectively than spreadsheets 
+* avoids unnecessary complexity while still supporting features like search, labeling, and grouping
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
+## **User Stories with Priorities**
+
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | user                      | add a contact                              | record down people’s details                                               |
+| `* * *`  | user                      | delete a contact                           | remove unnecessary entries                                                 |
+| `* * *`  | user                      | view the contact list                      | see all contacts                                                           |
+| `* *`    | user                      | edit a contact                             | update their details                                                       |
+| `* *`    | user                      | search a contact by name/number            | find them quickly                                                          |
+| `* *`    | user                      | label contacts by team/project             | filter them easily                                                         |
+| `* *`    | user                      | add event/role information to contacts     | know their context                                                         |
+| `* *`    | user                      | export contacts in a clear format          | share them                                                                 |
+| `* *`    | new user                  | see example commands/help                  | get started quickly                                                        |
+| `* *`    | new user                  | undo my last action                        | explore safely                                                             |
+| `* *`    | new user                  | test with sample contacts                  | learn the features                                                         |
+| `* *`    | new user                  | see hints/help when using commands wrong   | recover from mistakes                                                      |
+| `* *`    | experienced user          | chain commands together                    | work faster                                                                |
+| `* *`    | experienced user          | use command shortcuts                      | speed up workflow                                                          |
+| `* *`    | leader                    | filter people under my team                | contact only them                                                          |
+| `* *`    | organization leader       | bulk add contacts                          | onboard quickly                                                            |
+| `* *`    | NPO leader                | prioritize contacts                        | access key people easily                                                   |
+| `* *`    | volunteer coordinator     | tag contacts with skills                   | assign them to tasks                                                       |
+| `* *`    | volunteer coordinator     | see when a contact was last updated        | know if details are current                                                |
+| `* *`    | small business lead       | separate client and supplier contacts      | avoid mix-ups                                                              |
+| `* *`    | small business lead       | sort contacts alphabetically/chronologically | clean data                                                                 |
+| `*`      | charity lead              | send updates to volunteers                 | ensure they don’t miss activities                                          |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 
-*{More to be added}*
 
 ### Use cases
 
