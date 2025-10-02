@@ -21,7 +21,37 @@ title: Developer Guide
 
 ## **Use cases**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+### Case 1
+System: LinkUp  
+Use case: UC1 - Add Contact  
+Actor: User
+
+**MSS:**
+1. User requests to add contact.
+2. LinkUp adds the contact and displays updated list of contacts.  
+   Use case ends.
+
+**Extensions:**
+* 1a. LinkUp detects missing information.
+  * 1a1.LinkUp displays an error message.  
+    Use case ends.
+
+### Case 2
+System: LinkUp  
+Use case: UC2 - Find Contact  
+Actor: User
+
+**MSS:**
+1. User finds contact.
+2. LinkUp displays list of matching contacts.  
+   Use case ends.
+
+**Extensions:**
+* 1a. LinkUp finds no matching contacts.  
+  Use case ends.
+* 1b. LinkUp detects invalid or incomplete search criteria.
+    * 1b1.LinkUp displays an error message.  
+      Use case ends.
 
 ----------------------------------------------------------------------
 
