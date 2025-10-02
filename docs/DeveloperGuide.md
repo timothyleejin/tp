@@ -5,74 +5,6 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
---------------------------------------------------------------------------------------------------------------------
-
-## **Acknowledgements**
-
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Target user profile, value proposition, and user stories**
-
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
-----------------------------------------------------------------------
-
-## **Use cases**
-
-### Case 1
-System: LinkUp  
-Use case: UC1 - Add Contact  
-Actor: User
-
-**MSS:**
-1. User requests to add contact.
-2. LinkUp adds the contact and displays updated list of contacts.  
-   Use case ends.
-
-**Extensions:**
-* 1a. LinkUp detects missing information.
-  * 1a1.LinkUp displays an error message.  
-    Use case ends.
-
-### Case 2
-System: LinkUp  
-Use case: UC2 - Find Contact  
-Actor: User
-
-**MSS:**
-1. User finds contact.
-2. LinkUp displays list of matching contacts.  
-   Use case ends.
-
-**Extensions:**
-* 1a. LinkUp finds no matching contacts.  
-  Use case ends.
-* 1b. LinkUp detects invalid or incomplete search criteria.
-    * 1b1.LinkUp displays an error message.  
-      Use case ends.
-
-----------------------------------------------------------------------
-
-## **Non-functional requirements**
-
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
-----------------------------------------------------------------------
-
-## **Glossary**
-
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
-----------------------------------------------------------------------
-
-## **Setting up, getting started**
-
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
-
---------------------------------------------------------------------------------------------------------------------
-
 ## **Design**
 
 <div markdown="span" class="alert alert-primary">
@@ -342,16 +274,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+System: LinkUp  
+**Use case: UC1 - Add Contact**  
+Actor: User
 
-**Use case: Delete a person**
+**MSS**
+1. User requests to add contact.
+2. LinkUp adds the contact and displays updated list of contacts.
+
+   Use case ends.
+
+**Extensions**
+* 1a. LinkUp detects missing information.
+    * 1a1.LinkUp displays an error message.
+  
+      Use case ends.
+
+
+System: LinkUp  
+**Use case: UC2 - Find Contact**  
+Actor: User
+
+**MSS**
+1. User finds contact.
+2. LinkUp displays list of matching contacts.
+
+   Use case ends.
+
+**Extensions**
+* 1a. LinkUp finds no matching contacts.  
+  Use case ends.
+* 1b. LinkUp detects invalid or incomplete search criteria.
+    * 1b1.LinkUp displays an error message.
+  
+      Use case ends.
+
+System: LinkUp  
+**Use case: UC3 - Delete Contact**  
+Actor: User
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  LinkUp shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  LinkUp deletes the person
 
     Use case ends.
 
@@ -366,8 +333,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
