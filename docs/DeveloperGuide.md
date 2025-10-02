@@ -290,8 +290,6 @@ He needs to store and access many contacts easily, but does not require integrat
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-## **User Stories with Priorities**
-
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
@@ -323,7 +321,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-System: LinkUp  
+System: LinkUp
 **Use case: UC1 - Add Contact**  
 Actor: User
 
@@ -339,7 +337,6 @@ Actor: User
   
       Use case ends.
 
-
 System: LinkUp  
 **Use case: UC2 - Find Contact**  
 Actor: User
@@ -352,6 +349,7 @@ Actor: User
 
 **Extensions**
 * 1a. LinkUp finds no matching contacts.  
+
   Use case ends.
 * 1b. LinkUp detects invalid or incomplete search criteria.
     * 1b1.LinkUp displays an error message.
@@ -373,13 +371,11 @@ Actor: User
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty.
 
   Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
+* 1b. The given index is invalid.
+    * 1b1. AddressBook shows an error message.
 
       Use case resumes at step 2.
 
