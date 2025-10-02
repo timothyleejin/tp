@@ -5,13 +5,11 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
---------------------------------------------------------------------------------------------------------------------
-
 ## **Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 
-----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
@@ -325,16 +323,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+System: LinkUp  
+**Use case: UC1 - Add Contact**  
+Actor: User
 
-**Use case: Delete a person**
+**MSS**
+1. User requests to add contact.
+2. LinkUp adds the contact and displays updated list of contacts.
+
+   Use case ends.
+
+**Extensions**
+* 1a. LinkUp detects missing information.
+    * 1a1.LinkUp displays an error message.
+  
+      Use case ends.
+
+
+System: LinkUp  
+**Use case: UC2 - Find Contact**  
+Actor: User
+
+**MSS**
+1. User finds contact.
+2. LinkUp displays list of matching contacts.
+
+   Use case ends.
+
+**Extensions**
+* 1a. LinkUp finds no matching contacts.  
+  Use case ends.
+* 1b. LinkUp detects invalid or incomplete search criteria.
+    * 1b1.LinkUp displays an error message.
+  
+      Use case ends.
+
+System: LinkUp  
+**Use case: UC3 - Delete Contact**  
+Actor: User
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  LinkUp shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  LinkUp deletes the person
 
     Use case ends.
 
@@ -350,15 +383,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
-
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. You are able to use LinkUp on any _mainstream OS_ as long as you have Java `17` or above installed.
+2. If you have an above average typing speed for regular english text: <br/>
+    * You can accomplish most of the tasks faster using commands than using the mouse.
+3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance.
+4. **LinkUp** responds to your inputs within 2 seconds.
+5. **LinkUp** is usable even if you're _non-tech savvy_ and have never used
+   **LinkUp** before.
+6. Data from **LinkUp** will not be able to be sent to other users easily through
+   **LinkUp**.
+7. **LinkUp** complies with _PDPA_ regulations in storing data.
 
 ### Glossary
 
