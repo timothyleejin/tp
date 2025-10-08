@@ -198,7 +198,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        public void setRole(Role remark) {this.role = remark;}
+        public void setRole(Role remark) { this.role = remark; }
 
         public Optional<Role> getRole() {
             return Optional.ofNullable(role);

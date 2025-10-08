@@ -9,6 +9,11 @@ import static java.util.Objects.requireNonNull;
 public class Role {
     public final String value;
 
+    /**
+     * Constructs a {@code Role}.
+     *
+     * @param role A valid role string.
+     */
     public Role(String role) {
         requireNonNull(role);
         value = role;
