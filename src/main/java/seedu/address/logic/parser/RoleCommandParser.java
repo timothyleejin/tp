@@ -37,4 +37,5 @@ public class RoleCommandParser implements Parser<RoleCommand> {
 
         return new RoleCommand(index, remark);
     }
+
 }
