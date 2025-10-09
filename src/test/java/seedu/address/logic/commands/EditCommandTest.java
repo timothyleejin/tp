@@ -15,6 +15,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -25,6 +27,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Role;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
@@ -181,4 +184,22 @@ public class EditCommandTest {
         assertEquals(expected, editCommand.toString());
     }
 
+    @Test
+    public void getRole_rolePresent_returnsOptionalWithRole() {
+        EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
+        Role role = new Role("Organiser");
+        descriptor.setRole(role);
+
+        Optional<Role> result = descriptor.getRole();
+        assertTrue(result.isPresent());
+        assertEquals(role, result.get());
+    }
+
+    @Test
+    public void getRole_roleAbsent_returnsEmptyOptional() {
+        EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
+
+        Optional<Role> result = descriptor.getRole();
+        assertFalse(result.isPresent());
+    }
 }
