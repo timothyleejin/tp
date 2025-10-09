@@ -102,7 +102,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Role updatedRole = personToEdit.getRole(); // edit command does not allow editing remarks
+        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRole, updatedTags);
@@ -163,7 +163,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, role, tags);
         }
 
         public void setName(Name name) {
@@ -198,8 +198,8 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        public void setRole(Role remark) {
-            this.role = remark;
+        public void setRole(Role role) {
+            this.role = role;
         }
 
         public Optional<Role> getRole() {
@@ -239,6 +239,7 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(role, otherEditPersonDescriptor.role)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
@@ -249,6 +250,7 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("role", role)
                     .add("tags", tags)
                     .toString();
         }

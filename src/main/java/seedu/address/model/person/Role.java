@@ -7,6 +7,14 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
+    public static final String MESSAGE_CONSTRAINTS = "Role should only contain alphanumeric characters "
+            + "separated by commas and spaces, and it should not be blank";
+
+    /*
+     * The role can only be made up of letters, and separated by commas and whitespaces
+     */
+    public static final String VALIDATION_REGEX = "^(?=.*[a-zA-Z])[a-zA-Z ,]+$";
+
     public final String value;
 
     /**
@@ -17,6 +25,13 @@ public class Role {
     public Role(String role) {
         requireNonNull(role);
         value = role;
+    }
+
+    /**
+     * Returns true if a given string is a valid role.
+     */
+    public static boolean isValidRole(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

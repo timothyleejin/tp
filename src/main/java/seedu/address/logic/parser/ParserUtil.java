@@ -116,9 +116,12 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      *
      */
-    public static Role parseRole(String role) {
+    public static Role parseRole(String role) throws ParseException {
         requireNonNull(role);
         String trimmedRole = role.trim();
+        if (!Role.isValidRole(trimmedRole)) {
+            throw new ParseException((Role.MESSAGE_CONSTRAINTS));
+        }
 
         return new Role(trimmedRole);
     }
