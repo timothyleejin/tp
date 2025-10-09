@@ -93,7 +93,6 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_role() throws Exception {
-        //assertTrue(parser.parseCommand(RoleCommand.COMMAND_WORD) instanceof RoleCommand);
         final Role role = new Role("Some role.");
         RoleCommand command = (RoleCommand) parser.parseCommand(RoleCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_ROLE + role.value);

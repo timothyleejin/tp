@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.RoleCommand.MESSAGE_ARGUMENTS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -27,9 +25,6 @@ public class RoleCommandTest {
     @Test
     public void execute() {
         final Role role = new Role("Some role");
-        /*
-        assertCommandFailure(new RoleCommand(INDEX_FIRST_PERSON, role), model,
-                String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_PERSON.getOneBased(), role)); */
     }
 
     @Test
