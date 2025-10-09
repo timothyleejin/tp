@@ -26,7 +26,7 @@ public class RoleCommand extends Command {
             + "by the index number used in the last person listing. "
             + "Existing role will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_ROLE + "[REMARK]\n"
+            + PREFIX_ROLE + "[ROLE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Organiser";
 
