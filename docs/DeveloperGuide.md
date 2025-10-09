@@ -274,16 +274,16 @@ _{Explain here how the data archiving feature will be implemented}_
 * Non-Profit & Volunteer Leads (e.g., NGO project leads, charity group organizers)
 * Small Organization / Business Team Leads (e.g., startups, tuition centers, hobby groups)
 
-**User Persona**: 
+**User Persona**:
 
 * Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them.
 He needs to store and access many contacts easily, but does not require integrated communication features.
 
-**Value proposition**: 
+**Value proposition**:
 
 * provides a lightweight and simple contact management tool
 * manage contacts faster than a typical mouse/GUI driven app
-* helps small organizations and student leaders organize their contacts more effectively than spreadsheets 
+* helps small organizations and student leaders organize their contacts more effectively than spreadsheets
 * avoids unnecessary complexity while still supporting features like search, labeling, and grouping
 
 ### User stories
@@ -321,8 +321,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-System: LinkUp
-**Use case: UC1 - Add Contact**  
+System: LinkUp<br>
+**Use case: UC1 - Add Contact**<br>
 Actor: User
 
 **MSS**
@@ -334,11 +334,11 @@ Actor: User
 **Extensions**
 * 1a. LinkUp detects missing information.
     * 1a1.LinkUp displays an error message.
-  
+
       Use case ends.
 
-System: LinkUp  
-**Use case: UC2 - Find Contact**  
+System: LinkUp<br>
+**Use case: UC2 - Find Contact**<br>
 Actor: User
 
 **MSS**
@@ -348,16 +348,16 @@ Actor: User
    Use case ends.
 
 **Extensions**
-* 1a. LinkUp finds no matching contacts.  
+* 1a. LinkUp finds no matching contacts.
 
   Use case ends.
 * 1b. LinkUp detects invalid or incomplete search criteria.
     * 1b1.LinkUp displays an error message.
-  
+
       Use case ends.
 
-System: LinkUp  
-**Use case: UC3 - Delete Contact**  
+System: LinkUp<br>
+**Use case: UC3 - Delete Contact**<br>
 Actor: User
 
 **MSS**
@@ -397,7 +397,7 @@ Actor: User
 1. Mainstream OS**: Windows, Linux, Unix, MacOS
 2. Non tech-savy : Someone who has low experience and skill in using technology
 3. Private contact detail: A contact detail that is not meant to be shared with others
-4. PDPA : Personal Data Protection Agreement, data collection with consent 
+4. PDPA : Personal Data Protection Agreement, data collection with consent
 
 
 --------------------------------------------------------------------------------------------------------------------
