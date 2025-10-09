@@ -16,6 +16,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
+import seedu.address.model.person.Event;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,6 +31,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String role;
+    private final String event;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -38,12 +40,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("role") String role, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("role") String role, @JsonProperty ("event") String event,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.role = role;
+        this.event = event;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -58,6 +62,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         role = source.getRole().value;
+        event = source.getEvent().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -110,8 +115,13 @@ class JsonAdaptedPerson {
         }
         final Role modelRole = new Role(role);
 
+        if (event == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Event.class.getSimpleName()));
+        }
+        final Event modelEvent = new Event(event);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRole, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRole, modelEvent, modelTags);
     }
 
 }
