@@ -39,13 +39,14 @@ public class Messages {
         builder.append(person.getName())
                 .append("; Phone: ")
                 .append(person.getPhone())
-                .append("; Email: ")
-                .append(person.getEmail())
                 .append("; Address: ")
                 .append(person.getAddress())
+                .append("; Email: ")
+                .append(person.getEmail())
+                .append("; Role: ")
+                .append(person.getRole())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }

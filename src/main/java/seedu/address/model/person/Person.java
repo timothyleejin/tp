@@ -100,13 +100,14 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
+                && role.equals(otherPerson.role)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, role, tags);
     }
 
     @Override
@@ -114,8 +115,9 @@ public class Person {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
-                .add("email", email)
                 .add("address", address)
+                .add("email", email)
+                .add("role", role)
                 .add("tags", tags)
                 .toString();
     }
