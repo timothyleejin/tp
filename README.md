@@ -9,18 +9,18 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 ## About This Project
 
 Our group observed that our peers who hold leadership commitments struggle to manage contacts effectively.
-Traditional address books quickly become *messy and overwhelming* when handling large numbers of people. 
-Leaders not only need to store contact details, but also keep track of roles and event-specific groups, 
+Traditional address books quickly become *messy and overwhelming* when handling large numbers of people.
+Leaders not only need to store contact details, but also keep track of roles and event-specific groups,
 making coordination difficult.
 
 
-To solve this, we created LinkUp — a lightweight, intuitive contact management tool designed for 
-**Community & Club leaders**. 
+To solve this, we created LinkUp — a lightweight, intuitive contact management tool designed for
+**Community & Club leaders**.
 
 With LinkUp, leaders can:
 * Filter contacts based on events (e.g. orientation organising members)
 * Organise people by role (e.g. family, event volunteers, event organisers)
-* Onboard new team members effortlessly 
+* Onboard new team members effortlessly
 * Avoid the complexity of heavy software while keeping everything streamlined
 
 ## Getting Started
@@ -30,12 +30,12 @@ To set up LinkUp locally on your computer and get it up and running, follow thes
 To run this project, you need:
 1. **Java Development Kit (JDK) 17**
 
-This project requires Java version 17. You can download it from 
+This project requires Java version 17. You can download it from
 [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
 
 Steps to install:
-* Download the JDK installer for your operating system. 
-* Follow the installation instructions. 
+* Download the JDK installer for your operating system.
+* Follow the installation instructions.
 * Verify installation by opening a terminal or command prompt and running:
 ```
 java -version
@@ -59,12 +59,12 @@ Steps to install:
 
 ### Installation
 To download the relevant code,
-1. Clone our remote repository 
+1. Clone our remote repository
 ```
 git clone https://github.com/AY2526S1-CS2103T-F13-2/tp.git
 ```
 2. Navigate to the ```Main``` file via ```tp → src → main → java → seedu.address → Main```
-and run it 
+and run it
 
 
 ## Usage
@@ -89,9 +89,10 @@ Examples:
 
 Format: ```edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...```
 
-* Edits the person at the specified ```INDEX```. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​ 
-* At least one of the optional fields must be provided. 
-* Existing values will be updated to the input values. 
+* Edits the person at the specified ```INDEX```. The index refers to the index number shown in the displayed person 
+list. The index must be a positive integer 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be **removed** i.e adding of tags is not cumulative. 
 * You can remove all the person’s tags by typing t/ without specifying any tags after it.
 
@@ -110,11 +111,12 @@ Format: list
 
 Format: ```find KEYWORD [MORE_KEYWORDS]```
 
-* The search is case-insensitive. e.g ```hans``` will match ```Hans``` 
-* The order of the keywords does not matter. e.g. ```Hans Bo``` will match ```Bo Hans``` 
-* Only the name is searched. 
-* Only full words will be matched e.g. ```Han``` will not match ```Hans``` 
-* Persons matching at least one keyword will be returned (i.e. ```OR``` search). e.g. ```Hans Bo``` will return ```Hans Gruber```, ```Bo Yang```
+* The search is case-insensitive. e.g ```hans``` will match ```Hans```
+* The order of the keywords does not matter. e.g. ```Hans Bo``` will match ```Bo Hans```
+* Only the name is searched.
+* Only full words will be matched e.g. ```Han``` will not match ```Hans```
+* Persons matching at least one keyword will be returned (i.e. ```OR``` search). 
+e.g. ```Hans Bo``` will return ```Hans Gruber```, ```Bo Yang```
 
 Examples:
 
