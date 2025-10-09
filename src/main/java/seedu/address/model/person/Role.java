@@ -7,9 +7,9 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
-    public final String value;
     public static final String MESSAGE_CONSTRAINTS = "Role should only contain alphanumeric characters "
             + "separated by commas and spaces, and it should not be blank";
+    public final String value;
 
     /*
      * The role can only be made up of letters, and separated by commas and whitespaces
