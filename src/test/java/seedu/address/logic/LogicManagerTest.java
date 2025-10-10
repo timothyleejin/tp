@@ -11,7 +11,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -28,7 +27,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -110,19 +108,18 @@ public class LogicManagerTest {
 
     @Test
     public void testModelEquality_sameObject() {
-        Assertions.assertTrue(model.equals(model));
+        Assertions.assertTrue(logic.equals(logic));
     }
 
     @Test
-    public void testModelEquality_sameModel() {
-        Model other = new ModelManager();
-        Assertions.assertTrue(model.equals(other));
-    }
-
-    @Test
-    public void testModelEquality_differentModel() {
-        Model other = new ModelManager(new AddressBook(getTypicalAddressBook()), new UserPrefs());
-        Assertions.assertFalse(model.equals(other));
+    public void testModelEquality_differentLogic() {
+        JsonAddressBookStorage otherAddressBookStorage =
+                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonUserPrefsStorage otherUserPrefsStorage = new JsonUserPrefsStorage(temporaryFolder
+                .resolve("userPrefs.json"));
+        StorageManager otherStorage = new StorageManager(otherAddressBookStorage, otherUserPrefsStorage);
+        Logic other = new LogicManager(model, otherStorage);
+        Assertions.assertFalse(logic.equals(other));
     }
 
     /**
