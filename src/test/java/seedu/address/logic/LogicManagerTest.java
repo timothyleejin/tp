@@ -11,20 +11,24 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -39,6 +43,8 @@ import seedu.address.testutil.PersonBuilder;
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");
     private static final IOException DUMMY_AD_EXCEPTION = new AccessDeniedException("dummy access denied exception");
+    private static final GuiSettings DEFAULT_GUI_SETTINGS = new GuiSettings();
+    private static final GuiSettings DUMMY_GUI_SETTINGS = new GuiSettings(400, 400, 400, 400);
 
     @TempDir
     public Path temporaryFolder;
@@ -89,6 +95,34 @@ public class LogicManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void getGuiSettings() {
+        assertEquals(DEFAULT_GUI_SETTINGS, model.getGuiSettings());
+    }
+
+    @Test
+    public void setGuiSettings() {
+        model.setGuiSettings(DUMMY_GUI_SETTINGS);
+        assertEquals(DUMMY_GUI_SETTINGS, model.getGuiSettings());
+    }
+
+    @Test
+    public void testModelEquality_sameObject() {
+        Assertions.assertTrue(model.equals(model));
+    }
+
+    @Test
+    public void testModelEquality_sameModel() {
+        Model other = new ModelManager();
+        Assertions.assertTrue(model.equals(other));
+    }
+
+    @Test
+    public void testModelEquality_differentModel() {
+        Model other = new ModelManager(new AddressBook(getTypicalAddressBook()), new UserPrefs());
+        Assertions.assertFalse(model.equals(other));
     }
 
     /**
