@@ -44,7 +44,7 @@ public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");
     private static final IOException DUMMY_AD_EXCEPTION = new AccessDeniedException("dummy access denied exception");
     private static final GuiSettings DEFAULT_GUI_SETTINGS = new GuiSettings();
-    private static final GuiSettings DUMMY_GUI_SETTINGS = new GuiSettings(400, 400, 400, 400);
+    private static final GuiSettings DUMMY_GUI_SETTINGS = new GuiSettings(100, 200, 300, 400);
 
     @TempDir
     public Path temporaryFolder;
