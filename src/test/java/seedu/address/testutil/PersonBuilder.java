@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -22,13 +23,16 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_ROLE = "Organiser";
+    public static final String DEFAULT_EVENT = "Thopz";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private Role role;
+    private Event event;
     private Set<Tag> tags;
+
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -39,6 +43,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         role = new Role(DEFAULT_ROLE);
+        event = new Event(DEFAULT_EVENT);
         tags = new HashSet<>();
     }
 
@@ -51,6 +56,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         role = personToCopy.getRole();
+        event = personToCopy.getEvent();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -102,8 +108,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Role} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withEvent(String event) {
+        this.event = new Event(event);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, role, tags);
+        return new Person(name, phone, email, address, role, event, tags);
     }
 
 }

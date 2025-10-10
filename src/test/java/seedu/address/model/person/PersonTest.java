@@ -6,8 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EVENT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
@@ -28,9 +30,9 @@ public class PersonTest {
     @Test
     public void hashCode_sameValues_sameHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
         Person person2 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
 
         // Equal objects must have the same hash code
         assertEquals(person1.hashCode(), person2.hashCode());
@@ -39,9 +41,9 @@ public class PersonTest {
     @Test
     public void hashCode_differentValues_differentHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
         Person person2 = new Person(BOB.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
 
         // Different objects must have different hash codes
         assertNotEquals(person1.hashCode(), person2.hashCode());
@@ -104,6 +106,14 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
+        // different event -> returns false
+        editedAlice = new PersonBuilder(ALICE).withEvent(VALID_EVENT_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+        // different role -> returns false
+        editedAlice = new PersonBuilder(ALICE).withEvent(VALID_ROLE_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
         // different address -> returns false
         editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
@@ -116,8 +126,8 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", address=" + ALICE.getAddress() + ", email=" + ALICE.getEmail()
-                + ", role=" + ALICE.getRole() + ", tags=" + ALICE.getTags() + "}";
+                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
+                 + ", role=" + ALICE.getRole() + ", event=" + ALICE.getEvent() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

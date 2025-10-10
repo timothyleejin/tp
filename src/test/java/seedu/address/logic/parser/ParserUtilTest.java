@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
@@ -33,6 +34,7 @@ public class ParserUtilTest {
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
+    private static final String VALID_EVENT = "EWP";
     private static final String VALID_ROLE = "Organiser";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
@@ -154,6 +156,23 @@ public class ParserUtilTest {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    }
+
+    @Test
+    public void parseEvent_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseEvent(null));
+    }
+
+    @Test
+    public void parseEvent_validValueWithoutWhitespace_returnsEvent() throws Exception {
+        Event expectedEvent = new Event(VALID_EVENT);
+        assertEquals(expectedEvent, ParserUtil.parseEvent(VALID_EVENT));
+    }
+
+    @Test
+    public void parseEvent_invalidValueWithWhitespace_throwsParseException() {
+        String blankEvent = WHITESPACE;
+        assertThrows(ParseException.class, () -> ParserUtil.parseEvent(blankEvent));
     }
 
     @Test

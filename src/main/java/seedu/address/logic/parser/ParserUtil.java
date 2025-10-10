@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
@@ -26,6 +27,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -97,6 +99,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String event} into an {@code Event}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code address} is invalid.
+     */
+    public static Event parseEvent(String event) throws ParseException {
+        requireNonNull(event);
+        String trimmedEvent = event.trim();
+        if (!Event.isValidEvent(trimmedEvent)) {
+            throw new ParseException(Event.MESSAGE_CONSTRAINTS);
+        }
+        return new Event(event);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -114,7 +131,6 @@ public class ParserUtil {
     /**
      * Parses a {@code String role} into an {@code Role}.
      * Leading and trailing whitespaces will be trimmed.
-     *
      */
     public static Role parseRole(String role) throws ParseException {
         requireNonNull(role);

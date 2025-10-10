@@ -14,6 +14,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
@@ -85,4 +86,24 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof ModelManager)) {
+            return false;
+        }
+
+        ModelManager otherModel = (ModelManager) other;
+        return this.getAddressBook().equals(otherModel.getAddressBook())
+                && this.getFilteredPersonList().equals(otherModel.getFilteredPersonList())
+                && this.getAddressBookFilePath().equals(otherModel.getAddressBookFilePath())
+                && this.getGuiSettings().equals(otherModel.getGuiSettings());
+    }
+
+
 }
+
+
