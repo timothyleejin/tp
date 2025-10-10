@@ -11,6 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -112,13 +113,18 @@ public class LogicManagerTest {
     }
 
     @Test
+    public void testModelEquality_sameModelManager() {
+        ModelManager other = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Assertions.assertFalse(logic.equals(other));
+    }
+
+    @Test
     public void testModelEquality_differentLogic() {
         JsonAddressBookStorage otherAddressBookStorage =
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage otherUserPrefsStorage = new JsonUserPrefsStorage(temporaryFolder
                 .resolve("userPrefs.json"));
-        StorageManager otherStorage = new StorageManager(otherAddressBookStorage, otherUserPrefsStorage);
-        Logic other = new LogicManager(model, otherStorage);
+        Model other = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Assertions.assertFalse(logic.equals(other));
     }
 

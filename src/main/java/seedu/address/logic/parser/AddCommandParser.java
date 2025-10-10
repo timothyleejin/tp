@@ -72,10 +72,4 @@ public class AddCommandParser implements Parser<AddCommand> {
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-
-    public static boolean hasDuplicatePrefixes(ArgumentMultimap map, Prefix... prefixes) {
-        return Stream.of(prefixes).anyMatch(prefix -> map.getAllValues(prefix).size() > 1);
-    }
-
-
 }
