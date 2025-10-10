@@ -28,9 +28,9 @@ public class PersonTest {
     @Test
     public void hashCode_sameValues_sameHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
         Person person2 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
 
         // Equal objects must have the same hash code
         assertEquals(person1.hashCode(), person2.hashCode());
@@ -39,9 +39,9 @@ public class PersonTest {
     @Test
     public void hashCode_differentValues_differentHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
         Person person2 = new Person(BOB.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getAddress(),
-                ALICE.getRole(), ALICE.getTags());
+                ALICE.getRole(), ALICE.getEvent(), ALICE.getTags());
 
         // Different objects must have different hash codes
         assertNotEquals(person1.hashCode(), person2.hashCode());
@@ -116,8 +116,8 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", address=" + ALICE.getAddress() + ", email=" + ALICE.getEmail()
-                + ", role=" + ALICE.getRole() + ", tags=" + ALICE.getTags() + "}";
+                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
+                 + ", role=" + ALICE.getRole() + ", event=" + ALICE.getEvent() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

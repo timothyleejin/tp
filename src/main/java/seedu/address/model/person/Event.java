@@ -28,10 +28,7 @@ public class Event {
 
     public Event(String event) {
         requireNonNull(event);
-        if (!isValidEvent(event)) {
-            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
-        }
-        this.value =event;
+        this.value = event;
     }
 
     /**
@@ -50,15 +47,13 @@ public class Event {
 
     @Override
     public boolean equals(Object other) {
-            if (other == this) {
-                return true;
-            }
-            // instanceof handles nulls
-            else if (!(other instanceof Event)) {
-                return false;
-            }
-            Event otherEvent = (Event) other;
-            return value.equals(otherEvent.value);
+        if (other == this) {
+            return true;
+        } else if (!(other instanceof Event)) {
+            return false;
+        }
+        Event otherEvent = (Event) other;
+        return value.equals(otherEvent.value);
     }
 
 

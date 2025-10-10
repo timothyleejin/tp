@@ -5,11 +5,11 @@ import java.util.Set;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
-import seedu.address.model.person.Event;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -56,6 +56,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         role = personToCopy.getRole();
+        event = personToCopy.getEvent();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -110,7 +111,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Role} of the {@code Person} that we are building.
      */
-    public PersonBuilder withEvent (String event) {
+    public PersonBuilder withEvent(String event) {
         this.event = new Event(event);
         return this;
     }

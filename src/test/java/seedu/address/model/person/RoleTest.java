@@ -23,8 +23,8 @@ public class RoleTest {
         // null -> returns false
         assertFalse(role.equals(null));
 
-        // different remark -> returns false
-        Role differentRemark = new Role("Bye");
-        assertFalse(role.equals(differentRemark));
+        // different role -> returns false
+        Role differentRole = new Role("Bye");
+        assertFalse(role.equals(differentRole));
     }
 }
