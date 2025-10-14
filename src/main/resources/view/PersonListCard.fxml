@@ -41,12 +41,12 @@
             <Label fx:id="email" styleClass="cell_small_label" text="$email" />
         </HBox>
         <HBox spacing="5" alignment="CENTER_LEFT">
-            <Label text="Role:" styleClass="cell_small_label" />
-            <Label fx:id="role" styleClass="cell_small_label" text="$role" />
-        </HBox>
-        <HBox spacing="5" alignment="CENTER_LEFT">
             <Label text="Event:" styleClass="cell_small_label" />
             <Label fx:id="event" styleClass="cell_small_label" text="$event" />
+        </HBox>
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <Label text="Role:" styleClass="cell_small_label" />
+            <Label fx:id="role" styleClass="cell_small_label" text="$role" />
         </HBox>
     </VBox>
   </GridPane>
