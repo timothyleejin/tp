@@ -16,7 +16,28 @@ public class FilterPredicate implements Predicate<Person> {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof FilterPredicate)) {
+            return false;
+        }
+
+        FilterPredicate otherFilterPredicate = (FilterPredicate) other;
+        return filterParams.equals(otherFilterPredicate.filterParams);
+    }
+
+    @Override
     public boolean test(Person person) {
+
+        if (filterParams.equals(PersonFilter.getEmptyFilter())) {
+            return false;
+        }
+
+
         boolean checkName = filterParams.getName().map(
                 keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword.fullName))
                 .orElse(true);
@@ -44,7 +65,8 @@ public class FilterPredicate implements Predicate<Person> {
                 .orElse(true);
 
         boolean checkTag = filterParams.getTag().map(
-                tag -> person.getTags().stream().anyMatch(personTag -> personTag.equals(tag)))
+                tag -> person.getTags().stream().anyMatch(personTag ->
+                        personTag.tagName.equalsIgnoreCase(tag.tagName)))
                 .orElse(true);
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkAddress

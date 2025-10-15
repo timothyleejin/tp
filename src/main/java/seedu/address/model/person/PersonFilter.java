@@ -9,6 +9,10 @@ import seedu.address.model.tag.Tag;
  */
 public class PersonFilter {
 
+    private static final PersonFilter EMPTY_FILTER = new PersonFilter(Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
+
     // Identity fields
     private final Optional<Name> name;
     private final Optional<Phone> phone;
@@ -41,6 +45,19 @@ public class PersonFilter {
         this.tag = tag;
     }
 
+    /**
+     * Alternate constructor taking in raw values instead of optionals
+     */
+    public PersonFilter(Name name, Phone phone, Email email, Address address, Role role, Event event, Tag tag) {
+        this.name = Optional.ofNullable(name);
+        this.phone = Optional.ofNullable(phone);
+        this.email = Optional.ofNullable(email);
+        this.address = Optional.ofNullable(address);
+        this.role = Optional.ofNullable(role);
+        this.event = Optional.ofNullable(event);
+        this.tag = Optional.ofNullable(tag);
+    }
+
     public Optional<Name> getName() {
         return name;
     }
@@ -67,5 +84,34 @@ public class PersonFilter {
 
     public Optional<Tag> getTag() {
         return tag;
+    }
+
+    public static PersonFilter getEmptyFilter() {
+        return EMPTY_FILTER;
+    }
+
+    /**
+     * Returns true if both PersonFilters have the same identity and data fields.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof PersonFilter)) {
+            return false;
+        }
+
+        PersonFilter otherPersonFilter = (PersonFilter) other;
+        return name.equals(otherPersonFilter.name)
+                && phone.equals(otherPersonFilter.phone)
+                && email.equals(otherPersonFilter.email)
+                && address.equals(otherPersonFilter.address)
+                && tag.equals(otherPersonFilter.tag)
+                && role.equals(otherPersonFilter.role)
+                && event.equals(otherPersonFilter.event);
+
     }
 }
