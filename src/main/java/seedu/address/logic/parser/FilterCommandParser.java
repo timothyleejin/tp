@@ -24,8 +24,17 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Parses input arguments and creates a new FilterCommand object
+ */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the FilterCommand
+     * and returns a FilterCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public FilterCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_EVENT, PREFIX_ADDRESS,
