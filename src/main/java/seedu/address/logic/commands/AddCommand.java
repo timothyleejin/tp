@@ -40,7 +40,7 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_EVENT + "Double or Nothing "
             + PREFIX_ROLE + "Orientation Camp Organiser "
-            + PREFIX_SKILL + "Microsoft Office Suite literacy"
+            + PREFIX_SKILL + "Cooking"
             + PREFIX_SKILL + "Python";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
