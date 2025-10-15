@@ -10,7 +10,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -31,7 +31,7 @@ public class PersonBuilder {
     private Address address;
     private Role role;
     private Event event;
-    private Set<Tag> tags;
+    private Set<Skill> skills;
 
 
     /**
@@ -44,7 +44,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         role = new Role(DEFAULT_ROLE);
         event = new Event(DEFAULT_EVENT);
-        tags = new HashSet<>();
+        skills = new HashSet<>();
     }
 
     /**
@@ -57,7 +57,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         role = personToCopy.getRole();
         event = personToCopy.getEvent();
-        tags = new HashSet<>(personToCopy.getTags());
+        skills = new HashSet<>(personToCopy.getSkills());
     }
 
     /**
@@ -77,10 +77,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code skills} into a {@code Set<Skill>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
+    public PersonBuilder withSkills(String ... skills) {
+        this.skills = SampleDataUtil.getSkillSet(skills);
         return this;
     }
 
@@ -117,7 +117,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, role, event, tags);
+        return new Person(name, phone, email, address, role, event, skills);
     }
 
 }
