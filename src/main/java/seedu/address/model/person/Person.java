@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 
 /**
  * Represents a Person in the address book.
@@ -24,13 +24,13 @@ public class Person {
     // Data fields
     private final Address address;
     private final Role role;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Skill> skills = new HashSet<>();
     private final Event event;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Role role, Event event, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Role role, Event event, Set<Skill> skills) {
         requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
@@ -38,7 +38,7 @@ public class Person {
         this.address = address;
         this.role = role;
         this.event = event;
-        this.tags.addAll(tags);
+        this.skills.addAll(skills);
     }
 
     public Name getName() {
@@ -66,11 +66,11 @@ public class Person {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable skill set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Skill> getSkills() {
+        return Collections.unmodifiableSet(skills);
     }
 
     /**
@@ -106,16 +106,15 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags)
+                && skills.equals(otherPerson.skills)
                 && role.equals(otherPerson.role)
                 && event.equals(otherPerson.event);
-
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, role, event);
+        return Objects.hash(name, phone, email, address, skills, role, event);
     }
 
     @Override
@@ -127,8 +126,7 @@ public class Person {
                 .add("address", address)
                 .add("role", role)
                 .add("event", event)
-                .add("tags", tags)
-
+                .add("skills", skills)
                 .toString();
     }
 

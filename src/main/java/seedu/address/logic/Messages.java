@@ -47,8 +47,8 @@ public class Messages {
                 .append(person.getRole())
                 .append("; Event: ")
                 .append(person.getEvent())
-                .append("; Tags: ");
-        person.getTags().forEach(builder::append);
+                .append("; Skills: ");
+        person.getSkills().forEach(builder::append);
         return builder.toString();
     }
 }
