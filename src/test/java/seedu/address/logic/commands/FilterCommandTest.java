@@ -26,7 +26,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonFilterBuilder;
 
 public class FilterCommandTest {
@@ -38,7 +38,7 @@ public class FilterCommandTest {
         PersonFilter firstPredicateFilter = new PersonFilterBuilder().build();
         PersonFilter secondPredicateFilter = new PersonFilter(
                 new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Address("Tampines"),
-                new Role("Farmer"), new Event("Secret"), new Tag("friend"));
+                new Role("Farmer"), new Event("Secret"), new Skill("Java"));
 
 
         FilterPredicate firstPredicate = new FilterPredicate(firstPredicateFilter);
