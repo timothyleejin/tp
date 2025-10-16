@@ -2,7 +2,7 @@ package seedu.address.model.person;
 
 import java.util.Optional;
 
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 
 /**
  * A filter with the parameters to check each {@code Person} for
@@ -21,7 +21,7 @@ public class PersonFilter {
     // Data fields
     private final Optional<Address> address;
     private final Optional<Role> role;
-    private final Optional<Tag> tag;
+    private final Optional<Skill> skill;
     private final Optional<Event> event;
 
     /**
@@ -32,30 +32,30 @@ public class PersonFilter {
      * @param address Address to be filtered in Optional, Empty Optional if not filtering by address
      * @param role Role to be filtered in Optional, Empty Optional if not filtering by role
      * @param event Event to be filtered in Optional, Empty Optional if not filtering by event
-     * @param tag Tag to be filtered in Optional, Empty Optional if not filtering by tag
+     * @param skill Skill to be filtered in Optional, Empty Optional if not filtering by skill
      */
     public PersonFilter(Optional<Name> name, Optional<Phone> phone, Optional<Email> email, Optional<Address> address,
-                        Optional<Role> role, Optional<Event> event, Optional<Tag> tag) {
+                        Optional<Role> role, Optional<Event> event, Optional<Skill> skill) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.role = role;
         this.event = event;
-        this.tag = tag;
+        this.skill = skill;
     }
 
     /**
      * Alternate constructor taking in raw values instead of optionals
      */
-    public PersonFilter(Name name, Phone phone, Email email, Address address, Role role, Event event, Tag tag) {
+    public PersonFilter(Name name, Phone phone, Email email, Address address, Role role, Event event, Skill skill) {
         this.name = Optional.ofNullable(name);
         this.phone = Optional.ofNullable(phone);
         this.email = Optional.ofNullable(email);
         this.address = Optional.ofNullable(address);
         this.role = Optional.ofNullable(role);
         this.event = Optional.ofNullable(event);
-        this.tag = Optional.ofNullable(tag);
+        this.skill = Optional.ofNullable(skill);
     }
 
     public Optional<Name> getName() {
@@ -82,8 +82,8 @@ public class PersonFilter {
         return event;
     }
 
-    public Optional<Tag> getTag() {
-        return tag;
+    public Optional<Skill> getSkill() {
+        return skill;
     }
 
     public static PersonFilter getEmptyFilter() {
@@ -109,7 +109,7 @@ public class PersonFilter {
                 && phone.equals(otherPersonFilter.phone)
                 && email.equals(otherPersonFilter.email)
                 && address.equals(otherPersonFilter.address)
-                && tag.equals(otherPersonFilter.tag)
+                && skill.equals(otherPersonFilter.skill)
                 && role.equals(otherPersonFilter.role)
                 && event.equals(otherPersonFilter.event);
 
