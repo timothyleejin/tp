@@ -57,9 +57,13 @@ public class CommandTestUtil {
     public static final String EVENT_DESC_BOB = " " + PREFIX_EVENT + VALID_EVENT_BOB;
 
     public static final String FILTER_NAME_AMY = " " + PREFIX_NAME + "Amy";
+    public static final String FILTER_NAME_BOB = " " + PREFIX_NAME + "Bob";
+    public static final String FILTER_NAME_AMY_BOB = " " + PREFIX_NAME + "Amy " + "Bob";
     public static final String FILTER_EVENT_AMY = " " + PREFIX_EVENT + "Angbao";
     public static final String SKILL_DESC_FRIEND = " " + PREFIX_SKILL + VALID_SKILL_FRIEND;
     public static final String SKILL_DESC_HUSBAND = " " + PREFIX_SKILL + VALID_SKILL_HUSBAND;
+
+    public static final String FILTER_SUBSTRING_EMAIL_ALICE = " " + PREFIX_EMAIL + " alice";
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
