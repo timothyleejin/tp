@@ -56,6 +56,8 @@ public class CommandTestUtil {
     public static final String EVENT_DESC_AMY = " " + PREFIX_EVENT + VALID_EVENT_AMY;
     public static final String EVENT_DESC_BOB = " " + PREFIX_EVENT + VALID_EVENT_BOB;
 
+    public static final String FILTER_NAME_AMY = " " + PREFIX_NAME + "Amy";
+    public static final String FILTER_EVENT_AMY = " " + PREFIX_EVENT + "Angbao";
     public static final String SKILL_DESC_FRIEND = " " + PREFIX_SKILL + VALID_SKILL_FRIEND;
     public static final String SKILL_DESC_HUSBAND = " " + PREFIX_SKILL + VALID_SKILL_HUSBAND;
 

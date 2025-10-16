@@ -12,9 +12,10 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.FilterCommand;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PersonFilter;
 import seedu.address.model.skill.Skill;
-
 
 
 /**
@@ -66,5 +67,34 @@ public class PersonUtil {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Returns the part of command string for the given {@code PersonFilter}'s details.
+     */
+    public static String getPersonFilterDetails(PersonFilter personFilter) {
+        StringBuilder sb = new StringBuilder();
+        personFilter.getName().ifPresent(name ->
+                sb.append(PREFIX_NAME + name.fullName + " "));
+        personFilter.getPhone().ifPresent(phone ->
+                sb.append(PREFIX_PHONE + phone.value + " "));
+        personFilter.getEmail().ifPresent(email ->
+                sb.append(PREFIX_EMAIL + email.value + " "));
+        personFilter.getAddress().ifPresent(address ->
+                sb.append(PREFIX_ADDRESS + address.value + " "));
+        personFilter.getRole().ifPresent(role ->
+                sb.append(PREFIX_ROLE + role.value + " "));
+        personFilter.getEvent().ifPresent(event ->
+                sb.append(PREFIX_EVENT + event.value + " "));
+        personFilter.getSkill().ifPresent(skill ->
+                sb.append(PREFIX_SKILL + skill.skillName + " "));
+
+        return sb.toString();
+    }
+    /**
+     * Returns a filter command for filtering the {@code Person}
+     */
+    public static String getFilterCommand(PersonFilter personFilter) {
+        return FilterCommand.COMMAND_WORD + " " + getPersonFilterDetails(personFilter);
     }
 }

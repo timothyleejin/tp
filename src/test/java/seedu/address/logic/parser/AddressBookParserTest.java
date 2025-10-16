@@ -19,14 +19,18 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PersonFilter;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.PersonFilterBuilder;
 import seedu.address.testutil.PersonUtil;
 
 public class AddressBookParserTest {
@@ -86,6 +90,14 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_filter() throws Exception {
+        PersonFilter filter = new PersonFilterBuilder().build();
+        FilterCommand command = (FilterCommand) parser.parseCommand(PersonUtil.getFilterCommand(filter));
+        FilterPredicate predicate = new FilterPredicate(filter);
+        assertEquals(new FilterCommand(predicate), command);
     }
 
     @Test
