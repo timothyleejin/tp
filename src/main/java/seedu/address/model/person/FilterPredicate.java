@@ -64,13 +64,13 @@ public class FilterPredicate implements Predicate<Person> {
                 event -> StringUtil.containsWordIgnoreCase(person.getEvent().toString(), event.toString()))
                 .orElse(true);
 
-        boolean checkTag = filterParams.getTag().map(
-                tag -> person.getTags().stream().anyMatch(personTag ->
-                        personTag.tagName.equalsIgnoreCase(tag.tagName)))
+        boolean checkSkill = filterParams.getSkill().map(
+                skill -> person.getSkills().stream().anyMatch(personSkill ->
+                        personSkill.skillName.equalsIgnoreCase(skill.skillName)))
                 .orElse(true);
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkAddress
-                && checkRole && checkEvent && checkTag;
+                && checkRole && checkEvent && checkSkill;
 
         return matchFilters;
     }
