@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -22,7 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
@@ -38,17 +38,17 @@ public class FilterCommandParser implements Parser<FilterCommand> {
     public FilterCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_EVENT, PREFIX_ADDRESS,
-                        PREFIX_ROLE, PREFIX_TAG);
+                        PREFIX_ROLE, PREFIX_SKILL);
 
         if (!anyPrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROLE,
-                PREFIX_EVENT, PREFIX_TAG)
+                PREFIX_EVENT, PREFIX_SKILL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
 
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_ROLE,
-                PREFIX_EVENT, PREFIX_TAG);
+                PREFIX_EVENT, PREFIX_SKILL);
 
 
         Optional<Name> name = argMultimap.getValue(PREFIX_NAME).flatMap(
@@ -105,16 +105,16 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                     }
                 });
 
-        Optional<Tag> tag = argMultimap.getValue(PREFIX_TAG).flatMap(
-                tagInput -> {
+        Optional<Skill> skill = argMultimap.getValue(PREFIX_SKILL).flatMap(
+                skillInput -> {
                     try {
-                        return Optional.of(ParserUtil.parseTag(tagInput));
+                        return Optional.of(ParserUtil.parseSkill(skillInput));
                     } catch (ParseException e) {
                         return Optional.empty();
                     }
                 });
 
-        PersonFilter filterParams = new PersonFilter(name, phone, email, address, role, event, tag);
+        PersonFilter filterParams = new PersonFilter(name, phone, email, address, role, event, skill);
 
         FilterPredicate filterPredicate = new FilterPredicate(filterParams);
 
