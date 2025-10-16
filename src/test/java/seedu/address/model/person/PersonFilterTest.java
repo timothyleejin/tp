@@ -51,8 +51,8 @@ public class PersonFilterTest {
         editedAmy = new PersonFilterBuilder().withAddress("Bishan").build();
         assertFalse(amy.equals(editedAmy));
 
-        // different tags -> returns false
-        editedAmy = new PersonFilterBuilder().withTag("husband").build();
+        // different skills -> returns false
+        editedAmy = new PersonFilterBuilder().withSkill("hunting").build();
         assertFalse(amy.equals(editedAmy));
     }
 }
