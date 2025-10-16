@@ -58,13 +58,13 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person's name already exists in the address book, " +
-            "do add text at the end to differentiate between the two people\n" +
-            "E.g. 'John Doe' to 'John Doe NUS'";
-    public static final String MESSAGE_DUPLICATE_PHONE= "This phone number already exists in the address book, " +
-            "each contact needs to have a unique phone number";
-    public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, " +
-            "each contact needs to have a unique email address";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person's name already exists in the address book, "
+            + "do add text at the end to differentiate between the two people\n"
+            + "E.g. 'John Doe' to 'John Doe NUS'";
+    public static final String MESSAGE_DUPLICATE_PHONE = "This phone number already exists in the address book, "
+            + "each contact needs to have a unique phone number";
+    public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, "
+            + "each contact needs to have a unique email address";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
