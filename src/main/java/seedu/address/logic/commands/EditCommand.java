@@ -95,7 +95,7 @@ public class EditCommand extends Command {
 
         // Check that edited person has different name from initial person,
         // then check whether edited name is duplicated.
-        if (!personToEdit.isSameName(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!personToEdit.isSameName(editedPerson) && model.hasName(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         } else if (!personToEdit.isSamePhone(editedPerson) && model.hasPhone(editedPerson)) {
             // Edited person name is already valid, so check for duplicate phone numbers.

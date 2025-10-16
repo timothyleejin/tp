@@ -85,9 +85,9 @@ public class UniquePersonList implements Iterable<Person> {
 
         if (!target.isSameName(editedPerson) && containsName(editedPerson)) {
             throw new DuplicatePersonException();
-        } else if (!target.isSameName(editedPerson) && containsPhone(editedPerson)) {
+        } else if (!target.isSamePhone(editedPerson) && containsPhone(editedPerson)) {
             throw new DuplicatePhoneException();
-        } else if (!target.isSameName(editedPerson) && containsEmail(editedPerson)) {
+        } else if (!target.isSameEmail(editedPerson) && containsEmail(editedPerson)) {
             throw new DuplicateEmailException();
         }
 

@@ -5,6 +5,6 @@ package seedu.address.model.person.exceptions;
  */
 public class DuplicatePhoneException extends RuntimeException {
     public DuplicatePhoneException() {
-        super("Operation would result in duplicate emails");
+        super("Operation would result in duplicate phone numbers");
     }
 }

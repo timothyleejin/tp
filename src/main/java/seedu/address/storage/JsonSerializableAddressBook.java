@@ -52,7 +52,7 @@ class JsonSerializableAddressBook {
         AddressBook addressBook = new AddressBook();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
+            if (addressBook.hasName(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             } else if (addressBook.hasPhone(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PHONE);
