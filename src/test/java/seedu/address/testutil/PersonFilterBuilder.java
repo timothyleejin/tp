@@ -9,7 +9,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 
 /**
  * A utility class to help with building PersonFilter objects
@@ -22,7 +22,7 @@ public class PersonFilterBuilder {
     public static final String DEFAULT_ADDRESS = "Jurong";
     public static final String DEFAULT_ROLE = "Volunteer";
     public static final String DEFAULT_EVENT = "Angbao";
-    public static final String DEFAULT_TAG = "friend";
+    public static final String DEFAULT_SKILL = "Java";
 
     private Optional<Name> name;
     private Optional<Phone> phone;
@@ -30,7 +30,7 @@ public class PersonFilterBuilder {
     private Optional<Address> address;
     private Optional<Role> role;
     private Optional<Event> event;
-    private Optional<Tag> tag;
+    private Optional<Skill> skill;
 
 
     /**
@@ -43,7 +43,7 @@ public class PersonFilterBuilder {
         address = Optional.of(new Address(DEFAULT_ADDRESS));
         role = Optional.of(new Role(DEFAULT_ROLE));
         event = Optional.of(new Event(DEFAULT_EVENT));
-        tag = Optional.of(new Tag(DEFAULT_TAG));
+        skill = Optional.of(new Skill(DEFAULT_SKILL));
     }
 
     /**
@@ -56,7 +56,7 @@ public class PersonFilterBuilder {
         address = personFilterToCopy.getAddress();
         role = personFilterToCopy.getRole();
         event = personFilterToCopy.getEvent();
-        tag = personFilterToCopy.getTag();
+        skill = personFilterToCopy.getSkill();
     }
 
     /**
@@ -76,10 +76,10 @@ public class PersonFilterBuilder {
     }
 
     /**
-     * Sets the {@code Tag} of the {@code PersonFilter} that we are building.
+     * Sets the {@code Skill} of the {@code PersonFilter} that we are building.
      */
-    public PersonFilterBuilder withTag(String tag) {
-        this.tag = Optional.of(new Tag(tag));
+    public PersonFilterBuilder withSkill(String skill) {
+        this.skill = Optional.of(new Skill(skill));
         return this;
     }
 
