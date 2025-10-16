@@ -40,11 +40,17 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_EVENT + "Double or Nothing "
             + PREFIX_ROLE + "Orientation Camp Organiser "
-            + PREFIX_SKILL + "Cooking"
+            + PREFIX_SKILL + "Cooking "
             + PREFIX_SKILL + "Python";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person's name already exists in the address book, "
+            + "do add a string to differentiate between the two people\n"
+            + "E.g. John Doe NUS";
+    public static final String MESSAGE_DUPLICATE_PHONE = "This phone number already exists in the address book, "
+            + "each contact needs to have a unique phone number";
+    public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, "
+            + "each contact needs to have a unique email address";
 
     private final Person toAdd;
 
@@ -60,8 +66,12 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
+        if (model.hasName(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        } else if (model.hasPhone(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+        } else if (model.hasEmail(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
         }
 
         model.addPerson(toAdd);

@@ -58,7 +58,13 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person's name already exists in the address book, "
+            + "do add text at the end to differentiate between the two people\n"
+            + "E.g. 'John Doe' to 'John Doe NUS'";
+    public static final String MESSAGE_DUPLICATE_PHONE = "This phone number already exists in the address book, "
+            + "each contact needs to have a unique phone number";
+    public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, "
+            + "each contact needs to have a unique email address";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -87,8 +93,16 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        // Check that edited person has different name from initial person,
+        // then check whether edited name is duplicated.
+        if (!personToEdit.isSameName(editedPerson) && model.hasName(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        } else if (!personToEdit.isSamePhone(editedPerson) && model.hasPhone(editedPerson)) {
+            // Edited person name is already valid, so check for duplicate phone numbers.
+            throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+        } else if (!personToEdit.isSameEmail(editedPerson) && model.hasEmail(editedPerson)) {
+            // Edited person name is already valid, so check for duplicate email addresses.
+            throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
         }
 
         model.setPerson(personToEdit, editedPerson);
