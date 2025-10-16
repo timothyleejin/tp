@@ -116,6 +116,6 @@ public class PersonFilterBuilder {
     }
 
     public PersonFilter build() {
-        return new PersonFilter(name, phone, email, address, role, event, tag);
+        return new PersonFilter(name, phone, email, address, role, event, skill);
     }
 }
