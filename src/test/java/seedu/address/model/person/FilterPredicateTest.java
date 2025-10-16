@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.tag.Tag;
+import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonFilterBuilder;
 
@@ -15,7 +15,7 @@ public class FilterPredicateTest {
         PersonFilter firstPredicateFilter = new PersonFilterBuilder().build();
         PersonFilter secondPredicateFilter = new PersonFilter(
                 new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Address("Tampines"),
-                new Role("Farmer"), new Event("Secret"), new Tag("friend"));
+                new Role("Farmer"), new Event("Secret"), new Skill("Java"));
 
 
         FilterPredicate firstPredicate = new FilterPredicate(firstPredicateFilter);
@@ -92,22 +92,22 @@ public class FilterPredicateTest {
         // All keywords
         PersonFilter allKeywordFilter = new PersonFilter(
                 new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Address("Tampines"),
-                new Role("Farmer"), new Event("Secret"), new Tag("friend"));
+                new Role("Farmer"), new Event("Secret"), new Skill("Java"));
         predicate = new FilterPredicate(allKeywordFilter);
         assertTrue(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
                 .withAddress("Tampines Street 74").withRole("Farmer").withEvent("Secret Santa")
-                .withTags("friend").build()));
+                .withSkills("Java").build()));
 
         // Mixed-case keywords
         PersonFilter mixedCaseFilter = new PersonFilter(
                 new Name("aLiCe"), null, new Email("alIcE@gMAil.coM"), new Address("tamPiNes"),
-                new Role("faRMer"), new Event("secREt"), new Tag("frIEnd"));
+                new Role("faRMer"), new Event("secREt"), new Skill("jAva"));
         predicate = new FilterPredicate(mixedCaseFilter);
         assertTrue(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withEmail("alice@gmail.com")
                 .withAddress("Tampines Street 74").withRole("Farmer").withEvent("Secret Santa")
-                .withTags("friend").build()));
+                .withSkills("Java").build()));
     }
 
     @Test
@@ -126,11 +126,11 @@ public class FilterPredicateTest {
         // Keywords match all except role
         PersonFilter wrongRoleFilter = new PersonFilter(
                 new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Address("Tampines"),
-                new Role("Director"), new Event("Secret"), new Tag("friend"));
+                new Role("Director"), new Event("Secret"), new Skill("Java"));
         predicate = new FilterPredicate(wrongRoleFilter);
         assertFalse(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
                 .withAddress("Tampines Street 74").withRole("Farmer").withEvent("Secret Santa")
-                .withTags("friend").build()));
+                .withSkills("Java").build()));
     }
 }
