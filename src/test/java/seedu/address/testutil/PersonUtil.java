@@ -86,8 +86,8 @@ public class PersonUtil {
                 sb.append(PREFIX_ROLE + role.value + " "));
         personFilter.getEvent().ifPresent(event ->
                 sb.append(PREFIX_EVENT + event.value + " "));
-        personFilter.getTag().ifPresent(tag ->
-                sb.append(PREFIX_TAG + tag.tagName + " "));
+        personFilter.getSkill().ifPresent(skill ->
+                sb.append(PREFIX_SKILL + skill.skillName + " "));
 
         return sb.toString();
     }
