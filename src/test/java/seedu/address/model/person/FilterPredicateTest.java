@@ -3,14 +3,14 @@ package seedu.address.model.person;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonFilterBuilder;
-
-import java.util.Collections;
-import java.util.List;
 
 public class FilterPredicateTest {
     @Test
@@ -113,9 +113,9 @@ public class FilterPredicateTest {
                 .withSkills("Java").build()));
 
         // Multiple name
-        PersonFilter multipleNameFilter = new PersonFilter(List.of(new Name("Amy"), new Name("Bob")), Collections.emptyList(),
-                Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
-                        Collections.emptyList());
+        PersonFilter multipleNameFilter = new PersonFilter(List.of(new Name("Amy"), new Name("Bob")),
+                Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
+                        Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
         predicate = new FilterPredicate(multipleNameFilter);
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
     }

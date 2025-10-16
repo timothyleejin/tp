@@ -103,9 +103,9 @@ public class FilterCommandTest {
     @Test
     public void execute_multipleNameKeywords_onePersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
-        PersonFilter personFilter = new PersonFilter(List.of(new Name("George"), new Name("Bob")), Collections.emptyList(),
-                Collections.emptyList(), Collections.emptyList(), List.of(new Role("Logistics")),
-                        List.of(new Event("Ucl")), Collections.emptyList());
+        PersonFilter personFilter = new PersonFilter(List.of(new Name("George"), new Name("Bob")),
+                Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
+                        List.of(new Role("Logistics")), List.of(new Event("Ucl")), Collections.emptyList());
         FilterPredicate predicate = new FilterPredicate(personFilter);
         FilterCommand command = new FilterCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);

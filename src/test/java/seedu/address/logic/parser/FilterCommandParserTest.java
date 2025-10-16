@@ -8,6 +8,9 @@ import static seedu.address.logic.commands.CommandTestUtil.FILTER_SUBSTRING_EMAI
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FilterCommand;
@@ -15,9 +18,6 @@ import seedu.address.model.person.Event;
 import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
-
-import java.util.Collections;
-import java.util.List;
 
 public class FilterCommandParserTest {
 

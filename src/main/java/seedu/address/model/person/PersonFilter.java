@@ -2,7 +2,6 @@ package seedu.address.model.person;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import seedu.address.model.skill.Skill;
 

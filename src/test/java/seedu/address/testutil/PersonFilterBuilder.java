@@ -1,14 +1,10 @@
 package seedu.address.testutil;
 
 import java.util.List;
-import java.util.Optional;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
 import seedu.address.model.skill.Skill;
 
