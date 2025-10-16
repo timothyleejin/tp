@@ -23,7 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_ROLE = "Organiser";
-    public static final String DEFAULT_EVENT = "Thopz";
+    public static final String DEFAULT_EVENT = "Orientation Camp";
 
     private Name name;
     private Phone phone;
