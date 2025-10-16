@@ -12,6 +12,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -97,6 +98,32 @@ public class FilterCommandTest {
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(GEORGE), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_multipleNameKeywords_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        PersonFilter personFilter = new PersonFilter(List.of(new Name("George"), new Name("Bob")),
+                Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
+                        List.of(new Role("Logistics")), List.of(new Event("Ucl")), Collections.emptyList());
+        FilterPredicate predicate = new FilterPredicate(personFilter);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(GEORGE), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_emailSubstringFilter_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        PersonFilter personFilter = new PersonFilter(List.of(new Name("Alice")), Collections.emptyList(),
+                List.of("alice"), Collections.emptyList(), Collections.emptyList(),
+                        Collections.emptyList(), List.of(new Skill("Rust")));
+        FilterPredicate predicate = new FilterPredicate(personFilter);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE), model.getFilteredPersonList());
     }
 
     @Test
