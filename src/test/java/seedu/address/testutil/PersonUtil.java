@@ -74,19 +74,19 @@ public class PersonUtil {
      */
     public static String getPersonFilterDetails(PersonFilter personFilter) {
         StringBuilder sb = new StringBuilder();
-        personFilter.getName().ifPresent(name ->
+        personFilter.getNames().forEach(name ->
                 sb.append(PREFIX_NAME + name.fullName + " "));
-        personFilter.getPhone().ifPresent(phone ->
-                sb.append(PREFIX_PHONE + phone.value + " "));
-        personFilter.getEmail().ifPresent(email ->
-                sb.append(PREFIX_EMAIL + email.value + " "));
-        personFilter.getAddress().ifPresent(address ->
-                sb.append(PREFIX_ADDRESS + address.value + " "));
-        personFilter.getRole().ifPresent(role ->
+        personFilter.getPhones().forEach(phone ->
+                sb.append(PREFIX_PHONE + phone + " "));
+        personFilter.getEmails().forEach(email ->
+                sb.append(PREFIX_EMAIL + email + " "));
+        personFilter.getAddresses().forEach(address ->
+                sb.append(PREFIX_ADDRESS + address + " "));
+        personFilter.getRoles().forEach(role ->
                 sb.append(PREFIX_ROLE + role.value + " "));
-        personFilter.getEvent().ifPresent(event ->
+        personFilter.getEvents().forEach(event ->
                 sb.append(PREFIX_EVENT + event.value + " "));
-        personFilter.getSkill().ifPresent(skill ->
+        personFilter.getSkills().forEach(skill ->
                 sb.append(PREFIX_SKILL + skill.skillName + " "));
 
         return sb.toString();

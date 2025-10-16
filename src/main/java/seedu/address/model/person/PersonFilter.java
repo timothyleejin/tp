@@ -1,5 +1,7 @@
 package seedu.address.model.person;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import seedu.address.model.skill.Skill;
@@ -9,81 +11,81 @@ import seedu.address.model.skill.Skill;
  */
 public class PersonFilter {
 
-    private static final PersonFilter EMPTY_FILTER = new PersonFilter(Optional.empty(), Optional.empty(),
-            Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
-            Optional.empty());
+    private static final PersonFilter EMPTY_FILTER = new PersonFilter(Collections.emptyList(), Collections.emptyList(),
+            Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
+            Collections.emptyList());
 
     // Identity fields
-    private final Optional<Name> name;
-    private final Optional<Phone> phone;
-    private final Optional<Email> email;
+    private final List<Name> names;
+    private final List<String> phones;
+    private final List<String> emails;
 
     // Data fields
-    private final Optional<Address> address;
-    private final Optional<Role> role;
-    private final Optional<Skill> skill;
-    private final Optional<Event> event;
+    private final List<String> addresses;
+    private final List<Role> roles;
+    private final List<Skill> skills;
+    private final List<Event> events;
 
     /**
      * Creates a new PersonFilter object
-     * @param name Name to be filtered in Optional, Empty Optional if not filtering by name
-     * @param phone Phone to be filtered in Optional, Empty Optional if not filtering by phone
-     * @param email Email to be filtered in Optional, Empty Optional if not filtering by email
-     * @param address Address to be filtered in Optional, Empty Optional if not filtering by address
-     * @param role Role to be filtered in Optional, Empty Optional if not filtering by role
-     * @param event Event to be filtered in Optional, Empty Optional if not filtering by event
-     * @param skill Skill to be filtered in Optional, Empty Optional if not filtering by skill
+     * @param names Name to be filtered in List, Empty List if not filtering by name
+     * @param phones Phone to be filtered in List, Empty List if not filtering by phone
+     * @param emails Email to be filtered in List, Empty List if not filtering by email
+     * @param addresses Address to be filtered in List, Empty List if not filtering by address
+     * @param roles Role to be filtered in List, Empty List if not filtering by role
+     * @param events Event to be filtered in List, Empty List if not filtering by event
+     * @param skills Skill to be filtered in List, Empty List if not filtering by skill
      */
-    public PersonFilter(Optional<Name> name, Optional<Phone> phone, Optional<Email> email, Optional<Address> address,
-                        Optional<Role> role, Optional<Event> event, Optional<Skill> skill) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.role = role;
-        this.event = event;
-        this.skill = skill;
+    public PersonFilter(List<Name> names, List<String> phones, List<String> emails, List<String> addresses,
+                        List<Role> roles, List<Event> events, List<Skill> skills) {
+        this.names = names;
+        this.phones = phones;
+        this.emails = emails;
+        this.addresses = addresses;
+        this.roles = roles;
+        this.events = events;
+        this.skills = skills;
     }
 
     /**
-     * Alternate constructor taking in raw values instead of optionals
+     * Alternate constructor taking in raw values instead of Lists
      */
     public PersonFilter(Name name, Phone phone, Email email, Address address, Role role, Event event, Skill skill) {
-        this.name = Optional.ofNullable(name);
-        this.phone = Optional.ofNullable(phone);
-        this.email = Optional.ofNullable(email);
-        this.address = Optional.ofNullable(address);
-        this.role = Optional.ofNullable(role);
-        this.event = Optional.ofNullable(event);
-        this.skill = Optional.ofNullable(skill);
+        this.names = name != null ? List.of(name) : Collections.emptyList();
+        this.phones = phone != null ? List.of(phone.toString()) : Collections.emptyList();
+        this.emails = email != null ? List.of(email.toString()) : Collections.emptyList();
+        this.addresses = address != null ? List.of(address.toString()) : Collections.emptyList();
+        this.roles = role != null ? List.of(role) : Collections.emptyList();
+        this.events = event != null ? List.of(event) : Collections.emptyList();
+        this.skills = skill != null ? List.of(skill) : Collections.emptyList();
     }
 
-    public Optional<Name> getName() {
-        return name;
+    public List<Name> getNames() {
+        return names;
     }
 
-    public Optional<Phone> getPhone() {
-        return phone;
+    public List<String> getPhones() {
+        return phones;
     }
 
-    public Optional<Email> getEmail() {
-        return email;
+    public List<String> getEmails() {
+        return emails;
     }
 
-    public Optional<Address> getAddress() {
-        return address;
+    public List<String> getAddresses() {
+        return addresses;
     }
 
-    public Optional<Role> getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public Optional<Event> getEvent() {
-        return event;
+    public List<Event> getEvents() {
+        return events;
     }
 
-    public Optional<Skill> getSkill() {
-        return skill;
+    public List<Skill> getSkills() {
+        return skills;
     }
 
     public static PersonFilter getEmptyFilter() {
@@ -105,13 +107,13 @@ public class PersonFilter {
         }
 
         PersonFilter otherPersonFilter = (PersonFilter) other;
-        return name.equals(otherPersonFilter.name)
-                && phone.equals(otherPersonFilter.phone)
-                && email.equals(otherPersonFilter.email)
-                && address.equals(otherPersonFilter.address)
-                && skill.equals(otherPersonFilter.skill)
-                && role.equals(otherPersonFilter.role)
-                && event.equals(otherPersonFilter.event);
+        return names.equals(otherPersonFilter.names)
+                && phones.equals(otherPersonFilter.phones)
+                && emails.equals(otherPersonFilter.emails)
+                && addresses.equals(otherPersonFilter.addresses)
+                && skills.equals(otherPersonFilter.skills)
+                && roles.equals(otherPersonFilter.roles)
+                && events.equals(otherPersonFilter.events);
 
     }
 }

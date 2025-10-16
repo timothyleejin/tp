@@ -9,6 +9,9 @@ import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonFilterBuilder;
 
+import java.util.Collections;
+import java.util.List;
+
 public class FilterPredicateTest {
     @Test
     public void equals() {
@@ -108,6 +111,13 @@ public class FilterPredicateTest {
                 .withName("Alice Bob").withEmail("alice@gmail.com")
                 .withAddress("Tampines Street 74").withRole("Farmer").withEvent("Secret Santa")
                 .withSkills("Java").build()));
+
+        // Multiple name
+        PersonFilter multipleNameFilter = new PersonFilter(List.of(new Name("Amy"), new Name("Bob")), Collections.emptyList(),
+                Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
+                        Collections.emptyList());
+        predicate = new FilterPredicate(multipleNameFilter);
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
     }
 
     @Test

@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
@@ -38,36 +39,35 @@ public class FilterPredicate implements Predicate<Person> {
         }
 
 
-        boolean checkName = filterParams.getName().map(
-                keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword.fullName))
-                .orElse(true);
+        boolean checkName = filterParams.getNames().isEmpty()
+                || filterParams.getNames().stream().anyMatch(
+                keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword.fullName));
 
-        boolean checkPhone = filterParams.getPhone().map(
-                phone -> StringUtil.containsWordIgnoreCase(person.getPhone().toString(), phone.toString()))
-                .orElse(true);
+        boolean checkPhone = filterParams.getPhones().isEmpty()
+                || filterParams.getPhones().stream().anyMatch(
+                phone -> person.getPhone().value.toLowerCase().contains(phone.toLowerCase()));
 
-        boolean checkEmail = filterParams.getEmail().map(
-                email -> StringUtil.containsWordIgnoreCase(person.getEmail().toString(), email.toString()))
-                .orElse(true);
+        boolean checkEmail = filterParams.getEmails().isEmpty()
+                || filterParams.getEmails().stream().anyMatch(
+                email -> person.getEmail().value.toLowerCase().contains(email.toLowerCase()));
 
-        boolean checkAddress = filterParams.getAddress().map(
-                address ->
-                        StringUtil.containsWordIgnoreCase(person.getAddress().toString(), address.toString()))
-                .orElse(true);
+        boolean checkAddress = filterParams.getAddresses().isEmpty()
+                || filterParams.getAddresses().stream().anyMatch(
+                address -> person.getAddress().value.toLowerCase().contains(address.toLowerCase()));
 
-        boolean checkRole = filterParams.getRole().map(
-                role ->
-                        StringUtil.containsWordIgnoreCase(person.getRole().toString(), role.toString()))
-                .orElse(true);
+        boolean checkRole = filterParams.getRoles().isEmpty()
+                || filterParams.getRoles().stream().anyMatch(
+                role -> StringUtil.containsWordIgnoreCase(person.getRole().toString(), role.toString()));
 
-        boolean checkEvent = filterParams.getEvent().map(
-                event -> StringUtil.containsWordIgnoreCase(person.getEvent().toString(), event.toString()))
-                .orElse(true);
+        boolean checkEvent = filterParams.getEvents().isEmpty()
+                || filterParams.getEvents().stream().anyMatch(
+                event -> StringUtil.containsWordIgnoreCase(person.getEvent().toString(), event.toString()));
 
-        boolean checkSkill = filterParams.getSkill().map(
+        boolean checkSkill = filterParams.getSkills().isEmpty()
+                ||filterParams.getSkills().stream().anyMatch(
                 skill -> person.getSkills().stream().anyMatch(personSkill ->
                         personSkill.skillName.equalsIgnoreCase(skill.skillName)))
-                .orElse(true);
+                ;
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkAddress
                 && checkRole && checkEvent && checkSkill;

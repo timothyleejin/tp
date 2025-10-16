@@ -9,18 +9,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Event;
 import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
 import seedu.address.model.skill.Skill;
 
@@ -51,70 +51,83 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 PREFIX_EVENT, PREFIX_SKILL);
 
 
-        Optional<Name> name = argMultimap.getValue(PREFIX_NAME).flatMap(
-                nameInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseName(nameInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<Name> names = argMultimap.getValue(PREFIX_NAME)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(nameInput -> {
+                            try {
+                                return ParserUtil.parseName(nameInput);
+                            } catch (ParseException e) {
+                                return null;
+                            }
+                        })
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Phone> phone = argMultimap.getValue(PREFIX_PHONE).flatMap(
-                phoneInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parsePhone(phoneInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<String> phones = argMultimap.getValue(PREFIX_PHONE)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Email> email = argMultimap.getValue(PREFIX_EMAIL).flatMap(
-                emailInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseEmail(emailInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<String> emails = argMultimap.getValue(PREFIX_EMAIL)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Address> address = argMultimap.getValue(PREFIX_ADDRESS).flatMap(
-                addressInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseAddress(addressInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<String> addresses = argMultimap.getValue(PREFIX_ADDRESS)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Role> role = argMultimap.getValue(PREFIX_ROLE).flatMap(
-                roleInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseRole(roleInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<Role> roles = argMultimap.getValue(PREFIX_ROLE)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(roleInput -> {
+                            try {
+                                return ParserUtil.parseRole(roleInput);
+                            } catch (ParseException e) {
+                                return null;
+                            }
+                        })
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Event> event = argMultimap.getValue(PREFIX_EVENT).flatMap(
-                eventInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseEvent(eventInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<Event> events = argMultimap.getValue(PREFIX_EVENT)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(eventInput -> {
+                            try {
+                                return ParserUtil.parseEvent(eventInput);
+                            } catch (ParseException e) {
+                                return null;
+                            }
+                        })
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        Optional<Skill> skill = argMultimap.getValue(PREFIX_SKILL).flatMap(
-                skillInput -> {
-                    try {
-                        return Optional.of(ParserUtil.parseSkill(skillInput));
-                    } catch (ParseException e) {
-                        return Optional.empty();
-                    }
-                });
+        List<Skill> skills = argMultimap.getValue(PREFIX_SKILL)
+                .map(words -> Arrays.stream(words.split("\\s+"))
+                        .map(skillInput -> {
+                            try {
+                                return ParserUtil.parseSkill(skillInput);
+                            } catch (ParseException e) {
+                                return null;
+                            }
+                        })
+                        .filter(Objects::nonNull)
+                        .toList())
+                .orElse(Collections.emptyList());
 
-        PersonFilter filterParams = new PersonFilter(name, phone, email, address, role, event, skill);
+        PersonFilter filterParams = new PersonFilter(names, phones, emails, addresses, roles, events, skills);
 
         FilterPredicate filterPredicate = new FilterPredicate(filterParams);
 

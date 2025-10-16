@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.List;
 import java.util.Optional;
 
 import seedu.address.model.person.Address;
@@ -24,46 +25,46 @@ public class PersonFilterBuilder {
     public static final String DEFAULT_EVENT = "Angbao";
     public static final String DEFAULT_SKILL = "Java";
 
-    private Optional<Name> name;
-    private Optional<Phone> phone;
-    private Optional<Email> email;
-    private Optional<Address> address;
-    private Optional<Role> role;
-    private Optional<Event> event;
-    private Optional<Skill> skill;
+    private List<Name> names;
+    private List<String> phones;
+    private List<String> emails;
+    private List<String> addresses;
+    private List<Role> roles;
+    private List<Event> events;
+    private List<Skill> skills;
 
 
     /**
      * Creates a {@code PersonFilterBuilder} with the default details.
      */
     public PersonFilterBuilder() {
-        name = Optional.of(new Name(DEFAULT_NAME));
-        phone = Optional.of(new Phone(DEFAULT_PHONE));
-        email = Optional.of(new Email(DEFAULT_EMAIL));
-        address = Optional.of(new Address(DEFAULT_ADDRESS));
-        role = Optional.of(new Role(DEFAULT_ROLE));
-        event = Optional.of(new Event(DEFAULT_EVENT));
-        skill = Optional.of(new Skill(DEFAULT_SKILL));
+        names = List.of(new Name(DEFAULT_NAME));
+        phones = List.of(DEFAULT_PHONE);
+        emails = List.of(DEFAULT_EMAIL);
+        addresses = List.of(DEFAULT_ADDRESS);
+        roles = List.of(new Role(DEFAULT_ROLE));
+        events = List.of(new Event(DEFAULT_EVENT));
+        skills = List.of(new Skill(DEFAULT_SKILL));
     }
 
     /**
      * Initializes the PersonBuilder with the data of {@code personFilterToCopy}.
      */
     public PersonFilterBuilder(PersonFilter personFilterToCopy) {
-        name = personFilterToCopy.getName();
-        phone = personFilterToCopy.getPhone();
-        email = personFilterToCopy.getEmail();
-        address = personFilterToCopy.getAddress();
-        role = personFilterToCopy.getRole();
-        event = personFilterToCopy.getEvent();
-        skill = personFilterToCopy.getSkill();
+        names = personFilterToCopy.getNames();
+        phones = personFilterToCopy.getPhones();
+        emails = personFilterToCopy.getEmails();
+        addresses = personFilterToCopy.getAddresses();
+        roles = personFilterToCopy.getRoles();
+        events = personFilterToCopy.getEvents();
+        skills = personFilterToCopy.getSkills();
     }
 
     /**
      * Sets the {@code Name} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withName(String name) {
-        this.name = Optional.of(new Name(name));
+        this.names = List.of(new Name(name));
         return this;
     }
 
@@ -71,7 +72,7 @@ public class PersonFilterBuilder {
      * Sets the {@code Role} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withRole(String role) {
-        this.role = Optional.of(new Role(role));
+        this.roles = List.of(new Role(role));
         return this;
     }
 
@@ -79,7 +80,7 @@ public class PersonFilterBuilder {
      * Sets the {@code Skill} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withSkill(String skill) {
-        this.skill = Optional.of(new Skill(skill));
+        this.skills = List.of(new Skill(skill));
         return this;
     }
 
@@ -87,7 +88,7 @@ public class PersonFilterBuilder {
      * Sets the {@code Address} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withAddress(String address) {
-        this.address = Optional.of(new Address(address));
+        this.addresses = List.of(address);
         return this;
     }
 
@@ -95,7 +96,7 @@ public class PersonFilterBuilder {
      * Sets the {@code Phone} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withPhone(String phone) {
-        this.phone = Optional.of(new Phone(phone));
+        this.phones = List.of(phone);
         return this;
     }
 
@@ -103,7 +104,7 @@ public class PersonFilterBuilder {
      * Sets the {@code Email} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withEmail(String email) {
-        this.email = Optional.of(new Email(email));
+        this.emails = List.of(email);
         return this;
     }
 
@@ -111,11 +112,11 @@ public class PersonFilterBuilder {
      * Sets the {@code Event} of the {@code PersonFilter} that we are building.
      */
     public PersonFilterBuilder withEvent(String event) {
-        this.event = Optional.of(new Event(event));
+        this.events = List.of(new Event(event));
         return this;
     }
 
     public PersonFilter build() {
-        return new PersonFilter(name, phone, email, address, role, event, skill);
+        return new PersonFilter(names, phones, emails, addresses, roles, events, skills);
     }
 }
