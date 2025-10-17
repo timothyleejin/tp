@@ -4,9 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SKILL_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -19,7 +23,9 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.DuplicateEmailException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.DuplicatePhoneException;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddressBookTest {
@@ -77,6 +83,45 @@ public class AddressBookTest {
                 .build();
         assertTrue(addressBook.hasName(editedAlice));
     }
+
+    @Test
+    public void hasPerson_nameWithSamePhoneInAddressBook_throwsIllegalValueException() {
+        addressBook.addPerson(AMY);
+        Person dupplicateNoPerson = new PersonBuilder(AMY).withAddress(VALID_ADDRESS_BOB)
+                .withSkills(VALID_SKILL_HUSBAND).withPhone(VALID_PHONE_AMY).build();
+
+        assertThrows(DuplicatePersonException.class, ()->addressBook.addPerson(dupplicateNoPerson));
+    }
+
+    @Test
+    public void hasPerson_nameWithSameInAddressBook_throwsIllegalValueException() {
+        addressBook.addPerson(AMY);
+        Person dupplicateNoPerson = new PersonBuilder(AMY).withAddress(VALID_ADDRESS_BOB)
+                .withSkills(VALID_SKILL_HUSBAND).withPhone(VALID_PHONE_AMY).build();
+
+        assertThrows(DuplicatePersonException.class, ()->addressBook.addPerson(dupplicateNoPerson));
+    }
+
+    @Test
+    public void hasPersonWithSameNoInAddressBook_throwsIllegalValueException() {
+        addressBook.addPerson(AMY);
+        Person dupplicateNoPerson = new PersonBuilder(BOB).withAddress(VALID_ADDRESS_BOB)
+                .withSkills(VALID_SKILL_HUSBAND).withPhone(VALID_PHONE_AMY).build();
+
+        assertThrows(DuplicatePhoneException.class, ()->addressBook.addPerson(dupplicateNoPerson));
+    }
+
+    @Test
+    public void hasPersonWithSameEmailInAddressBook_throwsIllegalValueException() {
+        addressBook.addPerson(AMY);
+        Person dupplicateNoPerson = new PersonBuilder(BOB).withAddress(VALID_ADDRESS_BOB)
+                .withSkills(VALID_SKILL_HUSBAND)
+                .withEmail(VALID_EMAIL_AMY).build();
+
+        assertThrows(DuplicateEmailException.class, ()->addressBook.addPerson(dupplicateNoPerson));
+    }
+
+
 
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
