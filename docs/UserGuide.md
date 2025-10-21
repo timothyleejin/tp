@@ -12,8 +12,6 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
 
@@ -198,6 +196,18 @@ _Details coming soon ..._
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+
+**Q**: How do I edit only one of my skills for a specific contact? <br>
+**A**: Currently in our version u have to edit both the skills in order for you to see the changes. So assuming
+you have `skills: Boxing Drumming` but you wish to change Drumming to Singing, you can only do this by using the `edit` command
+`edit [INDEX] s/Boxing s/Drumming`
+
+**Q**: I am unable to run the jar file? <br>
+**A**: Ensure you have Java `17` or above installed in your Computer.
+**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
