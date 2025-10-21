@@ -1,18 +1,16 @@
 ---
 layout: page
 title: LinkUp User Guide
+pageNav: 3
 ---
+# LinkUp User Guide
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively. 
 Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
 your hands off your keyboard.
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Table of Contents
-* Table of Contents
-{:toc}
-
---------------------------------------------------------------------------------------------------------------------
+<!-- * Table of Contents -->
+  <page-nav-print />
 
 ## Getting Started
 
