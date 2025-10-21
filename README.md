@@ -13,28 +13,23 @@ Traditional address books quickly become *messy and overwhelming* when handling 
 Leaders not only need to store contact details, but also keep track of roles and event-specific groups,
 making coordination difficult.
 
+To solve this, we created **LinkUp** — a lightweight, intuitive contact management tool designed for
+community and club leaders.
 
-To solve this, we created LinkUp — a lightweight, intuitive contact management tool designed for
-**Community & Club leaders**.
-
-With LinkUp, leaders can:
+With **LinkUp**, leaders can:
 * Filter contacts based on events (e.g. orientation organising members)
 * Organise people by role (e.g. family, event volunteers, event organisers)
 * Onboard new team members effortlessly
 * Avoid the complexity of heavy software while keeping everything streamlined
 
 ## Getting Started
-To set up LinkUp locally on your computer and get it up and running, follow these simple example steps.
+To set up LinkUp locally on your computer and get it up and running, follow these simple steps.
 
 ### Prerequisites
-To run this project, you need:
-1. **Java Development Kit (JDK) 17**
+To run this project, you need **Java Development Kit (JDK) 17**.
 
-This project requires Java version 17. You can download it from
-[Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
-
-Steps to install:
-* Download the JDK installer for your operating system.
+Steps for JDK 17 installation:
+* Download the JDK installer for your operating system from [here](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
 * Follow the installation instructions.
 * Verify installation by opening a terminal or command prompt and running:
 ```
@@ -51,7 +46,7 @@ We recommend using IntelliJ IDEA to run and manage this project. However, other
 IDEs could work too.
 
 Steps to install:
-* Download IntelliJ IDEA Community Edition (free) from [JetBrains](https://www.jetbrains.com/idea/download/?section=mac)
+* Download IntelliJ IDEA Community Edition (free) from [JetBrains](https://www.jetbrains.com/idea/download/?section=mac).
 * Launch IntelliJ and open a new Java project via ```File → New → Project```
 * Ensure that the file is configured to use JDK 17:
   * Go to ```File → Project Structure → Project → Project SDK ```
@@ -67,82 +62,140 @@ git clone https://github.com/AY2526S1-CS2103T-F13-2/tp.git
 and run it
 
 
-## Usage
+## Important Notes
 
-### Help
-*Shows a message explaining how to access the help page.*
+* Words in uppercase are information you need to provide.<br>
+  e.g. For `add n/NAME`, replace `NAME` with an actual name.
+    * You can type in `add n/John Doe` or `add n/Michael Jordan` etc.
 
-Format: ```help```
+* Items in square brackets are optional.<br>
+  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional.
+    * You can type `n/John Doe s/Java` or `n/John Doe`.
 
-### Add
-*Adds a person to the address book.*
+* Items with `…`​ after them can be used multiple times (including not at all).<br>
+  e.g. `[s/SKILL]…​` means you can add 0 skills, 1 skill, or many.
+    * You can type ` ` (i.e. 0 times), `s/Java`, or `s/Photography s/Cooking` etc.
 
-Format: ```add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SKILL]...```
+* Fields can be in any order.<br>
+  e.g. If a command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-Examples:
+* Extra parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+  e.g. If you type in `help 123`, it will be treated as just `help`.
 
-* ```add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01```
-* ```add n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison p/1234567 s/Python```
+* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
+  space characters surrounding line-breaks may be omitted when copied over to the application.
 
-### Edit
-*Edits an existing person in the address book.*
+## Features
+### View Help
 
-Format: ```edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SKILL]...```
+View a brief message on commands you can use and a pop-up message explaining how to access the help page.
 
-* Edits the person at the specified ```INDEX```. The index refers to the index number shown in the displayed person
-list. The index must be a positive integer 1, 2, 3, …​
+**Format**: `help` or `h`
+
+### Add a Contact
+
+Add a person to the address book.
+
+**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` or <br>
+`a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A person can have any number of skills (including 0)
+</div>
+
+**Examples**:
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com a/John street, block 123, #01-01`
+* `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The order of fields do not matter!
+</div>
+
+### List all Contacts
+
+View a list of all persons in the address book.
+
+**Format**: `list` or `l`
+
+### Edit a Contact
+
+Edit the details of an existing person in the address book.
+
+**Format**: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​`
+
+* Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing skills, the existing skills of the person will be **removed** i.e adding of skills is not cumulative.
-* You can remove all the person’s skills by typing s/ without specifying any skills after it.
+* When editing skills, the existing skills of the person will be removed and replaced with your skills input i.e adding of skills is not cumulative.
+* You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
-Examples:
+**Examples**:
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
-* edit 1 p/91234567 e/johndoe@example.com Edits the phone number and email address of the 1st person to be 91234567 and johndoe@example.com respectively.
-* edit 2 n/Betsy Crower s/ Edits the name of the 2nd person to be Betsy Crower and clears all existing skills.
+### Search for Contacts by name
 
-### List
-*Shows a list of all persons in the address book.*
+Find persons whose names contain any of the given keywords.
 
-Format: list
+**Format**: `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]`
 
-### Find
-*Finds persons whose names contain any of the given keywords.*
-
-Format: ```find KEYWORD [MORE_KEYWORDS]```
-
-* The search is case-insensitive. e.g ```hans``` will match ```Hans```
-* The order of the keywords does not matter. e.g. ```Hans Bo``` will match ```Bo Hans```
+* The search is case-insensitive. e.g. `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Only the name is searched.
-* Only full words will be matched e.g. ```Han``` will not match ```Hans```
-* Persons matching at least one keyword will be returned (i.e. ```OR``` search).
-e.g. ```Hans Bo``` will return ```Hans Gruber```, ```Bo Yang```
+* Only full words will be matched. e.g. `Han` will not match `Hans`.
+* Persons matching at least one keyword will be returned.
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
-Examples:
+**Examples**:
+* `find John` returns `john` and `John Doe`
+* `f alex david` returns `Alex Yeoh`, `David Li`<br>
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-* ```find John``` returns ```john``` and ```John Doe ```
-* ```find alex david``` returns ```Alex Yeoh```, ```David Li```
+### Filter Contacts by Name, Event, Role, and Skills
 
-### Delete
-*Deletes the specified person from the address book.*
+Filter contacts from the address book based on name, event, role and skills.
 
-Format: ```delete INDEX```
+**Format**: `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
-* Deletes the person at the specified ```INDEX```.
+* Filter the address book based on specified `KEYWORD`.
+* Filter and produces all possible outputs based on the keyword.
+* The keyword is case-insensitive. e.g. `ev/Supernova` will match `ev/supernova`.
+* Only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
+* The keyword **can be any valid character** 1, a, @, …​
+
+**Examples**:
+* `filter ev/Treasure Hunt` filters all the contacts which have the Treasure Hunt as their event.
+* `fil s/piano` filters all the contacts with piano skills.
+
+### Delete a Contact
+
+Delete a specified person from the address book.
+
+**Format**: `delete INDEX` or <br> `d INDEX`
+
+* Delete the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …
-  Examples:
+* The index **must be a positive integer** 1, 2, 3, …​
 
-```list``` followed by ```delete 2``` deletes the 2nd person in the address book.
-```find Betsy``` followed by ```delete 1``` deletes the 1st person in the results of the find command.
+**Examples**:
+* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
+### Delete ALL Contacts
 
-### Clear
-*Clears all entries from the address book.*
+Clear all persons from the address book.
 
-Format: ```clear```
+**Format**: `clear`
 
-### Exit
-*Exits the program.*
+### Close LinkUp
 
-Format: ```exit```
+Exit the application.
+
+**Format**: `exit`
+
+The GUI will close after the input. LinkUp saves your contact list automatically in your computer.
+This means that your contact list will be restored whenever you reopen LinkUp.
+
+### Save the Data
+
+LinkUp data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
