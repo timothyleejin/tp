@@ -203,6 +203,24 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: How do I edit only one of my skills for a specific contact? <br>
+**A**: Currently in our version u have to edit both the skills in order for you to see the changes. So assuming
+you have `skills: Boxing Drumming` but you wish to change Drumming to Singing, you can only do this by using the `edit` command
+`edit [INDEX] s/Boxing s/Drumming`
+
+**Q**: I am unable to run the jar file? <br>
+**A**:Ensure you have Java `17` or above installed in your Computer.
+**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+
+1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+
+2. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar LinkUp.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   ![Ui](images/Ui.png)
+
+
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known Issues
