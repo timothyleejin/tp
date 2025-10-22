@@ -89,15 +89,17 @@ Add a person to the address book.
 A person can have any number of skills (including 0)
 </div>
 
-**Examples**:
+**Example Input**:
 * `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com a/John street, block 123, #01-01`
-* `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
 **Expected Output**:
-* `New person added: John Deez; Phone: 98765431; Address: John street, block 123, #01-01; 
-    Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `New person added: John Deez; Phone: 98765431; Address: John street, block 123, #01-01; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
+**Example Input**:
+* `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
+*Expected Output**:
+* `New person added: Betsy Crowe; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -122,12 +124,16 @@ Edit the details of an existing person in the address book.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
 **Examples**:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+*  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output**:
-* `Edited Person: Alex Yeoh; Phone: 91234567; Address: Blk 30 Geylang Street 29, #06-40; 
-   Email: johndoe@example.com; Role: Organiser; Event: Orientation Camp; Skills: `
+* `Edited Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+
+**Example Input**:
+*  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+
+**Expected Output**:
+* `Edited Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Search for Contacts by Name
 
@@ -142,11 +148,9 @@ Find persons whose names contain any of the given keywords.
 * Persons matching at least one keyword will be returned.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
-**Examples**:
-* `find John` returns `john` and `John Doe`
+**Example Input**:
 * `f alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
-
 
 **Expected Output**:
 * `2 persons listed!` 
@@ -163,9 +167,8 @@ Filter contacts from the address book based on name, event, role and skills.
 * Only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
-**Examples**:
+**Example Input**:
 * `filter ev/charity gala` filters all the contacts which have the Charity Gala as their event.
-* `fil s/piano` filters all the contacts with piano skills.
 
 ![result for 'filter ev/charity gala'](images/FilterEvent.png)
 
@@ -183,13 +186,17 @@ Delete a specified person from the address book.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Examples**:
+**Example Input**:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Alex` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
 **Expected Output**
-* `Deleted Person: Alex Yeoh; Phone: 91234567; Address: Blk 30 Geylang Street 29, #06-40; Email: johndoe@example.com;
-Role: Organiser; Event: Orientation Camp; Skills:`
+* `Deleted Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
+* `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output**
+* `Deleted Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
 
