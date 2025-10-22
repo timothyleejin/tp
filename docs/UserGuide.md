@@ -8,6 +8,7 @@ Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps 
 your hands off your keyboard.
 
 --------------------------------------------------------------------------------------------------------------------
+## Table of Contents
 * Table of Contents
 {:toc}
 --------------------------------------------------------------------------------------------------------------------
@@ -31,10 +32,9 @@ Let's walk you through the setup process of LinkUp.
    You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
    type `cd Downloads` in the command terminal to navigate into the Downloads folder. <br>
    Finally, type `java -jar LinkUp.jar` command to run the application. <br>
-   A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note that the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
-5. **Use it**: Now you can start using **LinkUp**. Refer to the [Features](#features) below for details of each command.
+5. **Use it**: <br> 
+   Now you can start using **LinkUp**. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -71,9 +71,6 @@ Let's walk you through the setup process of LinkUp.
 View a brief message on commands you can use and a pop-up message explaining how to access the help page. 
 
 **Format**: `help` or `h`
-
-**Expected output**:
-![help message](images/helpMessage.png)
 
 ### Add a Contact
 
@@ -116,7 +113,7 @@ Edit the details of an existing person in the address book.
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
-### Search for Contacts by name
+### Search for Contacts by Name
 
 Find persons whose names contain any of the given keywords.
 
