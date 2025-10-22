@@ -7,13 +7,9 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
-    public static final String MESSAGE_CONSTRAINTS = "Role should only contain alphanumeric characters "
-            + "separated by commas and spaces, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Roles should not be blank and can take up any values,";
 
-    /*
-     * The role can only be made up of letters, and separated by commas and whitespaces
-     */
-    public static final String VALIDATION_REGEX = "^(?=.*[a-zA-Z])[a-zA-Z ,]+$";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
 
@@ -30,8 +26,8 @@ public class Role {
     /**
      * Returns true if a given string is a valid role.
      */
-    public static boolean isValidRole(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidRole(String description) {
+        return description.matches(VALIDATION_REGEX);
     }
 
     @Override

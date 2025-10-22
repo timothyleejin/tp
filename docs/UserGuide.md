@@ -18,8 +18,14 @@ your hands off your keyboard.
 Let's walk you through the setup process of LinkUp.
 
 1. **Prerequisites**: <br>
-   Ensure you have Java `17` or above installed in your computer.
-   For Mac users, ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
+   of your computer to check.
+   * For Mac users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+     ensure you have the precise JDK version prescribed.
+   * For Windows users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+     ensure you have the precise JDK version prescribed.
+   * For Linux users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
+     ensure you have the precise JDK version prescribed.
 
 2. **Download**: <br>
    Install the latest `LinkUp.jar` file from [here](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
@@ -30,7 +36,7 @@ Let's walk you through the setup process of LinkUp.
 4. **Run it**: <br>
    Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in. 
    You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
-   type `cd Downloads` in the command terminal to navigate into the Downloads folder. <br>
+   type `cd Downloads` in the command terminal to navigate into the Downloads folder.
    Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
 5. **Use it**: <br> 
@@ -70,13 +76,13 @@ Let's walk you through the setup process of LinkUp.
 
 View a brief message on commands you can use and a pop-up message explaining how to access the help page. 
 
-**Format**: `help` or `h`
+**Format**: <br> `help` or `h`
 
 ### Add a Contact
 
 Add a person to the address book.
 
-**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` or <br>
+**Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` or <br>
 `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -95,14 +101,14 @@ The order of fields do not matter!
 
 View a list of all persons in the address book.
 
-**Format**: `list` or `l`
+**Format**: <br> `list` or `l`
 
 ### Edit a Contact
 
 Edit the details of an existing person in the address book.
 
-**Format**: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -117,7 +123,7 @@ Edit the details of an existing person in the address book.
 
 Find persons whose names contain any of the given keywords.
 
-**Format**: `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]`
+**Format**: <br> `find KEYWORD [MORE_KEYWORDS]` or `f KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g. `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
@@ -135,7 +141,7 @@ Find persons whose names contain any of the given keywords.
 
 Filter contacts from the address book based on name, event, role and skills.
 
-**Format**: `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: <br> `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
@@ -151,7 +157,7 @@ Filter contacts from the address book based on name, event, role and skills.
 
 Delete a specified person from the address book.
 
-**Format**: `delete INDEX` or <br> `d INDEX`
+**Format**: <br> `delete INDEX` or `d INDEX`
 
 * Delete the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -165,13 +171,13 @@ Delete a specified person from the address book.
 
 Clear all persons from the address book.
 
-**Format**: `clear`
+**Format**: <br> `clear`
 
 ### Close LinkUp
 
 Exit the application. 
 
-**Format**: `exit`
+**Format**: <br> `exit`
 
 The GUI will close after the input. LinkUp saves your contact list automatically in your computer. 
 This means that your contact list will be restored whenever you reopen LinkUp.
@@ -189,10 +195,6 @@ If your changes to the data file makes its format invalid, LinkUp will discard a
 Furthermore, certain edits can cause the LinkUp to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Frequently Asked Questions
@@ -206,12 +208,20 @@ you have `skills: Boxing, Drumming` but you wish to change Drumming to Singing, 
 and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`.
 
 **Q**: Why am I unable to run the `LinkUp.jar` file? <br>
-**A**: Ensure you have Java `17` or above installed in your computer. For Mac users, ensure you have the precise JDK version 
-prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+**A**: Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
+of your computer to check.
+* For Mac users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+  ensure you have the precise JDK version prescribed.
+* For Windows users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+  ensure you have the precise JDK version prescribed.
+* For Linux users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
+  ensure you have the precise JDK version prescribed.
 
-1. Place the `LinkUp.jar` file in your preferred folder in your computer.
-2. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar LinkUp.jar` command to run the application.
-   
+Then, open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
+You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
+type `cd Downloads` in the command terminal to navigate into the Downloads folder.
+Finally, type `java -jar LinkUp.jar` command to run the application. <br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known Issues
