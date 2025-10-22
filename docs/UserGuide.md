@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 
 ---
-Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively. 
+Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively.
 Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
 your hands off your keyboard.
 --------------------------------------------------------------------------------------------------------------------
@@ -49,12 +49,12 @@ Let's walk you through the setup process of LinkUp.
    Place the `LinkUp.jar` file in your preferred folder in your computer.
 
 4. **Run it**: <br>
-   Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in. 
+   Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
    You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
    type `cd Downloads` in the command terminal to navigate into the Downloads folder.
    Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
-5. **Use it**: <br> 
+5. **Use it**: <br>
    Now you can start using **LinkUp**. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -66,11 +66,11 @@ Let's walk you through the setup process of LinkUp.
 **:information_source:  Notes about the command format:**<br>
 
 * Words in uppercase are information you need to provide.<br>
-  e.g. For `add n/NAME`, replace `NAME` with an actual name. 
+  e.g. For `add n/NAME`, replace `NAME` with an actual name.
   * You can type in `add n/John Doe` or `add n/Michael Jordan` etc.
 
 * Items in square brackets are optional.<br>
-  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional. 
+  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional.
   * You can type `n/John Doe s/Java` or `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times (including not at all).<br>
@@ -83,13 +83,13 @@ Let's walk you through the setup process of LinkUp.
 * Extra parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. If you type in `help 123`, it will be treated as just `help`.
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as 
+* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### View Help
 
-View a brief message on commands you can use and a pop-up message explaining how to access the help page. 
+View a brief message on commands you can use and a pop-up message explaining how to access the help page.
 
 **Format**: <br> `help` or `h`
 
@@ -252,7 +252,7 @@ Furthermore, certain edits can cause the LinkUp to behave in unexpected ways (e.
 
 ## Frequently Asked Questions
 
-**Q**: How do I transfer my data to another computer?<br>
+**Q**: How do I transfer my data to another computer? <br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LinkUp home folder.
 
 **Q**: How do I edit only 1 of my 2 skills for a specific contact? <br>
@@ -264,11 +264,11 @@ and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`
 **A**: Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
 of your computer to check.
 * For Mac users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 * For Windows users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 * For Linux users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 
 Then, open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
 You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
