@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's telegram handle in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidTelegram(String)}
+ * Represents a Person's address in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
-public class Telegram {
+public class Address {
 
-    public static final String MESSAGE_CONSTRAINTS = "Telegrams can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -20,20 +20,20 @@ public class Telegram {
     public final String value;
 
     /**
-     * Constructs an {@code Telegram}.
+     * Constructs an {@code Address}.
      *
-     * @param telegram A valid telegram handle.
+     * @param address A valid address.
      */
-    public Telegram(String telegram) {
-        requireNonNull(telegram);
-        checkArgument(isValidTelegram(telegram), MESSAGE_CONSTRAINTS);
-        value = telegram;
+    public Address(String address) {
+        requireNonNull(address);
+        checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
+        value = address;
     }
 
     /**
-     * Returns true if a given string is a valid telegram.
+     * Returns true if a given string is a valid email.
      */
-    public static boolean isValidTelegram(String test) {
+    public static boolean isValidAddress(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -49,16 +49,17 @@ public class Telegram {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Telegram)) {
+        if (!(other instanceof Address)) {
             return false;
         }
 
-        Telegram otherTelegram = (Telegram) other;
-        return value.equals(otherTelegram.value);
+        Address otherAddress = (Address) other;
+        return value.equals(otherAddress.value);
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
     }
+
 }
