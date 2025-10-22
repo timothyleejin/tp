@@ -104,9 +104,18 @@ Add a person to the address book.
 A person can have any number of skills (including 0)
 </div>
 
-**Examples**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, block 123, #01-01`
+
+**Example Input**:
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
+
+**Expected Output**:
+* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+
+*Expected Output**:
+* `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -131,8 +140,16 @@ Edit the details of an existing person in the address book.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
 **Examples**:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+*  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+
+**Expected Output**:
+* `Edited Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+
+**Example Input**:
+*  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+
+**Expected Output**:
+* `Edited Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Search for Contacts by Name
 
@@ -147,12 +164,15 @@ Find persons whose names contain any of the given keywords.
 * Persons matching at least one keyword will be returned.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
-**Examples**:
-* `find John` returns `john` and `John Doe`
+**Example Input**:
 * `f alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+**Expected Output**:
+* `2 persons listed!` 
+
 ### Filter Contacts by any fields
+
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
@@ -166,9 +186,14 @@ Filter contacts from the address book based on name, event, role, phone number, 
 * For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
-**Examples**:
-* `filter ev/Treasure Hunt` filters all the contacts which have the Treasure Hunt as their event.
-* `fil s/piano` filters all the contacts with piano skills.
+**Example Input**:
+* `filter ev/charity gala` filters all the contacts which have the Charity Gala as their event.
+
+![result for 'filter ev/charity gala'](images/FilterEvent.png)
+
+**Expected Output**:
+* `2 persons listed!`
+
 
 ### Delete a Contact
 
@@ -180,15 +205,26 @@ Delete a specified person from the address book.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Examples**:
+**Example Input**:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
+
+**Expected Output**
+* `Deleted Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output**
+* `Deleted Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
 
 Clear all persons from the address book.
 
 **Format**: <br> `clear`
+
+**Expected Output**
+*Address book has been cleared!
 
 ### Close LinkUp
 
