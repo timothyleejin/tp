@@ -6,15 +6,9 @@ import static java.util.Objects.requireNonNull;
  * Represents an event in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEvent(String)}
  */
-
 public class Event {
 
     public static final String MESSAGE_CONSTRAINTS = "Events should not be blank and can take up any values,";
-
-    /*
-     * The first character of the address must not be a whitespace
-     * otherwise " " (a blank string) becomes a valid input.
-     */
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
@@ -23,9 +17,8 @@ public class Event {
     /**
      * Constructs an {@code Address}.
      *
-     * @param event A valid event description
+     * @param event A valid event string.
      */
-
     public Event(String event) {
         requireNonNull(event);
         this.value = event;
@@ -34,7 +27,6 @@ public class Event {
     /**
      * Returns true if event has valid description
      */
-
     public static boolean isValidEvent(String description) {
         return description.matches(VALIDATION_REGEX);
     }
@@ -43,7 +35,6 @@ public class Event {
     public String toString() {
         return value;
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -56,12 +47,8 @@ public class Event {
         return value.equals(otherEvent.value);
     }
 
-
     public int hashcode() {
         return value.hashCode();
     }
 
 }
-
-
-
