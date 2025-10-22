@@ -8,9 +8,8 @@ Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps 
 your hands off your keyboard.
 
 --------------------------------------------------------------------------------------------------------------------
-## Table of Contents
-  {:toc}
-
+* Table of Contents
+{:toc}
 --------------------------------------------------------------------------------------------------------------------
 
 ## Getting Started
