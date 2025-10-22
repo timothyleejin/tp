@@ -1,6 +1,6 @@
 ---
 layout: page
-title: LinkUp User Guide
+title: User Guide
 
 ---
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively. 
@@ -202,7 +202,7 @@ _Details coming soon ..._
 ## Frequently Asked Questions
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LinkUp home folder.
 
 **Q**: How do I edit only 1 of my 2 skills for a specific contact? <br>
 **A**: You would have to edit both skills in order for you to see the changes. So assuming
