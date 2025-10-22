@@ -1,17 +1,22 @@
 ---
 layout: page
-title: AddressBook Level-3
+title: LinkUp Contact Book
 ---
 
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
-[![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
+[![Java CI](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml)
+[![codecov](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp/graph/badge.svg?token=6CXD68NGYN)](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp)
 
-![Ui](images/Ui.png)
+![Ui](images/LinkUpUI.png)
 
-**AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+**LinkUp is a desktop application for managing your contact details.**
+Tailored for organisation team leaders, LinkUp does more than just keep contact information
+— it helps you capture each member’s unique skills and roles in events, all in one place.
 
-* If you are interested in using AddressBook, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing AddressBook, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+Although LinkUp features a Graphical User Interface (GUI), most interactions are performed through a Command Line 
+Interface (CLI), where users type commands directly into the command line.
+
+* If you are interested in using LinkUp, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.md#getting-started).
+* If you are interested about developing LinkUp, the [**Developer Guide**](DeveloperGuide.md) is a good place to start.
 
 
 **Acknowledgements**
