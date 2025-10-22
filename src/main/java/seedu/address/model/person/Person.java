@@ -26,6 +26,7 @@ public class Person {
     private final Role role;
     private final Set<Skill> skills = new HashSet<>();
     private final Event event;
+    private boolean isFavourite;
 
     /**
      * Every field must be present and not null.
@@ -39,6 +40,7 @@ public class Person {
         this.role = role;
         this.event = event;
         this.skills.addAll(skills);
+        this.isFavourite = false;
     }
 
     public Name getName() {
@@ -63,6 +65,20 @@ public class Person {
 
     public Event getEvent() {
         return event;
+    }
+
+    /**
+     * Returns true if this person is marked as favourite.
+     */
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    /**
+     * Sets the favourite status of this person.
+     */
+    public void setFavourite(boolean favourite) {
+        this.isFavourite = favourite;
     }
 
     /**
