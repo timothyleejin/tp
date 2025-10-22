@@ -96,16 +96,16 @@ View a brief message on commands you can use and a pop-up message explaining how
 
 Add a person to the address book.
 
-**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
+**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` or <br>
+`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of skills (including 0)
 </div>
 
 **Examples**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com a/John street, block 123, #01-01`
-* `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+* `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -121,8 +121,8 @@ View a list of all persons in the address book.
 
 Edit the details of an existing person in the address book.
 
-**Format**: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/Role] [s/SKILL]…​`
+**Format**: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/Role] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/Role] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -151,16 +151,18 @@ Find persons whose names contain any of the given keywords.
 * `f alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Filter Contacts by Name, Event, Role, and Skills
+### Filter Contacts by any fields
 
-Filter contacts from the address book based on name, event, role and skills.
+Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
-**Format**: `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
+* Can filter many words of a field by using space. e.g. `n/Alice Bob` will match all people have `Alice` or `Bob` in their name
 * The keyword is case-insensitive. e.g. `ev/Supernova` will match `ev/supernova`.
-* Only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
+* For email, phone and telegram handle, a substring of a word will be matched. e.g. `@gmail.com` will match `alice@gmail.com`.
+* For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
 **Examples**:
