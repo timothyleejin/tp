@@ -196,9 +196,6 @@
          -fx-font-size: 13pt;
          -fx-padding: 8;
          -fx-background-radius: 0;
-
-
-
 }
 
 #resultDisplayPlaceholder {
@@ -249,8 +246,6 @@
 .context-menu .label {
     -fx-text-fill: white;
 }
-
-
 
 .menu-bar {
     -fx-background-color: #3E2723;
