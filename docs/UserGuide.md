@@ -93,6 +93,12 @@ A person can have any number of skills (including 0)
 * `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com a/John street, block 123, #01-01`
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
+**Expected Output**:
+* `New person added: John Deez; Phone: 98765431; Address: John street, block 123, #01-01; 
+    Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
 </div>
@@ -119,6 +125,10 @@ Edit the details of an existing person in the address book.
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
+**Expected Output**:
+* `Edited Person: Alex Yeoh; Phone: 91234567; Address: Blk 30 Geylang Street 29, #06-40; 
+   Email: johndoe@example.com; Role: Organiser; Event: Orientation Camp; Skills: `
+
 ### Search for Contacts by Name
 
 Find persons whose names contain any of the given keywords.
@@ -137,6 +147,10 @@ Find persons whose names contain any of the given keywords.
 * `f alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+
+**Expected Output**:
+* `2 persons listed!` 
+
 ### Filter Contacts by Name, Event, Role, and Skills
 
 Filter contacts from the address book based on name, event, role and skills.
@@ -150,8 +164,14 @@ Filter contacts from the address book based on name, event, role and skills.
 * The keyword **can be any valid character** 1, a, @, …​
 
 **Examples**:
-* `filter ev/Treasure Hunt` filters all the contacts which have the Treasure Hunt as their event.
+* `filter ev/charity gala` filters all the contacts which have the Charity Gala as their event.
 * `fil s/piano` filters all the contacts with piano skills.
+
+![result for 'filter ev/charity gala'](images/FilterEvent.png)
+
+**Expected Output**:
+* `2 persons listed!`
+
 
 ### Delete a Contact
 
@@ -165,13 +185,20 @@ Delete a specified person from the address book.
 
 **Examples**:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+* `find Alex` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output**
+* `Deleted Person: Alex Yeoh; Phone: 91234567; Address: Blk 30 Geylang Street 29, #06-40; Email: johndoe@example.com;
+Role: Organiser; Event: Orientation Camp; Skills:`
  
 ### Delete ALL Contacts
 
 Clear all persons from the address book.
 
 **Format**: <br> `clear`
+
+**Expected Output**
+*Address book has been cleared!
 
 ### Close LinkUp
 
