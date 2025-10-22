@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonFilterBuilder;
 
 public class PersonFilterTest {
@@ -53,7 +52,7 @@ public class PersonFilterTest {
         assertFalse(amy.equals(editedAmy));
 
         // different telegram -> returns false
-        editedAmy = new PersonFilterBuilder().withTelegram("Bishan").build();
+        editedAmy = new PersonFilterBuilder().withTelegram("DimTim").build();
         assertFalse(amy.equals(editedAmy));
 
         // different skills -> returns false
@@ -82,13 +81,13 @@ public class PersonFilterTest {
         Skill skill = new Skill("Hunting");
         String phone = "98765432";
         String email = "alice@example.com";
-        String address = "Bishan";
+        String telegram = "Arisu";
 
         PersonFilter filter = new PersonFilter(
                 List.of(name),
                 List.of(phone),
                 List.of(email),
-                List.of(address),
+                List.of(telegram),
                 List.of(role),
                 List.of(event),
                 List.of(skill)
@@ -97,7 +96,7 @@ public class PersonFilterTest {
         assertEquals(List.of(name), filter.getNames());
         assertEquals(List.of(phone), filter.getPhones());
         assertEquals(List.of(email), filter.getEmails());
-        assertEquals(List.of(address), filter.getTelegrams());
+        assertEquals(List.of(telegram), filter.getTelegrams());
         assertEquals(List.of(role), filter.getRoles());
         assertEquals(List.of(event), filter.getEvents());
         assertEquals(List.of(skill), filter.getSkills());
@@ -108,7 +107,7 @@ public class PersonFilterTest {
         Name name = new Name("Alice");
         Phone phone = new Phone("98765432");
         Email email = new Email("alice@example.com");
-        Telegram telegram = new Telegram("Bishan");
+        Telegram telegram = new Telegram("Arisu");
         Role role = new Role("Coach");
         Event event = new Event("Tennis");
         Skill skill = new Skill("Hunting");

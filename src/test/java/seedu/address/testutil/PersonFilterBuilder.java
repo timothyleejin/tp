@@ -6,7 +6,7 @@ import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Role;
-import seedu.address.model.skill.Skill;
+import seedu.address.model.person.Skill;
 
 /**
  * A utility class to help with building PersonFilter objects
@@ -16,7 +16,7 @@ public class PersonFilterBuilder {
     public static final String DEFAULT_NAME = "Amy";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_TELEGRAM = "Jurong";
+    public static final String DEFAULT_TELEGRAM = "Ahh_my";
     public static final String DEFAULT_ROLE = "Volunteer";
     public static final String DEFAULT_EVENT = "Angbao";
     public static final String DEFAULT_SKILL = "Java";

@@ -15,7 +15,7 @@ import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonFilter;
-import seedu.address.model.skill.Skill;
+import seedu.address.model.person.Skill;
 
 
 /**

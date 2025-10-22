@@ -22,7 +22,7 @@ import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Role;
-import seedu.address.model.skill.Skill;
+import seedu.address.model.person.Skill;
 
 /**
  * Parses input arguments and creates a new FilterCommand object

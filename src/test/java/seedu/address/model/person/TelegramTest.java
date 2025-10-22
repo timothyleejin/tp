@@ -27,31 +27,33 @@ public class TelegramTest {
         // invalid telegrams
         assertFalse(Telegram.isValidTelegram("")); // empty string
         assertFalse(Telegram.isValidTelegram(" ")); // spaces only
+        assertFalse(Telegram.isValidTelegram("lazy isaac")); //contains space
 
         // valid telegrams
-        assertTrue(Telegram.isValidTelegram("Blk 456, Den Road, #01-355"));
-        assertTrue(Telegram.isValidTelegram("-")); // one character
-        assertTrue(Telegram.isValidTelegram("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        assertTrue(Telegram.isValidTelegram("lazyisaac"));
+        assertTrue(Telegram.isValidTelegram("l")); // one character
+        assertTrue(Telegram.isValidTelegram("tele_tubby")); // contains underscore
+        assertTrue(Telegram.isValidTelegram("tele_tubbs123")); //contains numbers
     }
 
     @Test
     public void equals() {
-        Telegram address = new Telegram("Valid Telegram");
+        Telegram telegram = new Telegram("Valid_tele");
 
         // same values -> returns true
-        assertTrue(address.equals(new Telegram("Valid Telegram")));
+        assertTrue(telegram.equals(new Telegram("Valid_tele")));
 
         // same object -> returns true
-        assertTrue(address.equals(address));
+        assertTrue(telegram.equals(telegram));
 
         // null -> returns false
-        assertFalse(address.equals(null));
+        assertFalse(telegram.equals(null));
 
         // different types -> returns false
-        assertFalse(address.equals(5.0f));
+        assertFalse(telegram.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(address.equals(new Telegram("Other Valid Telegram")));
+        assertFalse(telegram.equals(new Telegram("Other_tele")));
     }
 }
 

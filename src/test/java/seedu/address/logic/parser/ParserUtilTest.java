@@ -19,20 +19,20 @@ import seedu.address.model.person.Event;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
+import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
-import seedu.address.model.skill.Skill;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_TELEGRAM = " ";
+    private static final String INVALID_TELEGRAM = "running rachel";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_SKILL = "#java";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
-    private static final String VALID_TELEGRAM = "123 Main Street #0505";
+    private static final String VALID_TELEGRAM = "rachelnotarunner";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_EVENT = "EWP";
     private static final String VALID_ROLE = "Organiser";

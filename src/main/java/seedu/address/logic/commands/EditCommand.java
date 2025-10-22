@@ -29,8 +29,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
+import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
-import seedu.address.model.skill.Skill;
 
 
 /**
@@ -214,8 +214,8 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setTelegram(Telegram address) {
-            this.telegram = address;
+        public void setTelegram(Telegram telegram) {
+            this.telegram = telegram;
         }
 
         public Optional<Telegram> getTelegram() {
