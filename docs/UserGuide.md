@@ -6,13 +6,28 @@ title: User Guide
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively. 
 Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
 your hands off your keyboard.
-
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * Table of Contents
 {:toc}
 --------------------------------------------------------------------------------------------------------------------
+## About This Guide
+### Target Users
+This app is tailored for **community and club leaders** responsible for:
+* Tracking members' events and roles
+* Recording members' skills to efficiently allocate work
+* Communicating with members via messaging platforms (e.g., WhatsApp or Telegram) when needed
 
+### Prior Knowledge
+* Comfortable using messaging platforms like WhatsApp, Telegram, or email
+* Basic digital literacy, including downloading software and typing commands
+* Experience with keyboard-driven workflows to tackle tasks efficiently
+
+### User Guide: Beginner to Experienced Users
+* _New Users_: Start from the [_Quick Start_ section](#getting-started) to set up LinkUp on your computer
+* _Intermediate Users_: Go to the [_Features_ section](#features) to learn how commands work
+* _Experienced Users_: Refer to the [_Command Summary_](#command-summary) to quickly find and use commands
+--------------------------------------------------------------------------------------------------------------------
 ## Getting Started
 
 Let's walk you through the setup process of LinkUp.
@@ -82,24 +97,25 @@ View a brief message on commands you can use and a pop-up message explaining how
 
 Add a person to the address book.
 
-**Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` or <br>
+**Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
 `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of skills (including 0)
 </div>
 
+
 **Example Input**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com a/John street, block 123, #01-01`
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
 
 **Expected Output**:
-* `New person added: John Deez; Phone: 98765431; Address: John street, block 123, #01-01; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
-* `a n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+* `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
 *Expected Output**:
-* `New person added: Betsy Crowe; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
+* `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -115,8 +131,8 @@ View a list of all persons in the address book.
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -155,16 +171,19 @@ Find persons whose names contain any of the given keywords.
 **Expected Output**:
 * `2 persons listed!` 
 
-### Filter Contacts by Name, Event, Role, and Skills
+### Filter Contacts by any fields
 
-Filter contacts from the address book based on name, event, role and skills.
 
-**Format**: <br> `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
+
+**Format**: <br> `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
+* Can filter many words of a field by using space. e.g. `n/Alice Bob` will match all people have `Alice` or `Bob` in their name
 * The keyword is case-insensitive. e.g. `ev/Supernova` will match `ev/supernova`.
-* Only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
+* For email, phone and telegram handle, a substring of a word will be matched. e.g. `@gmail.com` will match `alice@gmail.com`.
+* For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
 **Example Input**:
@@ -269,10 +288,10 @@ Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
 Action | Command
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Python s/Java`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com t/james0336, 1234665 s/Python s/Java`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g. `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [ev/EVENT/] [r/ROLE] [s/SKILL]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
 **Filter** | `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> e.g. `filter ev/Hunt`
 **List** | `list`
