@@ -52,7 +52,8 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName + " (@" + person.getTelegram().value + ")");
+        name.setText(person.getName().fullName);
+        telegram.setText("@" + person.getTelegram().value);
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
         role.setText(person.getRole().value);
