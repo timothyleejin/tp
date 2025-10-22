@@ -13,12 +13,6 @@ your hands off your keyboard.
 {:toc}
 --------------------------------------------------------------------------------------------------------------------
 
-## Target Users
-This app is tailored for **community and club leaders** responsible for:
-* Tracking members' events and roles
-* Recording members' skills to efficiently allocate work
-* Communicating with members via messaging platforms (e.g., WhatsApp or Telegram) when needed
-
 ## Getting Started
 
 Let's walk you through the setup process of LinkUp.
