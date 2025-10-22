@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -10,9 +11,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="Address App" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="LinkUp" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -32,6 +36,22 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
+
+        <HBox alignment="CENTER" styleClass="title-bar" VBox.vgrow="NEVER" style="-fx-background-color: #311f10;">
+          <padding>
+            <Insets top="12" right="15" bottom="12" left="15" />
+          </padding>
+          <StackPane>
+          <Circle radius="30" fill="#C8A97E" />
+          <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+            <Image url="/images/linkup.png" />
+            <clip>
+              <Circle radius="25" centerX="25" centerY="25" />
+            </clip>
+          </ImageView>
+          </StackPane>
+          <Label text="LinkUp" styleClass="app-title" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
 
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>
