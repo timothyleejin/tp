@@ -27,7 +27,9 @@ This app is tailored for **community and club leaders** responsible for:
 * _New Users_: Start from the [_Quick Start_ section](#getting-started) to set up LinkUp on your computer
 * _Intermediate Users_: Go to the [_Features_ section](#features) to learn how commands work
 * _Experienced Users_: Refer to the [_Command Summary_](#command-summary) to quickly find and use commands
+
 --------------------------------------------------------------------------------------------------------------------
+
 ## Getting Started
 
 Let's walk you through the setup process of LinkUp.
@@ -114,7 +116,7 @@ A person can have any number of skills (including 0)
 **Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
-*Expected Output**:
+**Expected Output**:
 * `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -143,7 +145,7 @@ Edit the details of an existing person in the address book.
 *  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output**:
-* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
 *  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
@@ -209,13 +211,13 @@ Delete a specified person from the address book.
 **Example Input**:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 
-**Expected Output**
+**Expected Output**:
 * `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
-**Expected Output**
+**Expected Output**:
 * `Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
@@ -224,8 +226,8 @@ Clear all persons from the address book.
 
 **Format**: <br> `clear`
 
-**Expected Output**
-*Address book has been cleared!
+**Expected Output**:
+* `Address book has been cleared!`
 
 ### Close LinkUp
 

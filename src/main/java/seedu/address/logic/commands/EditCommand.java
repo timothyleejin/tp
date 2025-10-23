@@ -230,8 +230,8 @@ public class EditCommand extends Command {
             return Optional.ofNullable(role);
         }
 
-        public void setEvent(Event remark) {
-            this.event = remark;
+        public void setEvent(Event event) {
+            this.event = event;
         }
 
         public Optional<Event> getEvent() {
