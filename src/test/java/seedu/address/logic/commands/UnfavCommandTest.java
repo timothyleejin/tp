@@ -38,7 +38,7 @@ class UnfavCommandTest {
         CommandResult result = command.execute(model);
         Person updatedPerson = model.getFilteredPersonList().get(0);
         assertEquals(updatedPerson.isFavourite(), false);
-        assertEquals(result.getFeedbackToUser(), "Unmarked Shananth as favourite.");
+        assertEquals(result.getFeedbackToUser(), "Unmarked Shananth from favourites.");
     }
 
     @Test

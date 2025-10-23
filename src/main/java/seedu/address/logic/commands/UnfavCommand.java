@@ -15,7 +15,7 @@ public class UnfavCommand extends Command {
 
     public static final String COMMAND_WORD = "unfav";
 
-    public static final String MESSAGE_SUCCESS = "Unmarked %1$s as favourite.";
+    public static final String MESSAGE_SUCCESS = "Unmarked %1$s from favourites.";
     public static final String MESSAGE_ALREADY_UNFAV = "%1$s is not a favourite.";
     public static final String MESSAGE_INVALID_INDEX = "Invalid index.";
 
