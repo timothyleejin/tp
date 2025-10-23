@@ -25,10 +25,9 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
-          <Label fx:id="telegram" styleClass="telegram_label" />
+        <Label fx:id="name" text="$name" styleClass="cell_big_label" />
+        <Label fx:id="telegram" text="$telegram" styleClass="bubble_blue"/>
       </HBox>
-        <VBox spacing="5"></VBox>
         <FlowPane fx:id="skills" />
         <HBox spacing="5" alignment="CENTER_LEFT">
             <Label text="Phone:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
