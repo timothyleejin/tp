@@ -13,6 +13,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 run {
     jvmArgs '-ea'
+    enableAssertions = true
 }
 
 repositories {
