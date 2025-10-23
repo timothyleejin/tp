@@ -3,9 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
@@ -32,6 +30,9 @@ public class DeleteCommand extends Command {
 
     private final List<Index> targetIndices;
 
+    /**
+     * Constructs DeleteCommand using a list of distinct indices which are sorted in descending order.
+     */
     public DeleteCommand(List<Index> targetIndices) {
         // Remove duplicate indices
         List<Index> copyInput = new ArrayList<>(targetIndices);
@@ -48,10 +49,6 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
 
         List<Person> lastShownList = model.getFilteredPersonList();
-
-//        // Sort list of indices in descending order so deletion of earlier index
-//        // would not affect subsequent index number
-//        this.targetIndices.sort((a, b) -> b.getZeroBased() - a.getZeroBased());
 
         List<Person> deletedPersonList = new ArrayList<>();
 

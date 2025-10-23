@@ -68,7 +68,7 @@ public class PersonFilterTest {
         assertTrue(emptyFilter.getNames().isEmpty());
         assertTrue(emptyFilter.getPhones().isEmpty());
         assertTrue(emptyFilter.getEmails().isEmpty());
-        assertTrue(emptyFilter.getAddresses().isEmpty());
+        assertTrue(emptyFilter.getTelegrams().isEmpty());
         assertTrue(emptyFilter.getRoles().isEmpty());
         assertTrue(emptyFilter.getEvents().isEmpty());
         assertTrue(emptyFilter.getSkills().isEmpty());
@@ -97,7 +97,7 @@ public class PersonFilterTest {
         assertEquals(List.of(name), filter.getNames());
         assertEquals(List.of(phone), filter.getPhones());
         assertEquals(List.of(email), filter.getEmails());
-        assertEquals(List.of(address), filter.getAddresses());
+        assertEquals(List.of(address), filter.getTelegrams());
         assertEquals(List.of(role), filter.getRoles());
         assertEquals(List.of(event), filter.getEvents());
         assertEquals(List.of(skill), filter.getSkills());
@@ -108,17 +108,17 @@ public class PersonFilterTest {
         Name name = new Name("Alice");
         Phone phone = new Phone("98765432");
         Email email = new Email("alice@example.com");
-        Address address = new Address("Bishan");
+        Telegram telegram = new Telegram("Bishan");
         Role role = new Role("Coach");
         Event event = new Event("Tennis");
         Skill skill = new Skill("Hunting");
 
-        PersonFilter filter = new PersonFilter(name, phone, email, address, role, event, skill);
+        PersonFilter filter = new PersonFilter(name, phone, email, telegram, role, event, skill);
 
         assertEquals(List.of(name), filter.getNames());
         assertEquals(List.of(phone.toString()), filter.getPhones());
         assertEquals(List.of(email.toString()), filter.getEmails());
-        assertEquals(List.of(address.toString()), filter.getAddresses());
+        assertEquals(List.of(telegram.toString()), filter.getTelegrams());
         assertEquals(List.of(role), filter.getRoles());
         assertEquals(List.of(event), filter.getEvents());
         assertEquals(List.of(skill), filter.getSkills());
