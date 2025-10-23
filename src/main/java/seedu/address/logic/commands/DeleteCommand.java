@@ -37,8 +37,9 @@ public class DeleteCommand extends Command {
         List<Index> copyInput = new ArrayList<>(targetIndices);
         this.targetIndices = copyInput.stream()
                 .map(Index::getZeroBased)
-                .distinct()
+                .distinct() // Remove duplicate indices
                 .map(Index::fromZeroBased)
+                .sorted((a, b) -> b.getZeroBased() - a.getZeroBased()) // Sort in descending order
                 .collect(Collectors.toList());
     }
 
@@ -48,9 +49,9 @@ public class DeleteCommand extends Command {
 
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        // Sort list of indices in descending order so deletion of earlier index
-        // would not affect subsequent index number
-        this.targetIndices.sort((a, b) -> b.getZeroBased() - a.getZeroBased());
+//        // Sort list of indices in descending order so deletion of earlier index
+//        // would not affect subsequent index number
+//        this.targetIndices.sort((a, b) -> b.getZeroBased() - a.getZeroBased());
 
         List<Person> deletedPersonList = new ArrayList<>();
 
@@ -84,14 +85,8 @@ public class DeleteCommand extends Command {
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
 
-        // Sort a copy of both lists in descending order to compare
-        List<Index> thisCopy = new ArrayList<>(this.targetIndices);
-        List<Index> otherCopy = new ArrayList<>(otherDeleteCommand.targetIndices);
-
-        thisCopy.sort((a, b) -> b.getZeroBased() - a.getZeroBased());
-        otherCopy.sort((a, b) -> b.getZeroBased() - a.getZeroBased());
-
-        return thisCopy.equals(otherCopy);
+        // Both targetIndices are already distinct and sorted in descnding order, so can just directly compare
+        return this.targetIndices.equals(otherDeleteCommand.targetIndices);
     }
 
     @Override
