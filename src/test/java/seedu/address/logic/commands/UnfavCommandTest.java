@@ -36,7 +36,8 @@ class UnfavCommandTest {
     void execute_validIndex_unmarksFavourite() throws Exception {
         UnfavCommand command = new UnfavCommand(0);
         CommandResult result = command.execute(model);
-        assertEquals(person.isFavourite(), false);
+        Person updatedPerson = model.getFilteredPersonList().get(0);
+        assertEquals(updatedPerson.isFavourite(), false);
         assertEquals(result.getFeedbackToUser(), "Unmarked Shananth as favourite.");
     }
 

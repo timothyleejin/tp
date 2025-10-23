@@ -155,7 +155,7 @@ Find persons whose names contain any of the given keywords.
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
-**Format**: `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: `filter [n/KEYWORD_1 KEYWORD_2] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.

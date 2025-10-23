@@ -98,7 +98,7 @@ View a brief message on commands you can use and a pop-up message explaining how
 Add a person to the address book.
 
 **Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
+`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of skills (including 0)
@@ -109,7 +109,7 @@ A person can have any number of skills (including 0)
 * `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
 
 **Expected Output**:
-* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `New person added: John Deez; Phone: 98765431; Telegram: Johnstreet; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
@@ -143,13 +143,13 @@ Edit the details of an existing person in the address book.
 *  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output**:
-* `Edited Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
 
 **Example Input**:
 *  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
 **Expected Output**:
-* `Edited Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+* `Edited Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Search for Contacts by Name
 
@@ -176,7 +176,8 @@ Find persons whose names contain any of the given keywords.
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
-**Format**: <br> `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> 
+`fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
@@ -209,13 +210,13 @@ Delete a specified person from the address book.
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 
 **Expected Output**
-* `Deleted Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
 **Expected Output**
-* `Deleted Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+* `Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
 
@@ -293,7 +294,7 @@ Action | Command
 **Delete** | `delete INDEX`<br> e.g. `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**Filter** | `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> e.g. `filter ev/Hunt`
+**Filter** | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> e.g. `filter ev/Hunt`
 **List** | `list`
 **Help** | `help`
 **Exit** | `exit`

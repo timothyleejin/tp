@@ -39,7 +39,8 @@ class FavCommandTest {
     void execute_validIndex_marksFavourite() throws Exception {
         FavCommand command = new FavCommand(0);
         CommandResult result = command.execute(model);
-        assertEquals(person.isFavourite(), true);
+        Person updatedPerson = model.getFilteredPersonList().get(0);
+        assertEquals(updatedPerson.isFavourite(), true);
         assertEquals(result.getFeedbackToUser(), "Marked Isaac as favourite.");
     }
 

@@ -43,7 +43,19 @@ public class FavCommand extends Command {
             throw new CommandException(String.format(MESSAGE_ALREADY_FAV, personToFav.getName()));
         }
 
-        personToFav.setFavourite(true);
+        Person favouritedPerson = new Person(
+                personToFav.getName(),
+                personToFav.getPhone(),
+                personToFav.getEmail(),
+                personToFav.getTelegram(),
+                personToFav.getRole(),
+                personToFav.getEvent(),
+                personToFav.getSkills(),
+                true
+        );
+
+        model.setPerson(personToFav, favouritedPerson);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToFav.getName()));
     }
 }

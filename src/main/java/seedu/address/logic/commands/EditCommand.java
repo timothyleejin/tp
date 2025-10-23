@@ -124,9 +124,9 @@ public class EditCommand extends Command {
         Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
         Event updatedEvent = editPersonDescriptor.getEvent().orElse(personToEdit.getEvent());
         Set<Skill> updatedSkills = editPersonDescriptor.getSkills().orElse(personToEdit.getSkills());
-
+        boolean isFavourite = personToEdit.isFavourite();
         return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegram, updatedRole, updatedEvent,
-                updatedSkills);
+                updatedSkills, isFavourite);
     }
 
     @Override

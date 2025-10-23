@@ -33,6 +33,7 @@ class JsonAdaptedPerson {
     private final String role;
     private final String event;
     private final List<JsonAdaptedSkill> skills = new ArrayList<>();
+    private final boolean isFavourite;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -41,7 +42,8 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
                              @JsonProperty("role") String role, @JsonProperty ("event") String event,
-                             @JsonProperty("skills") List<JsonAdaptedSkill> skills) {
+                             @JsonProperty("skills") List<JsonAdaptedSkill> skills,
+                             @JsonProperty("isFavourite") boolean isFavourite) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -51,6 +53,7 @@ class JsonAdaptedPerson {
         if (skills != null) {
             this.skills.addAll(skills);
         }
+        this.isFavourite = isFavourite;
     }
 
     /**
@@ -63,6 +66,7 @@ class JsonAdaptedPerson {
         telegram = source.getTelegram().value;
         role = source.getRole().value;
         event = source.getEvent().value;
+        isFavourite = source.isFavourite();
         skills.addAll(source.getSkills().stream()
                 .map(JsonAdaptedSkill::new)
                 .collect(Collectors.toList()));
@@ -129,7 +133,8 @@ class JsonAdaptedPerson {
         final Event modelEvent = new Event(event);
 
         final Set<Skill> modelSkills = new HashSet<>(personSkills);
-        return new Person(modelName, modelPhone, modelEmail, modelTelegram, modelRole, modelEvent, modelSkills);
+        return new Person(modelName, modelPhone, modelEmail, modelTelegram, modelRole,
+                modelEvent, modelSkills, isFavourite);
     }
 
 }
