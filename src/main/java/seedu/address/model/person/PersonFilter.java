@@ -3,8 +3,6 @@ package seedu.address.model.person;
 import java.util.Collections;
 import java.util.List;
 
-import seedu.address.model.skill.Skill;
-
 /**
  * A filter with the parameters to check each {@code Person} for
  */
