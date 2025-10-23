@@ -26,8 +26,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
+import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
-import seedu.address.model.skill.Skill;
 import seedu.address.testutil.PersonFilterBuilder;
 
 public class FilterCommandTest {
@@ -38,7 +38,7 @@ public class FilterCommandTest {
     public void equals() {
         PersonFilter firstPredicateFilter = new PersonFilterBuilder().build();
         PersonFilter secondPredicateFilter = new PersonFilter(
-                new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Telegram("Tampines"),
+                new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Telegram("Arisu"),
                 new Role("Farmer"), new Event("Secret"), new Skill("Java"));
 
 

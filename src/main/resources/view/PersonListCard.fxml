@@ -25,10 +25,10 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
-          <Label fx:id="telegram" styleClass="telegram_label" />
+        <Label fx:id="name" text="$name" styleClass="cell_big_label" />
+        <Label fx:id="telegram" text="$telegram" styleClass="bubble_blue"/>
       </HBox>
-        <VBox spacing="5"></VBox>
+        <FlowPane fx:id="skills" />
         <HBox spacing="5" alignment="CENTER_LEFT">
             <Label text="Phone:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
             <Label fx:id="phone" styleClass="cell_small_label" text="$phone" />
@@ -38,16 +38,9 @@
             <Label fx:id="email" styleClass="cell_small_label" text="$email" />
         </HBox>
         <HBox spacing="5" alignment="CENTER_LEFT">
-            <Label text="Event:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
+            <Label text="Event:" styleClass="cell_small_label" style="-fx-font-weight: bold;"/>
             <Label fx:id="event" styleClass="cell_small_label" text="$event" />
-        </HBox>
-        <HBox spacing="5" alignment="CENTER_LEFT">
-            <Label text="Role:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
-            <Label fx:id="role" styleClass="cell_small_label" text="$role" />
-        </HBox>
-        <HBox spacing="5" alignment="TOP_LEFT">
-            <Label text="Skills:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
-            <FlowPane fx:id="skills" hgap="5" vgap="5" />
+            <Label fx:id="role" text="$role" styleClass="bubble" />
         </HBox>
     </VBox>
   </GridPane>

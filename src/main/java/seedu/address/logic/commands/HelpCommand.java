@@ -19,7 +19,7 @@ public class HelpCommand extends Command {
             + "delete: delete a contact\n"
             + "clear: deletes all contacts\n"
             + "find: finds a contact using name\n"
-            + "filter: filters contacts by events/role\n"
+            + "filter: filters contacts by events/role/telegram/name\n"
             + "edit: edit a contact's information\n"
             + "exit: exit the address book\n"
             + "For more information, visit\n"

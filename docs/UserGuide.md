@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 
 ---
-Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively. 
+Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively.
 Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
 your hands off your keyboard.
 --------------------------------------------------------------------------------------------------------------------
@@ -49,12 +49,12 @@ Let's walk you through the setup process of LinkUp.
    Place the `LinkUp.jar` file in your preferred folder in your computer.
 
 4. **Run it**: <br>
-   Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in. 
+   Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
    You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
    type `cd Downloads` in the command terminal to navigate into the Downloads folder.
    Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
-5. **Use it**: <br> 
+5. **Use it**: <br>
    Now you can start using **LinkUp**. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -66,11 +66,11 @@ Let's walk you through the setup process of LinkUp.
 **:information_source:  Notes about the command format:**<br>
 
 * Words in uppercase are information you need to provide.<br>
-  e.g. For `add n/NAME`, replace `NAME` with an actual name. 
+  e.g. For `add n/NAME`, replace `NAME` with an actual name.
   * You can type in `add n/John Doe` or `add n/Michael Jordan` etc.
 
 * Items in square brackets are optional.<br>
-  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional. 
+  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional.
   * You can type `n/John Doe s/Java` or `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times (including not at all).<br>
@@ -83,13 +83,13 @@ Let's walk you through the setup process of LinkUp.
 * Extra parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. If you type in `help 123`, it will be treated as just `help`.
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as 
+* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### View Help
 
-View a brief message on commands you can use and a pop-up message explaining how to access the help page. 
+View a brief message on commands you can use and a pop-up message explaining how to access the help page.
 
 **Format**: <br> `help` or `h`
 
@@ -104,9 +104,18 @@ Add a person to the address book.
 A person can have any number of skills (including 0)
 </div>
 
-**Examples**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, block 123, #01-01`
+
+**Example Input**:
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
+
+**Expected Output**:
+* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+
+*Expected Output**:
+* `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -131,8 +140,16 @@ Edit the details of an existing person in the address book.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
 **Examples**:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+*  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+
+**Expected Output**:
+* `Edited Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+
+**Example Input**:
+*  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+
+**Expected Output**:
+* `Edited Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Search for Contacts by Name
 
@@ -147,12 +164,15 @@ Find persons whose names contain any of the given keywords.
 * Persons matching at least one keyword will be returned.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
-**Examples**:
-* `find John` returns `john` and `John Doe`
+**Example Input**:
 * `f alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+**Expected Output**:
+* `2 persons listed!` 
+
 ### Filter Contacts by any fields
+
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
@@ -166,9 +186,14 @@ Filter contacts from the address book based on name, event, role, phone number, 
 * For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
-**Examples**:
-* `filter ev/Treasure Hunt` filters all the contacts which have the Treasure Hunt as their event.
-* `fil s/piano` filters all the contacts with piano skills.
+**Example Input**:
+* `filter ev/charity gala` filters all the contacts which have the Charity Gala as their event.
+
+![result for 'filter ev/charity gala'](images/FilterEvent.png)
+
+**Expected Output**:
+* `2 persons listed!`
+
 
 ### Delete a Contact
 
@@ -180,15 +205,26 @@ Delete a specified person from the address book.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Examples**:
+**Example Input**:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
+
+**Expected Output**
+* `Deleted Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output**
+* `Deleted Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
 
 Clear all persons from the address book.
 
 **Format**: <br> `clear`
+
+**Expected Output**
+*Address book has been cleared!
 
 ### Close LinkUp
 
@@ -216,7 +252,7 @@ Furthermore, certain edits can cause the LinkUp to behave in unexpected ways (e.
 
 ## Frequently Asked Questions
 
-**Q**: How do I transfer my data to another computer?<br>
+**Q**: How do I transfer my data to another computer? <br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LinkUp home folder.
 
 **Q**: How do I edit only 1 of my 2 skills for a specific contact? <br>
@@ -228,11 +264,11 @@ and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`
 **A**: Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
 of your computer to check.
 * For Mac users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 * For Windows users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 * For Linux users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
-  ensure you have the precise JDK version prescribed.
+ensure you have the precise JDK version prescribed.
 
 Then, open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
 You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
