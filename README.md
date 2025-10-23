@@ -90,22 +90,30 @@ and run it
 
 View a brief message on commands you can use and a pop-up message explaining how to access the help page.
 
-**Format**: `help` or `h`
+**Format**: <br> `help` or `h`
 
 ### Add a Contact
 
 Add a person to the address book.
 
-**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` or <br>
+**Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
 `a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of skills (including 0)
 </div>
 
-**Examples**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+**Example Input**:
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
+
+**Expected Output**:
+* `New person added: John Deez; Phone: 98765431; Telegram: Johnstreet; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+
+**Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
+
+**Expected Output**:
+* `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -115,14 +123,14 @@ The order of fields do not matter!
 
 View a list of all persons in the address book.
 
-**Format**: `list` or `l`
+**Format**: <br> `list` or `l`
 
 ### Edit a Contact
 
 Edit the details of an existing person in the address book.
 
-**Format**: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/Role] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/Role] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -131,13 +139,21 @@ Edit the details of an existing person in the address book.
 
 **Examples**:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+
+**Expected Output**:
+* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+**Example Input**:
 *  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
-### Search for Contacts by name
+**Expected Output**:
+* `Edited Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+### Search for Contacts by Name
 
 Find persons whose names contain any of the given keywords.
 
-**Format**: `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]`
+**Format**: <br> `find KEYWORD [MORE_KEYWORDS]` or `f KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g. `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
@@ -146,16 +162,20 @@ Find persons whose names contain any of the given keywords.
 * Persons matching at least one keyword will be returned.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
-**Examples**:
-* `find John` returns `john` and `John Doe`
-* `f alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+**Example Input**:
+* `f alex david` <br>
+
+**Expected Output**: <br>
+If there are Alex Yeoh and David Li in your contacts, the output will be as such.
+
+![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Filter Contacts by any fields
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
-**Format**: `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br>
+`fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
@@ -165,35 +185,100 @@ Filter contacts from the address book based on name, event, role, phone number, 
 * For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
 * The keyword **can be any valid character** 1, a, @, …​
 
-**Examples**:
-* `filter ev/Treasure Hunt` filters all the contacts which have the Treasure Hunt as their event.
-* `fil s/piano` filters all the contacts with piano skills.
+**Example Input**:
+* `filter ev/charity gala`
+
+**Expected Output**: <br>
+If there are contacts with Charity Gala as their event, the output will be as such.
+
+![result for 'filter ev/charity gala'](images/FilterEvent.png)
 
 ### Delete a Contact
 
 Delete a specified person from the address book.
 
-**Format**: `delete INDEX` or <br> `d INDEX`
+**Format**: <br> `delete INDEX` or `d INDEX`
 
 * Delete the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Examples**:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+**Example Input**:
+* `list` followed by `delete 1` deletes the 1st person in the address book.
+
+**Expected Output**:
+* `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+**Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output**:
+* `Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Delete ALL Contacts
 
 Clear all persons from the address book.
 
-**Format**: `clear`
+**Format**: <br> `clear`
+
+**Expected Output**:
+* `Address book has been cleared!`
+
+### Add a Contact to Favourites
+
+Add a specified person from the address book to favourites.
+
+**Format**: <br> `fav INDEX`
+
+* Add the person at the specified `INDEX` to favourites.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Example Input**:
+* `list` followed by `fav 1` adds the 1st person in the address book to favourites.
+
+**Expected Output**:
+* `Marked John Deez as favourite.`
+
+**Example Input**:
+* `find Betsy` followed by `fav 1` adds the 1st person in the results of the `find` command to favourites.
+
+**Expected Output**:
+* `Marked Betsy Crower as favourite.`
+
+### Remove a Contact from Favourites
+
+Remove a specified person from the address book from favourites.
+
+**Format**: <br> `unfav INDEX`
+
+* Remove the person at the specified `INDEX` from favourites.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Example Input**:
+* `list` followed by `unfav 1` removes the 1st person in the address book from favourites.
+
+**Expected Output**:
+* `Unmarked John Deez from favourites.`
+
+**Example Input**:
+* `find Betsy` followed by `unfav 1` removes the 1st person in the results of the `find` command from favourites.
+
+**Expected Output**:
+* `Unmarked Betsy Crower from favourites.`
+
+### List all Favourite Contacts
+
+View a list of all your favourite persons in the address book.
+
+**Format**: <br> `lfav`
 
 ### Close LinkUp
 
 Exit the application.
 
-**Format**: `exit`
+**Format**: <br> `exit`
 
 The GUI will close after the input. LinkUp saves your contact list automatically in your computer.
 This means that your contact list will be restored whenever you reopen LinkUp.

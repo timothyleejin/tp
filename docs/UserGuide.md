@@ -27,7 +27,9 @@ This app is tailored for **community and club leaders** responsible for:
 * _New Users_: Start from the [_Quick Start_ section](#getting-started) to set up LinkUp on your computer
 * _Intermediate Users_: Go to the [_Features_ section](#features) to learn how commands work
 * _Experienced Users_: Refer to the [_Command Summary_](#command-summary) to quickly find and use commands
+
 --------------------------------------------------------------------------------------------------------------------
+
 ## Getting Started
 
 Let's walk you through the setup process of LinkUp.
@@ -98,23 +100,22 @@ View a brief message on commands you can use and a pop-up message explaining how
 Add a person to the address book.
 
 **Format**: <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ev/EVENT r/ROLE [s/SKILL]…​`
+`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of skills (including 0)
 </div>
 
-
 **Example Input**:
 * `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
 
 **Expected Output**:
-* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `New person added: John Deez; Phone: 98765431; Telegram: Johnstreet; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
 
-*Expected Output**:
+**Expected Output**:
 * `New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -140,16 +141,16 @@ Edit the details of an existing person in the address book.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
 **Examples**:
-*  `edit 2 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output**:
-* `Edited Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: : `
+* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
-*  `e 1 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+*  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 
 **Expected Output**:
-* `Edited Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+* `Edited Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 ### Search for Contacts by Name
 
@@ -165,18 +166,19 @@ Find persons whose names contain any of the given keywords.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 **Example Input**:
-* `f alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `f alex david` <br>
 
-**Expected Output**:
-* `2 persons listed!` 
+**Expected Output**: <br>
+If there are Alex Yeoh and David Li in your contacts, the output will be as such.
+
+![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Filter Contacts by any fields
 
-
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
-**Format**: <br> `filter [n/KEYWORD_1 KEYWORD_2] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format**: <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> 
+`fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
 * Filter and produces all possible outputs based on the keyword.
@@ -187,13 +189,12 @@ Filter contacts from the address book based on name, event, role, phone number, 
 * The keyword **can be any valid character** 1, a, @, …​
 
 **Example Input**:
-* `filter ev/charity gala` filters all the contacts which have the Charity Gala as their event.
+* `filter ev/charity gala`
+
+**Expected Output**: <br>
+If there are contacts with Charity Gala as their event, the output will be as such.
 
 ![result for 'filter ev/charity gala'](images/FilterEvent.png)
-
-**Expected Output**:
-* `2 persons listed!`
-
 
 ### Delete a Contact
 
@@ -206,16 +207,16 @@ Delete a specified person from the address book.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 **Example Input**:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `list` followed by `delete 1` deletes the 1st person in the address book.
 
-**Expected Output**
-* `Deleted Person: John Deez; Phone: 91234567; Address: John street, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills: `
+**Expected Output**:
+* `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
-**Expected Output**
-* `Deleted Person: Betsy Crower; Phone: 1234567; Address: Newgate Prison; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+**Expected Output**:
+* `Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
  
 ### Delete ALL Contacts
 
@@ -223,8 +224,58 @@ Clear all persons from the address book.
 
 **Format**: <br> `clear`
 
-**Expected Output**
-*Address book has been cleared!
+**Expected Output**:
+* `Address book has been cleared!`
+
+### Add a Contact to Favourites
+
+Add a specified person from the address book to favourites.
+
+**Format**: <br> `fav INDEX`
+
+* Add the person at the specified `INDEX` to favourites.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Example Input**:
+* `list` followed by `fav 1` adds the 1st person in the address book to favourites.
+
+**Expected Output**:
+* `Marked John Deez as favourite.`
+
+**Example Input**:
+* `find Betsy` followed by `fav 1` adds the 1st person in the results of the `find` command to favourites.
+
+**Expected Output**:
+* `Marked Betsy Crower as favourite.`
+
+### Remove a Contact from Favourites
+
+Remove a specified person from the address book from favourites.
+
+**Format**: <br> `unfav INDEX`
+
+* Remove the person at the specified `INDEX` from favourites.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Example Input**:
+* `list` followed by `unfav 1` removes the 1st person in the address book from favourites.
+
+**Expected Output**:
+* `Unmarked John Deez from favourites.`
+
+**Example Input**:
+* `find Betsy` followed by `unfav 1` removes the 1st person in the results of the `find` command from favourites.
+
+**Expected Output**:
+* `Unmarked Betsy Crower from favourites.`
+
+### List all Favourite Contacts
+
+View a list of all your favourite persons in the address book.
+
+**Format**: <br> `lfav`
 
 ### Close LinkUp
 
@@ -288,13 +339,15 @@ Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
 Action | Command
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com t/james0336, 1234665 s/Python s/Java`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g. `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**Filter** | `filter [n/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> e.g. `filter ev/Hunt`
-**List** | `list`
-**Help** | `help`
-**Exit** | `exit`
-
+**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com t/james0336 s/Python s/Java`
+**Clear**: <br> Delete all contacts | `clear`
+**Delete**: <br> Delete a contact | `delete INDEX`<br> <br> e.g. `delete 3`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]`<br> <br> e.g. `find James Jake`
+**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> <br> e.g. `filter ev/Hunt`
+**List**: <br> List all contacts | `list`
+**Favourite**: <br> Add a contact to favourites | `fav INDEX`<br> <br> e.g. `fav 3`
+**Unfavourite**: <br> Remove a contacts from favourites | `unfav INDEX`<br> <br> e.g. `unfav 3`
+**List favourites**: <br> List all favourite contacts | `lfav`
+**Help**: <br> View a brief message on commands you can use | `help`
+**Exit**: <br> Exit LinkUp | `exit`

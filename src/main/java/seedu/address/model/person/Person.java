@@ -30,7 +30,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Telegram telegram, Role role, Event event, Set<Skill> skills) {
+    public Person(Name name, Phone phone, Email email, Telegram telegram, Role role, Event event,
+                  Set<Skill> skills, boolean isFavourite) {
         requireAllNonNull(name, phone, email, telegram);
         this.name = name;
         this.phone = phone;
@@ -39,7 +40,12 @@ public class Person {
         this.role = role;
         this.event = event;
         this.skills.addAll(skills);
-        this.isFavourite = false;
+        this.isFavourite = isFavourite;
+    }
+
+    public Person(Name name, Phone phone, Email email, Telegram telegram,
+                  Role role, Event event, Set<Skill> skills) {
+        this(name, phone, email, telegram, role, event, skills, false);
     }
 
     public Name getName() {

@@ -15,7 +15,7 @@ public class UnfavCommand extends Command {
 
     public static final String COMMAND_WORD = "unfav";
 
-    public static final String MESSAGE_SUCCESS = "Unmarked %1$s as favourite.";
+    public static final String MESSAGE_SUCCESS = "Unmarked %1$s from favourites.";
     public static final String MESSAGE_ALREADY_UNFAV = "%1$s is not a favourite.";
     public static final String MESSAGE_INVALID_INDEX = "Invalid index.";
 
@@ -43,7 +43,19 @@ public class UnfavCommand extends Command {
             throw new CommandException(String.format(MESSAGE_ALREADY_UNFAV, personToUnfav.getName()));
         }
 
-        personToUnfav.setFavourite(false);
+        Person unfavouritedPerson = new Person(
+                personToUnfav.getName(),
+                personToUnfav.getPhone(),
+                personToUnfav.getEmail(),
+                personToUnfav.getTelegram(),
+                personToUnfav.getRole(),
+                personToUnfav.getEvent(),
+                personToUnfav.getSkills(),
+                false
+        );
+
+        model.setPerson(personToUnfav, unfavouritedPerson);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToUnfav.getName()));
     }
 }
