@@ -67,19 +67,10 @@ public class PersonCard extends UiPart<Region> {
         person.getSkills().stream()
                 .sorted(Comparator.comparing(skill -> skill.skillName))
                 .forEach(skill -> skills.getChildren().add(new Label(skill.skillName)));
-        updateFavouriteIcon(person);
+        favouriteIcon.setImage(person.isFavourite()
+                ? new Image(this.getClass().getResourceAsStream("/images/fav.png"))
+                : null);
+        favouriteIcon.setVisible(person.isFavourite());
     }
 
-    public ImageView getFavouriteIcon() {
-        return favouriteIcon;
-    }
-
-    private void updateFavouriteIcon(Person person) {
-        if (person.isFavourite()) {
-            favouriteIcon.setImage((new Image(this.getClass().getResourceAsStream("/images/fav.png"))));
-            favouriteIcon.setVisible(true);
-        } else {
-            favouriteIcon.setVisible(false);
-        }
-    }
 }
