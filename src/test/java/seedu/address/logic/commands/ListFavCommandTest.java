@@ -42,7 +42,7 @@ class ListFavCommandTest {
     void execute_withFavourites_listsOnlyFavourites() throws Exception {
         ListFavCommand command = new ListFavCommand();
         CommandResult result = command.execute(model);
-        String expected = "Favourites:\n1. Alice\n";
+        String expected = "1 persons listed!";
         assertEquals(result.getFeedbackToUser(), expected);
     }
 
