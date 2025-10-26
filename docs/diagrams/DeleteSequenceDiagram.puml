@@ -65,6 +65,15 @@ deactivate CommandResult
 DeleteCommand --> LogicManager : r
 deactivate DeleteCommand
 
+Model -> LogicManager : notifyPersonDeleted()
+note right of LogicManager : Command execution successful
+Model <-- DeleteCommand : confirmation
+
+LogicManager -> Model : updateFilteredPersonList()
+note right of Model : Refresh UI after deletion
+Model --> LogicManager : updated list returned
+LogicManager -> CommandResult : format success message
+
 [<--LogicManager
 deactivate LogicManager
 @enduml
