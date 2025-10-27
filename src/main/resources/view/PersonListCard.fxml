@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.image.ImageView?>
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -36,6 +37,9 @@
         <HBox spacing="5" alignment="CENTER_LEFT">
             <Label text="Email:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
             <Label fx:id="email" styleClass="cell_small_label" text="$email" />
+            <Region HBox.hgrow="ALWAYS" />
+            <ImageView
+                    fx:id="favouriteIcon" fitHeight="40" fitWidth="40" visible="false"/>
         </HBox>
         <HBox spacing="5" alignment="CENTER_LEFT">
             <Label text="Event:" styleClass="cell_small_label" style="-fx-font-weight: bold;"/>

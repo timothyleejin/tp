@@ -1,13 +1,17 @@
 package seedu.address.ui;
 
+
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -44,6 +48,8 @@ public class PersonCard extends UiPart<Region> {
     private Label role;
     @FXML
     private Label event;
+    @FXML
+    private ImageView favouriteIcon;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -61,5 +67,10 @@ public class PersonCard extends UiPart<Region> {
         person.getSkills().stream()
                 .sorted(Comparator.comparing(skill -> skill.skillName))
                 .forEach(skill -> skills.getChildren().add(new Label(skill.skillName)));
+        favouriteIcon.setImage(person.isFavourite()
+                ? new Image(this.getClass().getResourceAsStream("/images/fav.png"))
+                : null);
+        favouriteIcon.setVisible(person.isFavourite());
     }
+
 }

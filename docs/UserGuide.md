@@ -213,7 +213,7 @@ Delete a specified person from the address book.
 * `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
-* `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+i* `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
 
 **Expected Output**:
 * `Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
