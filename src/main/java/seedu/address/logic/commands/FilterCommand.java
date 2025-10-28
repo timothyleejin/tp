@@ -31,7 +31,7 @@ public class FilterCommand extends Command {
             + "[" + PREFIX_TELEGRAM + "TELEGRAM]"
             + "[" + PREFIX_ROLE + "ROLE]"
             + "[" + PREFIX_EVENT + "EVENT]"
-            + "[" + PREFIX_SKILL + "SKILL...]\n"
+            + "[" + PREFIX_SKILL + "SKILL]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Chen ";
 
