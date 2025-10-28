@@ -28,9 +28,9 @@ class ListFavCommandTest {
         model = new ModelManager();
 
         person1 = new Person(new Name("Alice"), new Phone("123"), new Email("a@b.com"),
-                new Telegram("@alice"), new Role("Dev"), new Event("Event1"), Collections.emptySet());
+                new Telegram("alice"), new Role("Dev"), new Event("Event1"), Collections.emptySet());
         person2 = new Person(new Name("Bob"), new Phone("456"), new Email("b@b.com"),
-                new Telegram("@bob"), new Role("Tester"), new Event("Event2"), Collections.emptySet());
+                new Telegram("bobby_lim"), new Role("Tester"), new Event("Event2"), Collections.emptySet());
 
         person1.setFavourite(true);
 

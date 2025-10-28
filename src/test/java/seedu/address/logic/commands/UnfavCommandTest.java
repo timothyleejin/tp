@@ -26,7 +26,7 @@ class UnfavCommandTest {
     @BeforeEach
     void setUp() {
         person = new Person(new Name("Shananth"), new Phone("123"), new Email("b@b.com"),
-                new Telegram("@naffy"), new Role("Tester"), new Event("EWP"), Collections.emptySet());
+                new Telegram("naffyShann"), new Role("Tester"), new Event("EWP"), Collections.emptySet());
         person.setFavourite(true);
         model = new ModelManager();
         model.addPerson(person);
