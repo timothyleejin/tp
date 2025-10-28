@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,8 +31,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String telegram;
-    private final String role;
-    private final String event;
+    private final List<JsonAdaptedEventWithRole> eventsAndRoles = new ArrayList<>();
     private final List<JsonAdaptedSkill> skills = new ArrayList<>();
     private final boolean isFavourite;
 
@@ -40,16 +40,15 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
-                             @JsonProperty("role") String role, @JsonProperty ("event") String event,
+                             @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
+                             @JsonProperty("eventsAndRoles") List<JsonAdaptedEventWithRole> eventsAndRoles,
                              @JsonProperty("skills") List<JsonAdaptedSkill> skills,
                              @JsonProperty("isFavourite") boolean isFavourite) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
-        this.role = role;
-        this.event = event;
+        this.eventsAndRoles.addAll(eventsAndRoles);
         if (skills != null) {
             this.skills.addAll(skills);
         }
@@ -64,8 +63,11 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         telegram = source.getTelegram().value;
-        role = source.getRole().value;
-        event = source.getEvent().value;
+
+        eventsAndRoles.addAll(source.getEventsWithRoles().entrySet().stream()
+                .map(e -> new JsonAdaptedEventWithRole(e.getKey(), e.getValue()))
+                .collect(Collectors.toList()));
+
         isFavourite = source.isFavourite();
         skills.addAll(source.getSkills().stream()
                 .map(JsonAdaptedSkill::new)
@@ -116,25 +118,19 @@ class JsonAdaptedPerson {
         }
         final Telegram modelTelegram = new Telegram(telegram);
 
-        if (role == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Role.class.getSimpleName()));
-        }
-        if (!Role.isValidRole(role)) {
-            throw new IllegalValueException(Role.MESSAGE_CONSTRAINTS);
-        }
-        final Role modelRole = new Role(role);
+        final HashMap<Event, Role> modelEventsAndRoles = new HashMap<>();
 
-        if (event == null) {
+        for (JsonAdaptedEventWithRole e : eventsAndRoles) {
+            modelEventsAndRoles.putAll(e.toModelType());
+        }
+
+        if (modelEventsAndRoles.isEmpty()) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Event.class.getSimpleName()));
         }
-        if (!Event.isValidEvent(event)) {
-            throw new IllegalValueException(Event.MESSAGE_CONSTRAINTS);
-        }
-        final Event modelEvent = new Event(event);
 
         final Set<Skill> modelSkills = new HashSet<>(personSkills);
-        return new Person(modelName, modelPhone, modelEmail, modelTelegram, modelRole,
-                modelEvent, modelSkills, isFavourite);
+        return new Person(modelName, modelPhone, modelEmail, modelTelegram, modelEventsAndRoles,
+                modelSkills, isFavourite);
     }
 
 }

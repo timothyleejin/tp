@@ -25,22 +25,22 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                    new Telegram("yoitsalex"), new Role("Organiser"),
-                    new Event("Orientation Camp"), getSkillSet("JavaScript")),
+                    new Telegram("yoitsalex"), new Event("Orientation Camp"), new Role("Organiser"),
+                     getSkillSet("JavaScript")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                    new Telegram("FishyBernice"), new Role("Organiser"),
-                    new Event("Charity Gala"), getSkillSet("JavaScript", "Piano")),
+                    new Telegram("FishyBernice"), new Event("Charity Gala"), new Role("Organiser"),
+                     getSkillSet("JavaScript", "Piano")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                    new Telegram("CharlotteO"), new Role("Organiser"),
-                    new Event("Charity Gala"), getSkillSet("JavaScript")),
+                    new Telegram("CharlotteO"), new Event("Charity Gala"), new Role("Organiser"),
+                     getSkillSet("JavaScript")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                    new Telegram("livelyDavid"), new Role("Organiser"),
-                    new Event("Night Cycling"), getSkillSet("Drumming")),
+                    new Telegram("livelyDavid"), new Event("Night Cycling"), new Role("Organiser"),
+                     getSkillSet("Drumming")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                    new Telegram("RealIrfanI"), new Role("Organiser"),
-                    new Event("NUS Marathon"), getSkillSet("JavaScript")),
+                    new Telegram("RealIrfanI"), new Event("NUS Marathon"), new Role("Organiser"),
+                     getSkillSet("JavaScript")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                    new Telegram("Balakrishnan_Roy"), new Role("Organiser"), new Event("Thopz"),
+                    new Telegram("Balakrishnan_Roy"), new Event("Thopz"), new Role("Organiser"),
                     getSkillSet("JavaScript"))
         };
     }

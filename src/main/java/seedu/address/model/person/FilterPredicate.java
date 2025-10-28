@@ -15,6 +15,10 @@ public class FilterPredicate implements Predicate<Person> {
         this.filterParams = filterParams;
     }
 
+    private boolean checkEventAndRole(Event e, Role r, Person person) {
+        return person.getEvents().contains(e) && person.getRole(e).equals(r);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -54,13 +58,21 @@ public class FilterPredicate implements Predicate<Person> {
                 || filterParams.getTelegrams().stream().anyMatch(
                     telegram -> person.getTelegram().value.toLowerCase().contains(telegram.toLowerCase()));
 
-        boolean checkRole = filterParams.getRoles().isEmpty()
-                || filterParams.getRoles().stream().anyMatch(
-                    role -> StringUtil.containsWordIgnoreCase(person.getRole().toString(), role.toString()));
+        int eventsSize = filterParams.getEvents().size();
+        int rolesSize = filterParams.getRoles().size();
+        boolean checkAllEventsAndRoles = true;
 
-        boolean checkEvent = filterParams.getEvents().isEmpty()
-                || filterParams.getEvents().stream().anyMatch(
-                    event -> StringUtil.containsWordIgnoreCase(person.getEvent().toString(), event.toString()));
+        for (int i = 0; i < Math.min(eventsSize, rolesSize); i++) {
+            Event e = filterParams.getEvents().get(i);
+            Role r = filterParams.getRoles().get(i);
+
+            boolean checkEventAndRole = checkEventAndRole(e, r, person);
+
+            if (!checkEventAndRole) {
+                checkAllEventsAndRoles = false;
+                break;
+            }
+        }
 
         boolean checkSkill = filterParams.getSkills().isEmpty()
                 || filterParams.getSkills().stream().anyMatch(
@@ -68,7 +80,7 @@ public class FilterPredicate implements Predicate<Person> {
                         personSkill.skillName.equalsIgnoreCase(skill.skillName)));
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkTelegram
-                && checkRole && checkEvent && checkSkill;
+                && checkAllEventsAndRoles && checkSkill;
 
         return matchFilters;
     }

@@ -48,8 +48,7 @@ public class FavCommand extends Command {
                 personToFav.getPhone(),
                 personToFav.getEmail(),
                 personToFav.getTelegram(),
-                personToFav.getRole(),
-                personToFav.getEvent(),
+                personToFav.getEventsWithRoles(),
                 personToFav.getSkills(),
                 true
         );

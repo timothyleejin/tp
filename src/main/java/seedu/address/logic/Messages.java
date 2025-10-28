@@ -43,10 +43,10 @@ public class Messages {
                 .append(person.getTelegram())
                 .append("; Telegram: ")
                 .append(person.getEmail())
-                .append("; Role: ")
-                .append(person.getRole())
-                .append("; Event: ")
-                .append(person.getEvent())
+                .append("; Events: ")
+                .append(person.getEvents())
+                .append("; Roles: ")
+                .append(person.getRoles())
                 .append("; Skills: ");
         person.getSkills().forEach(builder::append);
         return builder.toString();

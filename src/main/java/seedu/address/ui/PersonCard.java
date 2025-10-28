@@ -45,9 +45,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane skills;
     @FXML
-    private Label role;
-    @FXML
-    private Label event;
+    private FlowPane eventsAndRoles;
     @FXML
     private ImageView favouriteIcon;
 
@@ -62,8 +60,12 @@ public class PersonCard extends UiPart<Region> {
         telegram.setText("@" + person.getTelegram().value);
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
-        role.setText(person.getRole().value);
-        event.setText(person.getEvent().value);
+        person.getEvents().stream()
+                .sorted(Comparator.comparing(event -> event.value))
+                .forEach(event -> {
+                    eventsAndRoles.getChildren().add(new Label(event.value));
+                    eventsAndRoles.getChildren().add(new Label(person.getRole(event).value));
+                });
         person.getSkills().stream()
                 .sorted(Comparator.comparing(skill -> skill.skillName))
                 .forEach(skill -> skills.getChildren().add(new Label(skill.skillName)));

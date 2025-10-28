@@ -48,8 +48,7 @@ public class UnfavCommand extends Command {
                 personToUnfav.getPhone(),
                 personToUnfav.getEmail(),
                 personToUnfav.getTelegram(),
-                personToUnfav.getRole(),
-                personToUnfav.getEvent(),
+                personToUnfav.getEventsWithRoles(),
                 personToUnfav.getSkills(),
                 false
         );

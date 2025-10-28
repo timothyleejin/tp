@@ -82,10 +82,10 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withTelegram(VALID_TELEGRAM_AMY)
-                .withRole(VALID_ROLE_AMY).withEvent(VALID_EVENT_AMY).withSkills(VALID_SKILL_FRIEND).build();
+                .withEventAndRole(VALID_EVENT_AMY, VALID_ROLE_AMY).withSkills(VALID_SKILL_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withTelegram(VALID_TELEGRAM_BOB)
-                .withRole(VALID_ROLE_BOB).withEvent(VALID_EVENT_BOB).withSkills(VALID_SKILL_HUSBAND,
+                .withEventAndRole(VALID_EVENT_BOB, VALID_ROLE_BOB).withSkills(VALID_SKILL_HUSBAND,
                         VALID_SKILL_FRIEND).build();
     }
 

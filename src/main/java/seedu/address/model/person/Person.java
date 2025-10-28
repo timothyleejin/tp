@@ -2,7 +2,9 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -22,30 +24,46 @@ public class Person {
 
     // Data fields
     private final Telegram telegram;
-    private final Role role;
+    //HashMap to store roles with event as key and role as value
+    private final HashMap<Event, Role> roles = new HashMap<Event, Role>();
     private final Set<Skill> skills = new HashSet<>();
-    private final Event event;
     private boolean isFavourite;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Telegram telegram, Role role, Event event,
+    public Person(Name name, Phone phone, Email email, Telegram telegram, HashMap<Event, Role> roles,
                   Set<Skill> skills, boolean isFavourite) {
         requireAllNonNull(name, phone, email, telegram);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
-        this.role = role;
-        this.event = event;
+        this.roles.putAll(roles);
         this.skills.addAll(skills);
         this.isFavourite = isFavourite;
     }
 
+    /**
+     * Constructor for one event and one role
+     */
+    public Person(Name name, Phone phone, Email email, Telegram telegram, Event event, Role role, Set<Skill> skills) {
+        this(name, phone, email, telegram, new HashMap<Event, Role>(), skills, false);
+        this.roles.put(event, role);
+    }
+
+    /**
+     * Constructor for one event and one role with favourite
+     */
+    public Person(Name name, Phone phone, Email email, Telegram telegram, Event event, Role role, Set<Skill> skills,
+                  boolean isFavourite) {
+        this(name, phone, email, telegram, new HashMap<Event, Role>(), skills, isFavourite);
+        this.roles.put(event, role);
+    }
+
     public Person(Name name, Phone phone, Email email, Telegram telegram,
-                  Role role, Event event, Set<Skill> skills) {
-        this(name, phone, email, telegram, role, event, skills, false);
+                  HashMap<Event, Role> roles, Set<Skill> skills) {
+        this(name, phone, email, telegram, roles, skills, false);
     }
 
     public Name getName() {
@@ -64,12 +82,24 @@ public class Person {
         return telegram;
     }
 
-    public Role getRole() {
-        return role;
+    public HashMap<Event, Role> getEventsWithRoles() {
+        return roles;
     }
 
-    public Event getEvent() {
-        return event;
+    public Role getRole(Event e) {
+        return roles.get(e);
+    }
+
+    public Collection<Role> getRoles() {
+        return Collections.unmodifiableCollection(roles.values());
+    }
+
+    public Set<Event> getEvents() {
+        return Collections.unmodifiableSet(roles.keySet());
+    }
+
+    public void addEventWithRole(Event e, Role r) {
+        roles.put(e, r);
     }
 
     /**
@@ -152,14 +182,13 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && telegram.equals(otherPerson.telegram)
                 && skills.equals(otherPerson.skills)
-                && role.equals(otherPerson.role)
-                && event.equals(otherPerson.event);
+                && roles.equals(otherPerson.roles);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, telegram, skills, role, event);
+        return Objects.hash(name, phone, email, telegram, skills, roles);
     }
 
     @Override
@@ -169,8 +198,8 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("telegram", telegram)
-                .add("role", role)
-                .add("event", event)
+                .add("event", this.getEvents())
+                .add("roles", this.getRoles())
                 .add("skills", skills)
                 .toString();
     }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EVENT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
@@ -16,6 +17,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -27,6 +29,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -60,10 +63,11 @@ public class EditCommandTest {
 
         PersonBuilder personInList = new PersonBuilder(lastPerson);
         Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withRole(VALID_ROLE_BOB).withSkills(VALID_SKILL_HUSBAND).build();
+                .withEventAndRole(VALID_EVENT_BOB, VALID_ROLE_BOB).withSkills(VALID_SKILL_HUSBAND).build();
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withRole(VALID_ROLE_BOB).withSkills(VALID_SKILL_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB).withEventAndRole(VALID_EVENT_BOB, VALID_ROLE_BOB)
+                .withSkills(VALID_SKILL_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
@@ -188,19 +192,22 @@ public class EditCommandTest {
     @Test
     public void getRole_rolePresent_returnsOptionalWithRole() {
         EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
+        Event event = new Event("Battlegrounds");
         Role role = new Role("Organiser");
-        descriptor.setRole(role);
+        HashMap<Event, Role> map = new HashMap<>();
+        map.put(event, role);
+        descriptor.setRoles(map);
 
-        Optional<Role> result = descriptor.getRole();
+        Optional<HashMap<Event, Role>> result = descriptor.getRoles();
         assertTrue(result.isPresent());
-        assertEquals(role, result.get());
+        assertEquals(map, result.get());
     }
 
     @Test
     public void getRole_roleAbsent_returnsEmptyOptional() {
         EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
 
-        Optional<Role> result = descriptor.getRole();
+        Optional<HashMap<Event, Role>> result = descriptor.getRoles();
         assertFalse(result.isPresent());
     }
 }

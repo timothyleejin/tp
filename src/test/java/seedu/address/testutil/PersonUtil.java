@@ -8,13 +8,16 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.FilterCommand;
+import seedu.address.model.person.Event;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonFilter;
+import seedu.address.model.person.Role;
 import seedu.address.model.person.Skill;
 
 
@@ -39,8 +42,15 @@ public class PersonUtil {
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_TELEGRAM + person.getTelegram().value + " ");
-        sb.append(PREFIX_ROLE + person.getRole().value + " ");
-        sb.append(PREFIX_EVENT + person.getEvent().value + " ");
+
+        person.getRoles().stream().forEach(
+                r -> sb.append(PREFIX_ROLE + r.value + " ")
+        );
+
+        person.getEvents().stream().forEach(
+                e -> sb.append(PREFIX_EVENT + e.value + " ")
+        );
+
         person.getSkills().stream().forEach(
                 s -> sb.append(PREFIX_SKILL + s.skillName + " ")
         );
@@ -56,8 +66,20 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getTelegram().ifPresent(telegram -> sb.append(PREFIX_TELEGRAM).append(telegram.value).append(" "));
-        descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
-        descriptor.getEvent().ifPresent(event -> sb.append(PREFIX_EVENT).append(event.value).append(" "));
+
+        if (descriptor.getRoles().isPresent()) {
+            HashMap<Event, Role> roles = descriptor.getRoles().get();
+            if (roles.isEmpty()) {
+                sb.append(PREFIX_EVENT);
+                sb.append(PREFIX_ROLE);
+            } else {
+                roles.entrySet().forEach(entry -> {
+                    sb.append(PREFIX_EVENT).append(entry.getKey().value).append(" ");
+                    sb.append(PREFIX_ROLE).append(entry.getValue().value).append(" ");
+                });
+            }
+        }
+
         if (descriptor.getSkills().isPresent()) {
             Set<Skill> skills = descriptor.getSkills().get();
             if (skills.isEmpty()) {

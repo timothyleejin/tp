@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -121,11 +122,11 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
-        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
-        Event updatedEvent = editPersonDescriptor.getEvent().orElse(personToEdit.getEvent());
+        HashMap<Event, Role> updatedRoles = editPersonDescriptor.getRoles()
+                .orElse(personToEdit.getEventsWithRoles());
         Set<Skill> updatedSkills = editPersonDescriptor.getSkills().orElse(personToEdit.getSkills());
         boolean isFavourite = personToEdit.isFavourite();
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegram, updatedRole, updatedEvent,
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegram, updatedRoles,
                 updatedSkills, isFavourite);
     }
 
@@ -162,8 +163,7 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Telegram telegram;
-        private Role role;
-        private Event event;
+        private HashMap<Event, Role> roles;
         private Set<Skill> skills;
 
         public EditPersonDescriptor() {
@@ -178,8 +178,7 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setTelegram(toCopy.telegram);
-            setRole(toCopy.role);
-            setEvent(toCopy.event);
+            setRoles(toCopy.roles);
             setSkills(toCopy.skills);
         }
 
@@ -187,7 +186,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, telegram, role, event, skills);
+            return CollectionUtil.isAnyNonNull(name, phone, email, telegram, roles, skills);
         }
 
         public void setName(Name name) {
@@ -222,20 +221,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(telegram);
         }
 
-        public void setRole(Role role) {
-            this.role = role;
+        public void setRoles(HashMap<Event, Role> roles) {
+            this.roles = (roles != null) ? new HashMap<>(roles) : null;
         }
 
-        public Optional<Role> getRole() {
-            return Optional.ofNullable(role);
-        }
-
-        public void setEvent(Event event) {
-            this.event = event;
-        }
-
-        public Optional<Event> getEvent() {
-            return Optional.ofNullable(event);
+        public Optional<HashMap<Event, Role>> getRoles() {
+            return (roles != null) ? Optional.of(roles) : Optional.empty();
         }
 
 
@@ -272,8 +263,7 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(telegram, otherEditPersonDescriptor.telegram)
-                    && Objects.equals(event, otherEditPersonDescriptor.event)
-                    && Objects.equals(role, otherEditPersonDescriptor.role)
+                    && Objects.equals(roles, otherEditPersonDescriptor.roles)
                     && Objects.equals(skills, otherEditPersonDescriptor.skills);
         }
 
@@ -284,8 +274,8 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("telegram", telegram)
-                    .add("role", role)
-                    .add("event", event)
+                    .add("role", roles.values())
+                    .add("event", roles.keySet())
                     .add("skills", skills)
                     .toString();
         }

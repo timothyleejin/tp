@@ -30,9 +30,9 @@ public class PersonTest {
     @Test
     public void hashCode_sameValues_sameHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getTelegram(),
-                ALICE.getRole(), ALICE.getEvent(), ALICE.getSkills());
+                ALICE.getEventsWithRoles(), ALICE.getSkills());
         Person person2 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getTelegram(),
-                ALICE.getRole(), ALICE.getEvent(), ALICE.getSkills());
+                ALICE.getEventsWithRoles(), ALICE.getSkills());
 
         // Equal objects must have the same hash code
         assertEquals(person1.hashCode(), person2.hashCode());
@@ -41,9 +41,9 @@ public class PersonTest {
     @Test
     public void hashCode_differentValues_differentHash() {
         Person person1 = new Person(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getTelegram(),
-                ALICE.getRole(), ALICE.getEvent(), ALICE.getSkills());
+                ALICE.getEventsWithRoles(), ALICE.getSkills());
         Person person2 = new Person(BOB.getName(), ALICE.getPhone(), ALICE.getEmail(), ALICE.getTelegram(),
-                ALICE.getRole(), ALICE.getEvent(), ALICE.getSkills());
+                ALICE.getEventsWithRoles(), ALICE.getSkills());
 
         // Different objects must have different hash codes
         assertNotEquals(person1.hashCode(), person2.hashCode());
@@ -106,12 +106,8 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different event -> returns false
-        editedAlice = new PersonBuilder(ALICE).withEvent(VALID_EVENT_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different role -> returns false
-        editedAlice = new PersonBuilder(ALICE).withEvent(VALID_ROLE_BOB).build();
+        // different event and role -> returns false
+        editedAlice = new PersonBuilder(ALICE).withEventAndRole(VALID_EVENT_BOB, VALID_ROLE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different telegram -> returns false
@@ -127,7 +123,7 @@ public class PersonTest {
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", telegram=" + ALICE.getTelegram()
-                 + ", role=" + ALICE.getRole() + ", event=" + ALICE.getEvent() + ", skills=" + ALICE.getSkills() + "}";
+                 + ", event=" + ALICE.getEvents() + ", role=" + ALICE.getRoles() + ", skills=" + ALICE.getSkills() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
