@@ -9,14 +9,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Telegram {
 
-    public static final String MESSAGE_CONSTRAINTS = "Telegrams can take any values with no "
-            + "spaces, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Telegram handles must not be empty and can only be made up of: "
+            + "English letters (a-z, A-Z), digits (0-9), and underscores (_). "
+            + "It also has to be between 5 and 32 characters long.";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s]+";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,32}$";
 
     public final String value;
 
