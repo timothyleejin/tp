@@ -1,4 +1,4 @@
----
+`---
 layout: page
 title: Developer Guide
 ---
@@ -314,8 +314,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 System: LinkUp<br>
-**Use case: UC1 - Add Contact**<br>
 Actor: User
+
+**Use case: UC1 - Add Contact**<br>
 
 **MSS**
 1. User requests to add contact.
@@ -327,11 +328,20 @@ Actor: User
 * 1a. LinkUp detects missing information.
     * 1a1.LinkUp displays an error message.
 
-      Use case ends.
+    Use case ends.
+* 1b. Contact already exists in LinkUp
+    * 1b1. LinkUp shows duplicate contact error message.
+
+    Use case ends.
+* 1c. Invalid field format (E.g. usage of alphabets in phone number)
+    * 1c1. LinkUp shows invalid input message 
+  
+    Use case ends.
+
 
 System: LinkUp<br>
+Actor: User<br>
 **Use case: UC2 - Find Contact**<br>
-Actor: User
 
 **MSS**
 1. User finds contact.
@@ -370,6 +380,147 @@ Actor: User
     * 1b1. AddressBook shows an error message.
 
       Use case resumes at step 2.
+
+System: LinkUp<br>
+Use case: UC4 - Mark Contact as Favourite<br>
+Actor: User
+
+**MSS**
+1. User requests to mark a specific contact as favourite.
+2. LinkUp marks the contact as favourite and displays confirmation.
+
+    Use case ends.
+
+**Extensions**
+* 1a. The specified contact does not exist.
+  *   1a1. LinkUp displays an error message.
+    Use case ends.
+
+* 1b. The contact is already marked as favourite.
+  *   1b1. LinkUp displays a message indicating that the contact is already favourite.
+    Use case ends.
+
+System: LinkUp<br>
+Use case: UC5 - Unmark Favourite Contact<br>
+Actor: User
+
+**MSS**
+1. User requests to unmark a contact as favourite.
+2. LinkUp removes the favourite status and displays confirmation.
+ 
+    Use case ends. 
+
+**Extensions**
+* 1a. The specified contact does not exist.
+   * 1a1. LinkUp displays an error message.
+  
+        Use case ends.
+  
+* 1b. The contact is not marked as favourite.
+   * 1b1. LinkUp displays a message indicating that the contact is not a favourite.
+    
+        Use case ends.
+
+System: LinkUp<br>
+Use case: UC6 - List Favourite Contacts<br>
+Actor: User
+
+**MSS**
+1. User requests to view all favourite contacts.
+2. LinkUp displays a list of favourite contacts.
+    
+    Use case ends.
+
+**Extensions**
+* 1a. There are no favourite contacts.
+    * 1a1. LinkUp displays a message indicating that there are no favourites.
+
+    Use case ends.
+
+System: LinkUp<br>
+Use case: UC7 - Filter Contacts<br>
+Actor: User
+
+**MSS**
+1. User requests to filter contacts by tag, event, or role.
+2. LinkUp displays contacts that match the filter condition.
+
+   Use case ends.
+   
+**Extensions**
+* 1a. No contacts match the filter condition.
+    * 1a1. LinkUp displays “No contacts match the filter.”
+    
+    Use case ends.
+   
+* 1b. The filter condition is invalid.
+   * 1b1. LinkUp displays an error message.
+  
+   Use case ends.
+
+* 1c. User clears the filter.
+  * 1c1. LinkUp restores the full contact list.
+  
+  Use case ends.
+
+System: LinkUp<br>
+Use case: UC8 - Clear All Contacts<br>
+Actor: User
+
+**MSS**
+1. User requests to clear all contacts.
+2. LinkUp deletes all contacts and displays an empty list.
+
+   Use case ends.
+
+**Extensions**
+* 1a. User cancels the confirmation.
+    * 1a1. LinkUp retains all contacts.
+  
+    Use case ends.
+* 1b. The contact list is already empty.
+   * 1b1. LinkUp displays a message indicating that there are no contacts to clear.
+   
+   Use case ends.
+
+System: LinkUp<br>
+Use case: UC10 - Edit Contact<br>
+Actor: User
+
+**MSS**
+1. User requests to list persons.
+2. LinkUp displays a list of persons.
+3. User requests to edit a specific person in the list by index.
+4. LinkUp updates the person’s information with the new details.
+5. LinkUp displays the updated contact list.
+
+    Use case ends.
+
+**Extensions**
+* 1a. The list is empty.
+    * 1a1. LinkUp displays a message indicating that there are no persons to edit.
+
+  Use case ends.
+
+* 1b. The given index is invalid.
+  * 1b1. LinkUp shows an error message.
+  
+  Use case ends.
+
+* 1c. The user provides invalid or incomplete fields (e.g., invalid email or phone format).
+  * 1c1. LinkUp displays an error message.
+ 
+  Use case ends.
+
+* 1d. The user does not specify any field to edit.
+  * 1d1. LinkUp displays a message indicating that at least one field must be provided.
+  
+  Use case ends.
+
+* 1e. The edited information results in a duplicate contact.
+  * 1e1. LinkUp displays a “Duplicate contact” error message.
+  
+  Use case ends.
 
 ### Non-Functional Requirements
 
