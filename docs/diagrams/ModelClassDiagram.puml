@@ -18,6 +18,8 @@ Class Telegram
 Class Email
 Class Name
 Class Phone
+Class Event
+Class Role
 Class Skill
 
 Class I #FFFFFF
@@ -41,6 +43,8 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Telegram
+Person *--> Event
+Person *--> Role
 Person *--> "*" Skill
 
 Person -[hidden]up--> I
