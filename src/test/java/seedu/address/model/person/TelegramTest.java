@@ -1,6 +1,8 @@
 package seedu.address.model.person;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -51,9 +53,9 @@ public class TelegramTest {
 
         // invalid characters
         assertFalse(Telegram.isValidTelegram("lazy isaac")); // contains space
-        assertFalse(Telegram.isValidTelegram("lazyisaac!"));// contains special character "!"
-        assertFalse(Telegram.isValidTelegram("lazy.isaac"));// contains special character "."
-        assertFalse(Telegram.isValidTelegram("lazy-isaac"));// contains special character "-"
+        assertFalse(Telegram.isValidTelegram("lazyisaac!")); // contains special character "!"
+        assertFalse(Telegram.isValidTelegram("lazy.isaac")); // contains special character "."
+        assertFalse(Telegram.isValidTelegram("lazy-isaac")); // contains special character "-"
     }
 
     @Test
