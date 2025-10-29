@@ -25,13 +25,13 @@ public class FilterCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the address book. "
             + "Parameters: "
-            + "[" + PREFIX_NAME + "NAME ]"
-            + "[" + PREFIX_PHONE + "PHONE ]"
-            + "[" + PREFIX_EMAIL + "EMAIL ]"
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM ]"
-            + "[" + PREFIX_ROLE + "ROLE ]"
-            + "[" + PREFIX_EVENT + "EVENT ]"
-            + "[" + PREFIX_SKILL + "SKILL]...\n"
+            + "[" + PREFIX_NAME + "NAME]"
+            + "[" + PREFIX_PHONE + "PHONE]"
+            + "[" + PREFIX_EMAIL + "EMAIL]"
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM]"
+            + "[" + PREFIX_ROLE + "ROLE]"
+            + "[" + PREFIX_EVENT + "EVENT]"
+            + "[" + PREFIX_SKILL + "SKILL]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Chen ";
 

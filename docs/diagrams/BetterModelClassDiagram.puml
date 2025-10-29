@@ -13,8 +13,8 @@ Person -up-> "*" Tag
 Person *--> Name
 Person *--> Phone
 Person *--> Email
-Person --> Telegram
-Person --> Event
-Person --> Role
-Person --> "*" Skill
+Person *--> Telegram
+Person *--> Event
+Person *--> Role
+Person *--> "*" Skill
 @enduml

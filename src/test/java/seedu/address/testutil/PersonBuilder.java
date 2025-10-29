@@ -85,6 +85,17 @@ public class PersonBuilder {
     }
 
     /**
+     * Removes a specific {@code Skill} from the {@code Person}'s skill list.
+     */
+    public PersonBuilder withoutSkill(Skill skill) {
+        requireNonNull(skill);
+        Set<Skill> updatedSkills = new HashSet<>(skills);
+        updatedSkills.removeIf(s -> s.equals(skill));
+        this.skills = updatedSkills;
+        return this;
+    }
+
+    /**
      * Sets the {@code Telegram} of the {@code Person} that we are building.
      */
     public PersonBuilder withTelegram(String telegram) {
