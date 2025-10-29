@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -81,6 +83,17 @@ public class PersonBuilder {
      */
     public PersonBuilder withSkills(String ... skills) {
         this.skills = SampleDataUtil.getSkillSet(skills);
+        return this;
+    }
+
+    /**
+     * Removes a specific {@code Skill} from the {@code Person}'s skill list.
+     */
+    public PersonBuilder withoutSkill(Skill skill) {
+        requireNonNull(skill);
+        Set<Skill> updatedSkills = new HashSet<>(skills);
+        updatedSkills.removeIf(s -> s.equals(skill));
+        this.skills = updatedSkills;
         return this;
     }
 

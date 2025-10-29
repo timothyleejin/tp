@@ -82,7 +82,7 @@ public class DeleteCommand extends Command {
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
 
-        // Both targetIndices are already distinct and sorted in descnding order, so can just directly compare
+        // Both targetIndices are already distinct and sorted in descending order, so can just directly compare
         return this.targetIndices.equals(otherDeleteCommand.targetIndices);
     }
 
