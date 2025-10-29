@@ -6,7 +6,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class CopyCommandParser implements Parser<CopyCommand>{
+/**
+ * Parses input argument and creates a new CopyCommand object
+ */
+public class CopyCommandParser implements Parser<CopyCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the CopyCommand
@@ -24,7 +27,7 @@ public class CopyCommandParser implements Parser<CopyCommand>{
         try {
             Index index = ParserUtil.parseIndex(trimmedArgs);
             return new CopyCommand(index);
-        }  catch (ParseException pe) {
+        } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CopyCommand.MESSAGE_USAGE), pe);
         }
     }

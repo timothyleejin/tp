@@ -34,6 +34,9 @@ public class CopyCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Constructs CopyCommand using an index.
+     */
     public CopyCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -50,7 +53,7 @@ public class CopyCommand extends Command {
         String addCommand = getAddCommand(person);
 
         if (GraphicsEnvironment.isHeadless()) {
-            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(),addCommand));
+            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(), addCommand));
         }
 
         try {
@@ -60,10 +63,13 @@ public class CopyCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS, person.getName(), addCommand));
         } catch (Exception e) {
             // In case clipboard failed or throws errors
-            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(),addCommand));
+            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(), addCommand));
         }
     }
 
+    /**
+     * Constructs a String that is the Add Command input for the selected contact.
+     */
     private String getAddCommand(Person person) {
         StringBuilder sb = new StringBuilder();
         sb.append("add ");
