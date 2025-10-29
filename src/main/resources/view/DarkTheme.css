@@ -126,7 +126,7 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: #3E2C23;
+    -fx-background-color: #E6D9CE;
     -fx-control-inner-background: transparent;
 }
 
@@ -155,6 +155,11 @@
 
 .list-cell .label {
     -fx-text-fill: #3B2B23;
+}
+
+.list-cell:empty {
+    -fx-background-color: #E6D9CE;
+    -fx-border-color: transparent;
 }
 
 .cell_big_label {
@@ -193,6 +198,7 @@
      -fx-font-size: 13pt;
      -fx-padding: 8;
      -fx-background-radius: 0;
+     -fx-wrap-text: true;
 }
 
 #resultDisplayPlaceholder {
