@@ -84,7 +84,7 @@ public class AddressBookParser {
         case DeleteSkillCommand.COMMAND_WORD:
             return new DeleteSkillCommandParser().parse(arguments);
 
-        case CopyCommand.COMMAND_WORD:
+        case CopyCommand.COMMAND_WORD, CopyCommand.COMMAND_SHORTCUT:
             return new CopyCommandParser().parse(arguments);
 
         default:

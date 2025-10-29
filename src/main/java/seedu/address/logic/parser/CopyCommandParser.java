@@ -1,15 +1,10 @@
 package seedu.address.logic.parser;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.*;
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.CopyCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class CopyCommandParser implements Parser<CopyCommand>{
 

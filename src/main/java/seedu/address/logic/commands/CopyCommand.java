@@ -1,14 +1,15 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Copies add command string of an existing contact to the clipboard for users to add a contact with similar fields.
@@ -26,8 +27,10 @@ public class CopyCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Copied add command for %s to clipboard!\n"
             + "If paste (ctrl + v) does not work, "
-            + "here is the add command string for you to add manually:\n%s";
+            + "here is the add command string for you to manually copy:\n%s";
     public static final String MESSAGE_INVALID_INDEX = "The person index provided is invalid.";
+    public static final String MESSAGE_CLIPBOARD_FAIL = "Clipboard not available. "
+            + "Please manually copy the command for %s below:\n%s";
 
     private final Index targetIndex;
 
@@ -46,12 +49,19 @@ public class CopyCommand extends Command {
         Person person = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         String addCommand = getAddCommand(person);
 
-        // Copy to clipboard
-        Toolkit.getDefaultToolkit()
-                .getSystemClipboard()
-                .setContents(new StringSelection(addCommand), null);
+        if (GraphicsEnvironment.isHeadless()) {
+            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(),addCommand));
+        }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, person.getName(), addCommand));
+        try {
+            Toolkit.getDefaultToolkit()
+                    .getSystemClipboard()
+                    .setContents(new StringSelection(addCommand), null);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, person.getName(), addCommand));
+        } catch (Exception e) {
+            // In case clipboard failed or throws errors
+            return new CommandResult(String.format(MESSAGE_CLIPBOARD_FAIL, person.getName(),addCommand));
+        }
     }
 
     private String getAddCommand(Person person) {
