@@ -97,7 +97,6 @@ public class AddressBookParser {
 
         case AddSkillCommand.COMMAND_WORD:
             return new AddSkillCommandParser().parse(arguments);
-            
         case DeleteSkillCommand.COMMAND_WORD:
             return new DeleteSkillCommandParser().parse(arguments);
 
