@@ -41,14 +41,13 @@ This app is tailored for **community and club leaders** responsible for:
 Let's walk you through the setup process of LinkUp.
 
 1. **Prerequisites:** <br>
-   Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
-   of your computer to check.
-   * **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-     to ensure you have the precise JDK version prescribed.
-   * **Windows users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
-     to ensure you have the precise JDK version prescribed.
-   * **Linux users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
-     to ensure you have the precise JDK version prescribed.
+   You are required to install a specific version of the Java Development Kit (JDK) to run **LinkUp**. A JDK is a software package that provides the tools needed to develop and run Java applications.
+   * **Mac users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+   to ensure you have the precise version prescribed.
+   * **Windows users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+   to ensure you have the precise version prescribed.
+   * **Linux users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
+   to ensure you have the precise version prescribed.
 
 2. **Download LinkUp:** <br>
    Install the latest `LinkUp.jar` file from [here](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
@@ -294,7 +293,7 @@ Exit the application.
 
 **Format:** <br> `exit`
 
-The GUI will close after the input. LinkUp saves your contact list automatically in your computer. 
+The Graphic User Interface (GUI) will close after the input. LinkUp saves your contact list automatically in your computer. 
 This means that your contact list will be restored whenever you reopen LinkUp.
 
 ### Save the Data
@@ -366,3 +365,26 @@ Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 ### Common Error Messages
 
 ### Further Help & Support
+* Visit our [GitHub Repository](https://github.com/AY2526S1-CS2103T-F13-2/tp) or [Developer Guide](https://ay2526s1-cs2103t-f13-2.github.io/tp/DeveloperGuide.html) for technical details.
+* Post your query [here](https://github.com/AY2526S1-CS2103T-F13-2/tp/issues) by creating a new issue, detailing 
+  * Your exact command input
+  * Errors faced
+  * Your computer's operating system
+  * Your JDK Version 
+  * Screenshots <br>
+We will get back to you as soon as possible.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Get in Touch with Us**
+We’d love to hear from you! Whether you have questions, feedback, or suggestions for new features, feel free to reach out to us.
+
+**Who We Are:** <br>
+We are the AY2526S1-CS2103T-F13-2 team of developers passionate about creating efficient and user-friendly tools.
+
+**Contact Information:** <br>
+📧 Email: e1408873@u.nus.edu <br>
+💬 GitHub Issue Page: [LinkUp Issues](https://github.com/AY2526S1-CS2103T-F13-2/tp/issues)
+
+**Feature Suggestions:** <br>
+Have an idea to make LinkUp even better? Post it in our GitHub Issues page or email us — we’re always looking to improve!
