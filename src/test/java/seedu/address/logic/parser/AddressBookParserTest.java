@@ -103,6 +103,7 @@ public class AddressBookParserTest {
         assertEquals(new FilterCommand(predicate), command);
     }
 
+
     @Test
     public void parseCommand_deleteSkill() throws Exception {
         Skill skillToDelete = new Skill("Java");

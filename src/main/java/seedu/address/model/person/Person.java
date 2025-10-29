@@ -191,6 +191,10 @@ public class Person {
         return Objects.hash(name, phone, email, telegram, skills, roles);
     }
 
+    public Person withUpdatedSkills(Set<Skill> newSkills) {
+        return new Person(name, phone, email, telegram, role, event, newSkills, isFavourite);
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
