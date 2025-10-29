@@ -41,8 +41,8 @@ public class CopyCommandTest {
         addCommand.append("p/").append(personToCopy.getPhone().value).append(" ");
         addCommand.append("e/").append(personToCopy.getEmail().value).append(" ");
         addCommand.append("t/").append(personToCopy.getTelegram().value).append(" ");
-        addCommand.append("ev/").append(personToCopy.getEvent().value).append(" ");
-        addCommand.append("r/").append(personToCopy.getRole().value).append(" ");
+        personToCopy.getEvents().forEach(event -> addCommand.append("ev/").append(event.value).append(" "));
+        personToCopy.getRoles().forEach(role -> addCommand.append("r/").append(role.value).append(" "));
         personToCopy.getSkills().forEach(skill -> addCommand.append("s/").append(skill.skillName).append(" "));
 
         CommandResult result = command.execute(model);
