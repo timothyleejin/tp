@@ -95,7 +95,7 @@ public class AddSkillCommandTest {
     }
     @Test
     void execute_addMultipleSkills_success() throws CommandException {
-        Skill skill1 = new Skill("Java");
+        Skill skill1 = new Skill("JavaScript");
         Skill skill2 = new Skill("Python");
         List<Skill> skillsToAdd = List.of(skill2, skill1);
 
@@ -104,7 +104,7 @@ public class AddSkillCommandTest {
         CommandResult result = command.execute(model);
 
         String expectedMessage = String.format(AddSkillCommand.MESSAGE_ADD_SKILL_SUCCESS,
-                "[Java], [Python]", "Carl Kurz");
+                "[JavaScript], [Python]", "Carl Kurz");
         assertEquals(expectedMessage, result.getFeedbackToUser());
 
         Person editedPerson = model.getFilteredPersonList().get(2);
