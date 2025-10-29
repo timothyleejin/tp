@@ -48,7 +48,7 @@ public class CopyCommandTest {
         CommandResult result = command.execute(model);
 
         if (GraphicsEnvironment.isHeadless()) {
-            assertEquals(String.format(MESSAGE_CLIPBOARD_FAIL, personToCopy.getName(), addCommand),
+            assertEquals(String.format(MESSAGE_CLIPBOARD_FAIL, personToCopy.getName(), addCommand.toString().trim()),
                     result.getFeedbackToUser());
         } else {
             assertEquals(String.format(CopyCommand.MESSAGE_SUCCESS, personToCopy.getName(),
