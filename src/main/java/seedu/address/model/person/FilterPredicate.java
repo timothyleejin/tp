@@ -59,17 +59,29 @@ public class FilterPredicate implements Predicate<Person> {
                     telegram -> person.getTelegram().value.toLowerCase().contains(telegram.toLowerCase()));
 
         int eventsSize = filterParams.getEvents().size();
-        int rolesSize = filterParams.getRoles().size();
-        boolean checkAllEventsAndRoles = true;
+        boolean checkEvents = eventsSize == 0;
 
-        for (int i = 0; i < Math.min(eventsSize, rolesSize); i++) {
+        for (int i = 0; i < eventsSize; i++) {
             Event e = filterParams.getEvents().get(i);
+            boolean temp = person.getEvents().stream().anyMatch(
+                    event -> event.value.toLowerCase().contains(e.value.toLowerCase()));
+
+            if (temp) {
+                checkEvents = true;
+                break;
+            }
+        }
+
+        int rolesSize = filterParams.getRoles().size();
+        boolean checkRoles = rolesSize == 0;
+
+        for (int i = 0; i < rolesSize; i++) {
             Role r = filterParams.getRoles().get(i);
+            boolean temp = person.getRoles().stream().anyMatch(
+                    role -> role.value.toLowerCase().contains(r.value.toLowerCase()));
 
-            boolean checkEventAndRole = checkEventAndRole(e, r, person);
-
-            if (!checkEventAndRole) {
-                checkAllEventsAndRoles = false;
+            if (temp) {
+                checkRoles = true;
                 break;
             }
         }
@@ -80,7 +92,7 @@ public class FilterPredicate implements Predicate<Person> {
                         personSkill.skillName.equalsIgnoreCase(skill.skillName)));
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkTelegram
-                && checkAllEventsAndRoles && checkSkill;
+                && checkEvents && checkRoles && checkSkill;
 
         return matchFilters;
     }

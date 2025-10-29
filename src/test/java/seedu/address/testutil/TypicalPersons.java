@@ -38,7 +38,7 @@ public class TypicalPersons {
             .withSkills("Speaking", "Coding").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withTelegram("zruKlraC")
-            .withEventAndRole("Supernova","Project Director")
+            .withEventAndRole("Supernova", "Project Director")
             .build();
 
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
@@ -51,11 +51,11 @@ public class TypicalPersons {
             .build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withTelegram("tokyoenjoyer123")
-            .withEventAndRole("ICL","Programmes Head")
+            .withEventAndRole("ICL", "Programmes Head")
             .build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withTelegram("CuriousGeorge")
-            .withEventAndRole("UCL","Logistics Member")
+            .withEventAndRole("UCL", "Logistics Member")
             .build();
 
     // Manually added

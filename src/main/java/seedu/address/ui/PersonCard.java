@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 
 
@@ -45,7 +46,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane skills;
     @FXML
-    private FlowPane eventsAndRoles;
+    private VBox eventsRolesContainer;
     @FXML
     private ImageView favouriteIcon;
 
@@ -60,12 +61,26 @@ public class PersonCard extends UiPart<Region> {
         telegram.setText("@" + person.getTelegram().value);
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
+
         person.getEvents().stream()
                 .sorted(Comparator.comparing(event -> event.value))
                 .forEach(event -> {
-                    eventsAndRoles.getChildren().add(new Label(event.value));
-                    eventsAndRoles.getChildren().add(new Label(person.getRole(event).value));
+                    // Create HBox for each event-role pair
+                    HBox eventRolePair = new HBox(5); // 5px spacing between event and role
+                    eventRolePair.getStyleClass().add("event-role-pair");
+
+                    // Event label
+                    Label eventLabel = new Label(event.value);
+                    eventLabel.getStyleClass().add("event-label");
+
+                    // Role label - will appear immediately to the right of the event
+                    Label roleLabel = new Label(person.getRole(event).value);
+                    roleLabel.getStyleClass().add("role-label");
+
+                    eventRolePair.getChildren().addAll(eventLabel, roleLabel);
+                    eventsRolesContainer.getChildren().add(eventRolePair);
                 });
+
         person.getSkills().stream()
                 .sorted(Comparator.comparing(skill -> skill.skillName))
                 .forEach(skill -> skills.getChildren().add(new Label(skill.skillName)));

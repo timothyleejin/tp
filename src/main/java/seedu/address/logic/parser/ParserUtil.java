@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -130,8 +129,12 @@ public class ParserUtil {
         return new Role(trimmedRole);
     }
 
+    /**
+     * Parses a list of events and roles into a {@code HashMap<Event, Role>}
+     * Extra events or roles with no matching pair will be removed.
+     */
     public static HashMap<Event, Role> parseEventsWithRoles(List<String> events, List<String> roles)
-            throws ParseException{
+            throws ParseException {
         requireNonNull(events);
         requireNonNull(roles);
 

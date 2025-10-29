@@ -48,7 +48,9 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
-        this.eventsAndRoles.addAll(eventsAndRoles);
+        if (eventsAndRoles != null) {
+            this.eventsAndRoles.addAll(eventsAndRoles);
+        }
         if (skills != null) {
             this.skills.addAll(skills);
         }

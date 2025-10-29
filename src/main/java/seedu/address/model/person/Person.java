@@ -198,7 +198,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("telegram", telegram)
-                .add("event", this.getEvents())
+                .add("events", this.getEvents())
                 .add("roles", this.getRoles())
                 .add("skills", skills)
                 .toString();

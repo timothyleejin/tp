@@ -274,8 +274,8 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("telegram", telegram)
-                    .add("role", roles.values())
-                    .add("event", roles.keySet())
+                    .add("roles", (roles != null) ? roles.values() : null)
+                    .add("events", (roles != null) ? roles.keySet() : null)
                     .add("skills", skills)
                     .toString();
         }
