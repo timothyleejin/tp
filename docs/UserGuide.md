@@ -113,10 +113,10 @@ A person can have any number of skills (including 0)
 </div>
 
 **Example Input:** <br>
-`add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
+`add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
 
 **Expected Output:** <br>
-`New person added: John Deez; Phone: 98765431; Telegram: Johnstreet; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+`New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input:** <br>
 `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
@@ -138,8 +138,8 @@ View a list of all persons in the address book.
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -150,7 +150,7 @@ Edit the details of an existing person in the address book.
 `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output:** <br>
-`Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+`Edited Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input:** <br>
 `e 2 n/Betsy Crower s/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
@@ -221,7 +221,7 @@ Delete specified persons from the address book.
 `list` followed by `delete 1 2` deletes both the 1st and 2nd persons in the address book.
 
 **Expected Output:** <br>
-`Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+`Deleted Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input:** <br>
 `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
@@ -315,10 +315,10 @@ Furthermore, certain edits can cause the LinkUp to behave in unexpected ways (e.
 
 Action | Command
 --------|------------------
-**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com t/james0336 s/Python s/Java`
+**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com t/james0336 s/Python s/Java`
 **Clear**: <br> Delete all contacts | `clear`
 **Delete**: <br> Delete contacts | `delete INDEX`<br> <br> e.g. `delete 3`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]`<br> <br> e.g. `find James Jake`
 **Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> <br> e.g. `filter ev/Hunt`
 **List**: <br> List all contacts | `list`

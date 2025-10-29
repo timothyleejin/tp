@@ -104,10 +104,10 @@ A person can have any number of skills (including 0)
 </div>
 
 **Example Input**:
-* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123, #01-01`
+* `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
 
 **Expected Output**:
-* `New person added: John Deez; Phone: 98765431; Telegram: Johnstreet; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
+* `New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
 
 **Example Input**:
 * `a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
@@ -129,8 +129,8 @@ View a list of all persons in the address book.
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -141,7 +141,7 @@ Edit the details of an existing person in the address book.
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 
 **Expected Output**:
-* `Edited Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+* `Edited Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
 *  `e 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
@@ -207,7 +207,7 @@ Delete a specified person from the address book.
 * `list` followed by `delete 1` deletes the 1st person in the address book.
 
 **Expected Output**:
-* `Deleted Person: John Deez; Phone: 91234567; Telegram: Johnstreet, block 123, #01-01; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+* `Deleted Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
 **Example Input**:
 * `find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
