@@ -63,12 +63,11 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
             editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
         }
-        if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editPersonDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+        if (argMultimap.getValue(PREFIX_ROLE).isPresent() && argMultimap.getValue(PREFIX_EVENT).isPresent()) {
+            editPersonDescriptor.setRoles(ParserUtil.parseEventsWithRoles(argMultimap.getAllValues(PREFIX_EVENT),
+                    argMultimap.getAllValues(PREFIX_ROLE)));
         }
-        if (argMultimap.getValue(PREFIX_EVENT).isPresent()) {
-            editPersonDescriptor.setEvent(ParserUtil.parseEvent(argMultimap.getValue(PREFIX_EVENT).get()));
-        }
+
         parseSkillsForEdit(argMultimap.getAllValues(PREFIX_SKILL)).ifPresent(editPersonDescriptor::setSkills);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {

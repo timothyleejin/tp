@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -47,20 +48,20 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_ROLE,
-                PREFIX_EVENT);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TELEGRAM);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
-        Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
-        Event event = ParserUtil.parseEvent(argMultimap.getValue(PREFIX_EVENT).get());
+
+        HashMap<Event, Role> roles = ParserUtil.parseEventsWithRoles(argMultimap.getAllValues(PREFIX_EVENT),
+                argMultimap.getAllValues(PREFIX_ROLE));
 
         // default empty event if not provided
         Set<Skill> skillList = ParserUtil.parseSkills(argMultimap.getAllValues(PREFIX_SKILL));
 
-        Person person = new Person(name, phone, email, telegram, role, event, skillList);
+        Person person = new Person(name, phone, email, telegram, roles, skillList);
 
         return new AddCommand(person);
     }

@@ -6,10 +6,8 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EVENT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EVENT_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EVENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_SKILL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -32,10 +30,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SKILL_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SKILL_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -99,16 +95,12 @@ public class AddCommandParserTest {
         assertParseFailure(parser, TELEGRAM_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
-        // multiple roles
-        assertParseFailure(parser, ROLE_DESC_AMY + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // multiple fields repeated
         assertParseFailure(parser,
                 validExpectedPersonString + PHONE_DESC_AMY + EMAIL_DESC_AMY + NAME_DESC_AMY + TELEGRAM_DESC_AMY
                         + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL,
-                        PREFIX_ROLE, PREFIX_PHONE, PREFIX_EVENT));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_TELEGRAM, PREFIX_EMAIL, PREFIX_PHONE));
 
 
         // invalid value followed by valid value
@@ -129,13 +121,6 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_TELEGRAM_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
 
-        // invalid role
-        assertParseFailure(parser, INVALID_ROLE_DESC + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
-
-        // invalid event
-        assertParseFailure(parser, INVALID_EVENT_DESC + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EVENT));
 
         // valid value followed by invalid value
 
@@ -154,13 +139,6 @@ public class AddCommandParserTest {
         // invalid address
         assertParseFailure(parser, validExpectedPersonString + INVALID_TELEGRAM_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TELEGRAM));
-
-        // invalid role
-        assertParseFailure(parser, validExpectedPersonString + INVALID_ROLE_DESC,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
-        // invalid event
-        assertParseFailure(parser, validExpectedPersonString + INVALID_EVENT_DESC,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EVENT));
 
     }
 

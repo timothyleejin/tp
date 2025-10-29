@@ -47,7 +47,7 @@ public class Event {
         return value.equals(otherEvent.value);
     }
 
-    public int hashcode() {
+    public int hashCode() {
         return value.hashCode();
     }
 

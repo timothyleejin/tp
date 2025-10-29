@@ -13,6 +13,10 @@ public class FilterPredicate implements Predicate<Person> {
         this.filterParams = filterParams;
     }
 
+    private boolean checkEventAndRole(Event e, Role r, Person person) {
+        return person.getEvents().contains(e) && person.getRole(e).equals(r);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -52,13 +56,33 @@ public class FilterPredicate implements Predicate<Person> {
                 || filterParams.getTelegrams().stream().anyMatch(
                         telegram -> person.getTelegram().value.toLowerCase().contains(telegram.toLowerCase()));
 
-        boolean checkRole = filterParams.getRoles().isEmpty()
-                || filterParams.getRoles().stream().anyMatch(
-                        role -> person.getRole().value.toLowerCase().contains(role.value.toLowerCase()));
+        int eventsSize = filterParams.getEvents().size();
+        boolean checkEvents = eventsSize == 0;
 
-        boolean checkEvent = filterParams.getEvents().isEmpty()
-                || filterParams.getEvents().stream().anyMatch(
-                        event -> person.getEvent().value.toLowerCase().contains(event.value.toLowerCase()));
+        for (int i = 0; i < eventsSize; i++) {
+            Event e = filterParams.getEvents().get(i);
+            boolean temp = person.getEvents().stream().anyMatch(
+                    event -> event.value.toLowerCase().contains(e.value.toLowerCase()));
+
+            if (temp) {
+                checkEvents = true;
+                break;
+            }
+        }
+
+        int rolesSize = filterParams.getRoles().size();
+        boolean checkRoles = rolesSize == 0;
+
+        for (int i = 0; i < rolesSize; i++) {
+            Role r = filterParams.getRoles().get(i);
+            boolean temp = person.getRoles().stream().anyMatch(
+                    role -> role.value.toLowerCase().contains(r.value.toLowerCase()));
+
+            if (temp) {
+                checkRoles = true;
+                break;
+            }
+        }
 
         boolean checkSkill = filterParams.getSkills().isEmpty()
                 || filterParams.getSkills().stream().anyMatch(
@@ -67,7 +91,7 @@ public class FilterPredicate implements Predicate<Person> {
                                         .contains(skill.skillName.toLowerCase())));
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkTelegram
-                && checkRole && checkEvent && checkSkill;
+                && checkEvents && checkRoles && checkSkill;
 
         return matchFilters;
     }

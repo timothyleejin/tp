@@ -64,9 +64,11 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", telegram="
-                + editPersonDescriptor.getTelegram().orElse(null) + ", role="
-                + editPersonDescriptor.getEvent().orElse(null) + ", event="
-                + editPersonDescriptor.getRole().orElse(null) + ", skills="
+                + editPersonDescriptor.getTelegram().orElse(null) + ", roles="
+                + editPersonDescriptor.getRoles().map(
+                        map -> map.values()).orElse(null) + ", events="
+                + editPersonDescriptor.getRoles().map(
+                        map -> map.entrySet()).orElse(null) + ", skills="
                 + editPersonDescriptor.getSkills().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

@@ -4,15 +4,19 @@
     "phone": "94351253",
     "email": "pauline@example.com",
     "telegram": "abc123",
-    "role" : "Organiser",
-    "event" : "WIBEZ",
+    "eventsAndRoles" : [ {
+      "event" : "WIBEZ",
+      "role" : "Organiser"
+    } ],
     "skills": [ "Java" ]
   }, {
     "name": "Alice Pauline",
     "phone": "94359953",
     "email": "pauline@example.com",
     "telegram": "AlicePauline",
-    "event" : "WIBEZ",
-    "role" : "Organiser"
+    "eventsAndRoles" : [ {
+      "event" : "WIBEZ",
+      "role" : "Organiser"
+    } ]
   } ]
 }

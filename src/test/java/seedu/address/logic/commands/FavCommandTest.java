@@ -28,7 +28,7 @@ class FavCommandTest {
     @BeforeEach
     void setUp() {
         person = new Person(new Name("Isaac"), new Phone("123"), new Email("a@b.com"),
-                new Telegram("dingdong"), new Role("Dev"), new Event("Event1"), Collections.emptySet());
+                new Telegram("dingdong"), new Event("Event1"), new Role("Dev"), Collections.emptySet());
         List<Person> persons = new ArrayList<>();
         persons.add(person);
         model = new ModelManager();

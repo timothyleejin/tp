@@ -3,7 +3,9 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -114,6 +116,42 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String role} into an {@code Role}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Role parseRole(String role) throws ParseException {
+        requireNonNull(role);
+        String trimmedRole = role.trim();
+        if (!Role.isValidRole(trimmedRole)) {
+            throw new ParseException((Role.MESSAGE_CONSTRAINTS));
+        }
+
+        return new Role(trimmedRole);
+    }
+
+    /**
+     * Parses a list of events and roles into a {@code HashMap<Event, Role>}
+     * Extra events or roles with no matching pair will be removed.
+     */
+    public static HashMap<Event, Role> parseEventsWithRoles(List<String> events, List<String> roles)
+            throws ParseException {
+        requireNonNull(events);
+        requireNonNull(roles);
+
+        final HashMap<Event, Role> eventsWithRoles = new HashMap<Event, Role>();
+
+        int eventsSize = events.size();
+        int rolesSize = roles.size();
+
+        for (int i = 0; i < Math.min(eventsSize, rolesSize); i++) {
+            Event e = parseEvent(events.get(i));
+            Role r = parseRole(roles.get(i));
+            eventsWithRoles.put(e, r);
+        }
+        return eventsWithRoles;
+    }
+
+    /**
      * Parses a {@code String skill} into a {@code Skill}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -126,20 +164,6 @@ public class ParserUtil {
             throw new ParseException(Skill.MESSAGE_CONSTRAINTS);
         }
         return new Skill(trimmedSkill);
-    }
-
-    /**
-     * Parses a {@code String role} into an {@code Role}.
-     * Leading and trailing whitespaces will be trimmed.
-     */
-    public static Role parseRole(String role) throws ParseException {
-        requireNonNull(role);
-        String trimmedRole = role.trim();
-        if (!Role.isValidRole(trimmedRole)) {
-            throw new ParseException((Role.MESSAGE_CONSTRAINTS));
-        }
-
-        return new Role(trimmedRole);
     }
 
     /**

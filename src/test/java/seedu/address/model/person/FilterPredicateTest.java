@@ -73,15 +73,6 @@ public class FilterPredicateTest {
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
                 .withTelegram("Arisu").build()));
 
-        // Five keywords
-        PersonFilter fiveKeywordFilter = new PersonFilter(
-                new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Telegram("Arisu"),
-                new Role("Farmer"), null, null);
-        predicate = new FilterPredicate(fiveKeywordFilter);
-        assertTrue(predicate.test(new PersonBuilder()
-                .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
-                .withTelegram("Arisu").withRole("Farmer").build()));
-
         // Six keywords
         PersonFilter sixKeywordFilter = new PersonFilter(
                 new Name("Alice"), new Phone("98765432"), new Email("alice@gmail.com"), new Telegram("Arisu"),
@@ -89,7 +80,7 @@ public class FilterPredicateTest {
         predicate = new FilterPredicate(sixKeywordFilter);
         assertTrue(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
-                .withTelegram("Arisu").withRole("Farmer").withEvent("Secret Santa").build()));
+                .withTelegram("Arisu").withEventAndRole("Secret Santa", "Farmer").build()));
 
         // All keywords
         PersonFilter allKeywordFilter = new PersonFilter(
@@ -98,7 +89,7 @@ public class FilterPredicateTest {
         predicate = new FilterPredicate(allKeywordFilter);
         assertTrue(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
-                .withTelegram("Arisu").withRole("Farmer").withEvent("Secret Santa")
+                .withTelegram("Arisu").withEventAndRole("Secret Santa", "Farmer")
                 .withSkills("Java").build()));
 
         // Mixed-case keywords
@@ -108,13 +99,13 @@ public class FilterPredicateTest {
         predicate = new FilterPredicate(mixedCaseFilter);
         assertTrue(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withEmail("alice@gmail.com")
-                .withTelegram("Arisu").withRole("Farmer").withEvent("Secret Santa")
+                .withTelegram("Arisu").withEventAndRole("Secret Santa", "Farmer")
                 .withSkills("Java").build()));
 
         // Multiple name
         PersonFilter multipleNameFilter = new PersonFilter(List.of(new Name("Amy"), new Name("Bob")),
                 Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
-                        Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+                Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
         predicate = new FilterPredicate(multipleNameFilter);
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
     }
@@ -139,7 +130,7 @@ public class FilterPredicateTest {
         predicate = new FilterPredicate(wrongRoleFilter);
         assertFalse(predicate.test(new PersonBuilder()
                 .withName("Alice Bob").withPhone("98765432").withEmail("alice@gmail.com")
-                .withTelegram("Arisu").withRole("Farmer").withEvent("Secret Santa")
+                .withTelegram("Arisu").withEventAndRole("Secret Santa", "Farmer")
                 .withSkills("Java").build()));
     }
 }

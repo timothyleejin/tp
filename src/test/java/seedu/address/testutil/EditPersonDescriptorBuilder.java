@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,8 +40,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setTelegram(person.getTelegram());
-        descriptor.setRole(person.getRole());
-        descriptor.setEvent(person.getEvent());
+        descriptor.setRoles(person.getEventsWithRoles());
         descriptor.setSkills(person.getSkills());
     }
 
@@ -89,19 +89,12 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Role} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withRole(String role) {
-        descriptor.setRole(new Role(role));
+    public EditPersonDescriptorBuilder withEventAndRole(String event, String role) {
+        HashMap<Event, Role> roles = new HashMap<>();
+        roles.put(new Event(event), new Role(role));
+        descriptor.setRoles(roles);
         return this;
     }
-
-    /**
-     * Sets the {@code Event} of the {@code EditPersonDescriptor} that we are building.
-     */
-    public EditPersonDescriptorBuilder withEvent(String event) {
-        descriptor.setEvent(new Event(event));
-        return this;
-    }
-
 
     public EditPersonDescriptor build() {
         return descriptor;

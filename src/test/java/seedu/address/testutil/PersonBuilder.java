@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +32,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Telegram telegram;
-    private Role role;
-    private Event event;
+    private HashMap<Event, Role> roles = new HashMap<>();
     private Set<Skill> skills;
 
 
@@ -44,8 +44,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         telegram = new Telegram(DEFAULT_TELEGRAM);
-        role = new Role(DEFAULT_ROLE);
-        event = new Event(DEFAULT_EVENT);
+        roles.put(new Event(DEFAULT_EVENT), new Role(DEFAULT_ROLE));
         skills = new HashSet<>();
     }
 
@@ -57,8 +56,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         telegram = personToCopy.getTelegram();
-        role = personToCopy.getRole();
-        event = personToCopy.getEvent();
+        roles.putAll(personToCopy.getEventsWithRoles());
         skills = new HashSet<>(personToCopy.getSkills());
     }
 
@@ -71,10 +69,12 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Role} of the {@code Person} that we are building.
+     * Sets the {@code Event} and {@code Role} of the {@code Person} that we are building.
      */
-    public PersonBuilder withRole(String role) {
-        this.role = new Role(role);
+    public PersonBuilder withEventAndRole(String event, String role) {
+        HashMap<Event, Role> map = new HashMap<>();
+        map.put(new Event(event), new Role(role));
+        this.roles = map;
         return this;
     }
 
@@ -121,16 +121,8 @@ public class PersonBuilder {
         return this;
     }
 
-    /**
-     * Sets the {@code Event} of the {@code Person} that we are building.
-     */
-    public PersonBuilder withEvent(String event) {
-        this.event = new Event(event);
-        return this;
-    }
-
     public Person build() {
-        return new Person(name, phone, email, telegram, role, event, skills);
+        return new Person(name, phone, email, telegram, roles, skills);
     }
 
 }
