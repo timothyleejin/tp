@@ -34,7 +34,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -66,13 +66,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -83,7 +83,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -93,12 +93,16 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+This sequence diagram illustrates a more complex interaction within the `Logic` component, taking `execute("filter ev/cycling")` API call as the example.
+
+![Interactions Inside the Logic Component for the `filter ev/cycling` command](images/FilterSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` and `FilterCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 </div>
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to the LinkUp `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
@@ -113,9 +117,9 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+<img src="images/ModelClassDiagramNew.png" width="450" />
 
 The `Model` component,
 
@@ -126,7 +130,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -282,115 +286,243 @@ He needs to store and access many contacts easily, but does not require integrat
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                      | add a contact                              | record down people’s details                                               |
-| `* * *`  | user                      | delete a contact                           | remove unnecessary entries                                                 |
-| `* * *`  | user                      | view the contact list                      | see all contacts                                                           |
-| `* *`    | user                      | edit a contact                             | update their details                                                       |
-| `* *`    | user                      | search a contact by name/number            | find them quickly                                                          |
-| `* *`    | user                      | label contacts by team/project             | filter them easily                                                         |
-| `* *`    | user                      | add event/role information to contacts     | know their context                                                         |
-| `* *`    | user                      | export contacts in a clear format          | share them                                                                 |
-| `* *`    | new user                  | see example commands/help                  | get started quickly                                                        |
-| `* *`    | new user                  | undo my last action                        | explore safely                                                             |
-| `* *`    | new user                  | test with sample contacts                  | learn the features                                                         |
-| `* *`    | new user                  | see hints/help when using commands wrong   | recover from mistakes                                                      |
-| `* *`    | experienced user          | chain commands together                    | work faster                                                                |
-| `* *`    | experienced user          | use command shortcuts                      | speed up workflow                                                          |
-| `* *`    | leader                    | filter people under my team                | contact only them                                                          |
-| `* *`    | organization leader       | bulk add contacts                          | onboard quickly                                                            |
-| `* *`    | NPO leader                | prioritize contacts                        | access key people easily                                                   |
-| `* *`    | volunteer coordinator     | tag contacts with skills                   | assign them to tasks                                                       |
-| `* *`    | volunteer coordinator     | see when a contact was last updated        | know if details are current                                                |
-| `* *`    | small business lead       | separate client and supplier contacts      | avoid mix-ups                                                              |
-| `* *`    | small business lead       | sort contacts alphabetically/chronologically | clean data                                                                 |
-| `*`      | charity lead              | send updates to volunteers                 | ensure they don’t miss activities                                          |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​               | I want to …​                                       | So that I can…​                                                                     |
+|----------|-----------------------|----------------------------------------------------|-------------------------------------------------------------------------------------|
+| `* * *`  | new user              | see usage instructions/help                        | refer to instructions when I forget how to use the App                              |
+| `* * *`  | user                  | add a contact                                      | record down people’s details                                                        |
+| `* * *`  | user                  | delete a contact                                   | remove unnecessary entries                                                          |
+| `* * *`  | user                  | view the contact list                              | see all contacts                                                                    |
+| `* * *`  | user                  | edit a contact                                     | update their details                                                                |
+| `* * *`  | user                  | search a contact by name                           | find them quickly                                                                   |
+| `* * *`  | volunteer coordinator | tag contacts with skills                           | assign them to tasks                                                                |
+| `* * *`  | leader                | add event/role/telegram information to contacts    | know their context                                                                  |
+| `* * *`  | leader                | filter people by any field                         | find the relevant contacts                                                |
+| `* * *`  | leader                | add favourite contacts and list them               | access key people easily                                                            |
+| `* *`    | leader                | have clearer duplicate contact information         | understand which fields are duplicate more easily given the large number of contacts |
+| `* *`    | experienced user      | delete multiple contacts                           | delete contacts faster after event                                                  |
+| `* *`    | experienced user      | use command shortcuts                              | speed up workflow                                                                   |
 
 ### Use cases
+(For all use cases below, the **System** is `LinkUp` and the **Actor** is the `user`, unless specified otherwise)
 
-System: LinkUp<br>
-**Use case: UC1 - Add Contact**<br>
-Actor: User
+**Use case: Add Contact**<br>
 
 **MSS**
 1. User requests to add contact.
-2. LinkUp adds the contact and displays updated list of contacts.
-
+2. LinkUp adds the contact and displays updated list of contacts. <br><br>
    Use case ends.
 
 **Extensions**
 * 1a. LinkUp detects missing information.
-    * 1a1.LinkUp displays an error message.
+    * 1a1.LinkUp displays an error message. <br><br>
+  Use case ends. <br><br>
+* 1b. Phone number and/or name and/or email already exist in LinkUp.
+    * 1b1. LinkUp shows duplicate contact error message. <br><br>
+  Use case ends. <br><br>
+* 1c. Invalid field format (E.g. usage of alphabets in phone number)
+    * 1c1. LinkUp shows invalid input message. <br><br>
+  Use case ends.
+* 1d. Invalid command format.
+    * 1d1. LinkUp shows error message. <br><br>
+  Use case ends.
 
-      Use case ends.
-
-System: LinkUp<br>
-**Use case: UC2 - Find Contact**<br>
-Actor: User
+**Use case: Find Contact**<br>
 
 **MSS**
 1. User finds contact.
-2. LinkUp displays list of matching contacts.
-
+2. LinkUp displays list of matching contacts. <br><br>
    Use case ends.
 
 **Extensions**
-* 1a. LinkUp finds no matching contacts.
-
-  Use case ends.
-* 1b. LinkUp detects invalid or incomplete search criteria.
-    * 1b1.LinkUp displays an error message.
-
+* 1a. LinkUp finds no matching contacts. <br><br>
+  Use case ends. <br><br>
+* 1b. Invalid command format.
+    * 1b1. LinkUp shows error message. <br><br>
       Use case ends.
 
-System: LinkUp<br>
-**Use case: UC3 - Delete Contact**<br>
-Actor: User
+**Use case: Delete Contact**<br>
 
 **MSS**
 
-1.  User requests to list persons
-2.  LinkUp shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  LinkUp deletes the person
-
+1.  User requests to list persons.
+2.  LinkUp shows a list of persons.
+3.  User requests to delete a specific person in the list.
+4.  LinkUp deletes the person. <br><br>
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
-
-  Use case ends.
-* 1b. The given index is invalid.
-    * 1b1. AddressBook shows an error message.
-
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    * 3a. LinkUp shows an error message. <br><br>
       Use case resumes at step 2.
+* 3b. Invalid command format.
+    * 3b1. LinkUp shows error message. <br><br>
+      Use case resumes at step 2.
+
+**Use case: Mark Contact as Favourite**<br>
+
+**MSS**
+1. User requests to list persons.
+2. LinkUp shows a list of persons.
+3. User requests to mark a specific contact as favourite.
+4. LinkUp marks the contact as favourite, displays confirmation message, and adds heart symbol beside contact. <br><br>
+   Use case ends.
+
+**Extensions**
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+  *   3a1. LinkUp displays an error message. <br><br>
+    Use case resumes at step 2. <br><br>
+* 3b. The contact is already marked as favourite.
+  *   3b1. LinkUp displays a message indicating that the contact is already favourite. <br><br>
+    Use case resumes at step 2. <br><br>
+* 3c. Invalid command format.
+    * 3c1. LinkUp shows error message. <br><br>
+      Use case resumes at step 2.
+
+**Use case: Unmark Favourite Contact**<br>
+
+**MSS**
+1. User requests to list persons.
+2. LinkUp shows a list of persons.
+3. User requests to unmark a specific contact from favourites.
+4. LinkUp marks the contact as favourite, displays confirmation message, and removes heart symbol beside contact. <br><br>
+   Use case ends.
+
+**Extensions**
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    *   3a1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3b. The contact is already unmarked from favourites.
+    *   3b1. LinkUp displays a message indicating that the contact is already unmarked. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3c. Invalid command format.
+  * 3c1. LinkUp shows error message. <br><br>
+    Use case resumes at step 2.
+
+**Use case: List Favourite Contacts**<br>
+
+**MSS**
+1. User requests to view all favourite contacts.
+2. LinkUp displays a list of favourite contacts. <br><br>
+    Use case ends. <br><br>
+
+**Extensions**
+* 1a. There are no favourite contacts.
+    * 1a1. LinkUp displays a message indicating that there are no favourites. <br><br>
+    Use case ends. <br><br>
+* 1b. Invalid command format.
+    * 1b1. LinkUp shows error message. <br><br>
+      Use case ends.
+
+**Use case: Filter Contacts**<br>
+
+**MSS**
+1. User requests to filter contacts by any field.
+2. LinkUp displays contacts that match the filter condition. <br><br>
+   Use case ends.
+   
+**Extensions**
+* 1a. No contacts match the filter condition.
+    * 1a1. LinkUp displays “0 contacts listed!” <br><br>
+    Use case ends. <br><br>
+   
+* 1b. Invalid command format.
+   * 1b1. LinkUp shows error message. <br><br>
+   Use case ends. <br><br>
+
+**Use case: Clear All Contacts**<br>
+
+**MSS**
+1. User requests to clear all contacts.
+2. LinkUp deletes all contacts and displays an empty list. <br><br>
+   Use case ends. <br><br>
+
+**Extensions**
+* 1a. Invalid command format.
+    * 1a1. LinkUp shows error message. <br><br>
+      Use case ends. <br><br>
+  
+**Use case: Edit Contact**<br>
+
+**MSS**
+1. User requests to list persons.
+2. LinkUp displays a list of persons.
+3. User requests to edit a specific contact in the list by index.
+4. LinkUp updates the person’s information with the new details.
+5. LinkUp displays the updated contact list. <br><br>
+    Use case ends.
+
+**Extensions**
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    *   3a1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3b. The user provides invalid or incomplete fields (e.g., invalid email or phone format).
+    *   3b1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3c. The user does not specify any field to edit. <br><br>
+    *   3c1. LinkUp displays a message indicating that at least one field must be provided. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3d. The edited information results in a duplicate contact.
+    * 3d1. LinkUp displays a duplicate contact error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3e. Invalid command format.
+    * 3e1. LinkUp shows error message. <br><br>
+      Use case ends. <br><br>
+
+**Use case: View Help**<br>
+
+**MSS**
+1. User requests to view help information.
+2. LinkUp displays example commands and a help window. <br><br>
+   Use case ends.
+
+**Extensions**
+* 1a. Invalid command format.
+    * 1a1. LinkUp shows error message. <br><br>
+      Use case ends. <br><br>
+
+**Use case: Exit LinkUp**<br>
+
+**MSS**
+1. User requests to exit the app.
+2. LinkUp closes. <br><br>
+   Use case ends.
+
+**Extensions**
+* 1a. Invalid command format.
+    * 1a1. LinkUp shows error message. <br><br>
+      Use case ends. <br><br>
 
 ### Non-Functional Requirements
 
-1. You are able to use LinkUp on any _mainstream OS_ as long as you have Java `17` or above installed.
-2. If you have an above average typing speed for regular english text: <br/>
-    * You can accomplish most of the tasks faster using commands than using the mouse.
-3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance.
+1. **LinkUp** should work on any mainstream OS as long as it has Java 17 or above installed. 
+2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
 4. **LinkUp** responds to your inputs within 2 seconds.
 5. **LinkUp** is usable even if you're _non-tech savvy_ and have never used
    **LinkUp** before.
 6. Data from **LinkUp** will not be able to be sent to other users easily through
    **LinkUp**.
-7. **LinkUp** complies with _PDPA_ regulations in storing data.
+7. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
+8. **LinkUp** complies with _PDPA_ regulations in storing data.
 
 ### Glossary
 
 1. Mainstream OS**: Windows, Linux, Unix, MacOS
-2. Non tech-savy : Someone who has low experience and skill in using technology
-3. Private contact detail: A contact detail that is not meant to be shared with others
-4. PDPA : Personal Data Protection Agreement, data collection with consent
-
+2. Non tech-savvy: Someone who has low experience and skill in using technology
+3. GUI: Graphical User Interface
+4. CLI: Command Line Interface
+4. JDK: Java Development Kit
+5. PDPA: Personal Data Protection Agreement, data collection with consent
+6. Organiser: A person who arranges an event or activity and has multiple contacts
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -409,38 +541,123 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file <br>
+   **Expected:** Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   **Expected:** The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Shutdown
+
+    1. Press the close window button or type `exit`. <br>
+    **Expected:** LinkUp will shut down instantly and save your contact data in your computer.
+
+### Adding a person
+
+1. Adding a person while all persons are being shown
+
+   1. **Test case:** `add n/John Doe p/98765432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser s/Cooking s/Python`<br>
+      **Expected:** Contact is added to the list. Details of the new contact will be shown.
+
+   1. **Test case:** `add n/John Doe p/98765432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser s/Cooking s/Python`<br>
+      **Expected:** Duplicate contact. No person is added. Error details shown in the status message.
+
+   1. **Test case:** `add n/John e/john@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser s/Cooking s/Python`<br>
+      **Expected:** Invalid command format. No person is added. Error details shown in the status message.
+
+   1. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
+      **Expected:** Similar to previous.
 
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. **Test case:** `delete 1`<br>
+       **Expected:** First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. **Test case:** `delete 0`<br>
+       **Expected:** Invalid index. No person is deleted. Error details shown in the status message.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. **Other incorrect delete commands to try:** `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
 
-1. _{ more test cases …​ }_
+### Editing a person
+
+1. Editing a person while all persons are being shown
+
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `edit 1 n/John`<br>
+       **Expected:** First contact name is changed to `john`. Details of the deleted contact shown in the status message.
+
+    1. **Test case:** `edit 0 n/John`<br>
+       **Expected:** Invalid index. No person is edited. Error details shown in the status message.
+
+    1. **Other incorrect edit commands to try:** `edit`, `edit 1 p/^^^`, `edit x`, `...` (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
+
+### Filtering contacts
+
+1. Filtering persons while all persons are being shown
+
+    1. **Test case:** `filter r/Organiser`<br>
+       **Expected:** All contacts with the role as Organiser are listed.
+
+    1. **Test case:** `filter`<br>
+       **Expected:** Invalid command. No person is listed. Error details shown in the status message.
+
+### Finding a person by name
+
+1. Finding a person while all persons are being shown
+
+    1. **Test case:** `find n/John`<br>
+       **Expected:** All contacts with the name as John are listed.
+
+   1. **Test case:** `find`<br>
+      **Expected:** Invalid command. No person is listed. Error details shown in the status message.
+
+### Marking/Unmarking a person as favourite
+
+1. Marking/Unmarking a person as favourite while all persons are being shown
+
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `fav 1`<br>
+       **Expected:** First contact is marked as favourite. A heart symbol appears beside the contact.
+
+   1. **Test case:** `fav 1` again <br>
+      **Expected:** Message that says 1st contact is already marked as favourite is shown.
+
+    1. **Test case:** `unfav 0`<br>
+       **Expected:** Invalid index. No person is unmarked from favourites. Error details shown in the status message.
+
+    1. **Other incorrect favourite commands to try:** `fav`, `fav x`, `...` (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
 
 ### Saving data
+1. Simulate saving data
+   2. Launch LinkUp.
+   3. Add/delete/edit a contact.
+   4. Close LinkUp.
+   5. Relaunch LinkUp.
+   **Expected:** The edited contact list will be restored when you relaunch LinkUp. 
 
-1. Dealing with missing/corrupted data files
+1. Simulate a missing file
+      2. Close LinkUp.
+      3. Head to the `data` folder of LinkUp.
+      4. Delete the `addressbook.json` file.
+      5. Relaunch LinkUp. <br>
+      **Expected:** LinkUp loads and lists sample contacts.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+1. Simulate a corrupted file
+    2. Close LinkUp.
+    3. Head to the `data` folder of LinkUp.
+    4. Edit the contents of the `addressbook.json` file and add invalid characters (eg. $%^#).
+    5. Relaunch LinkUp. <br>
+       **Expected:** LinkUp's contact list will be empty.

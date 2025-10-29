@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteSkillCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -29,6 +30,7 @@ import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonFilter;
+import seedu.address.model.person.Skill;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonFilterBuilder;
@@ -101,6 +103,15 @@ public class AddressBookParserTest {
         assertEquals(new FilterCommand(predicate), command);
     }
 
+
+    @Test
+    public void parseCommand_deleteSkill() throws Exception {
+        Skill skillToDelete = new Skill("Java");
+        DeleteSkillCommand command = (DeleteSkillCommand) parser.parseCommand(
+                DeleteSkillCommand.COMMAND_WORD + " "
+                        + INDEX_FIRST_PERSON.getOneBased() + " Java");
+        assertEquals(new DeleteSkillCommand(INDEX_FIRST_PERSON, skillToDelete), command);
+    }
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {

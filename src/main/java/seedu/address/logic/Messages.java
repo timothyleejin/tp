@@ -39,15 +39,15 @@ public class Messages {
         builder.append(person.getName())
                 .append("; Phone: ")
                 .append(person.getPhone())
-                .append("; Address: ")
+                .append("; Telegram: @")
                 .append(person.getTelegram())
-                .append("; Telegram: ")
+                .append("; Email: ")
                 .append(person.getEmail())
-                .append("; Role: ")
-                .append(person.getRole())
                 .append("; Event: ")
                 .append(person.getEvent())
-                .append("; Skills: ");
+                .append(" (Role: ")
+                .append(person.getRole())
+                .append("); Skills: ");
         person.getSkills().forEach(builder::append);
         return builder.toString();
     }
