@@ -44,12 +44,12 @@ public class Skill {
         }
 
         Skill otherSkill = (Skill) other;
-        return skillName.equals(otherSkill.skillName);
+        return skillName.equalsIgnoreCase(otherSkill.skillName);
     }
 
     @Override
     public int hashCode() {
-        return skillName.hashCode();
+        return skillName.toLowerCase().hashCode();
     }
 
     /**
