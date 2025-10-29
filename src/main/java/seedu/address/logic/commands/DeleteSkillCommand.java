@@ -73,8 +73,7 @@ public class DeleteSkillCommand extends Command {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getTelegram(),
-                personToEdit.getRole(),
-                personToEdit.getEvent(),
+                personToEdit.getEventsWithRoles(),
                 updatedSkills,
                 personToEdit.isFavourite()
         );
