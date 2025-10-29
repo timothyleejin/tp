@@ -192,7 +192,7 @@ public class Person {
     }
 
     public Person withUpdatedSkills(Set<Skill> newSkills) {
-        return new Person(name, phone, email, telegram, role, event, newSkills, isFavourite);
+        return new Person(name, phone, email, telegram, roles, newSkills, isFavourite);
     }
 
     @Override
