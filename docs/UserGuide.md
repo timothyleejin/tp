@@ -115,13 +115,7 @@ A person can have any number of skills (including 0)
 `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
 
 **Expected Output:** <br>
-`New person added: John Deez; Phone: 98765431; Telegram: john123; Email: johnde@example.com; Role: Organiser; Event: Supernova; Skills: `
-
-**Example Input:** <br>
-`a n/Betsy Crowe s/Java e/betsycrowe@example.com t/crownie ev/Supernova r/Organiser p/1234567 s/Photography s/Java`
-
-**Expected Output:** <br>
-`New person added: Betsy Crowe; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills: [Photography][Java]`
+![Example Output for Add Command](images/AddCommandExampleOutput.png) <br>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The order of fields do not matter!
@@ -171,7 +165,7 @@ Find persons whose names contain any of the given keywords.
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 **Example Input:** <br>
-`f alex david` <br>
+`find alex david` or `f alex david` <br>
 
 **Expected Output:** <br>
 If there are Alex Yeoh and David Li in your contacts, they will be listed.
@@ -184,26 +178,32 @@ Filter contacts from the address book based on name, event, role, phone number, 
 `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
 * Filter the address book based on specified `KEYWORD`.
-* Filter and produces all possible outputs based on the keyword.
+* Filter and produces all possible outputs matching at least one `KEYWORD` from each field.
 * At least one of the optional fields must be provided.
 * Can filter many words of a field by using space. e.g. `n/Alice Bob` will match all people have `Alice` or `Bob` in their name
-* The keyword is case-insensitive. e.g. `ev/Supernova` will match `ev/supernova`.
-* For email, phone and telegram handle, a substring of a word will be matched. e.g. `@gmail.com` will match `alice@gmail.com`.
-* For the rest, only full words will be matched. e.g. `Hackatho` will not match `Hackathon`.
+* The keyword is case-insensitive.
+  * e.g. `filter ev/Supernova` is the same as `filter ev/supernova`.
+* The keyword can be a part of the full word.
+  * e.g. `filter n/Ali` will filter out a person named `Alice` as well!
 * The keyword **can be any valid character** 1, a, @, …​
 * If more than one field is provided, LinkUp will filter contacts that match **all** the fields provided.
 
 **Example Input:** <br>
-`filter ev/charity gala`
+Using the sample AddressBook below:
 
-**Expected Output:** <br>
-If there are contacts with Charity Gala as their event, they will be listed.
+![Example AddressBook for Filter Command](images/FilterCommandExampleInput.png)
 
-**Example Input:** <br>
-`filter n/alice ev/charity gala`
+Typing the command `filter ev/charity gala` will show:
 
-**Expected Output:** <br>
-Lists out contacts with both name as Alice and event as Charity Gala.
+![Example Output 1 for Filter Command](images/FilterCommandExampleOutput1.png)
+
+All of your contacts with `Charity Gala` in their event will be listed out. 
+
+Another example command `filter n/Mike ev/Charity` will show:
+
+![Example Output 2 for Filter Command](images/FilterCommandExampleOutput2.png)
+
+This time, only contacts with both `Mike` in their name and `Charity` in their event will be listed.
 
 ### Delete Contacts
 
