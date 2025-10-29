@@ -40,9 +40,6 @@ public class DeleteSkillCommandParser implements Parser<DeleteSkillCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE), pe);
         }
         String skillName = parts[1].trim();
-        if (skillName.isEmpty()) {
-            throw new ParseException("Skill cannot be empty");
-        }
 
         Skill skillToDelete = new Skill(skillName);
         return new DeleteSkillCommand(index, skillToDelete);

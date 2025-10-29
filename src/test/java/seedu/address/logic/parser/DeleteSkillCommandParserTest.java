@@ -38,4 +38,10 @@ class DeleteSkillCommandParserTest {
         assertParseFailure(parser, "Java",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    void parse_emptyString_throwsParseException() throws Exception {
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
+    }
 }
