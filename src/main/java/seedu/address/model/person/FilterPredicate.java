@@ -40,7 +40,7 @@ public class FilterPredicate implements Predicate<Person> {
 
         boolean checkName = filterParams.getNames().isEmpty()
                 || filterParams.getNames().stream().anyMatch(
-                    keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword.fullName));
+                    keyword -> person.getName().fullName.toLowerCase().contains(keyword.fullName.toLowerCase()));
 
         boolean checkPhone = filterParams.getPhones().isEmpty()
                 || filterParams.getPhones().stream().anyMatch(
@@ -56,16 +56,16 @@ public class FilterPredicate implements Predicate<Person> {
 
         boolean checkRole = filterParams.getRoles().isEmpty()
                 || filterParams.getRoles().stream().anyMatch(
-                    role -> StringUtil.containsWordIgnoreCase(person.getRole().toString(), role.toString()));
+                    role -> person.getRole().value.toLowerCase().contains(role.value.toLowerCase()));
 
         boolean checkEvent = filterParams.getEvents().isEmpty()
                 || filterParams.getEvents().stream().anyMatch(
-                    event -> StringUtil.containsWordIgnoreCase(person.getEvent().toString(), event.toString()));
+                    event -> person.getEvent().value.toLowerCase().contains(event.value.toLowerCase()));
 
         boolean checkSkill = filterParams.getSkills().isEmpty()
                 || filterParams.getSkills().stream().anyMatch(
                         skill -> person.getSkills().stream().anyMatch(personSkill ->
-                        personSkill.skillName.equalsIgnoreCase(skill.skillName)));
+                        personSkill.skillName.toLowerCase().contains(skill.skillName.toLowerCase())));
 
         boolean matchFilters = checkName && checkPhone && checkEmail && checkTelegram
                 && checkRole && checkEvent && checkSkill;
