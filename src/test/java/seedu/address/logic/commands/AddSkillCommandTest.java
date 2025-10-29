@@ -16,6 +16,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddSkillCommandParser;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -92,4 +93,22 @@ public class AddSkillCommandTest {
 
         assertCommandFailure(addSkillCommand, model, expectedMessage);
     }
+    @Test
+    void execute_addMultipleSkills_success() throws CommandException {
+        Skill skill1 = new Skill("JavaScript");
+        Skill skill2 = new Skill("Python");
+        List<Skill> skillsToAdd = List.of(skill2, skill1);
+
+        AddSkillCommand command = new AddSkillCommand(Index.fromOneBased(3), skillsToAdd);
+
+        CommandResult result = command.execute(model);
+
+        String expectedMessage = String.format(AddSkillCommand.MESSAGE_ADD_SKILL_SUCCESS,
+                "[JavaScript], [Python]", "Carl Kurz");
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+
+        Person editedPerson = model.getFilteredPersonList().get(2);
+        assertEquals(new HashSet<>(skillsToAdd), editedPerson.getSkills());
+    }
+
 }

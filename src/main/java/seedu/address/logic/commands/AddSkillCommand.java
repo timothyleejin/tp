@@ -82,6 +82,7 @@ public class AddSkillCommand extends Command {
 
         String skillNames = skillToAdd.stream()
                 .map(Skill::toString)
+                .sorted()
                 .reduce((a, b) -> a + ", " + b)
                 .orElse("");
 
