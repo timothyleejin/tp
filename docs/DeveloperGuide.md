@@ -305,21 +305,23 @@ He needs to store and access many contacts easily, but does not require integrat
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​               | I want to …​                                       | So that I can…​                                                                     |
-|----------|-----------------------|----------------------------------------------------|-------------------------------------------------------------------------------------|
-| `* * *`  | new user              | see usage instructions/help                        | refer to instructions when I forget how to use the App                              |
-| `* * *`  | user                  | add a contact                                      | record down people’s details                                                        |
-| `* * *`  | user                  | delete a contact                                   | remove unnecessary entries                                                          |
-| `* * *`  | user                  | view the contact list                              | see all contacts                                                                    |
-| `* * *`  | user                  | edit a contact                                     | update their details                                                                |
-| `* * *`  | user                  | search a contact by name                           | find them quickly                                                                   |
-| `* * *`  | volunteer coordinator | tag contacts with skills                           | assign them to tasks                                                                |
-| `* * *`  | leader                | add event/role/telegram information to contacts    | know their context                                                                  |
-| `* * *`  | leader                | filter people by any field                         | find the relevant contacts                                                |
-| `* * *`  | leader                | add favourite contacts and list them               | access key people easily                                                            |
-| `* *`    | leader                | have clearer duplicate contact information         | understand which fields are duplicate more easily given the large number of contacts |
-| `* *`    | experienced user      | delete multiple contacts                           | delete contacts faster after event                                                  |
-| `* *`    | experienced user      | use command shortcuts                              | speed up workflow                                                                   |
+| Priority | As a …​          | I want to …​                                              | So that I can…​                                                                      |
+|----------|------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------|
+| `* * *`  | new user         | see usage instructions/help                               | refer to instructions when I forget how to use the App                               |
+| `* * *`  | user             | add a contact                                             | record down people’s details                                                         |
+| `* * *`  | user             | delete a contact                                          | remove unnecessary entries                                                           |
+| `* * *`  | user             | view the contact list                                     | see all contacts                                                                     |
+| `* * *`  | user             | edit a contact                                            | update their details                                                                 |
+| `* * *`  | user             | search a contact by name                                  | find them quickly                                                                    |
+| `* * *`  | leader           | tag contacts with skills                                  | assign them to tasks                                                                 |
+| `* * *`  | leader           | add/remove skills from contacts                           | update contacts with their skills easily                                             |
+| `* * *`  | leader           | see event/role/telegram information to contacts           | know their context                                                                   |
+| `* * *`  | leader           | add/remove event/role information to contacts             | update contacts with their event/role easily                                         |
+| `* * *`  | leader           | filter people by any field                                | find the relevant contacts                                                           |
+| `* * *`  | leader           | add/remove favourite contacts and list favourite contacts | access key people easily                                                             |
+| `* *`    | leader           | have clearer duplicate contact information                | understand which fields are duplicate more easily given the large number of contacts |
+| `* *`    | experienced user | delete multiple contacts                                  | delete contacts faster after event                                                   |
+| `* *`    | experienced user | use command shortcuts                                     | speed up workflow                                                                    |
 
 ### Use cases
 (For all use cases below, the **System** is `LinkUp` and the **Actor** is the `user`, unless specified otherwise)
@@ -332,7 +334,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. LinkUp detects missing information.
+* 1a. LinkUp detects missing field information.
     * 1a1.LinkUp displays an error message. <br><br>
   Use case ends. <br><br>
 * 1b. Phone number and/or name and/or email already exist in LinkUp.
@@ -467,91 +469,77 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. LinkUp shows error message. <br><br>
       Use case ends. <br><br>
 
-
-**Use case: Add Skill**
+**Use case: Add Skill to Contact** <br>
 
 **MSS**
-1. User requests to add one or more skills to a specific contact.
+1. User requests to list persons.
+2. LinkUp shows a list of persons.
+3. User requests to add one or more skills to a specific contact.
+4. LinkUp adds the specified skill(s) to the contact’s skill list.
+5. LinkUp displays a success message and updates the contact’s details. <br><br>
+    Use case ends. <br><br>
 
-2. LinkUp adds the specified skill(s) to the contact’s skill list.
+**Extensions**
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    *   3a1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3b. Skill(s) already exist for the contact.
+    *   3b1. LinkUp displays a error message indicating which skills were already present. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3c. Invalid skill added to contact
+    *   3c1. Linkup shows invalid skill error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3d. Invalid command format.
+    *   3d1. LinkUp shows an error message. <br><br>
+        Use case resumes at step 2. <br><br>
 
-3. LinkUp displays a success message and updates the contact’s details.
+**Use case: Delete Skill from Contact** <br>
 
+**MSS**
+1. User requests to list persons.
+2. LinkUp shows a list of persons.
+3. User requests to remove one or more skills to a specific contact.
+4. LinkUp removes the specified skill(s) from the contact’s skill list.
+5. LinkUp displays a success message and updates the contact’s details. <br><br>
+   Use case ends. <br><br>
+
+**Extensions**
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    *   3a1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3b. Skill(s) do not exist for the contact.
+    *   3b1. LinkUp displays a error message indicating that the skill(s) do not exist for the contact. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3c. Invalid input skill.
+    *   3c1. Linkup shows invalid skill error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3d. Invalid command format.
+    *   3d1. LinkUp shows an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+
+**Use case: Copy Add Command string to Clipboard** <br>
+
+**MSS**
+1. User requests to list persons.
+2. LinkUp shows a list of persons.
+3. User requests to copy the add command string of a specific contact using its index.
+4. LinkUp copies the add command string of the specified contact to the clipboard.
+5. LinkUp displays a success message indicating that the command has been copied. <br><br>
     Use case ends.
 
 **Extensions**
-
-1a. Invalid command format.
-    * 1a1. LinkUp shows an error message.
-    Use case ends.
-
-1b. Skill(s) already exist for the contact.
-* 1b2. LinkUp displays a error message indicating which skills were already present.
-    Use case ends.
-
-1c. The specified contact index is invalid.
-* 1c1. LinkUp shows an error message
-    Use case ends.
-
-1d. Invalid skill added to contact
-* 1c1. Linkup shows invalid skill error message
-    Use case ends.
-
-**Use case: Delete Skill**
-
-**MSS**
-1. User requests to delete one or more skills to a specific contact.
-
-2. LinkUp delete the specified skill(s) to the contact’s skill list.
-
-3. LinkUp displays a success message and updates the contact’s details.
-
-   Use case ends.
-
-**Extensions**
-
-1a. Invalid command format.
-* 1a1. LinkUp shows an error message.
-Use case ends.
-
-1b. No such skill exist for the contact.
-* 1b2. LinkUp displays a error message indicating no skills.
-  Use case ends.
-
-1c. The specified contact index is invalid.
-* 1c1. LinkUp shows an error message
-  Use case ends.
-
-1d. Invalid skill added to contact
-* 1c1. Linkup shows invalid skill error message
-  Use case ends.
-
-**Use case: Copy**
-
-**MSS**
-1. User requests to copy the add command string of a specific contact using its index.
-
-2. LinkUp copies the add command string of the specified contact to the clipboard.
-
-3. LinkUp displays a success message indicating that the command has been copied.
-   
-    Use case ends.
-
-**Extensions**
-
-1a. Invalid command format.
-* 1a1. LinkUp shows an error message.
-  Use case ends.
-
-1b. The specified contact index is invalid.
-* 1c1. LinkUp shows an error message.
-  Use case ends.
-
-1c. Clipboard Operation Fails
-* 1c1. (Cmd v) or (Ctrl v) does not work.
-  * 1c2. LinkUp displays the command string in the result box for manual copying.
-    Use case ends.
-
+* 2a. The list is empty. <br><br>
+  Use case ends. <br><br>
+* 3a. The given index is invalid.
+    *   3a1. LinkUp displays an error message. <br><br>
+        Use case resumes at step 2. <br><br>
+* 3b. Invalid command format.
+    *   3b1. LinkUp shows an error message. <br><br>
+        Use case resumes at step 2. <br><br>
 
 **Use case: Edit Contact**<br>
 
@@ -753,18 +741,18 @@ testers are expected to do more *exploratory* testing.
     1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
     1. **Test case:** `addskill 1 s/adobe s/python`<br>
-       **Expected:** First contact is added the skill `adobe` and `python`
+       **Expected:** First contact is added the skill `adobe` and `python`.
 
     1. **Test case:** `addskill 1 s/adobe` again <br>
-       **Expected:** Message that says 1st contact already has the inputted skill
+       **Expected:** Message that says 1st contact already has the inputted skill.
 
     1. **Test case:** `addskill 0 s/jokes`<br>
-       **Expected:** Invalid index. No person is added skill. Error details shown in the status message.
+       **Expected:** Invalid index. No skill is added. Error details shown in the status message.
    
-    1. **Test case:** `addskill 0 s/jok*91es`<br>
-       **Expected:** Inavlid skill error message is shown, skills should be alphanumeric.
+    1. **Test case:** `addskill 0 s/jok*91es `<br>
+       **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
    
-   1. **Other incorrect favourite commands to try:** `addskill abc`, `addskill 1 s/9%aggss`, `addskill x s/fight`
+   1. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 s/9%aggss ejd`, `addskill x s/fight`
    (where x is larger than the list size)<br>
       **Expected:** Similar to previous.
 
@@ -774,15 +762,18 @@ testers are expected to do more *exploratory* testing.
     1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
     1. **Test case:** `dskill 1 s/adobe`<br>
-       **Expected:** First contact removed of the skill `adobe`
+       **Expected:** First contact removed of the skill `adobe`.
+   
+    1. **Test case:** `dskill 1 s/adobe` again <br>
+      **Expected:** Message that says the contact does not have the inputted skill.
 
     1. **Test case:** `dskill 0 s/jokes`<br>
-       **Expected:** Invalid index. No person is added skill. Error details shown in the status message.
+       **Expected:** Invalid index. No skill is removed. Error details shown in the status message.
 
     1. **Test case:** `dskill 0 s/jok*91es`<br>
-       **Expected:** Inavlid skill error message is shown, skills should be alphanumeric.
+       **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
 
-    1. **Other incorrect favourite commands to try:** `addskill abc`, `addskill 1 s/9%aggss`, `addskill x s/fight`
+    1. **Other incorrect favourite commands to try:** `dskill`, `dskill 1 s/9%aggss hi`, `dskill x s/fight`
        (where x is larger than the list size)<br>
        **Expected:** Similar to previous.
 
@@ -802,14 +793,12 @@ testers are expected to do more *exploratory* testing.
        (where x is larger than the list size)<br>
        **Expected:** Similar to previous.
 
-
-
 ### Saving data
 1. Simulate saving data
    2. Launch LinkUp.
    3. Add/delete/edit a contact.
    4. Close LinkUp.
-   5. Relaunch LinkUp.
+   5. Relaunch LinkUp. <br>
    **Expected:** The edited contact list will be restored when you relaunch LinkUp. 
 
 1. Simulate a missing file
