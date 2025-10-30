@@ -173,3 +173,12 @@ h5,
 h6 {
   color: #e46c0a;
 }
+
+#developerTitle {
+    font-family: "Copperplate";
+    color: maroon;
+}
+
+.developerHeader {
+    color: maroon;
+}
