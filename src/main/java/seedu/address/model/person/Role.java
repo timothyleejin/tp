@@ -7,9 +7,10 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
-    public static final String MESSAGE_CONSTRAINTS = "Roles should not be blank and can take up any values,";
+    public static final String MESSAGE_CONSTRAINTS = "Roles should not be blank and can contain "
+            + "alphanumeric characters and special characters (without quotations): \"(),\"";
 
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[\\w\\s,()]+$";
 
     public final String value;
 
@@ -20,13 +21,16 @@ public class Role {
      */
     public Role(String role) {
         requireNonNull(role);
-        value = role;
+        value = role.trim();
     }
 
     /**
      * Returns true if a given string is a valid role.
      */
     public static boolean isValidRole(String description) {
+        if (description.trim().isEmpty()) {
+            return false;
+        }
         return description.matches(VALIDATION_REGEX);
     }
 

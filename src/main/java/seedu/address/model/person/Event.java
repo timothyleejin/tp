@@ -28,6 +28,9 @@ public class Event {
      * Returns true if event has valid description
      */
     public static boolean isValidEvent(String description) {
+        if (description.trim().isEmpty()) {
+            return false;
+        }
         return description.matches(VALIDATION_REGEX);
     }
 
