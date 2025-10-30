@@ -112,7 +112,7 @@ Moving from the top of the interface to the bottom:
 
   <br>
 
-* **Items with `…`​ after them can be used multiple times (including not at all).**<br>
+* **Items with `…`​ after them can be used multiple times.**<br>
   e.g. `[s/SKILL]…​` means you can add 0 skills, 1 skill, or many.
   * You can type ` ` (i.e. 0 times), `s/Java`, or `s/Photography s/Cooking` etc.
 
@@ -142,7 +142,7 @@ View a brief message on commands you can use and a pop-up message explaining how
 
 Exit the application.
 
-**Format:** <br> `exit`
+**Format:** <br> `exit` or `ex`
 
 The User Interface will close after the input. LinkUp saves your contact list automatically in your computer, and 
 your contact list will be restored whenever you reopen LinkUp.
@@ -158,13 +158,13 @@ Add a person to the address book.
 `a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
 **Parameters:** <br>
-`n/NAME`: Name of your contact. <br>
-`p/PHONE_NUMBER`: Phone number of your contact. <br>
-`e/EMAIL`: Email address of your contact. <br>
-`t/TELEGRAM_HANDLE`: Telegram handle of your contact. <br>
-`ev/EVENT`: Event(s) of your contact. <br>
-`r/ROLE`: Role(s) of your contact. <br>
-`s/SKILL`: Skill(s) of your contact. <br>
+`n/NAME`: Name of the person. <br>
+`p/PHONE_NUMBER`: Phone number of the person. <br>
+`e/EMAIL`: Email address of the person. <br>
+`t/TELEGRAM_HANDLE`: Telegram handle of the person. <br>
+`ev/EVENT`: Event(s) of the person. <br>
+`r/ROLE`: Role(s) of the person. <br>
+`s/SKILL`: Skill(s) of the person. <br>
 
 <box type="tip" seamless>
 A person can have <i>any number</i> of skills (including 0), and can have <i>one or more events</i> or roles.
@@ -189,20 +189,21 @@ Edit the details of an existing person in the address book.
 **Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
 `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
-* Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the displayed person list. The **index must be a positive integer** 1, 2, 3, …​
+* Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the contact list. 
+* The **index must be a positive integer** 1, 2, 3, …​
 * **At least** one of the optional fields must be provided.
 * When editing skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
 **Parameters:** <br>
-`INDEX`: Index number of contact in contact list. <br>
-`n/NAME`: Name of your contact. <br>
-`p/PHONE_NUMBER`: Phone number of your contact. <br>
-`e/EMAIL`: Email address of your contact. <br>
-`t/TELEGRAM_HANDLE`: Telegram handle of your contact. <br>
-`ev/EVENT`: Event(s) of your contact. <br>
-`r/ROLE`: Role(s) of your contact. <br>
-`s/SKILL`: Skill(s) of your contact. <br>
+`INDEX`: Index number of person in contact list. <br>
+`n/NAME`: Name of the person. <br>
+`p/PHONE_NUMBER`: Phone number of the person. <br>
+`e/EMAIL`: Email address of the person. <br>
+`t/TELEGRAM_HANDLE`: Telegram handle of the person. <br>
+`ev/EVENT`: Event(s) of the person. <br>
+`r/ROLE`: Role(s) of the person. <br>
+`s/SKILL`: Skill(s) of the person. <br>
 
 **Example Input:** <br>
 ```
@@ -237,19 +238,19 @@ Edited Person: Rebecca Tan; Phone: 99272758; Telegram: @FishyBernice; Email: ber
 
 Delete specified persons from the address book.
 
-**Format:** <br> `delete INDEX` or `d INDEX`
+**Format:** <br> `delete INDEX…` or `d INDEX…`
 
 * Delete the person at the specified `INDEX`.
 * At least one `INDEX` must be provided.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
-`INDEX`: Index number of contact in contact list. <br>
+`INDEX`: Index number of person in contact list. <br>
 
 **Example Input:** <br>
 ```
 list
-delete 1 2  // delete both 1st and 2nd person listed in the address book
+delete 1 2  // delete both 1st and 2nd person listed in the contact list
 ```
 
 **Expected Output:** <br>
@@ -266,13 +267,15 @@ d 1  // delete the 1st person in the results of the `find` command
 ```
 
 **Expected Output:** <br>
-`Deleted Person: 
-Betsy Crower; Phone: 1234567; Telegram: @crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+```
+Deleted Person: 
+Betsy Crower; Phone: 1234567; Telegram: @crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:
+```
 
 <br>
 
 #### Copy Contact
-Copy an existing contact to make it easier to add a contact with similar parameters.
+Copy an existing contact to make it easier to add a person with similar parameters.
 
 **Format:** <br> `copy INDEX` or `c INDEX`
 
@@ -281,7 +284,7 @@ Copy an existing contact to make it easier to add a contact with similar paramet
 * The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
-`INDEX`: Index number of contact in contact list. <br>
+`INDEX`: Index number of person in contact list. <br>
 
 **Example Input:** <br>
 ```
@@ -379,60 +382,141 @@ This time, only contacts with both `Mike` in their name and `Charity` in their e
 
 ### Skill Management
 #### Add new skill
+Add skill to an existing person from the address book.
 
+**Format:** <br> `addskill INDEX [s/SKILL]…` or `as INDEX [s/SKILL]…`
+
+* Adds one or more skills to the person at the specified `INDEX`.
+* At least one `INDEX` must be provided.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Parameters:** <br>
+`INDEX`: Index number of person in contact list. <br>
+`s/SKILL`: Skill(s) of your contact. <br>
+
+**Example Input:** <br>
+```
+addskill 1 s/JavaScript s/Cycling
+```
+
+**Expected Output:** <br>
+```
+Added skill [Cycling], [JavaScript] to John Deez
+```
+| Initial Contact                                      | Final Contact                                      |
+|------------------------------------------------------|----------------------------------------------------|
+| <img src="images/AddSkillInitial.png" width="250px"> | <img src="images/AddSkillFinal.png" width="250px"> |
 
 <br>
 
 #### Delete existing Skill
+Delete skills of an existing person from the address book.
+
+**Format:** <br> `dskill INDEX [s/SKILL]…` or `ds INDEX [s/SKILL]…`
+
+* Delete one or more skills of the person at the specified `INDEX`.
+* At least one `INDEX` must be provided.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Parameters:** <br>
+`INDEX`: Index number of person in contact list. <br>
+`s/SKILL`: Skill(s) of your contact. <br>
+
+**Example Input:** <br>
+```
+dskill 1 s/Cycling
+```
+
+**Expected Output:** <br>
+```
+Deleted skills [Cycling] from John Deez
+```
+| Initial Contact                                      | Final Contact                                    |
+|------------------------------------------------------|--------------------------------------------------|
+| <img src="images/AddSkillFinal.png" width="250px"> | <img src="images/DSkillFinal.png" width="250px"> |
+
 
 <br>
 
 ### Favourite Contact Management
 #### Add a Contact to Favourites
 
-Add a specified person from the address book to favourites.
+Add a person from the address book to favourites and mark them with a heart icon.
 
 **Format:** <br> `fav INDEX`
 
 * Add the person at the specified `INDEX` to favourites.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number of the person shown in the contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Example Input:** <br>
-`list` followed by `fav 1` adds the 1st person in the address book to favourites.
-
-**Expected Output:** <br>
-`Marked John Deez as favourite.`
+**Parameters:** <br>
+`INDEX`: Index number of person in contact list. <br>
 
 **Example Input:** <br>
-`find Betsy` followed by `fav 1` adds the 1st person in the results of the `find` command to favourites.
+```
+list
+fav 1  // adds the 1st person in the address book to favourites
+```
 
 **Expected Output:** <br>
-`Marked Betsy Crower as favourite.`
+```
+Marked John Deez as favourite.
+```
+| Initial Contact                                        | Final Contact                                    |
+|--------------------------------------------------------|--------------------------------------------------|
+| <img src="images/FavCommandInitial.png" width="350px"> | <img src="images/FavCommandFinal.png" width="350px">|
+
+
+**Example Input:** <br>
+```
+find Betsy
+fav 1  // adds the 1st person in the results of the `find` command to favourites
+```
+
+**Expected Output:** <br>
+```
+Marked Betsy Crower as favourite.
+```
 
 <br>
 
 #### Remove a Contact from Favourites
 
-Remove a specified person from the address book from favourites.
+Remove a specified person from the address book from favourites and removes the heart icon.
 
 **Format:** <br> `unfav INDEX`
 
 * Remove the person at the specified `INDEX` from favourites.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number of the person shown in the contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
+**Parameters:** <br>
+`INDEX`: Index number of person in contact list. <br>
+
 **Example Input:** <br>
-`list` followed by `unfav 1` removes the 1st person in the address book from favourites.
+```
+list
+unfav 1  // removes the 1st person in the address book from favourites
+```
 
 **Expected Output** <br>
-`Unmarked John Deez from favourites.`
+```
+Unmarked John Deez from favourites.
+```
+| Initial Contact                                        | Final Contact                                    |
+|--------------------------------------------------------|--------------------------------------------------|
+| <img src="images/FavCommandFinal.png" width="350px"> | <img src="images/FavCommandInitial.png" width="350px">|
 
 **Example Input:** <br>
-`find Betsy` followed by `unfav 1` removes the 1st person in the results of the `find` command from favourites.
+```
+find Betsy
+unfav 1  // removes the 1st person in the results of the `find` command from favourites
+```
 
 **Expected Output:** <br>
-`Unmarked Betsy Crower from favourites.`
+```
+Unmarked Betsy Crower from favourites.
+```
 
 <br>
 
@@ -456,9 +540,10 @@ LinkUp data is saved in the hard disk automatically after any command that chang
 LinkUp data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
-**Caution:**
-If your changes to the data file makes its format invalid, LinkUp will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause LinkUp to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+    <b>Caution:</b>
+    If you edit the data file incorrectly and make its format invalid, LinkUp will not load any contacts at startup.
+    Adding a new person in this state will cause LinkUp to <i>overwrite the existing file</i> with only the new contact.
+    Therefore, it is recommended to <i>always back up your data file</i> before making manual changes.
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -466,18 +551,21 @@ Furthermore, certain edits can cause LinkUp to behave in unexpected ways (e.g., 
 
 Action | Command
 --------|------------------
-**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com t/james0336 s/Python s/Java`
+**Help**: <br> View a brief message on commands you can use | `help` or `h`
+**Exit**: <br> Exit LinkUp | `exit` or `ex`
+**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Delete**: <br> Delete contacts | `delete INDEX…` or `d INDEX…` <br> <br> e.g. `delete 3` or `delete 1 3 5`
+**Copy**: <br> Copy an existing contact to make it easier to add a person with similar parameters | `copy INDEX` or `c INDEX`<br> <br> e.g. `copy 2`
 **Clear**: <br> Delete all contacts | `clear`
-**Delete**: <br> Delete contacts | `delete INDEX`<br> <br> e.g. `delete 3`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
-**Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]`<br> <br> e.g. `find James Jake`
-**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`<br> <br> e.g. `filter ev/Hunt`
-**List**: <br> List all contacts | `list`
+**List**: <br> List all contacts | `list` or `l`
+**Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]` <br> <br> e.g. `find James Jake`
+**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` <br> <br> e.g. `filter ev/Hunt`
+**Add Skill**: <br> Add skill(s) to contact | `addskill INDEX [s/SKILL]…` or <br> `as INDEX [s/SKILL]…` <br> <br> e.g. `addSkill 1 s/JavaScript`
+**Delete Skill**: <br> Delete skill(s) of a contact | `dskill INDEX [s/SKILL]…` or <br> `ds INDEX [s/SKILL]…` <br> <br> e.g. `dskill 2 s/Cycling`
 **Favourite**: <br> Add a contact to favourites | `fav INDEX`<br> <br> e.g. `fav 3`
 **Unfavourite**: <br> Remove a contact from favourites | `unfav INDEX`<br> <br> e.g. `unfav 3`
 **List favourites**: <br> List all favourite contacts | `lfav`
-**Help**: <br> View a brief message on commands you can use | `help`
-**Exit**: <br> Exit LinkUp | `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -493,19 +581,10 @@ you have `skills: Boxing, Drumming` but you wish to change Drumming to Singing, 
 and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`.
 
 **Q**: Why am I unable to run the `LinkUp.jar` file? <br>
-**A**: Ensure you have Java `17` or above installed in your computer. You can type `java -version` in your command terminal
-of your computer to check.
-* For Mac users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-ensure you have the precise JDK version prescribed.
-* For Windows users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
-ensure you have the precise JDK version prescribed.
-* For Linux users, follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
-ensure you have the precise JDK version prescribed.
+**A**: Ensure you have Java `17` or above installed in your computer and the correct `LinkUp.jar` file. 
+Follow the instructions at [_Quick Start_ ](#quick-start) to re-download the Java Developer Kit (JDK) and `LinkUp.jar` file.
+To ensure that the JDK version is correct, type `java -version` in the command terminal of your computer to check.
 
-Then, open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
-You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
-type `cd Downloads` in the command terminal to navigate into the Downloads folder.
-Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 
 ### Known Issues
 
