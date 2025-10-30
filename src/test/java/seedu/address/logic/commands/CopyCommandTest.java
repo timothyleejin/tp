@@ -44,15 +44,16 @@ public class CopyCommandTest {
         personToCopy.getEvents().forEach(event -> addCommand.append("ev/").append(event.value).append(" "));
         personToCopy.getRoles().forEach(role -> addCommand.append("r/").append(role.value).append(" "));
         personToCopy.getSkills().forEach(skill -> addCommand.append("s/").append(skill.skillName).append(" "));
+        String addCommandOutput = addCommand.toString().trim();
 
         CommandResult result = command.execute(model);
 
         if (GraphicsEnvironment.isHeadless()) {
-            assertEquals(String.format(MESSAGE_CLIPBOARD_FAIL, personToCopy.getName(), addCommand.toString().trim()),
+            assertEquals(String.format(MESSAGE_CLIPBOARD_FAIL, personToCopy.getName(), addCommandOutput),
                     result.getFeedbackToUser());
         } else {
-            assertEquals(String.format(CopyCommand.MESSAGE_SUCCESS, personToCopy.getName(),
-                            addCommand.toString().trim()), result.getFeedbackToUser());
+            assertEquals(String.format(CopyCommand.MESSAGE_SUCCESS, personToCopy.getName(), addCommandOutput),
+                    result.getFeedbackToUser());
         }
     }
 

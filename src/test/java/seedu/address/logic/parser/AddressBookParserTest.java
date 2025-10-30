@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteSkillCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -25,6 +26,7 @@ import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListFavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.FilterPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -103,6 +105,11 @@ public class AddressBookParserTest {
         assertEquals(new FilterCommand(predicate), command);
     }
 
+    @Test
+    public void parseCommand_listFav() throws Exception {
+        assertTrue(parser.parseCommand(ListFavCommand.COMMAND_WORD) instanceof ListFavCommand);
+        assertTrue(parser.parseCommand(ListFavCommand.COMMAND_WORD + " 3") instanceof ListFavCommand);
+    }
 
     @Test
     public void parseCommand_deleteSkill() throws Exception {
@@ -111,6 +118,13 @@ public class AddressBookParserTest {
                 DeleteSkillCommand.COMMAND_WORD + " "
                         + INDEX_FIRST_PERSON.getOneBased() + " Java");
         assertEquals(new DeleteSkillCommand(INDEX_FIRST_PERSON, skillToDelete), command);
+    }
+
+    @Test
+    public void parseCommand_copy() throws Exception {
+        CopyCommand command = (CopyCommand) parser.parseCommand(
+                CopyCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new CopyCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test

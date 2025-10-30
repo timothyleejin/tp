@@ -55,10 +55,10 @@ public class AddCommandTest {
 
     @Test
     public void execute_duplicateEmail_throwsCommandException() {
-
         Person validPerson = new PersonBuilder().build();
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
-        Person duplicateEmailPerson = new PersonBuilder().withName("Bob").withPhone("91458019").build();
+        Person duplicateEmailPerson = new PersonBuilder().withName("Bob").withPhone("91458019")
+                .withTelegram("uniquetele").build();
         AddCommand addCommand = new AddCommand(duplicateEmailPerson);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_EMAIL, () -> addCommand.execute(modelStub));
@@ -68,10 +68,23 @@ public class AddCommandTest {
     public void execute_duplicatePhone_throwsCommandException() {
         Person validPerson = new PersonBuilder().build();
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
-        Person duplicateEmailPerson = new PersonBuilder().withName("Bobby").withEmail("edited@example.com").build();
-        AddCommand addCommand = new AddCommand(duplicateEmailPerson);
+        Person duplicatePhonePerson = new PersonBuilder().withName("Bobby").withEmail("edited@example.com")
+                .withTelegram("uniquetele").build();
+        AddCommand addCommand = new AddCommand(duplicatePhonePerson);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PHONE, () -> addCommand.execute(modelStub));
+    }
+
+    @Test
+    public void execute_duplicateTelegram_throwsCommandException() {
+        Person validPerson = new PersonBuilder().build();
+        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+        Person duplicateTelegramPerson = new PersonBuilder().withName("Bobby").withPhone("99999999")
+                .withEmail("edited@example.com").build();
+        AddCommand addCommand = new AddCommand(duplicateTelegramPerson);
+
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_TELEGRAM, () ->
+                addCommand.execute(modelStub));
     }
 
     @Test
@@ -155,6 +168,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasTelegram(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -220,6 +238,12 @@ public class AddCommandTest {
             requireNonNull(person);
             return this.person.isSameEmail(person);
         }
+
+        @Override
+        public boolean hasTelegram(Person person) {
+            requireNonNull(person);
+            return this.person.isSameTelegram(person);
+        }
     }
 
     /**
@@ -244,6 +268,12 @@ public class AddCommandTest {
         public boolean hasEmail(Person person) {
             requireNonNull(person);
             return personsAdded.stream().anyMatch(person::isSameEmail);
+        }
+
+        @Override
+        public boolean hasTelegram(Person person) {
+            requireNonNull(person);
+            return personsAdded.stream().anyMatch(person::isSameTelegram);
         }
 
         @Override

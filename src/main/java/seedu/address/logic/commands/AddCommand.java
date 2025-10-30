@@ -51,6 +51,8 @@ public class AddCommand extends Command {
             + "each contact needs to have a unique phone number";
     public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, "
             + "each contact needs to have a unique email address";
+    public static final String MESSAGE_DUPLICATE_TELEGRAM = "This Telegram already exists in the address book, "
+            + "each contact needs to have a unique Telegram";
 
     private final Person toAdd;
 
@@ -72,6 +74,8 @@ public class AddCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PHONE);
         } else if (model.hasEmail(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
+        } else if (model.hasTelegram(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TELEGRAM);
         }
 
         model.addPerson(toAdd);
