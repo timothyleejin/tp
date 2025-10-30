@@ -20,7 +20,7 @@ Tailored for organisation team leaders, LinkUp does more than just keep contact 
 Although LinkUp features a Graphical User Interface (GUI), most interactions are performed through a Command Line 
 Interface (CLI), where users type commands directly into the command line.
 
-* If you are interested in using LinkUp, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.md#getting-started).
+* If you are interested in using LinkUp, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.md#quick-start).
 * If you are interested about developing LinkUp, the [**Developer Guide**](DeveloperGuide.md) is a good place to start.
 
 

@@ -84,10 +84,13 @@ Let's walk you through the setup process of LinkUp.
 
 ## **Interface Walkthrough**
 
-1. **Menu Bar:** 
-2. **Command Box:**
-3. **Result Box:**
-4. **Contact List:**
+<img src="images/LabelledInterface.png" width="750px"> <br>
+
+Moving from the top of the interface to the bottom:
+1. **Menu Bar:** Contains two buttons for File and Help for you to click on and utilise if necessary.
+2. **Command Box:** You will input commands here to make changes to the contact list.
+3. **Result Box:** After you input a command, the result box will notify you on whether it is successful or not.
+4. **Contact List:** Here is where all your contacts will be displayed, with a scroll bar for you to use if you want to look through your contact list.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -133,7 +136,7 @@ View a brief message on commands you can use and a pop-up message explaining how
 **Format**: <br> `help` or `h`
 
 **Expected Output:** <br>
-![Example Output for Help Command](images/Help Output.png) <br>
+![Example Output for Help Command](images/HelpOutput.png) <br>
 
 #### Close LinkUp
 
@@ -141,8 +144,8 @@ Exit the application.
 
 **Format:** <br> `exit`
 
-The Graphic User Interface (GUI) will close after the input. LinkUp saves your contact list automatically in your computer.
-This means that your contact list will be restored whenever you reopen LinkUp.
+The User Interface will close after the input. LinkUp saves your contact list automatically in your computer, and 
+your contact list will be restored whenever you reopen LinkUp.
 
 <br>
 
@@ -156,16 +159,15 @@ Add a person to the address book.
 
 **Parameters:** <br>
 `n/NAME`: Name of your contact. <br>
-`p/PHONE_NUMBER`: Phone number of your contact. It should only contain numbers, and it should be at least 3 digits long <br>
-`e/EMAIL`: Email address of your contact. It should be of the format local-part@domain. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters.
-This is followed by a '@' and then a domain name. The domain name must end with a domain label at least 2 characters long, have each domain label start and end with alphanumeric characters, and have each domain label consist of alphanumeric characters, separated only by hyphens, if any.<br>
-`t/TELEGRAM_HANDLE`: Telegram handle of your contact. It should be English letters (a-z, A-Z), digits (0-9), and underscores. It also has to be between 5 and 32 characters long. <br>
-`ev/EVENT`: Event of your contact. It can take up any values and should not be blank. <br>
-`r/ROLE`: Role of your contact. It can take up any values and should not be blank. <br>
-`s/SKILL`: Skill of your contact. It should be alphanumeric with no spacing. <br>
+`p/PHONE_NUMBER`: Phone number of your contact. <br>
+`e/EMAIL`: Email address of your contact. <br>
+`t/TELEGRAM_HANDLE`: Telegram handle of your contact. <br>
+`ev/EVENT`: Event(s) of your contact. <br>
+`r/ROLE`: Role(s) of your contact. <br>
+`s/SKILL`: Skill(s) of your contact. <br>
 
 <box type="tip" seamless>
-A person can have any number of skills (including 0)
+A person can have <i>any number</i> of skills (including 0), and can have <i>one or more events</i> or roles.
 </box>
 
 **Example Input:** <br>
@@ -187,22 +189,47 @@ Edit the details of an existing person in the address book.
 **Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
 `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
 
-* Edit the details of the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* When editing skills, the existing skills of the person will be removed and replaced with your skills input i.e adding of skills is not cumulative.
+* Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the displayed person list. The **index must be a positive integer** 1, 2, 3, …​
+* **At least** one of the optional fields must be provided.
+* When editing skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 
+**Parameters:** <br>
+`INDEX`: Index number of contact in contact list. <br>
+`n/NAME`: Name of your contact. <br>
+`p/PHONE_NUMBER`: Phone number of your contact. <br>
+`e/EMAIL`: Email address of your contact. <br>
+`t/TELEGRAM_HANDLE`: Telegram handle of your contact. <br>
+`ev/EVENT`: Event(s) of your contact. <br>
+`r/ROLE`: Role(s) of your contact. <br>
+`s/SKILL`: Skill(s) of your contact. <br>
+
 **Example Input:** <br>
-`edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+```
+edit 1 p/91234567 e/doejohn@example.com
+```
 
 **Expected Output:** <br>
-`Edited Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:`
+```
+Edited Person: John Deez; Phone: 91234567; Telegram: @john123; Email: doejohn@example.com; Events: [Supernova]; Roles: [Organiser]; Skills: 
+```
+| Initial Contact | Final Contact |
+|-----------------|----------------|
+| <img src="images/EditInitial.png" width="250px">  | <img src="images/EditFinal.png" width="250px"> |
 
 **Example Input:** <br>
-`e 2 n/Betsy Crower s/` edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
+```
+e 2 n/Rebecca Tan s/
+```
 
 **Expected Output:** <br>
-`Edited Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+```
+Edited Person: Rebecca Tan; Phone: 99272758; Telegram: @FishyBernice; Email: berniceyu@example.com; Events: [Charity Gala]; Roles: [Finance Secretary]; Skills: 
+```
+
+| Initial Contact | Final Contact |
+|-----------------|----------------|
+| <img src="images/EditTwoInitial.png" width="250px"> | <img src="images/EditTwoFinal.png" width="250px"> |
 
 <br>
 
@@ -214,29 +241,66 @@ Delete specified persons from the address book.
 
 * Delete the person at the specified `INDEX`.
 * At least one `INDEX` must be provided.
-* The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
-**Example Input:** <br>
-`list` followed by `delete 1 2` deletes both the 1st and 2nd persons in the address book.
-
-**Expected Output:** <br>
-`Deleted Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+**Parameters:** <br>
+`INDEX`: Index number of contact in contact list. <br>
 
 **Example Input:** <br>
-`find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+```
+list
+delete 1 2  // delete both 1st and 2nd person listed in the address book
+```
 
 **Expected Output:** <br>
-`Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+```
+Deleted Person: 
+John Deez; Phone: 91234567; Telegram: @john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, 
+Betsy Crower; Phone: 1234567; Telegram: @crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:
+```
+
+**Example Input:** <br>
+```
+find Betsy
+d 1  // delete the 1st person in the results of the `find` command
+```
+
+**Expected Output:** <br>
+`Deleted Person: 
+Betsy Crower; Phone: 1234567; Telegram: @crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+<br>
 
 #### Copy Contact
+Copy an existing contact to make it easier to add a contact with similar parameters.
 
+**Format:** <br> `copy INDEX` or `c INDEX`
+
+* Copies the add command of the person at the specified `INDEX` to the clipboard so that you can paste (ctrl + v) into the command box
+* Alternatively, you can copy (ctrl + c) the add command from the display box.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Parameters:** <br>
+`INDEX`: Index number of contact in contact list. <br>
+
+**Example Input:** <br>
+```
+copy 1
+```
+<img src="images/EditInitial.png" width="250px"> <br>
+
+**Expected Output:** <br>
+```
+Copied add command for John Deez to clipboard!
+If paste (ctrl/cmd + v) does not work, here is the add command string for you to manually copy:
+add n/John Deez p/98765431 e/johnde@example.com t/john123 ev/Supernova r/Organiser
+```
 
 <br>
 
 #### Delete ALL Contacts
 
-Clear all persons from the address book.
+Clear address book by deleting all persons from it.
 
 **Format:** <br> `clear`
 
