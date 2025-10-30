@@ -1,7 +1,12 @@
 ---
-layout: page
+layout: page.md
 title: LinkUp Contact Book
 ---
+<br>
+
+# LinkUp
+
+<br>
 
 [![Java CI](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml)
 [![codecov](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp/graph/badge.svg?token=6CXD68NGYN)](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp)
