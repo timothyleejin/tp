@@ -690,10 +690,10 @@ Adding skills to a person while all persons are being shown
 4. **Test case:** `addskill 0 s/jokes`<br>
    **Expected:** Invalid index. No skill is added. Error details shown in the status message.
    
-   1. **Test case:** `addskill 0 s/jok*91es `<br>
+5. **Test case:** `addskill 0 s/jok*91es `<br>
       **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
    
-   2. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 s/9%aggss ejd`, `addskill x s/fight`
+6. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 s/9%aggss ejd`, `addskill x s/fight`
    (where x is larger than the list size)<br>
      **Expected:** Similar to previous.
 
