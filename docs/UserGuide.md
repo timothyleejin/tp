@@ -113,8 +113,8 @@ Moving from the top of the interface to the bottom:
   <br>
 
 * **Items with `…`​ after them can be used multiple times.**<br>
-  e.g. `[s/SKILL]…​` means you can add 0 skills, 1 skill, or many.
-  * You can type ` ` (i.e. 0 times), `s/Java`, or `s/Photography s/Cooking` etc.
+  e.g. `r/ROLE…​` means you can add as many roles as you want.
+  * You can type `r/Organiser`, or `r/Organiser r/Participant` etc.
 
   <br>
   
@@ -154,8 +154,8 @@ your contact list will be restored whenever you reopen LinkUp.
 
 Add a person to the address book.
 
-**Format:** <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
+**Format:** <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>
+`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​`
 
 **Parameters:** <br>
 `n/NAME`: Name of the person. <br>
@@ -165,6 +165,9 @@ Add a person to the address book.
 `ev/EVENT`: Event(s) of the person. <br>
 `r/ROLE`: Role(s) of the person. <br>
 `s/SKILL`: Skill(s) of the person. <br>
+
+* You can add multiple events and roles, but ensure that the `ev/EVENT` and its corresponding `r/ROLE` are beside each other.
+* Each event **must** have only one corresponding role. You cannot add 1 event and 2 roles.
 
 <box type="tip" seamless>
 A person can have <i>any number</i> of skills (including 0), and can have <i>one or more events</i> or roles.
@@ -186,14 +189,17 @@ Tip: The order of fields do not matter.
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the contact list. 
 * The **index must be a positive integer** 1, 2, 3, …​
 * **At least** one of the optional fields must be provided.
 * When editing skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
+* Each event **must** have only one corresponding role. You cannot edit an event or role only.
+* When editing an event and the corresponding role, the existing events and roles will all be removed and replaced with your new event and role input i.e adding of events and roles is not cumulative.
+* You can add multiple events and roles, but ensure that the `ev/EVENT` and its corresponding `r/ROLE` are beside each other.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -309,6 +315,11 @@ Clear address book by deleting all persons from it.
 
 **Expected Output:** <br>
 `Address book has been cleared!`
+
+<box type="warning" seamless>
+    <b>Caution:</b>
+    This command deletes ALL your contacts permanently. You are recommended to double-check before using this command.
+</box>
 
 <br>
 
@@ -553,8 +564,8 @@ Action | Command
 --------|------------------
 **Help**: <br> View a brief message on commands you can use | `help` or `h`
 **Exit**: <br> Exit LinkUp | `exit` or `ex`
-**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT] [r/ROLE] [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Delete**: <br> Delete contacts | `delete INDEX…` or `d INDEX…` <br> <br> e.g. `delete 3` or `delete 1 3 5`
 **Copy**: <br> Copy an existing contact to make it easier to add a person with similar parameters | `copy INDEX` or `c INDEX`<br> <br> e.g. `copy 2`
 **Clear**: <br> Delete all contacts | `clear`
