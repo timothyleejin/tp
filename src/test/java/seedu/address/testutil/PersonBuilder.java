@@ -89,10 +89,10 @@ public class PersonBuilder {
     /**
      * Removes a specific {@code Skill} from the {@code Person}'s skill list.
      */
-    public PersonBuilder withoutSkill(Skill skill) {
-        requireNonNull(skill);
+    public PersonBuilder withoutSkill(Set<Skill> skillsToDelete) {
+        requireNonNull(skillsToDelete);
         Set<Skill> updatedSkills = new HashSet<>(skills);
-        updatedSkills.removeIf(s -> s.equals(skill));
+        updatedSkills.removeAll(skillsToDelete);
         this.skills = updatedSkills;
         return this;
     }
