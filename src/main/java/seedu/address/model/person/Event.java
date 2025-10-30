@@ -8,7 +8,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class Event {
 
-    public static final String MESSAGE_CONSTRAINTS = "Events should not be blank and can take up any values,";
+    public static final String MESSAGE_CONSTRAINTS = "Events can take up any values and should not be blank.";
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 

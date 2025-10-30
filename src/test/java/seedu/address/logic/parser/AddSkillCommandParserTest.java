@@ -48,7 +48,6 @@ public class AddSkillCommandParserTest {
         assertThrows(ParseException.class, () -> parser.parse(input2));
     }
 
-
     @Test
     public void parse_validSingleSkill_success() throws Exception {
         Index targetIndex = INDEX_FIRST_PERSON;

@@ -25,7 +25,7 @@ public class RoleTest {
         assertTrue(Role.isValidRole("Manager, Admin"));
         assertTrue(Role.isValidRole("Team Lead"));
         assertTrue(Role.isValidRole("A"));
-        assertTrue(Role.isValidRole(" Vice President (Internal)"));
+        assertTrue(Role.isValidRole("Vice President (Internal)"));
     }
 
     @Test
