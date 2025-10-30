@@ -466,7 +466,93 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Invalid command format.
     * 1a1. LinkUp shows error message. <br><br>
       Use case ends. <br><br>
-  
+
+
+**Use case: Add Skill**
+
+**MSS**
+1. User requests to add one or more skills to a specific contact.
+
+2. LinkUp adds the specified skill(s) to the contact’s skill list.
+
+3. LinkUp displays a success message and updates the contact’s details.
+
+    Use case ends.
+
+**Extensions**
+
+1a. Invalid command format.
+    * 1a1. LinkUp shows an error message.
+    Use case ends.
+
+1b. Skill(s) already exist for the contact.
+* 1b2. LinkUp displays a error message indicating which skills were already present.
+    Use case ends.
+
+1c. The specified contact index is invalid.
+* 1c1. LinkUp shows an error message
+    Use case ends.
+
+1d. Invalid skill added to contact
+* 1c1. Linkup shows invalid skill error message
+    Use case ends.
+
+**Use case: Delete Skill**
+
+**MSS**
+1. User requests to delete one or more skills to a specific contact.
+
+2. LinkUp delete the specified skill(s) to the contact’s skill list.
+
+3. LinkUp displays a success message and updates the contact’s details.
+
+   Use case ends.
+
+**Extensions**
+
+1a. Invalid command format.
+* 1a1. LinkUp shows an error message.
+Use case ends.
+
+1b. No such skill exist for the contact.
+* 1b2. LinkUp displays a error message indicating no skills.
+  Use case ends.
+
+1c. The specified contact index is invalid.
+* 1c1. LinkUp shows an error message
+  Use case ends.
+
+1d. Invalid skill added to contact
+* 1c1. Linkup shows invalid skill error message
+  Use case ends.
+
+**Use case: Copy**
+
+**MSS**
+1. User requests to copy the add command string of a specific contact using its index.
+
+2. LinkUp copies the add command string of the specified contact to the clipboard.
+
+3. LinkUp displays a success message indicating that the command has been copied.
+   
+    Use case ends.
+
+**Extensions**
+
+1a. Invalid command format.
+* 1a1. LinkUp shows an error message.
+  Use case ends.
+
+1b. The specified contact index is invalid.
+* 1c1. LinkUp shows an error message.
+  Use case ends.
+
+1c. Clipboard Operation Fails
+* 1c1. (Cmd v) or (Ctrl v) does not work.
+  * 1c2. LinkUp displays the command string in the result box for manual copying.
+    Use case ends.
+
+
 **Use case: Edit Contact**<br>
 
 **MSS**
@@ -475,7 +561,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. User requests to edit a specific contact in the list by index.
 4. LinkUp updates the person’s information with the new details.
 5. LinkUp displays the updated contact list. <br><br>
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 * 2a. The list is empty. <br><br>
@@ -660,6 +746,63 @@ testers are expected to do more *exploratory* testing.
 
     1. **Other incorrect favourite commands to try:** `fav`, `fav x`, `...` (where x is larger than the list size)<br>
        **Expected:** Similar to previous.
+
+### Adding skill to a person
+
+1. Adding skills to a person while all persons are being shown
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `addskill 1 s/adobe s/python`<br>
+       **Expected:** First contact is added the skill `adobe` and `python`
+
+    1. **Test case:** `addskill 1 s/adobe` again <br>
+       **Expected:** Message that says 1st contact already has the inputted skill
+
+    1. **Test case:** `addskill 0 s/jokes`<br>
+       **Expected:** Invalid index. No person is added skill. Error details shown in the status message.
+   
+    1. **Test case:** `addskill 0 s/jok*91es`<br>
+       **Expected:** Inavlid skill error message is shown, skills should be alphanumeric.
+   
+   1. **Other incorrect favourite commands to try:** `addskill abc`, `addskill 1 s/9%aggss`, `addskill x s/fight`
+   (where x is larger than the list size)<br>
+      **Expected:** Similar to previous.
+
+### Deleting skill from a person
+
+1. Adding skills to a person while all persons are being shown
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `dskill 1 s/adobe`<br>
+       **Expected:** First contact removed of the skill `adobe`
+
+    1. **Test case:** `dskill 0 s/jokes`<br>
+       **Expected:** Invalid index. No person is added skill. Error details shown in the status message.
+
+    1. **Test case:** `dskill 0 s/jok*91es`<br>
+       **Expected:** Inavlid skill error message is shown, skills should be alphanumeric.
+
+    1. **Other incorrect favourite commands to try:** `addskill abc`, `addskill 1 s/9%aggss`, `addskill x s/fight`
+       (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
+
+### Copy
+
+1. Copy the command of the person while all persons are being shown
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `copy 1 s`<br>
+       **Expected:** Add command string of the first contact is copied to the clipboard. 
+        Success message shown in the result display box.
+
+    1. **Test case:** `copy 0`<br>
+       **Expected:** Invalid index. No command is copied. Error details shown in the status message.
+
+    1. **Other incorrect favourite commands to try:** `copy abc`, `copy s/9%aggss`, `copy x`
+       (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
+
+
 
 ### Saving data
 1. Simulate saving data
