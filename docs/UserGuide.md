@@ -358,7 +358,7 @@ Filter contacts from the address book based on name, event, role, phone number, 
   * e.g. `filter ev/Supernova` is the same as `filter ev/supernova`.
 * The keyword can be a part of the full word.
   * e.g. `filter n/Ali` will filter out a person named `Alice` as well!
-* The keyword **can be any valid character** 1, a, @, …​
+* The keyword **can be any valid character** for that field: e.g. 1, a, @ (for email), …​
 * If more than one field is provided, LinkUp will filter contacts that match **all** the fields provided.
 
 **Example Input:** <br>
@@ -525,6 +525,10 @@ Unmarked Betsy Crower from favourites.
 View a list of all your favourite persons in the address book.
 
 **Format:** <br> `lfav`
+
+**Sample Output:** <br>
+
+![Sample Output for list favourite command](images/lfavOutput.png)
 
 <br>
 
