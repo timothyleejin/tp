@@ -50,9 +50,9 @@ Let's walk you through the setup process of LinkUp.
 
 2. **Download LinkUp:** <br>
    To install the latest `LinkUp.jar` file:
-   1. Go to the [GitHub Page](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
-   2. Scroll down until you see the first section with an <b>Assets</b> header, which looks like this:
-   <img src="images/JarFileDownload.png" width="650px">
+   1. Go to the [LinkUp Releases Page](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
+   2. Scroll down the latest release section until you see a section an <b>Assets</b> header, which looks like this:
+   <img src="images/LinkUpAssets.jpg" width="650px">
    3. Click on the file that ends with ".jar" to automatically download the latest `LinkUp.jar` file. 
 
 <br>
@@ -132,7 +132,8 @@ View a brief message on commands you can use and a pop-up message explaining how
 
 **Format**: <br> `help` or `h`
 
-<br>
+**Expected Output:** <br>
+![Example Output for Help Command](images/Help Output.png) <br>
 
 #### Close LinkUp
 
@@ -153,10 +154,19 @@ Add a person to the address book.
 **Format:** <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
 `a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
-<div markdown="span" class="alert alert-primary"> 
-<b>Tip: </b>
+**Parameters:** <br>
+`n/NAME`: Name of your contact. <br>
+`p/PHONE_NUMBER`: Phone number of your contact. It should only contain numbers, and it should be at least 3 digits long <br>
+`e/EMAIL`: Email address of your contact. It should be of the format local-part@domain. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters.
+This is followed by a '@' and then a domain name. The domain name must end with a domain label at least 2 characters long, have each domain label start and end with alphanumeric characters, and have each domain label consist of alphanumeric characters, separated only by hyphens, if any.<br>
+`t/TELEGRAM_HANDLE`: Telegram handle of your contact. It should be English letters (a-z, A-Z), digits (0-9), and underscores. It also has to be between 5 and 32 characters long. <br>
+`ev/EVENT`: Event of your contact. It can take up any values and should not be blank. <br>
+`r/ROLE`: Role of your contact. It can take up any values and should not be blank. <br>
+`s/SKILL`: Skill of your contact. It should be alphanumeric with no spacing. <br>
+
+<box type="tip" seamless>
 A person can have any number of skills (including 0)
-</div>
+</box>
 
 **Example Input:** <br>
 `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
@@ -165,7 +175,7 @@ A person can have any number of skills (including 0)
 ![Example Output for Add Command](images/AddCommandExampleOutput.png) <br>
 
 <box type="tip" seamless>
-**Tip:** The order of fields do not matter.
+Tip: The order of fields do not matter.
 </box>
 
 <br>

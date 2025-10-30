@@ -63,10 +63,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
 
-
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_ROLE,
                 PREFIX_EVENT, PREFIX_SKILL);
-
 
         String namesInput = argMultimap.getValue(PREFIX_NAME).orElse("");
         List<Name> names = getNames(namesInput);

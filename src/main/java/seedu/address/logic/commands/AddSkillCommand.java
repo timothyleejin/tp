@@ -40,7 +40,6 @@ public class AddSkillCommand extends Command {
      * @param index
      * @param skills
      */
-
     public AddSkillCommand(Index index, List<Skill> skills) {
         requireNonNull(skills);
         assert index.getOneBased() > 0 : "Index must be a positive integer";

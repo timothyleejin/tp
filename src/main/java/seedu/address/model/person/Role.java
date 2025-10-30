@@ -7,10 +7,9 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
-    public static final String MESSAGE_CONSTRAINTS = "Roles should not be blank and can contain "
-            + "alphanumeric characters and special characters (without quotations): \"(),\"";
+    public static final String MESSAGE_CONSTRAINTS = "Roles can take up any values and should not be blank.";
 
-    public static final String VALIDATION_REGEX = "^[\\w\\s,()]+$";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
 
