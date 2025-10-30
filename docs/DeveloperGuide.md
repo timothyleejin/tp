@@ -570,9 +570,11 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
-
-   2. Double-click the jar file <br>
+   1. Download the jar file and copy into an empty folder.
+   
+   2. Open the command terminal and navigate into the folder with `LinkUp.jar`.
+   
+   3. Type `java -jar LinkUp.jar` to run the application.
    **Expected:** Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
