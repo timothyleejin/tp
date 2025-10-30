@@ -83,8 +83,8 @@ public class AddCommandTest {
                 .withEmail("edited@example.com").build();
         AddCommand addCommand = new AddCommand(duplicateTelegramPerson);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_TELEGRAM,
-                () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_TELEGRAM, () ->
+                addCommand.execute(modelStub));
     }
 
     @Test
