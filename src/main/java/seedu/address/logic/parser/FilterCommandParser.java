@@ -95,7 +95,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         List<Skill> skills = getSkills(skillsInput);
 
         if (names.isEmpty() && phones.isEmpty() && emails.isEmpty() && telegrams.isEmpty() && events.isEmpty()
-        && roles.isEmpty() && skills.isEmpty()) {
+            && roles.isEmpty() && skills.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
 
