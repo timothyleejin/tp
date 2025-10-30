@@ -765,6 +765,23 @@ testers are expected to do more *exploratory* testing.
        (where x is larger than the list size)<br>
        **Expected:** Similar to previous.
 
+### Copy
+
+1. Adding skills to a person while all persons are being shown
+    1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
+
+    1. **Test case:** `copy 1 s`<br>
+       **Expected:** Add command string of the first contact is copied to the clipboard. 
+        Success message shown in the result display box.
+
+    1. **Test case:** `copy 0`<br>
+       **Expected:** Invalid index. No command is copied. Error details shown in the status message.
+
+    1. **Other incorrect favourite commands to try:** `copy abc`, `copy s/9%aggss`, `copy x`
+       (where x is larger than the list size)<br>
+       **Expected:** Similar to previous.
+
+
 
 ### Saving data
 1. Simulate saving data
