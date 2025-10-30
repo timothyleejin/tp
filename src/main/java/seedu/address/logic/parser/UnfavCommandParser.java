@@ -28,17 +28,29 @@ public class UnfavCommandParser implements Parser<UnfavCommand> {
     public UnfavCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
-            throw new ParseException("Index is required");
+            throw new ParseException("Invalid command format! Index is required.\n"
+                    + "unfav: Removes a person identified by the index number used in the displayed "
+                    + "person list from favourites.\n"
+                    + "Parameters: INDEX (must be a positive integer)\n"
+                    + "Example: unfav 1");
         }
 
         try {
             int index = Integer.parseInt(trimmedArgs);
             if (index <= 0) {
-                throw new ParseException("Index must be a positive integer");
+                throw new ParseException("Invalid command format! Index must be a positive integer.\n"
+                        + "unfav: Removes a person identified by the index number used in the displayed "
+                        + "person list from favourites.\n"
+                        + "Parameters: INDEX (must be a positive integer)\n"
+                        + "Example: unfav 1");
             }
             return new UnfavCommand(index - 1);
         } catch (NumberFormatException e) {
-            throw new ParseException("Index must be an integer", e);
+            throw new ParseException("Invalid command format! Index must be an integer.\n"
+                    + "unfav: Removes a person identified by the index number used in the displayed "
+                    + "person list from favourites.\n"
+                    + "Parameters: INDEX (must be a positive integer)\n"
+                    + "Example: unfav 1", e);
         }
     }
 }

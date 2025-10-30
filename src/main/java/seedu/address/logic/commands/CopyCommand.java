@@ -26,7 +26,7 @@ public class CopyCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SUCCESS = "Copied add command for %s to clipboard!\n"
-            + "If paste (ctrl + v) does not work, "
+            + "If paste (ctrl/cmd + v) does not work, "
             + "here is the add command string for you to manually copy:\n%s";
     public static final String MESSAGE_INVALID_INDEX = "The person index provided is invalid.";
     public static final String MESSAGE_CLIPBOARD_FAIL = "Clipboard not available. "
