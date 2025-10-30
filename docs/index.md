@@ -11,7 +11,7 @@ title: LinkUp Contact Book
 [![Java CI](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/AY2526S1-CS2103T-F13-2/tp/actions/workflows/gradle.yml)
 [![codecov](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp/graph/badge.svg?token=6CXD68NGYN)](https://codecov.io/github/AY2526S1-CS2103T-F13-2/tp)
 
-![Ui](images/LinkUpUI.png)
+![Ui](images/Ui.png)
 
 **LinkUp is a desktop application for managing your contact details.**
 Tailored for organisation team leaders, LinkUp does more than just keep contact information

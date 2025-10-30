@@ -4,10 +4,8 @@
   pageNav: 3
 ---
 
-<head>
-    <h1 id="developerTitle">Developer Guide</h1>
-</head>
 
+<h1 id="developerTitle">Developer Guide</h1>
 <br>
 
 <!-- * Table of Contents -->
@@ -758,4 +756,54 @@ Copy the command of the person while all persons are being shown
    4. Relaunch LinkUp. <br>
   **Expected:** LinkUp's contact list will be empty.<br><br>
 
+<h2 class="developerHeader">Appendix: Effort</h2>
 
+**Difficulty level:** 8/10
+
+LinkUp's main difficulty was in having to understand the classes already implemented in AB3 and using those classes
+to implement our new features.
+
+**Challenges faced:**
+
+Some challenges faced include the implementation of `Event` and `Role` as a Key-Value pair in a `HashMap` so that
+it can take in multiple `Event` and `Role` with each `Role` corresponding to an `Event`. To implement this, the storage
+component had to be updated with a `JsonAdaptedEventWithRole` class so that the data could be stored and read from the 
+Json file. 
+
+Another challenging feature would be the Filter Command which filters the address book based on any number of fields. 
+To implement this we created a `FilterPredicate` class which would take in a `PersonFilter` to create a predicate to test
+each contact with.
+
+**Achievements:**
+
+New features from AB3:
+1. Favourite function
+2. Add and delete `skills`(`tags` in AB3)
+3. Filter function
+4. Stores multiple Events and Roles per contact
+5. Copy command
+6. General UI changes
+7. Stores `Telegram` instead of `Address`
+8. Delete multiple contacts at once
+
+<h2 class="developerHeader">Appendix: Planned Enhancements</h2>
+
+**Team Size:** 5
+
+1. **Add and Remove Event + Role Command**
+   - Currently, the only way to add or remove Events and Roles is through the use of the Edit Command. However, this will
+   rewrite all current Events and Roles. We plan to implement a command to easily add and delete event and roles from 
+   contacts similar to the add and delete skills feature. <br><br>
+2. **Extra AND/OR Parameter for Filter Function**
+   - The Filter Function filters for contacts that match at least one parameter from each field (e.g. 1 parameter from
+   name, 1 parameter from event, etc.) However, this limits users who might want to filter for any contact matching one
+   parameter from any field. By implementing a AND/OR field, users can toggle between 2 different modes of filtering,
+   based on what they need. <br><br>
+3. **Filtering to match more than 1 word**
+   - Due to the current implementation, the Filter function cannot filter for phrases that are more than 1 word long (
+   e.g. filter for "Alex Yeoh" specifically). We plan to implement this by parsing inputs with a dash to replace the
+   space (e.g. filter "Alex-Yeoh" to filter for "Alex Yeoh"). <br><br>
+4. **Delete by fields**
+   - By using the `FilterPredicate` class created for the Filter feature we can implement a Delete by field feature where
+   the user can delete all contacts matching the field. (Example input: `Delete n/Alex` will delete all contacts with
+   Alex in their name). <br><br>

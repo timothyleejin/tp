@@ -562,7 +562,7 @@ Action | Command
 **Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]` <br> <br> e.g. `find James Jake`
 **Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` <br> <br> e.g. `filter ev/Hunt`
 **Add Skill**: <br> Add skill(s) to contact | `addskill INDEX [s/SKILL]…` or <br> `as INDEX [s/SKILL]…` <br> <br> e.g. `addSkill 1 s/JavaScript`
-**Delete Skill**: <br> Delete skill(s) of a contact | `dskill INDEX [s/SKILL]…` or <br> `ds INDEX [s/SKILL]…` <br> <br> e.g. `dskill 2 s/Cycling`
+**Delete Skill**: <br> Delete skill(s) from contact | `dskill INDEX [s/SKILL]…` or <br> `ds INDEX [s/SKILL]…` <br> <br> e.g. `dskill 2 s/Cycling`
 **Favourite**: <br> Add a contact to favourites | `fav INDEX`<br> <br> e.g. `fav 3`
 **Unfavourite**: <br> Remove a contact from favourites | `unfav INDEX`<br> <br> e.g. `unfav 3`
 **List favourites**: <br> List all favourite contacts | `lfav`
@@ -572,19 +572,50 @@ Action | Command
 ## **Troubleshooting**
 ### Frequently Asked Questions
 
-**Q**: How do I transfer my data to another computer? <br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LinkUp home folder.
+#### Launching LinkUp
+**Why am I unable to run the `LinkUp.jar` file?** <br>
+Ensure you have Java `17` or above installed in your computer. After installing LinkUp, type `java -jar LinkUp.jar` in your command terminal to launch LinkUp.
+Refer to [_Quick Start_](#quick-start) for the detailed LinkUp launching process.
 
-**Q**: How do I edit only 1 of my 2 skills for a specific contact? <br>
-**A**: You would have to edit both skills in order for you to see the changes. So assuming
+#### LinkUp Data
+**How do I save my data in LinkUp?** <br>
+LinkUp data is saved in your computer automatically after any command that changes the data. There is no need to save manually. This means that your contact list will be restored whenever you reopen LinkUp. <br>
+
+**How do I transfer my data to another computer?** <br>
+Install LinkUp on the other computer, then replace the new data file in your other computer with the data file from your original computer's LinkUp. <br>
+
+#### Contact detail management
+**How do I edit only 1 of my 2 skills for a specific contact?** <br>
+You would have to edit both skills in order for you to see the changes. So assuming
 you have `skills: Boxing, Drumming` but you wish to change Drumming to Singing, you can only do this by using the `edit` command
 and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`.
 
-**Q**: Why am I unable to run the `LinkUp.jar` file? <br>
-**A**: Ensure you have Java `17` or above installed in your computer and the correct `LinkUp.jar` file. 
+**Why am I unable to run the `LinkUp.jar` file?** <br>
+Ensure you have Java `17` or above installed in your computer and the correct `LinkUp.jar` file. 
 Follow the instructions at [_Quick Start_ ](#quick-start) to re-download the Java Developer Kit (JDK) and `LinkUp.jar` file.
 To ensure that the JDK version is correct, type `java -version` in the command terminal of your computer to check.
 
+**How do I add multiple Roles and Events to an existing contact?** <br>
+You can use the `edit` command. So assuming your contact is a participant for an EWP event, and an invigilator for an exam event,
+you can type `edit [INDEX] ev/EWP r/Participant ev/Exam r/Invigilator`. Ensure that the `ev/EVENT` and the corresponding `r/ROLE` are
+beside each other.
+
+**How do I edit only 1 of my 2 Event-Role pairs for a specific contact?** <br>
+You would have to edit both Event-Role pairs in order for you to see the changes. So assuming
+you have `Events: [AngBao Hunt, Exam]; Roles: [Organiser, Invigilator]` but you wish to change Ang Bao Hunt to EWP, you can only do this by using the `edit` command
+and typing `edit [INDEX] ev/EWP r/Organiser ev/Exam r/Invigilator` or `e [INDEX] ev/EWP r/Organiser ev/Exam r/Invigilator`. <br>
+
+**Can I edit Event information of a contact only?** <br>
+No. You would have to edit the Role of the contact too. Each event should have a corresponding Role. So assuming you have
+`Events: [AngBao Hunt]; Roles: [Organiser]` but you wish to change AngBao Hunt to Exam, you can only do this by using the `edit` command
+and typing `edit [INDEX] ev/Exam r/Organiser` or `e [INDEX] ev/Exam r/Organiser`. <br>
+
+**What if I type 2 events and 1 role when adding/editing a contact?** <br>
+Assuming you typed `edit [INDEX] ev/EWP r/Participant ev/Exam`, the second event will not be saved. Only `Events: [EWP]; Roles: [Participant]`
+will be saved. Each event should have a corresponding role.
+
+**Can I add a new contact with the same phone number?** <br>
+Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
 
 ### Known Issues
 
@@ -592,8 +623,6 @@ To ensure that the JDK version is correct, type `java -version` in the command t
 **Solution:** Delete the `preferences.json` file created by the application before running the application again.
 * **Issue:** If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. <br>
 **Solution:** Manually restore the minimized Help Window.
-
-### Common Error Messages
 
 ### Further Help & Support
 * Visit our [GitHub Repository](https://github.com/AY2526S1-CS2103T-F13-2/tp) or [Developer Guide](https://ay2526s1-cs2103t-f13-2.github.io/tp/DeveloperGuide.html) for technical details.
