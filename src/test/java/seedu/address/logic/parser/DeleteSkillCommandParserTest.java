@@ -38,19 +38,25 @@ class DeleteSkillCommandParserTest {
     }
 
     @Test
-    void parse_oneArgument_throwsParseException() throws Exception {
+    void parse_missingPrefix_throwsParseException() throws Exception {
+        assertParseFailure(parser, "1 Java",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    void parse_missingIndex_throwsParseException() throws Exception {
         assertParseFailure(parser, "s/Java",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
 
     @Test
-    void parse_emptySkill_throwsParseException() throws Exception {
+    void parse_missingSkill_throwsParseException() throws Exception {
         assertParseFailure(parser, "1 s/",
                 String.format(Skill.MESSAGE_CONSTRAINTS));
     }
 
     @Test
-    void parse_emptyString_throwsParseException() throws Exception {
+    void parse_emptyInput_throwsParseException() throws Exception {
         assertParseFailure(parser, "",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
