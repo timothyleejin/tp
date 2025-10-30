@@ -429,9 +429,9 @@
 
 .event-role-pair {
     -fx-padding: 2px 5px;
-    -fx-border-color: #e0e0e0;
+    -fx-border-color: transparent;
     -fx-border-radius: 3px;
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: transparent;
 }
 
 .event-label {
