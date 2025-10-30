@@ -22,6 +22,7 @@ import seedu.address.model.person.Skill;
 public class DeleteSkillCommand extends Command {
 
     public static final String COMMAND_WORD = "dskill";
+    public static final String COMMAND_SHORTCUT = "ds";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes skills from the person identified "
