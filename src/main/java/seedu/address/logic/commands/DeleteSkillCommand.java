@@ -24,14 +24,14 @@ public class DeleteSkillCommand extends Command {
     public static final String COMMAND_WORD = "dskill";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes a skills from the person identified "
+            + ": Deletes skills from the person identified "
             + "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_SKILL + "SKILL\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_SKILL + "Java";
 
     public static final String MESSAGE_DELETE_SKILL_SUCCESS = "Deleted skills %1$s from %2$s";
-    public static final String MESSAGE_SKILL_NOT_FOUND = "Person does not have the specified skill.";
+    public static final String MESSAGE_SKILL_NOT_FOUND = "%1$s does not have the skill %2$s";
 
     private final Index index;
     private final Set<Skill> skillsToDelete;
@@ -65,7 +65,8 @@ public class DeleteSkillCommand extends Command {
 
         for (Skill skill : skillsToDelete) {
             if (!updatedSkills.contains(skill)) {
-                throw new CommandException(MESSAGE_SKILL_NOT_FOUND);
+                throw new CommandException(String.format(MESSAGE_SKILL_NOT_FOUND,
+                        personToEdit.getName(), skill.skillName));
             }
         }
 

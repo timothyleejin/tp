@@ -63,7 +63,8 @@ public class DeleteSkillCommandTest {
         Set<Skill> skillsToDelete = new HashSet<>(Set.of(new Skill("NonexistentSkill")));
 
         DeleteSkillCommand command = new DeleteSkillCommand(Index.fromOneBased(1), skillsToDelete);
-        assertCommandFailure(command, model, DeleteSkillCommand.MESSAGE_SKILL_NOT_FOUND);
+        assertCommandFailure(command, model, String.format(DeleteSkillCommand.MESSAGE_SKILL_NOT_FOUND,
+                targetPerson.getName(), "NonexistentSkill"));
     }
 
     @Test
