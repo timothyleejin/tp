@@ -2,6 +2,11 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteSkillCommand;
@@ -20,28 +25,37 @@ public class DeleteSkillCommandParser implements Parser<DeleteSkillCommand> {
      */
     public DeleteSkillCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
-        }
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_SKILL);
 
-        String[] parts = trimmedArgs.split("\\s+", 2);
-        if (parts.length < 2) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
+        if (!arePrefixesPresent(argMultimap, PREFIX_SKILL) || argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
         }
 
         Index index;
-        try {
-            index = ParserUtil.parseIndex(parts[0]);
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE), pe);
-        }
-        String skillName = parts[1].trim();
 
-        Skill skillToDelete = new Skill(skillName);
-        return new DeleteSkillCommand(index, skillToDelete);
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeleteSkillCommand.MESSAGE_USAGE), pe);
+        }
+
+        Set<Skill> skillsToDelete = new HashSet<>();
+        for (String skillName : argMultimap.getAllValues(PREFIX_SKILL)) {
+            try {
+                skillsToDelete.add(new Skill(skillName.trim()));
+            } catch (IllegalArgumentException e) {
+                throw new ParseException(Skill.MESSAGE_CONSTRAINTS);
+            }
+        }
+
+        return new DeleteSkillCommand(index, skillsToDelete);
+    }
+
+    /**
+     * Returns true if all the specified prefixes are present in the given {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

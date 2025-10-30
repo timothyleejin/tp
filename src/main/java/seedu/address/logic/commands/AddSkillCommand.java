@@ -21,15 +21,16 @@ import seedu.address.model.person.Skill;
 public class AddSkillCommand extends Command {
 
     public static final String COMMAND_WORD = "addskill";
+    public static final String COMMAND_SHORTCUT = "as";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a skill to the person based on "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds skills to the person based on "
             + "the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_SKILL + "SKILL\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_SKILL + "Java";
 
     public static final String MESSAGE_ADD_SKILL_SUCCESS = "Added skill %1$s to %2$s";
-    public static final String MESSAGE_DUPLICATE_SKILL = "%1$s already has the inputted skill %2$s";
+    public static final String MESSAGE_DUPLICATE_SKILL = "%1$s already has the skill %2$s";
 
     private final Index index;
     private final List<Skill> skillToAdd;
