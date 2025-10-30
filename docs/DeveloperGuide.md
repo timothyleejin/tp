@@ -13,7 +13,7 @@
 <!-- * Table of Contents -->
 <page-nav-print />
 
-<h2 class="developerHeader">Acknowledgments</h2>
+<h2 class="developerHeader">Acknowledgements</h2>
 
 This project is adapted from the AddressBook-Level3 (AB3) foundation created for NUS’ CS2103T Software Engineering course.
 
