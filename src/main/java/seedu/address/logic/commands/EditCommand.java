@@ -66,6 +66,10 @@ public class EditCommand extends Command {
             + "each contact needs to have a unique phone number";
     public static final String MESSAGE_DUPLICATE_EMAIL = "This email already exists in the address book, "
             + "each contact needs to have a unique email address";
+    public static final String MESSAGE_DUPLICATE_TELEGRAM = "This Telegram already exists in the address book, "
+            + "each contact needs to have a unique Telegram";
+    public static final String MESSAGE_EVENT_MISSING = "Editing a role requires a corresponding event field";
+    public static final String MESSAGE_ROLE_MISSING = "Editing an event requires a corresponding role field";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -104,6 +108,8 @@ public class EditCommand extends Command {
         } else if (!personToEdit.isSameEmail(editedPerson) && model.hasEmail(editedPerson)) {
             // Edited person name is already valid, so check for duplicate email addresses.
             throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
+        } else if (!personToEdit.isSameTelegram(editedPerson) && model.hasTelegram(editedPerson)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TELEGRAM);
         }
 
         model.setPerson(personToEdit, editedPerson);
