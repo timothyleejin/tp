@@ -17,7 +17,7 @@ public class FavCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Marked %1$s as favourite.";
     public static final String MESSAGE_ALREADY_FAV = "%1$s is already a favourite.";
-    public static final String MESSAGE_INVALID_INDEX = "Invalid index.";
+    public static final String MESSAGE_INVALID_INDEX = "The person index provided is invalid.";
 
     private final int index;
 
