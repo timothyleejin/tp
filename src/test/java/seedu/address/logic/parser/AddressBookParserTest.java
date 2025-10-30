@@ -9,7 +9,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON_LIST;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -113,11 +115,11 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_deleteSkill() throws Exception {
-        Skill skillToDelete = new Skill("Java");
+        Set<Skill> skillsToDelete = new HashSet<>(Set.of(new Skill("Java")));
         DeleteSkillCommand command = (DeleteSkillCommand) parser.parseCommand(
                 DeleteSkillCommand.COMMAND_WORD + " "
-                        + INDEX_FIRST_PERSON.getOneBased() + " Java");
-        assertEquals(new DeleteSkillCommand(INDEX_FIRST_PERSON, skillToDelete), command);
+                        + INDEX_FIRST_PERSON.getOneBased() + " s/Java");
+        assertEquals(new DeleteSkillCommand(INDEX_FIRST_PERSON, skillsToDelete), command);
     }
 
     @Test

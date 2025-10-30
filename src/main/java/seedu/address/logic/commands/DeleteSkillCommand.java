@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.HashSet;
@@ -23,31 +24,31 @@ public class DeleteSkillCommand extends Command {
     public static final String COMMAND_WORD = "dskill";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes a skill from the person identified "
+            + ": Deletes a skills from the person identified "
             + "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "SKILL\n"
-            + "Example: " + COMMAND_WORD + " 1 Java";
+            + PREFIX_SKILL + "SKILL\n"
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_SKILL + "Java";
 
-    public static final String MESSAGE_DELETE_SKILL_SUCCESS = "Deleted skill %1$s from %2$s";
+    public static final String MESSAGE_DELETE_SKILL_SUCCESS = "Deleted skills %1$s from %2$s";
     public static final String MESSAGE_SKILL_NOT_FOUND = "Person does not have the specified skill.";
 
     private final Index index;
-    private final Skill skillToDelete;
+    private final Set<Skill> skillsToDelete;
 
     /**
      * Creates a {@code DeleteSkillCommand} to remove the specified {@code Skill}
      * from the person at the given {@code Index}.
      *
      * @param index Index of the target person in the filtered person list.
-     * @param skillToDelete Skill to be removed from the person.
+     * @param skills Skills to be removed from the person.
      */
-    public DeleteSkillCommand(Index index, Skill skillToDelete) {
+    public DeleteSkillCommand(Index index, Set<Skill> skills) {
         requireNonNull(index);
-        requireNonNull(skillToDelete);
+        requireNonNull(skills);
 
         this.index = index;
-        this.skillToDelete = skillToDelete;
+        this.skillsToDelete = new HashSet<>(skills);
     }
 
     @Override
@@ -60,13 +61,15 @@ public class DeleteSkillCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
+        Set<Skill> updatedSkills = new HashSet<>(personToEdit.getSkills());
 
-        if (!personToEdit.getSkills().contains(skillToDelete)) {
-            throw new CommandException(MESSAGE_SKILL_NOT_FOUND);
+        for (Skill skill : skillsToDelete) {
+            if (!updatedSkills.contains(skill)) {
+                throw new CommandException(MESSAGE_SKILL_NOT_FOUND);
+            }
         }
 
-        Set<Skill> updatedSkills = new HashSet<>(personToEdit.getSkills());
-        updatedSkills.remove(skillToDelete);
+        updatedSkills.removeAll(skillsToDelete);
 
         Person editedPerson = new Person(
                 personToEdit.getName(),
@@ -78,9 +81,16 @@ public class DeleteSkillCommand extends Command {
                 personToEdit.isFavourite()
         );
 
+        String skillNames = skillsToDelete.stream()
+                .map(Skill::toString)
+                .sorted()
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_DELETE_SKILL_SUCCESS, skillToDelete, editedPerson.getName()));
+        return new CommandResult(String.format(MESSAGE_DELETE_SKILL_SUCCESS, skillNames, editedPerson.getName()));
+
     }
 
     @Override
@@ -96,14 +106,14 @@ public class DeleteSkillCommand extends Command {
 
         DeleteSkillCommand otherDeleteSkillCommand = (DeleteSkillCommand) other;
         return index.equals(otherDeleteSkillCommand.index)
-                && skillToDelete.equals(otherDeleteSkillCommand.skillToDelete);
+                && skillsToDelete.equals(otherDeleteSkillCommand.skillsToDelete);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("targetIndex", index)
-                .add("deletedSkill", skillToDelete)
+                .add("deletedSkills", skillsToDelete)
                 .toString();
     }
 }
