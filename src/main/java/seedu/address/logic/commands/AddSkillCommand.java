@@ -24,7 +24,7 @@ public class AddSkillCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a skill to the person based on "
             + "the index number used in the displayed person list.\n"
-            + "Parameters: INDEX (positive integer) "
+            + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_SKILL + "SKILL\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_SKILL + "Java";
 

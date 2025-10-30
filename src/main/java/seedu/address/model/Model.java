@@ -68,6 +68,11 @@ public interface Model {
     boolean hasEmail(Person person);
 
     /**
+     * Returns true if a person with the same telegram as {@code person} exists in the address book.
+     */
+    boolean hasTelegram(Person person);
+
+    /**
      * Deletes the given person.
      * The person must exist in the address book.
      */
