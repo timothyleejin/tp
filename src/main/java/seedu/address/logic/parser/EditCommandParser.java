@@ -46,8 +46,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROLE, PREFIX_EVENT,
-                PREFIX_TELEGRAM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TELEGRAM);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -66,6 +65,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_ROLE).isPresent() && argMultimap.getValue(PREFIX_EVENT).isPresent()) {
             editPersonDescriptor.setRoles(ParserUtil.parseEventsWithRoles(argMultimap.getAllValues(PREFIX_EVENT),
                     argMultimap.getAllValues(PREFIX_ROLE)));
+        } else if (argMultimap.getValue(PREFIX_ROLE).isPresent() && argMultimap.getValue(PREFIX_EVENT).isEmpty()) {
+            throw new ParseException(EditCommand.MESSAGE_EVENT_MISSING);
+        } else if (argMultimap.getValue(PREFIX_ROLE).isEmpty() && argMultimap.getValue(PREFIX_EVENT).isPresent()) {
+            throw new ParseException(EditCommand.MESSAGE_ROLE_MISSING);
         }
 
         parseSkillsForEdit(argMultimap.getAllValues(PREFIX_SKILL)).ifPresent(editPersonDescriptor::setSkills);

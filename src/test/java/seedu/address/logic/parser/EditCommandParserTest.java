@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.EVENT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
@@ -11,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_TELEGRAM_DESC
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.SKILL_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.SKILL_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.TELEGRAM_DESC_AMY;
@@ -64,6 +66,12 @@ public class EditCommandParserTest {
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
+
+        //1 Event and no Role
+        assertParseFailure(parser, "1" + EVENT_DESC_AMY, EditCommand.MESSAGE_ROLE_MISSING);
+
+        //no Event and 1 Role
+        assertParseFailure(parser, "1" + ROLE_DESC_AMY, EditCommand.MESSAGE_EVENT_MISSING);
     }
 
     @Test

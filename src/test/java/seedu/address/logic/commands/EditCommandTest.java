@@ -210,4 +210,24 @@ public class EditCommandTest {
         Optional<HashMap<Event, Role>> result = descriptor.getRoles();
         assertFalse(result.isPresent());
     }
+
+    @Test
+    public void execute_duplicateTelegram_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withTelegram(firstPerson.getTelegram().value).build();
+        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_TELEGRAM);
+    }
+
+    @Test
+    public void execute_duplicateEmail_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withEmail(firstPerson.getEmail().value).build();
+        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_EMAIL);
+    }
 }
