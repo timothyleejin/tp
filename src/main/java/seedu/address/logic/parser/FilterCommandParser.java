@@ -94,6 +94,11 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         String skillsInput = argMultimap.getValue(PREFIX_SKILL).orElse("");
         List<Skill> skills = getSkills(skillsInput);
 
+        if (names.isEmpty() && phones.isEmpty() && emails.isEmpty() && telegrams.isEmpty() && events.isEmpty()
+        && roles.isEmpty() && skills.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+        }
+
         PersonFilter filterParams = new PersonFilter(names, phones, emails, telegrams, roles, events, skills);
 
         FilterPredicate filterPredicate = new FilterPredicate(filterParams);
