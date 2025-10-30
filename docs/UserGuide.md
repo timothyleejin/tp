@@ -1,15 +1,18 @@
 ---
-layout: page
-title: User Guide
-
+  layout: default.md
+  title: "User Guide"
+  pageNav: 3
 ---
+
+# LinkUp User Guide
+
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively.
 Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
 your hands off your keyboard.
 --------------------------------------------------------------------------------------------------------------------
 ## **Table of Contents**
-* Table of Contents
-{:toc}
+<!-- * Table of Contents -->
+<page-nav-print />
 --------------------------------------------------------------------------------------------------------------------
 ## **About LinkUp**
 ### Target Users
@@ -68,7 +71,7 @@ Let's walk you through the setup process of LinkUp.
 
 ## **Features**
 
-<div markdown="block" class="alert alert-info">
+<box type="info" seamless>
 
 **:information_source:  Notes about the command format:**<br>
 
@@ -92,7 +95,7 @@ Let's walk you through the setup process of LinkUp.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+  </box>
 
 ### View Help
 
@@ -117,9 +120,9 @@ A person can have any number of skills (including 0)
 **Expected Output:** <br>
 ![Example Output for Add Command](images/AddCommandExampleOutput.png) <br>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The order of fields do not matter!
-</div>
+<box type="tip" seamless>
+**Tip:** The order of fields do not matter.
+</box>
 
 ### List all Contacts
 
@@ -304,10 +307,11 @@ LinkUp data is saved in the hard disk automatically after any command that chang
 
 LinkUp data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, LinkUp will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
-Furthermore, certain edits can cause the LinkUp to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</div>
+<box type="warning" seamless>
+**Caution:**
+If your changes to the data file makes its format invalid, LinkUp will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause LinkUp to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Command Summary**
@@ -375,7 +379,6 @@ Finally, type `java -jar LinkUp.jar` command to run the application. <br>
 We will get back to you as soon as possible.
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## **Get in Touch with Us**
 We’d love to hear from you! Whether you have questions, feedback, or suggestions for new features, feel free to reach out to us.
 
