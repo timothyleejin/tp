@@ -39,7 +39,7 @@ class DeleteSkillCommandParserTest {
 
     @Test
     void parse_missingPrefix_throwsParseException() throws Exception {
-        assertParseFailure(parser, "1 Java",
+        assertParseFailure(parser, "1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
 
@@ -52,6 +52,12 @@ class DeleteSkillCommandParserTest {
     @Test
     void parse_missingSkill_throwsParseException() throws Exception {
         assertParseFailure(parser, "1 s/",
+                String.format(Skill.MESSAGE_CONSTRAINTS));
+    }
+
+    @Test
+    void parse_invalidSkill_throwsParseException() throws Exception {
+        assertParseFailure(parser, "1 s/^&h",
                 String.format(Skill.MESSAGE_CONSTRAINTS));
     }
 
