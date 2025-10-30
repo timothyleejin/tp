@@ -59,8 +59,10 @@ Let's walk you through the setup process of LinkUp.
    Place the `LinkUp.jar` file in your preferred folder in your computer.
 
 4. **Launch It**: <br>
-   Open the command terminal of your computer, and navigate into the folder you put the `LinkUp.jar` file in.
-   You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
+   Open the command terminal of your computer.
+    * **Mac users:** Press Command + Space, type Terminal, and press Enter, to open the command terminal.
+    * **Windows users:** Click the Start Menu, type cmd, and open Command Prompt, to open the command terminal. <br>
+   Navigate into the folder you put the `LinkUp.jar` file in. You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
    type `cd Downloads` in the command terminal to navigate into the Downloads folder.
    Finally, type `java -jar LinkUp.jar` command to run the application. <br><br>In a few seconds, the LinkUp interface will appear.<br>
 <img src="images/LinkUp GUI.png" width="200px">
