@@ -41,7 +41,9 @@
             <ImageView
                     fx:id="favouriteIcon" fitHeight="40" fitWidth="40" visible="false"/>
         </HBox>
-      <VBox fx:id="eventsRolesContainer" spacing="5" />
+      <VBox fx:id="eventsRolesContainer" spacing="5" >
+        <Label text="Events:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
+      </VBox>
     </VBox>
   </GridPane>
 </HBox>
