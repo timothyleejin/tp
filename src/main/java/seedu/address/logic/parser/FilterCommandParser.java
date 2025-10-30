@@ -24,20 +24,19 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonFilter;
 import seedu.address.model.person.Role;
 import seedu.address.model.person.Skill;
-import seedu.address.model.person.Telegram;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
-    private static final String PHONE_VALIDATION_REGEX = "\\d+";
-    private static final String TELEGRAM_VALIDATION_REGEX = "^[a-zA-Z0-9_]{0,32}$";
-
     public static final String PHONE_MESSAGE_CONSTRAINTS = "Phone numbers should only contain numbers when filtering";
     public static final String TELEGRAM_MESSAGE_CONSTRAINTS = "Telegram handles should only be made up of English "
             + "letters (a-z, A-Z), digits (0-9), and underscores (_). "
             + "When filtering, it should be less than 32 characters long.";
+
+    private static final String PHONE_VALIDATION_REGEX = "\\d+";
+    private static final String TELEGRAM_VALIDATION_REGEX = "^[a-zA-Z0-9_]{0,32}$";
 
 
     /**
