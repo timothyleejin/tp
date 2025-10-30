@@ -176,9 +176,19 @@ h6 {
 
 #developerTitle {
     font-family: "Copperplate";
-    color: maroon;
+    color: #660710;
 }
 
 .developerHeader {
-    color: maroon;
+    color: #995631;
+    font-weight: bold;
 }
+
+.developerHeader2 {
+    color: #6F3417;
+}
+
+.no-bullets {
+    font-family: "Verdana";
+}
+
