@@ -767,7 +767,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Copy
 
-1. Adding skills to a person while all persons are being shown
+1. Copy the command of the person while all persons are being shown
     1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
     1. **Test case:** `copy 1 s`<br>
