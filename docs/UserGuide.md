@@ -28,41 +28,66 @@ This app is tailored for **community and club leaders** responsible for:
 * 50MB of available storage space
 
 ### Where do you start?
-* **New users:** Start from the [_Getting Started_ section](#getting-started) to set up LinkUp on your computer
-* **Existing users:** Go to the [_Features_ section](#features) for command details
+* **New users:** Start from [_Quick Start_](#quick-start) to set up LinkUp on your computer
+* **Existing users:** Go to [_Features_](#features) for command details
 * **Advanced users:** Refer to the [_Command Summary_](#command-summary) for quick command guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Getting Started**
+## **Quick Start**
 
 Let's walk you through the setup process of LinkUp.
 
 1. **Prerequisites:** <br>
    You are required to install a specific version of the Java Development Kit (JDK) to run **LinkUp**. A JDK is a software package that provides the tools needed to develop and run Java applications.
-   * **Mac users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-   to ensure you have the precise version prescribed.
-   * **Windows users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
-   to ensure you have the precise version prescribed.
-   * **Linux users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
-   to ensure you have the precise version prescribed.
+    * **Mac users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+    * **Windows users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
+    * **Linux users:** Follow the JDK installation guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
+
+<box type="tip" seamless> 
+    <b>Don't know your OS?</b> Click <a href="https://whatsmyos.com/" target="_blank" rel="noopener noreferrer">here </a> to check.
+</box>
 
 2. **Download LinkUp:** <br>
-   Install the latest `LinkUp.jar` file from [here](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
+   To install the latest `LinkUp.jar` file:
+   1. Go to the [GitHub Page](https://github.com/AY2526S1-CS2103T-F13-2/tp/releases).
+   2. Scroll down until you see the first section with an <b>Assets</b> header, which looks like this:
+   <img src="images/JarFileDownload.png" width="650px">
+   3. Click on the file that ends with ".jar" to automatically download the latest `LinkUp.jar` file. 
+
+<br>
 
 3. **Move It:** <br>
    Place the `LinkUp.jar` file in your preferred folder in your computer.
 
 4. **Launch It**: <br>
-   Open the command terminal of your computer.
-    * **Mac users:** Press Command + Space, type Terminal, and press Enter, to open the command terminal.
-    * **Windows users:** Click the Start Menu, type cmd, and open Command Prompt, to open the command terminal. <br>
-   Navigate into the folder you put the `LinkUp.jar` file in. You can do this by using the `cd` function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
-   type `cd Downloads` in the command terminal to navigate into the Downloads folder.
-   Finally, type `java -jar LinkUp.jar` command to run the application. <br><br>In a few seconds, the LinkUp interface will appear.<br>
-<img src="images/LinkUp GUI.png" width="200px">
-5. **Use It**: <br>
-   Now you can start using **LinkUp**. Refer to the [_Features_ section](#features) below for details of each command.
+    1. Open the command terminal of your computer
+       * **Mac users:** Open Terminal via Spotlight (⌘ + Space → type _Terminal_ → press _return_ ).
+       * **Windows users:** Open Command Prompt by: Press Win + R → type cmd → press _Enter_
+       * **Linux users:** Open Terminal via Ctrl + Alt + T or search for it in your application menu.
+
+       <br>
+
+    2. Navigate into the folder you put the `LinkUp.jar` file in.
+       *  You can do this by using the change directory (`cd`) function. For example, if `LinkUp.jar` is in the Downloads folder of your computer,
+          type `cd Downloads` in the command terminal to navigate into the Downloads folder.
+
+       <br>
+
+    3. Type `java -jar LinkUp.jar` command to run the application.
+    4. In a few seconds, the LinkUp interface will appear. 
+   Scroll down for [_Interface Walkthrough_](#interface-walkthrough).
+    5. Use It: <br>
+   Now you can start using **LinkUp**. Refer to the [_Features_](#features) below for details of each command.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Interface Walkthrough**
+
+1. **Menu Bar:** 
+2. **Command Box:**
+3. **Result Box:**
+4. **Contact List:**
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -70,44 +95,66 @@ Let's walk you through the setup process of LinkUp.
 
 <box type="info" seamless>
 
-**:information_source:  Notes about the command format:**<br>
+**Notes about the command format:**<br>
 
-* Words in uppercase are information you need to provide.<br>
+* **Words in uppercase are information you need to provide.**<br>
   e.g. For `add n/NAME`, replace `NAME` with an actual name.
   * You can type in `add n/John Doe` or `add n/Michael Jordan` etc.
+  
+  <br>
 
-* Items in square brackets are optional.<br>
+* **Items in square brackets are optional.**<br>
   e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional.
   * You can type `n/John Doe s/Java` or `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times (including not at all).<br>
+  <br>
+
+* **Items with `…`​ after them can be used multiple times (including not at all).**<br>
   e.g. `[s/SKILL]…​` means you can add 0 skills, 1 skill, or many.
   * You can type ` ` (i.e. 0 times), `s/Java`, or `s/Photography s/Cooking` etc.
 
-* Fields can be in any order.<br>
+  <br>
+  
+* **Fields can be in any order.**<br>
   e.g. If a command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extra parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* **Extra parameters for commands that do not take in parameters** (such as `help`, `list`, `exit` and `clear`) **will be ignored.**<br>
   e.g. If you type in `help 123`, it will be treated as just `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
-### View Help
+### Help & Exit
+#### View Help
 
 View a brief message on commands you can use and a pop-up message explaining how to access the help page.
 
 **Format**: <br> `help` or `h`
 
-### Add a Contact
+<br>
+
+#### Close LinkUp
+
+Exit the application.
+
+**Format:** <br> `exit`
+
+The Graphic User Interface (GUI) will close after the input. LinkUp saves your contact list automatically in your computer.
+This means that your contact list will be restored whenever you reopen LinkUp.
+
+<br>
+
+### Contact Management
+#### Add a Contact
 
 Add a person to the address book.
 
 **Format:** <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT r/ROLE [s/SKILL]…​` or <br>
 `a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM ev/EVENT r/ROLE [s/SKILL]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-primary"> 
+<b>Tip: </b>
 A person can have any number of skills (including 0)
 </div>
 
@@ -121,13 +168,9 @@ A person can have any number of skills (including 0)
 **Tip:** The order of fields do not matter.
 </box>
 
-### List all Contacts
+<br>
 
-View a list of all persons in the address book.
-
-**Format**: <br> `list` or `l`
-
-### Edit a Contact
+#### Edit a Contact
 
 Edit the details of an existing person in the address book.
 
@@ -151,7 +194,58 @@ Edit the details of an existing person in the address book.
 **Expected Output:** <br>
 `Edited Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
 
-### Search for Contacts by Name
+<br>
+
+#### Delete Contacts
+
+Delete specified persons from the address book.
+
+**Format:** <br> `delete INDEX` or `d INDEX`
+
+* Delete the person at the specified `INDEX`.
+* At least one `INDEX` must be provided.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+**Example Input:** <br>
+`list` followed by `delete 1 2` deletes both the 1st and 2nd persons in the address book.
+
+**Expected Output:** <br>
+`Deleted Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+**Example Input:** <br>
+`find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
+
+**Expected Output:** <br>
+`Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+
+#### Copy Contact
+
+
+<br>
+
+#### Delete ALL Contacts
+
+Clear all persons from the address book.
+
+**Format:** <br> `clear`
+
+**Expected Output:** <br>
+`Address book has been cleared!`
+
+<br>
+
+### Contact Viewing & Searching
+
+#### List all Contacts
+
+View a list of all persons in the address book.
+
+**Format**: <br> `list` or `l`
+
+<br>
+
+#### Search for Contacts by Name
 
 Find persons whose names contain any of the given keywords.
 
@@ -170,7 +264,9 @@ Find persons whose names contain any of the given keywords.
 **Expected Output:** <br>
 If there are Alex Yeoh and David Li in your contacts, they will be listed.
 
-### Filter Contacts by any Fields
+<br>
+
+#### Filter Contacts by any Fields
 
 Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
 
@@ -205,39 +301,20 @@ Another example command `filter n/Mike ev/Charity` will show:
 
 This time, only contacts with both `Mike` in their name and `Charity` in their event will be listed.
 
-### Delete Contacts
+<br>
 
-Delete specified persons from the address book.
+### Skill Management
+#### Add new skill
 
-**Format:** <br> `delete INDEX` or `d INDEX`
 
-* Delete the person at the specified `INDEX`.
-* At least one `INDEX` must be provided.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+<br>
 
-**Example Input:** <br>
-`list` followed by `delete 1 2` deletes both the 1st and 2nd persons in the address book.
+#### Delete existing Skill
 
-**Expected Output:** <br>
-`Deleted Person: John Deez; Phone: 91234567; Telegram: john123; Email: johndoe@example.com; Role: Organiser; Event: Supernova; Skills:, Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
+<br>
 
-**Example Input:** <br>
-`find Betsy` followed by `d 1` deletes the 1st person in the results of the `find` command.
-
-**Expected Output:** <br>
-`Deleted Person: Betsy Crower; Phone: 1234567; Telegram: crownie; Email: betsycrowe@example.com; Role: Organiser; Event: Supernova; Skills:`
- 
-### Delete ALL Contacts
-
-Clear all persons from the address book.
-
-**Format:** <br> `clear`
-
-**Expected Output:** <br>
-`Address book has been cleared!`
-
-### Add a Contact to Favourites
+### Favourite Contact Management
+#### Add a Contact to Favourites
 
 Add a specified person from the address book to favourites.
 
@@ -259,7 +336,9 @@ Add a specified person from the address book to favourites.
 **Expected Output:** <br>
 `Marked Betsy Crower as favourite.`
 
-### Remove a Contact from Favourites
+<br>
+
+#### Remove a Contact from Favourites
 
 Remove a specified person from the address book from favourites.
 
@@ -281,26 +360,24 @@ Remove a specified person from the address book from favourites.
 **Expected Output:** <br>
 `Unmarked Betsy Crower from favourites.`
 
-### List all Favourite Contacts
+<br>
+
+#### List all Favourite Contacts
 
 View a list of all your favourite persons in the address book.
 
 **Format:** <br> `lfav`
 
-### Close LinkUp
+<br>
 
-Exit the application. 
-
-**Format:** <br> `exit`
-
-The Graphic User Interface (GUI) will close after the input. LinkUp saves your contact list automatically in your computer. 
-This means that your contact list will be restored whenever you reopen LinkUp.
-
-### Save the Data
+### Data Storage
+#### Save the Data
 
 LinkUp data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### Edit the Data File
+<br>
+
+#### Edit the Data File
 
 LinkUp data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
