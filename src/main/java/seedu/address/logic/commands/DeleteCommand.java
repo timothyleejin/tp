@@ -22,9 +22,10 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_SHORTCUT = "d";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person(s) identified by the index number(s) used in the displayed person list.\n"
+            + ": Deletes the person(s) identified by the index number(s) used in the displayed person list. "
+            + "You can repeat indices but only the single corresponding contact will be deleted.\n"
             + "Parameters: INDEX... (one or more positive integers, separated by spaces)\n"
-            + "Example: " + COMMAND_WORD + " 1 3 or " + COMMAND_WORD + " 6 4 2";
+            + "Example: " + COMMAND_WORD + " 1 3 (same as " + COMMAND_WORD + " 3 1 3) or " + COMMAND_WORD + " 6 4 2";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: \n%1$s";
 
