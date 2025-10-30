@@ -4,10 +4,8 @@
   pageNav: 3
 ---
 
-<head>
-    <h1 id="developerTitle">Developer Guide</h1>
-</head>
 
+<h1 id="developerTitle">Developer Guide</h1>
 <br>
 
 <!-- * Table of Contents -->
