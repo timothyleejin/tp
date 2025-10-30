@@ -96,9 +96,10 @@ public class AddressBookParser {
         case ListFavCommand.COMMAND_WORD:
             return new ListFavCommand();
 
-        case AddSkillCommand.COMMAND_WORD:
+        case AddSkillCommand.COMMAND_WORD, AddSkillCommand.COMMAND_SHORTCUT:
             return new AddSkillCommandParser().parse(arguments);
-        case DeleteSkillCommand.COMMAND_WORD:
+
+        case DeleteSkillCommand.COMMAND_WORD, DeleteSkillCommand.COMMAND_SHORTCUT:
             return new DeleteSkillCommandParser().parse(arguments);
 
         case CopyCommand.COMMAND_WORD, CopyCommand.COMMAND_SHORTCUT:

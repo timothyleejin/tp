@@ -21,6 +21,7 @@ import seedu.address.model.person.Skill;
 public class AddSkillCommand extends Command {
 
     public static final String COMMAND_WORD = "addskill";
+    public static final String COMMAND_SHORTCUT = "as";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds skills to the person based on "
             + "the index number used in the displayed person list.\n"
