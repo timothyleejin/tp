@@ -4,32 +4,27 @@
   pageNav: 3
 ---
 
-# LinkUp User Guide
+# User Guide
 
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively.
-Optimized for users who prefer a Command Line Interface (CLI), **LinkUp** helps you manage your contacts without ever taking 
-your hands off your keyboard.
---------------------------------------------------------------------------------------------------------------------
-## **Table of Contents**
-<!-- * Table of Contents -->
-<page-nav-print />
+Optimized for users who prefer typing commands to use systems, **LinkUp** helps you manage your contacts without 
+ever taking your hands off your keyboard.
+
 --------------------------------------------------------------------------------------------------------------------
 ## **About LinkUp**
 ### Target Users
 This app is tailored for **community and club leaders** responsible for:
 * Tracking members' events and roles
 * Recording members' skills to efficiently allocate work
-* Communicating with members via messaging platforms (e.g., WhatsApp or Telegram) when needed
+* Communicating with members via messaging platforms (e.g. Telegram)
 
 ### What do you need?
 **Basic Digital Literacy:**
-* You should be comfortable using messaging platforms like Telegram or email
 * You should know how to download software and type commands
 * You should have experience with keyboard-driven workflows to tackle tasks efficiently
 
 **Technical Requirements:**
 * A Mac, Windows, or Linux computer
-* Java `17` or above installed in your computer
 * 50MB of available storage space
 
 ### Where do you start?

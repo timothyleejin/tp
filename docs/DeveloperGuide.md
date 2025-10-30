@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# LinkUp Developer Guide
+# Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
