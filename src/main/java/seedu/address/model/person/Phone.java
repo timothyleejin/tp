@@ -11,8 +11,9 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Phone numbers can include digits, pluses, dashes, commas, brackets, "
+                    + "may start with 0, and must contain between 3 and 18 digits.";
+    public static final String VALIDATION_REGEX = "^(?:0)?[\\d\\s,+().-]*\\d[\\d\\s,+().-]*$";
     public final String value;
 
     /**
@@ -30,7 +31,11 @@ public class Phone {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPhone(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        String digits = test.replaceAll("\\D", "");
+        return digits.length() >= 3 && digits.length() <= 18;
     }
 
     @Override

@@ -247,7 +247,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: Find Contact**<br>
 
 **MSS**
-1. User finds contact by name.
+1. User requests to contact by name.
 2. LinkUp displays list of matching contacts.<br>
    Use case ends.
 
@@ -532,7 +532,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <h3 class="developerHeader2">Non-Functional Requirements</h3>
 
-1. **LinkUp** should work on any mainstream OS as long as it has Java 17 or above installed. 
+1. **LinkUp** should work on any Mainstream OS as long as it has Java 17 or above installed. 
 2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
 4. **LinkUp** responds to your inputs within 2 seconds.
@@ -541,16 +541,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. Data from **LinkUp** will not be able to be sent to other users easily through
    **LinkUp**.
 7. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
-8. **LinkUp** complies with _PDPA_ regulations in storing data.
 
 <h3 class="developerHeader2">Glossary</h3>
 
-1. Mainstream OS**: Windows, Linux, Unix, MacOS
+1. Mainstream OS: Windows, Linux, Unix, MacOS
 2. Non tech-savvy: Someone who has low experience and skill in using technology
 3. GUI: Graphical User Interface
 4. CLI: Command Line Interface
 4. JDK: Java Development Kit
-5. PDPA: Personal Data Protection Agreement, data collection with consent
+5. MSS: Main Success Scenario
 6. Organiser: A person who arranges an event or activity and has multiple contacts
 
 --------------------------------------------------------------------------------------------------------------------
@@ -574,7 +573,7 @@ testers are expected to do more *exploratory* testing.
    
    2. Open the command terminal and navigate into the folder with `LinkUp.jar`.
    
-   3. Type `java -jar LinkUp.jar` to run the application.
+   3. Type `java -jar LinkUp.jar` to run the application.<br>
    **Expected:** Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
@@ -630,7 +629,7 @@ Editing a person while all persons are being shown
 1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
 2. **Test case:** `edit 1 n/John`<br>
-   **Expected:** First contact name is changed to `john`. Details of the deleted contact shown in the status message.
+   **Expected:** First contact name is changed to `John`. Details of the deleted contact shown in the status message.
 
 3. **Test case:** `edit 0 n/John`<br>
    **Expected:** Invalid index. No person is edited. Error details shown in the status message.
@@ -652,7 +651,7 @@ Filtering persons while all persons are being shown
 
 Finding a person while all persons are being shown
 
-1. **Test case:** `find n/John`<br>
+1. **Test case:** `find John`<br>
        **Expected:** All contacts with the name as John are listed.
 
 2. **Test case:** `find`<br>
@@ -723,7 +722,7 @@ Adding skills to a person while all persons are being shown
 Copy the command of the person while all persons are being shown
 1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
-2. **Test case:** `copy 1 s`<br>
+2. **Test case:** `copy 1`<br>
    **Expected:** Add command string of the first contact is copied to the clipboard. 
     Success message shown in the result display box.
 
