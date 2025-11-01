@@ -11,9 +11,9 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers can include digits, dashes, commas, brackets, "
+            "Phone numbers can include digits, pluses, dashes, commas, brackets, "
                     + "may start with 0, and must contain between 3 and 18 digits.";
-    public static final String VALIDATION_REGEX = "^(?:0)?[\\d\\s,().-]*\\d[\\d\\s,().-]*$";
+    public static final String VALIDATION_REGEX = "^(?:0)?[\\d\\s,+().-]*\\d[\\d\\s,+().-]*$";
     public final String value;
 
     /**

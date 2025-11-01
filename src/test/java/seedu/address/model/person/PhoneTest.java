@@ -30,12 +30,14 @@ public class PhoneTest {
         assertFalse(Phone.isValidPhone("91")); // less than 3 numbers
         assertFalse(Phone.isValidPhone("phone")); // non-numeric
         assertFalse(Phone.isValidPhone("9011p041")); // alphabets within digits
+        assertFalse(Phone.isValidPhone("9011-0041-6767-6767-676")); // more than 18 digits
 
         // valid phone numbers
-        assertTrue(Phone.isValidPhone("911")); // exactly 3 numbers
-        assertTrue(Phone.isValidPhone("93121534"));
+        assertTrue(Phone.isValidPhone("91,1")); // exactly 3 numbers with comma
+        assertTrue(Phone.isValidPhone("(67)93121534")); // has brackets
         assertTrue(Phone.isValidPhone("9312 1534")); // spaces within digits
-        assertTrue(Phone.isValidPhone("124293842033123")); // long phone numbers
+        assertTrue(Phone.isValidPhone("1242-938-42033123")); // has dashes
+        assertTrue(Phone.isValidPhone("+65124293842033123")); // has plus
     }
 
     @Test

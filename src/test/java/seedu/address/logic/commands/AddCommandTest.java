@@ -88,6 +88,16 @@ public class AddCommandTest {
     }
 
     @Test
+    public void execute_decimalPhone_throwsCommandException() {
+        Person decimalPhonePerson = new PersonBuilder().withPhone("9123.456").build();
+        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+        AddCommand addCommand = new AddCommand(decimalPhonePerson);
+
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DECIMAL_PHONE, () ->
+                addCommand.execute(modelStub));
+    }
+
+    @Test
     public void equals() {
         Person alice = new PersonBuilder().withName("Alice").build();
         Person bob = new PersonBuilder().withName("Bob").build();
