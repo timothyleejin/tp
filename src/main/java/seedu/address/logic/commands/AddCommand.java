@@ -53,6 +53,8 @@ public class AddCommand extends Command {
             + "each contact needs to have a unique email address";
     public static final String MESSAGE_DUPLICATE_TELEGRAM = "This Telegram already exists in the address book, "
             + "each contact needs to have a unique Telegram";
+    public static final String MESSAGE_DECIMAL_PHONE = "Phone numbers should not contain decimals. They can include "
+            + "digits, dashes, commas, brackets, may start with 0, and must contain between 3 and 18 digits.";
 
     private final Person toAdd;
 
@@ -67,6 +69,11 @@ public class AddCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        String phoneValue = toAdd.getPhone().value;
+        if (phoneValue.contains(".")) {
+            throw new CommandException(MESSAGE_DECIMAL_PHONE);
+        }
 
         if (model.hasName(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
