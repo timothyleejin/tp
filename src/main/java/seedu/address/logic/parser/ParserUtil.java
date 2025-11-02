@@ -104,9 +104,24 @@ public class ParserUtil {
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
+        if (trimmedEmail.length() > 254) {
+            throw new ParseException("Email should not exceed 254 characters");
+        }
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
+
+        int atIndex = trimmedEmail.indexOf('@');
+        String localPart = trimmedEmail.substring(0, atIndex);
+        String domainPart = trimmedEmail.substring(atIndex + 1);
+
+        if (localPart.length() > 64) {
+            throw new ParseException("The part before '@' should not exceed 64 characters.");
+        }
+        if (domainPart.length() > 190) {
+            throw new ParseException("The part after '@' should not exceed 190 characters.");
+        }
+
         return new Email(trimmedEmail);
     }
 
