@@ -12,10 +12,7 @@ public class Name {
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain letters, numbers, spaces, hyphens, apostrophes, or periods, "
                     + "and should start with a letter or number. Name cannot be blank";
-
-    public static final String MESSAGE_LIMIT_CONSTRAINT =
-            "Names cannot contain more than 100 characters";
-
+    public static final String MESSAGE_LIMIT_CONSTRAINT = "Names cannot contain more than 100 characters";
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.

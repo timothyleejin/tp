@@ -19,7 +19,6 @@ import seedu.address.model.person.Role;
 import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
 
-
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
@@ -53,7 +52,6 @@ public class ParserUtil {
         if (trimmedName.length() > 100) {
             throw new ParseException(Name.MESSAGE_LIMIT_CONSTRAINT);
         }
-
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
@@ -69,10 +67,6 @@ public class ParserUtil {
     public static Phone parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
         String trimmedPhone = phone.trim();
-        if (trimmedPhone.length() < 3 || trimmedPhone.length() > 18) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
-        }
-
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
@@ -88,13 +82,11 @@ public class ParserUtil {
     public static Telegram parseTelegram(String telegram) throws ParseException {
         requireNonNull(telegram);
         String trimmedTelegram = telegram.trim();
-
         if (!Telegram.isValidTelegram(trimmedTelegram)) {
             throw new ParseException(Telegram.MESSAGE_CONSTRAINTS);
         }
         return new Telegram(trimmedTelegram);
     }
-
     /**
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
@@ -110,18 +102,15 @@ public class ParserUtil {
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
-
         int atIndex = trimmedEmail.indexOf('@');
         String localPart = trimmedEmail.substring(0, atIndex);
         String domainPart = trimmedEmail.substring(atIndex + 1);
-
         if (localPart.length() > 64) {
             throw new ParseException("The part before '@' should not exceed 64 characters.");
         }
         if (domainPart.length() > 190) {
             throw new ParseException("The part after '@' should not exceed 190 characters.");
         }
-
         return new Email(trimmedEmail);
     }
 
