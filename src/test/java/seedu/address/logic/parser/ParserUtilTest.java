@@ -25,16 +25,19 @@ import seedu.address.model.person.Telegram;
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_NAME_LIMIT = "rhjbbbfbkebfekfbkejrglebbkbfkbfrbvhfhrkghhfhhfhfrrhoirfhheo+"
-           + "ruhhfehfhehufiehhrfehrhfeuhhuhrhiehhrhehfhehhferhurehfheruhhuhfheuhrfhrhheuirhehrfeirhiehrfiehiuoiljf;";
+           + "ruhhfehfhehufiehhrfehrhfeuhhuhrhiehhrhehfhehhferhurehfheruhhuhfheuhrfhrhheuirhehrfeirhiehrfiehiuoiljf";
     private static final String INVALID_PHONE = "*651234";
     private static final String INVALID_TELEGRAM = "running rachel";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_EMAIL_LIMIT = "edeuiduideuhididhehiduedndiehdiehdhuidhdiedhehiudhiuhuidie@"
-          + "ie3ihiehheheoehhheio2hnioho2h2o.nus.edu";
+          + "ie3ihiehheheoehhheio2hnioho2h2jnjnjnjjnnnjnjnnjnnjnnjnnjjnjnjnnjnjnjnnnjnjnjnjnnjnjnnjnjnnnnjnno.nus.edu"
+          + "jkwednkwjbbjebdjbjkdbkbdbwbdbwekdbkwbdbjewdjwdkbwjkbdwbjcwbkdbbbbdebwdbwdwdbjwkbdjwbedbdbdjewbkbdjwbd";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_ROLE_LIMIT = "Javaaiaaaiiaiuaibibibisbbsbiksnsnsbsibasbbbsbbabaibsbbasbsbsbsbs";
+    private static final String INVALID_ROLE_LIMIT1 = "a";
     private static final String INVALID_SKILL = "#java";
     private static final String INVALID_SKILL_LIMIT = "J";
+    private static final String INVALID_SKILL_LIMIT2 = "dxgsxjhvdchjkwdcjkhvdhjvdxvhjwcevhjwcehjvwehjvjhvwcvhjwcvhjwc";
     private static final String INVALID_EVENT_LIMIT = "urrurhefhergeuhghhuhghhguhghhguhhhuhrhhruhghhrhguhghguruhu"
             + "nfhhhh4hfhfhuhh4hfh4huuh4ih3ghhguhifhih3ihh4hih4hh4ih3hh43f3h4fh3h4hhh3hhihh4hui3hf3fh3uihuuhuihu34u";
 
@@ -242,6 +245,14 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseSkills_aboveLimit_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parseSkills(Arrays.asList(VALID_SKILL_1, INVALID_SKILL_LIMIT2)));
+    }
+
+
+
+    @Test
     public void parseRole_invalidlimit_throwsParseException() {
         assertThrows(ParseException.class, () ->
                 ParserUtil.parseRole(INVALID_ROLE_LIMIT));
@@ -256,13 +267,33 @@ public class ParserUtilTest {
     @Test
     public void parseEmail_invalidlimit_throwsParseException() {
         assertThrows(ParseException.class, () ->
-                ParserUtil.parseEmail(INVALID_EVENT_LIMIT));
+                ParserUtil.parseEmail(INVALID_EMAIL_LIMIT));
     }
 
     @Test
-    public void parseName_invalidimit_throwsParseException() {
+    public void parseName_invalidLimit_throwsParseException() {
         assertThrows(ParseException.class, () ->
-                ParserUtil.parseName(INVALID_EMAIL_LIMIT));
+                ParserUtil.parseName(INVALID_NAME_LIMIT));
+    }
+
+    @Test
+    public void parseEmail_localPartTooLong_throwsParseException() {
+        String local = "a".repeat(65);
+        String email = local + "@example.com";
+        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(email));
+    }
+
+    @Test
+    public void parseEmail_domainPartTooLong_throwsParseException() {
+        String domain = "b".repeat(191);
+        String email = "user@" + domain;
+        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(email));
+    }
+
+    @Test
+    public void parseRole_invalidLimit1_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parseRole(INVALID_ROLE_LIMIT1));
     }
 
 
