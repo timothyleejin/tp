@@ -12,6 +12,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_TELEGRAM = new Prefix("t/");
     public static final Prefix PREFIX_ROLE = new Prefix("r/");
     public static final Prefix PREFIX_EVENT = new Prefix("ev/");
-    public static final Prefix PREFIX_SKILL = new Prefix("s/");
+    public static final Prefix PREFIX_SKILL = new Prefix("sk/");
 
 }

@@ -19,6 +19,7 @@ import seedu.address.model.person.Role;
 import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
 
+
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
@@ -49,7 +50,7 @@ public class ParserUtil {
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if(trimmedName.length()>100) {
+        if (trimmedName.length() > 100) {
             throw new ParseException(Name.MESSAGE_LIMIT_CONSTRAINT);
         }
 
@@ -68,7 +69,7 @@ public class ParserUtil {
     public static Phone parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
         String trimmedPhone = phone.trim();
-        if(trimmedPhone.length()<3 || trimmedPhone.length()>18) {
+        if (trimmedPhone.length() < 3 || trimmedPhone.length() > 18) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
 
@@ -118,7 +119,7 @@ public class ParserUtil {
     public static Event parseEvent(String event) throws ParseException {
         requireNonNull(event);
         String trimmedEvent = event.trim();
-        if(trimmedEvent.length()>60 || trimmedEvent.length()<2) {
+        if (trimmedEvent.length() > 60 || trimmedEvent.length() < 2) {
             throw new ParseException(Event.MESSAGE_LIMIT_CONSTRAINTS);
         }
         if (!Event.isValidEvent(trimmedEvent)) {
@@ -134,7 +135,7 @@ public class ParserUtil {
     public static Role parseRole(String role) throws ParseException {
         requireNonNull(role);
         String trimmedRole = role.trim();
-        if(trimmedRole.length()>30 || trimmedRole.length() <2) {
+        if (trimmedRole.length() > 30 || trimmedRole.length() < 2) {
             throw new ParseException(Role.MESSAGE_LIMIT_CONSTRAINTS);
         }
         if (!Role.isValidRole(trimmedRole)) {
@@ -175,7 +176,7 @@ public class ParserUtil {
     public static Skill parseSkill(String skill) throws ParseException {
         requireNonNull(skill);
         String trimmedSkill = skill.trim();
-        if(trimmedSkill.length()<2 || trimmedSkill.length()>30) {
+        if (trimmedSkill.length() < 2 || trimmedSkill.length() > 30) {
             throw new ParseException(Skill.MESSAGE_LIMIT_CONSTRAINTS);
         }
         if (!Skill.isValidSkillName(trimmedSkill)) {

@@ -593,15 +593,15 @@ testers are expected to do more *exploratory* testing.
 Adding a person while all persons are being shown
 
 1. **Test case:** `add n/John Doe p/98765432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`
-   <br>`s/Cooking s/Python`<br>
+   <br>`sk/Cooking sk/Python`<br>
    **Expected:** Contact is added to the list. Details of the new contact will be shown.
 
 2. **Test case:** `add n/John Doe p/98765432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`
-   <br>`s/Cooking s/Python`<br>
+   <br>`sk/Cooking sk/Python`<br>
    **Expected:** Duplicate contact. No person is added. Error details shown in the status message.
 
 3. **Test case:** `add n/John Doe e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`
-   <br>`s/Cooking s/Python`<br>
+   <br>`sk/Cooking sk/Python`<br>
    **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 4. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
@@ -680,19 +680,19 @@ Marking/Unmarking a person as favourite while all persons are being shown
 Adding skills to a person while all persons are being shown
 1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
-2. **Test case:** `addskill 1 s/adobe s/python`<br>
+2. **Test case:** `addskill 1 sk/adobe sk/python`<br>
    **Expected:** First contact is added the skill `adobe` and `python`.
 
-3. **Test case:** `addskill 1 s/adobe` again <br>
+3. **Test case:** `addskill 1 sk/adobe` again <br>
    **Expected:** Message that says 1st contact already has the inputted skill.
 
-4. **Test case:** `addskill 0 s/jokes`<br>
+4. **Test case:** `addskill 0 sk/jokes`<br>
    **Expected:** Invalid index. No skill is added. Error details shown in the status message.
    
-5. **Test case:** `addskill 0 s/jok*91es `<br>
+5. **Test case:** `addskill 0 sk/jok*91es `<br>
       **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
    
-6. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 s/9%aggss ejd`, `addskill x s/fight`
+6. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 sk/9%aggss ejd`, `addskill x sk/fight`
    (where x is larger than the list size)<br>
      **Expected:** Similar to previous.
 
@@ -701,19 +701,19 @@ Adding skills to a person while all persons are being shown
 Adding skills to a person while all persons are being shown
 1. **Prerequisites:** List all persons using the `list` command. Multiple persons in the list.
 
-2. **Test case:** `dskill 1 s/adobe`<br>
+2. **Test case:** `dskill 1 sk/adobe`<br>
    **Expected:** First contact removed of the skill `adobe`.
    
-3. **Test case:** `dskill 1 s/adobe` again <br>
+3. **Test case:** `dskill 1 sk/adobe` again <br>
   **Expected:** Message that says the contact does not have the inputted skill.
 
-4. **Test case:** `dskill 0 s/jokes`<br>
+4. **Test case:** `dskill 0 sk/jokes`<br>
    **Expected:** Invalid index. No skill is removed. Error details shown in the status message.
 
-5. **Test case:** `dskill 0 s/jok*91es`<br>
+5. **Test case:** `dskill 0 sk/jok*91es`<br>
    **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
 
-6. **Other incorrect favourite commands to try:** `dskill`, `dskill 1 s/9%aggss hi`, `dskill x s/fight`
+6. **Other incorrect skills commands to try:** `dskill`, `dskill 1 sk/9%aggss hi`, `dskill x sk/fight`
    (where x is larger than the list size)<br>
    **Expected:** Similar to previous.
 
@@ -729,7 +729,7 @@ Copy the command of the person while all persons are being shown
 3. **Test case:** `copy 0`<br>
    **Expected:** Invalid index. No command is copied. Error details shown in the status message.
 
-4. **Other incorrect favourite commands to try:** `copy abc`, `copy s/9%aggss`, `copy x`
+4. **Other incorrect copy commands to try:** `copy abc`, `copy 9%aggss`, `copy x`
    (where x is larger than the list size)<br>
    **Expected:** Similar to previous.
 
