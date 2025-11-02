@@ -1,5 +1,6 @@
 package seedu.address.commons.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -138,6 +139,31 @@ public class StringUtilTest {
     @Test
     public void getDetails_nullGiven_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> StringUtil.getDetails(null));
+    }
+
+    @Test
+    public void normalizeWhitespace_multipleSpaces_success() {
+        assertEquals("John Doe", StringUtil.normalizeWhitespace("   John     Doe   "));
+    }
+
+    @Test
+    public void normalizeWhitespace_tabsAndNewlines_success() {
+        assertEquals("Alice Pauline", StringUtil.normalizeWhitespace("\tAlice  \n   Pauline"));
+    }
+
+    @Test
+    public void normalizeWhitespace_singleWord_success() {
+        assertEquals("Rust", StringUtil.normalizeWhitespace("   Rust   "));
+    }
+
+    @Test
+    public void normalizeWhitespace_emptyString_success() {
+        assertEquals("", StringUtil.normalizeWhitespace("    "));
+    }
+
+    @Test
+    public void normalizeWhitespace_alreadyNormalized_noChange() {
+        assertEquals("Python Developer", StringUtil.normalizeWhitespace("Python Developer"));
     }
 
 }

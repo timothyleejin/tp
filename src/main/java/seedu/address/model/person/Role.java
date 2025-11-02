@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
  * Represents a Person's role in the address book.
  * Guarantees: immutable; is always valid
@@ -20,7 +22,8 @@ public class Role {
      */
     public Role(String role) {
         requireNonNull(role);
-        value = role.trim();
+        String normalized = StringUtil.normalizeWhitespace(role);
+        value = normalized.trim();
     }
 
     /**
