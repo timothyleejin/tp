@@ -124,7 +124,7 @@ How the parsing works:
 
 **API** : [`Model.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="600"></puml>
+<puml src="diagrams/ModelClassDiagram.puml" width="600"></puml>
 
 The `Model` component,
 

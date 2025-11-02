@@ -118,11 +118,14 @@ Moving from the top of the interface to the bottom:
 
   <br>
   
-* **Fields can be in any order.**<br>
-  e.g. If a command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* **All fields, apart from event and role, can be in any order.**<br>
+  e.g. If a command specifies `n/NAME p/PHONE`, `p/PHONE n/NAME` is also acceptable.
 
 * **Extra parameters for commands that do not take in parameters** (such as `help`, `list`, `exit` and `clear`) **will be ignored.**<br>
   e.g. If you type in `help 123`, it will be treated as just `help`.
+
+* **Commands are case-insensitive.**<br>
+    e.g. If you type in `edit 1 ev/Orientation r/Organiser` or `EDIT 1 ev/Orientation r/Organiser`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -154,26 +157,26 @@ your contact list will be restored whenever you reopen LinkUp.
 
 Add a person to the address book.
 
-**Format:** <br> `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​`
+**Format:** <br> `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>
+`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​`
 
 **Parameters:** <br>
 `n/NAME`: Name of the person. <br>
-`p/PHONE_NUMBER`: Phone number of the person. <br>
+`p/PHONE`: Phone number of the person. <br>
 `e/EMAIL`: Email address of the person. <br>
-`t/TELEGRAM_HANDLE`: Telegram handle of the person. <br>
+`t/TELEGRAM`: Telegram handle of the person. <br>
 `ev/EVENT`: Event of the person. <br>
 `r/ROLE`: Role of the person. <br>
 `s/SKILL`: Skill of the person. <br>
 
-* Each Event **must** have only one corresponding Role. You are adding Event-Role pairs, not a list of independent Events or Roles.
-As such, you **cannot** add 1 Event and 2 Roles, the 2nd Role will be discarded.
-* You can add one or more Event-Role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
-* Duplicate contacts with the same Name, Phone Number, Email, and Telegram Handle are not allowed.
+* Each event **must** have only one corresponding role. You are adding event-role pairs, not independent events or roles.
+As such, you **cannot** add 1 event and 2 roles, the 2nd role will be discarded.
+* You can add one or more event-role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
+* Duplicate contacts with the same name, phone number, email, and telegram handle are not allowed.
 
 <box type="tip" seamless>
 A person can have <i>any non-negative number</i> of skills including 0. The order of fields,
-apart from Event and Role, does not matter.
+apart from event and role, does not matter.
 </box>
 
 **Example Input:** <br>
@@ -190,8 +193,8 @@ add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john1
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the contact list. 
 * The **index must be a positive integer** 1, 2, 3, …​
@@ -199,15 +202,16 @@ Edit the details of an existing person in the address book.
 * When you perform the action of editing the skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `s/` without specifying any skills after it.
 * Each event **must** have only one corresponding role. You cannot edit an event or role only.
-* When editing an event and the corresponding role, the existing events and roles will all be removed and replaced with your new event and role input i.e adding of events and roles is not cumulative.
-* You can add multiple events and roles, but ensure that the `ev/EVENT` and its corresponding `r/ROLE` are beside each other.
+* When editing an event and its corresponding role, the existing events and roles will all be removed and replaced with your new event and role input i.e adding of events and roles is not cumulative.
+* You can add one or more event-role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
+* Duplicate contacts with the same name, phone number, email, and telegram handle are not allowed.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
 `n/NAME`: Name of the person. <br>
-`p/PHONE_NUMBER`: Phone number of the person. <br>
+`p/PHONE`: Phone number of the person. <br>
 `e/EMAIL`: Email address of the person. <br>
-`t/TELEGRAM_HANDLE`: Telegram handle of the person. <br>
+`t/TELEGRAM`: Telegram handle of the person. <br>
 `ev/EVENT`: Event of the person. <br>
 `r/ROLE`: Role of the person. <br>
 `s/SKILL`: Skill of the person. <br>
@@ -359,15 +363,15 @@ If there are Alex Yeoh and David Li in your contacts, they will be listed.
 
 #### 10. Filter Contacts by any Fields
 
-Filter contacts from the address book based on name, event, role, phone number, telegram, email and skills.
+Filter contacts from the address book based on name, event, role, phone number, telegram handle, email and skills.
 
 **Format:** <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> 
 `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
 
-* Filter the address book based on specified `KEYWORD`.
+* Filter the address book based on your specified `KEYWORD`.
 * Filter and produces all possible outputs matching at least one `KEYWORD` from each field.
 * At least one of the optional fields must be provided.
-* Can filter many words of a field by using space. e.g. `n/Alice Bob` will match all people have `Alice` or `Bob` in their name
+* Can filter many words of a field by using space. e.g. `n/Alice Bob` will match all people have `Alice` or `Bob` in their name.
 * The keyword is case-insensitive.
   * e.g. `filter ev/Supernova` is the same as `filter ev/supernova`.
 * The keyword can be a part of the full word.
@@ -406,7 +410,7 @@ Add skill to an existing person from the address book.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
-`s/SKILL`: Skill(s) of your contact. <br>
+`s/SKILL`: Skill of your contact. <br>
 
 **Example Input:** <br>
 ```
@@ -551,8 +555,8 @@ Action | Command
 --------|------------------
 **Help**: <br> View a brief message on commands you can use | `help` or `h`
 **Exit**: <br> Exit LinkUp | `exit` or `ex`
-**Add**: <br> Add a contact | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>`a n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM_HANDLE ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TELEGRAM_HANDLE] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Add**: <br> Add a contact | `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Delete**: <br> Delete contacts | `delete INDEX…` or `d INDEX…` <br> <br> e.g. `delete 3` or `delete 1 3 5`
 **Copy**: <br> Copy an existing contact to make it easier to add a person with similar parameters | `copy INDEX` or `c INDEX`<br> <br> e.g. `copy 2`
 **Clear**: <br> Delete all contacts | `clear`
@@ -593,23 +597,23 @@ Ensure you have Java `17` or above installed in your computer and the correct `L
 Follow the instructions at [_Quick Start_ ](#quick-start) to re-download the Java Developer Kit (JDK) and `LinkUp.jar` file.
 To ensure that the JDK version is correct, type `java -version` in the command terminal of your computer to check.
 
-**How do I add multiple Roles and Events to an existing contact?** <br>
+**How do I add multiple roles and events to an existing contact?** <br>
 You can use the `edit` command. So assuming your contact is a participant for an EWP event, and an invigilator for an exam event,
 you can type `edit [INDEX] ev/EWP r/Participant ev/Exam r/Invigilator`. Ensure that the `ev/EVENT` and the corresponding `r/ROLE` are
 beside each other.
 
-**How do I edit only 1 of my 2 Event-Role pairs for a specific contact?** <br>
-You would have to edit both Event-Role pairs in order for you to see the changes. So assuming
+**How do I edit only 1 of my 2 event-role pairs for a specific contact?** <br>
+You would have to edit both event-role pairs in order for you to see the changes. So assuming
 you have `Events: [AngBao Hunt, Exam]; Roles: [Organiser, Invigilator]` but you wish to change Ang Bao Hunt to EWP, you can only do this by using the `edit` command
 and typing `edit [INDEX] ev/EWP r/Organiser ev/Exam r/Invigilator` or `e [INDEX] ev/EWP r/Organiser ev/Exam r/Invigilator`. <br>
 
-**Can I edit Event information of a contact only?** <br>
-No. You would have to edit the Role of the contact too. Each event should have a corresponding Role. So assuming you have
+**Can I edit event information of a contact only?** <br>
+No. You would have to edit the role of the contact too. Each event should have a corresponding role. So assuming you have
 `Events: [AngBao Hunt]; Roles: [Organiser]` but you wish to change AngBao Hunt to Exam, you can only do this by using the `edit` command
 and typing `edit [INDEX] ev/Exam r/Organiser` or `e [INDEX] ev/Exam r/Organiser`. <br>
 
 **What if I type 2 events and 1 role when adding/editing a contact?** <br>
-Assuming you typed `edit [INDEX] ev/EWP r/Participant ev/Exam`, the second event will not be saved. Only `Events: [EWP]; Roles: [Participant]`
+Assuming you typed `edit [INDEX] ev/EWP r/Participant ev/Exam`, the 2nd event will not be saved. Only `Events: [EWP]; Roles: [Participant]`
 will be saved. Each event should have a corresponding role.
 
 **Can I add a new contact with the same phone number?** <br>
