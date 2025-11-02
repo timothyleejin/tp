@@ -10,6 +10,8 @@ public class Event {
 
     public static final String MESSAGE_CONSTRAINTS = "Events can take up any values and should not be blank.";
 
+    public static final String MESSAGE_LIMIT_CONSTRAINTS = "Events should be between 2-60 characters";
+
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
