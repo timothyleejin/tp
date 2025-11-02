@@ -405,10 +405,8 @@
 }
 
 .person-name-label {
-    -fx-font-family: "Times New Roman";
-    -fx-font-size: 21px;
+    -fx-font-size: 19px;
     -fx-text-fill: #010504;
-    -fx-font-weight: bold;
 }
 #skills {
     -fx-hgap: 7;

@@ -41,7 +41,7 @@ public class AddSkillCommandParser implements Parser<AddSkillCommand> {
         List<Skill> skillsToAdd = new ArrayList<>();
         for (String skillName : argMultimap.getAllValues(PREFIX_SKILL)) {
             try {
-                skillsToAdd.add(new Skill(skillName.trim()));
+                skillsToAdd.add(ParserUtil.parseSkill(skillName));
             } catch (IllegalArgumentException e) {
                 throw new ParseException(Skill.MESSAGE_CONSTRAINTS);
             }
