@@ -112,8 +112,8 @@ public class Person {
     /**
      * Sets the favourite status of this person.
      */
-    public void setFavourite(boolean favourite) {
-        this.isFavourite = favourite;
+    public void setFavourite(boolean isFav) {
+        this.isFavourite = isFav;
     }
 
     /**

@@ -124,7 +124,7 @@ How the parsing works:
 
 **API** : [`Model.java`](https://github.com/AY2526S1-CS2103T-F13-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="600"></puml>
+<puml src="diagrams/ModelClassDiagram.puml" width="600"></puml>
 
 The `Model` component,
 
@@ -808,3 +808,7 @@ New features from AB3:
    - By using the `FilterPredicate` class created for the Filter feature we can implement a Delete by field feature where
    the user can delete all contacts matching the field. (Example input: `Delete n/Alex` will delete all contacts with
    Alex in their name). <br><br>
+5. **Add information on whether an event has passed**
+    - Right now, there is no information on the date and time of each event. We plan to implement a command to allow users
+   to include more specific information of each event and edit this information easily. Once an event has passed, the colour
+   of the event bubble will turn to red. This will make it easier for our users to manage his contacts. <br><br>

@@ -14,7 +14,10 @@ import seedu.address.model.person.Person;
 public class FavCommand extends Command {
 
     public static final String COMMAND_WORD = "fav";
-
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Adds the person identified by the index number in the displayed person list to favourites.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_SUCCESS = "Marked %1$s as favourite.";
     public static final String MESSAGE_ALREADY_FAV = "%1$s is already a favourite.";
     public static final String MESSAGE_INVALID_INDEX = "The person index provided is invalid.";
