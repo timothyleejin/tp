@@ -164,19 +164,20 @@
 
 .cell_big_label {
     -fx-font-family: "Segoe UI Semibold";
-    -fx-font-size: 16px;
+    -fx-font-size: 17px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-text-fill: #010504;
 }
 
 .telegram_label {
     -fx-text-fill: #1DA1F2; /* light blue */
     -fx-font-style: italic;
+    -fx-font-size: 13px;
 }
 
 .stack-pane {
@@ -199,6 +200,7 @@
      -fx-padding: 8;
      -fx-background-radius: 0;
      -fx-wrap-text: true;
+     -fx-line-spacing: 5px;
 }
 
 #resultDisplayPlaceholder {
@@ -401,7 +403,15 @@
     -fx-padding: 2 5 2 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
-    -fx-font-size: 11;
+    -fx-font-size: 12;
+
+}
+
+.person-name-label {
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 21px;
+    -fx-text-fill: #010504;
+    -fx-font-weight: bold;
 }
 
 #skills {
@@ -419,12 +429,12 @@
 }
 
 .bubble_blue {
-    -fx-background-color: #24A1DE;
+    -fx-background-color: #54C7EC;
     -fx-padding: 2 5 2 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
-    -fx-font-size: 11;
-    -fx-text-fill: white !important;
+    -fx-font-size: 13;
+    -fx-text-fill: black !important;
 }
 
 .event-role-pair {
