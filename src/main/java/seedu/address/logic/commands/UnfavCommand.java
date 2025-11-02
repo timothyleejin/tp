@@ -14,7 +14,10 @@ import seedu.address.model.person.Person;
 public class UnfavCommand extends Command {
 
     public static final String COMMAND_WORD = "unfav";
-
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Removes the person identified by the index number in the displayed person list from favourites.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_SUCCESS = "Unmarked %1$s from favourites.";
     public static final String MESSAGE_ALREADY_UNFAV = "%1$s is not a favourite.";
     public static final String MESSAGE_INVALID_INDEX = "Invalid index.";

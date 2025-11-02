@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.logic.commands.FavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -29,29 +31,17 @@ public class FavCommandParser implements Parser<FavCommand> {
     public FavCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
-            throw new ParseException("Invalid command format! Index is required.\n"
-                    + "fav: Adds a person identified by the index number used in the displayed "
-                    + "person list to favourites.\n"
-                    + "Parameters: INDEX (must be a positive integer)\n"
-                    + "Example: fav 1");
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FavCommand.MESSAGE_USAGE));
         }
 
         try {
             int index = Integer.parseInt(trimmedArgs);
             if (index <= 0) {
-                throw new ParseException("Invalid command format! Index must be a positive integer.\n"
-                        + "fav: Adds a person identified by the index number used in the displayed "
-                        + "person list to favourites.\n"
-                        + "Parameters: INDEX (must be a positive integer)\n"
-                        + "Example: fav 1");
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FavCommand.MESSAGE_USAGE));
             }
             return new FavCommand(index - 1);
         } catch (NumberFormatException e) {
-            throw new ParseException("Invalid command format! Index must be an integer.\n"
-                    + "fav: Adds a person identified by the index number used in the displayed "
-                    + "person list to favourites.\n"
-                    + "Parameters: INDEX (must be a positive integer)\n"
-                    + "Example: fav 1", e);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FavCommand.MESSAGE_USAGE), e);
         }
     }
 }

@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.logic.commands.UnfavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -28,29 +30,17 @@ public class UnfavCommandParser implements Parser<UnfavCommand> {
     public UnfavCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
-            throw new ParseException("Invalid command format! Index is required.\n"
-                    + "unfav: Removes a person identified by the index number used in the displayed "
-                    + "person list from favourites.\n"
-                    + "Parameters: INDEX (must be a positive integer)\n"
-                    + "Example: unfav 1");
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnfavCommand.MESSAGE_USAGE));
         }
 
         try {
             int index = Integer.parseInt(trimmedArgs);
             if (index <= 0) {
-                throw new ParseException("Invalid command format! Index must be a positive integer.\n"
-                        + "unfav: Removes a person identified by the index number used in the displayed "
-                        + "person list from favourites.\n"
-                        + "Parameters: INDEX (must be a positive integer)\n"
-                        + "Example: unfav 1");
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnfavCommand.MESSAGE_USAGE));
             }
             return new UnfavCommand(index - 1);
         } catch (NumberFormatException e) {
-            throw new ParseException("Invalid command format! Index must be an integer.\n"
-                    + "unfav: Removes a person identified by the index number used in the displayed "
-                    + "person list from favourites.\n"
-                    + "Parameters: INDEX (must be a positive integer)\n"
-                    + "Example: unfav 1", e);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnfavCommand.MESSAGE_USAGE), e);
         }
     }
 }

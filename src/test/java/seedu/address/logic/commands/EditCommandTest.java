@@ -190,7 +190,7 @@ public class EditCommandTest {
     }
 
     @Test
-    public void getRole_rolePresent_returnsOptionalWithRole() {
+    public void getRoles_rolePresent_returnsOptionalWithRole() {
         EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
         Event event = new Event("Battlegrounds");
         Role role = new Role("Organiser");
@@ -204,7 +204,7 @@ public class EditCommandTest {
     }
 
     @Test
-    public void getRole_roleAbsent_returnsEmptyOptional() {
+    public void getRoles_roleAbsent_returnsEmptyOptional() {
         EditCommand.EditPersonDescriptor descriptor = new EditCommand.EditPersonDescriptor();
 
         Optional<HashMap<Event, Role>> result = descriptor.getRoles();
