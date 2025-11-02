@@ -49,6 +49,9 @@ public class ParserUtil {
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
+        if (trimmedName.length() > 100) {
+            throw new ParseException(Name.MESSAGE_LIMIT_CONSTRAINT);
+        }
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
@@ -84,7 +87,6 @@ public class ParserUtil {
         }
         return new Telegram(trimmedTelegram);
     }
-
     /**
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
@@ -94,8 +96,20 @@ public class ParserUtil {
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
+        if (trimmedEmail.length() > 254) {
+            throw new ParseException("Email should not exceed 254 characters");
+        }
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
+        int atIndex = trimmedEmail.indexOf('@');
+        String localPart = trimmedEmail.substring(0, atIndex);
+        String domainPart = trimmedEmail.substring(atIndex + 1);
+        if (localPart.length() > 64) {
+            throw new ParseException("The part before '@' should not exceed 64 characters.");
+        }
+        if (domainPart.length() > 190) {
+            throw new ParseException("The part after '@' should not exceed 190 characters.");
         }
         return new Email(trimmedEmail);
     }
@@ -109,6 +123,9 @@ public class ParserUtil {
     public static Event parseEvent(String event) throws ParseException {
         requireNonNull(event);
         String trimmedEvent = event.trim();
+        if (trimmedEvent.length() > 60 || trimmedEvent.length() < 2) {
+            throw new ParseException(Event.MESSAGE_LIMIT_CONSTRAINTS);
+        }
         if (!Event.isValidEvent(trimmedEvent)) {
             throw new ParseException(Event.MESSAGE_CONSTRAINTS);
         }
@@ -122,6 +139,9 @@ public class ParserUtil {
     public static Role parseRole(String role) throws ParseException {
         requireNonNull(role);
         String trimmedRole = role.trim();
+        if (trimmedRole.length() > 30 || trimmedRole.length() < 2) {
+            throw new ParseException(Role.MESSAGE_LIMIT_CONSTRAINTS);
+        }
         if (!Role.isValidRole(trimmedRole)) {
             throw new ParseException((Role.MESSAGE_CONSTRAINTS));
         }
@@ -160,6 +180,9 @@ public class ParserUtil {
     public static Skill parseSkill(String skill) throws ParseException {
         requireNonNull(skill);
         String trimmedSkill = skill.trim();
+        if (trimmedSkill.length() < 2 || trimmedSkill.length() > 30) {
+            throw new ParseException(Skill.MESSAGE_LIMIT_CONSTRAINTS);
+        }
         if (!Skill.isValidSkillName(trimmedSkill)) {
             throw new ParseException(Skill.MESSAGE_CONSTRAINTS);
         }

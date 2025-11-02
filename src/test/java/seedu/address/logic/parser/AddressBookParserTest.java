@@ -118,7 +118,7 @@ public class AddressBookParserTest {
         Set<Skill> skillsToDelete = new HashSet<>(Set.of(new Skill("Java")));
         DeleteSkillCommand command = (DeleteSkillCommand) parser.parseCommand(
                 DeleteSkillCommand.COMMAND_WORD + " "
-                        + INDEX_FIRST_PERSON.getOneBased() + " s/Java");
+                        + INDEX_FIRST_PERSON.getOneBased() + " sk/Java");
         assertEquals(new DeleteSkillCommand(INDEX_FIRST_PERSON, skillsToDelete), command);
     }
 

@@ -19,21 +19,21 @@ class DeleteSkillCommandParserTest {
 
     @Test
     void parse_validInput_returnsDeleteSkillCommand() throws Exception {
-        DeleteSkillCommand command = parser.parse("1 s/Java");
-        assertParseSuccess(parser, "1 s/Java",
+        DeleteSkillCommand command = parser.parse("1 sk/Java");
+        assertParseSuccess(parser, "1 sk/Java",
                 new DeleteSkillCommand(Index.fromOneBased(1),
                         new HashSet<>(Set.of(new Skill("Java")))));
     }
 
     @Test
     void parse_invalidIndex_throwsParseException() throws Exception {
-        assertParseFailure(parser, "a s/Java",
+        assertParseFailure(parser, "a sk/Java",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
 
     @Test
     void parse_negativeIndex_throwsParseException() throws Exception {
-        assertParseFailure(parser, "-2 s/Java",
+        assertParseFailure(parser, "-2 sk/Java",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
 
@@ -45,19 +45,19 @@ class DeleteSkillCommandParserTest {
 
     @Test
     void parse_missingIndex_throwsParseException() throws Exception {
-        assertParseFailure(parser, "s/Java",
+        assertParseFailure(parser, "sk/Java",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSkillCommand.MESSAGE_USAGE));
     }
 
     @Test
     void parse_missingSkill_throwsParseException() throws Exception {
-        assertParseFailure(parser, "1 s/",
+        assertParseFailure(parser, "1 sk/",
                 String.format(Skill.MESSAGE_CONSTRAINTS));
     }
 
     @Test
     void parse_invalidSkill_throwsParseException() throws Exception {
-        assertParseFailure(parser, "1 s/^&h",
+        assertParseFailure(parser, "1 sk/^&h",
                 String.format(Skill.MESSAGE_CONSTRAINTS));
     }
 

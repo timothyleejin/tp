@@ -79,7 +79,7 @@ public class CopyCommand extends Command {
         sb.append("t/").append(person.getTelegram().value).append(" ");
         person.getEvents().forEach(event -> sb.append("ev/").append(event.value).append(" "));
         person.getRoles().forEach(role -> sb.append("r/").append(role.value).append(" "));
-        person.getSkills().forEach(skill -> sb.append("s/").append(skill.skillName).append(" "));
+        person.getSkills().forEach(skill -> sb.append("sk/").append(skill.skillName).append(" "));
         return sb.toString().trim();
     }
 

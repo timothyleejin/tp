@@ -15,7 +15,7 @@
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
     </columnConstraints>
-    <VBox alignment="TOP_LEFT" minHeight="80" spacing="2" GridPane.columnIndex="0">
+    <VBox alignment="TOP_LEFT" minHeight="80" spacing="9" GridPane.columnIndex="0">
       <padding>
         <Insets top="8" right="8" bottom="8" left="8" />
       </padding>
@@ -26,7 +26,8 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="$name" styleClass="cell_big_label" />
+        <Label fx:id="name" text="$name" styleClass="person-name-label" />
+        <Region minWidth="3"/>
         <Label fx:id="telegram" text="$telegram" styleClass="bubble_blue"/>
       </HBox>
         <FlowPane fx:id="skills" />

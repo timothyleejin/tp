@@ -57,10 +57,10 @@ public class AddSkillCommandTest {
 
     @Test
     public void parse_validArgs_returnsAddSkillCommand() {
-        assertParseSuccess(addSkillCommandParser, "1 s/dance s/football s/gaming",
+        assertParseSuccess(addSkillCommandParser, "1 sk/dance sk/football sk/gaming",
                 new AddSkillCommand(Index.fromOneBased(1), List.of(new Skill("dance"),
                         new Skill("football"), new Skill("gaming"))));
-        assertParseSuccess(addSkillCommandParser, "2 s/Python",
+        assertParseSuccess(addSkillCommandParser, "2 sk/Python",
                 new AddSkillCommand(Index.fromOneBased(2), List.of(new Skill("Python"))));
     }
 
