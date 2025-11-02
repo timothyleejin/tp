@@ -8,14 +8,14 @@
 }
 
 .label {
-    -fx-font-size: 11pt;
+    -fx-font-size: 12pt;
     -fx-font-family: "Inter", "Segoe UI Semibold";
     -fx-text-fill: #F8F6F2;
     -fx-opacity: 0.9;
 }
 
 .label-bright {
-    -fx-font-size: 11pt;
+    -fx-font-size: 12pt;
     -fx-font-family: "Inter", "Segoe UI Semibold";
     -fx-text-fill: #E6D9CE;
     -fx-opacity: 1;
@@ -425,12 +425,12 @@
     -fx-padding: 2 5 2 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
-    -fx-font-size: 11;
+    -fx-font-size: 12;
 }
 
 .bubble_blue {
-    -fx-background-color: #54C7EC;
-    -fx-padding: 2 5 2 5;
+    -fx-background-color: #A0E1F5;
+    -fx-padding: 5 5 5 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
     -fx-font-size: 13;
