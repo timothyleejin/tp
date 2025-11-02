@@ -7,8 +7,8 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Role {
-    public static final String MESSAGE_CONSTRAINTS = "Roles can take up any values and should not be blank.";
-    public static final String MESSAGE_LIMIT_CONSTRAINTS = "Roles should be between 2-30 characters";
+    public static final String MESSAGE_CONSTRAINTS = "Roles can take up any values and should not be blank. Roles"
+            + "should be between 2-30 characters";
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;

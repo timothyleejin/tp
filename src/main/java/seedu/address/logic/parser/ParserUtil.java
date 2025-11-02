@@ -50,7 +50,7 @@ public class ParserUtil {
         requireNonNull(name);
         String trimmedName = name.trim();
         if (trimmedName.length() > 100) {
-            throw new ParseException(Name.MESSAGE_LIMIT_CONSTRAINT);
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
@@ -124,7 +124,7 @@ public class ParserUtil {
         requireNonNull(event);
         String trimmedEvent = event.trim();
         if (trimmedEvent.length() > 60 || trimmedEvent.length() < 2) {
-            throw new ParseException(Event.MESSAGE_LIMIT_CONSTRAINTS);
+            throw new ParseException(Event.MESSAGE_CONSTRAINTS);
         }
         if (!Event.isValidEvent(trimmedEvent)) {
             throw new ParseException(Event.MESSAGE_CONSTRAINTS);
@@ -140,7 +140,7 @@ public class ParserUtil {
         requireNonNull(role);
         String trimmedRole = role.trim();
         if (trimmedRole.length() > 30 || trimmedRole.length() < 2) {
-            throw new ParseException(Role.MESSAGE_LIMIT_CONSTRAINTS);
+            throw new ParseException(Role.MESSAGE_CONSTRAINTS);
         }
         if (!Role.isValidRole(trimmedRole)) {
             throw new ParseException((Role.MESSAGE_CONSTRAINTS));
@@ -181,7 +181,7 @@ public class ParserUtil {
         requireNonNull(skill);
         String trimmedSkill = skill.trim();
         if (trimmedSkill.length() < 2 || trimmedSkill.length() > 30) {
-            throw new ParseException(Skill.MESSAGE_LIMIT_CONSTRAINTS);
+            throw new ParseException(Skill.MESSAGE_CONSTRAINTS);
         }
         if (!Skill.isValidSkillName(trimmedSkill)) {
             throw new ParseException(Skill.MESSAGE_CONSTRAINTS);

@@ -23,7 +23,7 @@ import seedu.address.model.person.Skill;
 import seedu.address.model.person.Telegram;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = "R!chel";
     private static final String INVALID_NAME_LIMIT = "rhjbbbfbkebfekfbkejrglebbkbfkbfrbvhfhrkghhfhhfhfrrhoirfhheo+"
            + "ruhhfehfhehufiehhrfehrhfeuhhuhrhiehhrhehfhehhferhurehfheruhhuhfheuhrfhrhheuirhehrfeirhiehrfiehiuoiljf";
     private static final String INVALID_PHONE = "*651234";

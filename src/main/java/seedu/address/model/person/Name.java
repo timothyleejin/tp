@@ -11,13 +11,13 @@ public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain letters, numbers, spaces, hyphens, apostrophes, or periods, "
-                    + "and should start with a letter or number. Name cannot be blank";
-    public static final String MESSAGE_LIMIT_CONSTRAINT = "Names cannot contain more than 100 characters";
+                    + "and should start with a letter or number. Name cannot be blank"
+                    + "Names cannot contain more than 100 characters";
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{L}\\p{N}][\\p{L}\\p{N} .'/\\-]*";
+    public static final String VALIDATION_REGEX = "[\\p{L}\\p{N}][\\p{L}\\p{N} @,.'\\-/]*";
 
     public final String fullName;
 
