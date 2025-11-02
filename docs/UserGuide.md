@@ -260,9 +260,9 @@ Delete specified persons from the address book.
 
 **Example Input:** <br>
 ```
-delete 1 2  // delete both 1st and 2nd person listed in the contact list
+delete 1 2 
 ```
-
+This input deletes both the 1st and 2nd person listed in the contact list.<br><br>
 **Expected Output:** <br>
 ```
 Deleted Person: 
@@ -272,9 +272,9 @@ Betsy Crower; Phone: 1234567; Telegram: @crownie; Email: betsycrowe@example.com;
 
 **Example Input:** <br>
 ```
-d 1  // delete the 1st person listed in the contact list
+d 1 
 ```
-
+This input deletes the 1st person listed in the contact list.<br><br>
 **Expected Output:** <br>
 ```
 Deleted Person: 
@@ -296,8 +296,9 @@ Copy an existing contact to make it easier to add a person with similar paramete
 
 **Example Input:** <br>
 ```
-copy 1 // copies the 1st person listed in the contact list
+copy 1
 ```
+This input copies the 1st person listed in the contact list.<br><br>
 <img src="images/EditInitial.png" width="250px"> <br>
 
 **Expected Output:** <br>
@@ -399,7 +400,7 @@ This time, only contacts with both `Mike` in their name and `Charity` in their e
 <br>
 
 ### Skill Management
-#### 11. Add new skill
+#### 11. Add new Skill
 Add skill to an existing person from the address book.
 
 **Format:** <br> `addskill INDEX [s/SKILL]…` or `as INDEX [s/SKILL]…`
@@ -476,9 +477,9 @@ Add a person from the address book to favourites and mark them with a heart icon
 
 **Example Input:** <br>
 ```
-fav 1  // adds the 1st person in listed in the contact list to favourites
+fav 1
 ```
-
+This input adds the 1st person listed in the contact list to favourites.<br><br>
 **Expected Output:** <br>
 ```
 Marked John Deez as favourite.
@@ -504,10 +505,9 @@ Remove a specified person from the address book from favourites and removes the 
 
 **Example Input:** <br>
 ```
-list
-unfav 1  // removes the 1st person in the address book from favourites
+unfav 1
 ```
-
+This input removes the 1st person listed in the contact list from favourites.<br><br>
 **Expected Output** <br>
 ```
 Unmarked John Deez from favourites.
