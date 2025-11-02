@@ -412,7 +412,6 @@
     -fx-text-fill: #010504;
     -fx-font-weight: bold;
 }
-
 #skills {
     -fx-hgap: 7;
     -fx-vgap: 3;
@@ -428,12 +427,12 @@
 }
 
 .bubble_blue {
-    -fx-background-color: #A0E1F5;
+    -fx-background-color: #24A1DE;
     -fx-padding: 5 5 5 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
     -fx-font-size: 13;
-    -fx-text-fill: black !important;
+    -fx-text-fill: white !important;
 }
 
 .event-role-pair {

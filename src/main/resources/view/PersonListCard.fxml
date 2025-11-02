@@ -31,7 +31,7 @@
         <Label fx:id="telegram" text="$telegram" styleClass="bubble_blue"/>
       </HBox>
         <FlowPane fx:id="skills" />
-        <HBox spacing="5" alignment="CENTER_LEFT">
+        <HBox spacing="2" alignment="CENTER_LEFT">
             <Label text="Phone:" styleClass="cell_small_label" style="-fx-font-weight: bold;" />
             <Label fx:id="phone" styleClass="cell_small_label" text="$phone" />
         </HBox>
