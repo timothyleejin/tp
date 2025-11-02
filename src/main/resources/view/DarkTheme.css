@@ -177,7 +177,6 @@
 .telegram_label {
     -fx-text-fill: #1DA1F2; /* light blue */
     -fx-font-style: italic;
-    -fx-font-size: 13px;
 }
 
 .stack-pane {
@@ -200,7 +199,6 @@
      -fx-padding: 8;
      -fx-background-radius: 0;
      -fx-wrap-text: true;
-     -fx-line-spacing: 5px;
 }
 
 #resultDisplayPlaceholder {
