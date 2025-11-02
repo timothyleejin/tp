@@ -49,7 +49,7 @@ public class ParserUtil {
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (trimmedName.length() > 100) {
+        if (trimmedName.length() > 50) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         if (!Name.isValidName(trimmedName)) {
