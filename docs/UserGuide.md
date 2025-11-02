@@ -107,8 +107,8 @@ Moving from the top of the interface to the bottom:
   <br>
 
 * **Items in square brackets are optional.**<br>
-  e.g. In `n/NAME [s/SKILL]`, `s/SKILL` is optional.
-  * You can type `n/John Doe s/Java` or `n/John Doe`.
+  e.g. In `n/NAME [sk/SKILL]`, `sk/SKILL` is optional.
+  * You can type `n/John Doe sk/Java` or `n/John Doe`.
 
   <br>
 
@@ -157,8 +157,8 @@ your contact list will be restored whenever you reopen LinkUp.
 
 Add a person to the address book.
 
-**Format:** <br> `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>
-`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​`
+**Format:** <br> `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​` or <br>
+`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​`
 
 **Parameters:** <br>
 `n/NAME`: Name of the person. <br>
@@ -167,7 +167,7 @@ Add a person to the address book.
 `t/TELEGRAM`: Telegram handle of the person. <br>
 `ev/EVENT`: Event of the person. <br>
 `r/ROLE`: Role of the person. <br>
-`s/SKILL`: Skill of the person. <br>
+`sk/SKILL`: Skill of the person. <br>
 
 * Each event **must** have only one corresponding role. You are adding event-role pairs, not independent events or roles.
 As such, you **cannot** add 1 event and 2 roles, the 2nd role will be discarded.
@@ -193,14 +193,14 @@ add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john1
 
 Edit the details of an existing person in the address book.
 
-**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>
-`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`
+**Format**: <br> `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​` or <br>
+`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the contact list. 
 * The **index must be a positive integer** 1, 2, 3, …​
 * **At least** one of the optional fields must be provided.
 * When you perform the action of editing the skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
-* You can remove a person’s skills by typing `s/` without specifying any skills after it.
+* You can remove a person’s skills by typing `sk/` without specifying any skills after it.
 * Each event **must** have only one corresponding role. You cannot edit an event or role only.
 * When editing an event and its corresponding role, the existing events and roles will all be removed and replaced with your new event and role input i.e adding of events and roles is not cumulative.
 * You can add one or more event-role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
@@ -214,7 +214,7 @@ Edit the details of an existing person in the address book.
 `t/TELEGRAM`: Telegram handle of the person. <br>
 `ev/EVENT`: Event of the person. <br>
 `r/ROLE`: Role of the person. <br>
-`s/SKILL`: Skill of the person. <br>
+`sk/SKILL`: Skill of the person. <br>
 
 **Example Input:** <br>
 ```
@@ -231,7 +231,7 @@ Edited Person: John Deez; Phone: 91234567; Telegram: @john123; Email: doejohn@ex
 
 **Example Input:** <br>
 ```
-e 2 n/Rebecca Tan s/
+e 2 n/Rebecca Tan sk/
 ```
 
 **Expected Output:** <br>
@@ -366,8 +366,8 @@ If there are Alex Yeoh and David Li in your contacts, they will be listed.
 
 Filter contacts from the address book based on name, event, role, phone number, telegram handle, email and skills.
 
-**Format:** <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> 
-`fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]`
+**Format:** <br> `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]` or <br> 
+`fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]`
 
 * Filter the address book based on your specified `KEYWORD`.
 * Filter and produces all possible outputs matching at least one `KEYWORD` from each field.
@@ -403,7 +403,7 @@ This time, only contacts with both `Mike` in their name and `Charity` in their e
 #### 11. Add new Skill
 Add skill to an existing person from the address book.
 
-**Format:** <br> `addskill INDEX [s/SKILL]…` or `as INDEX [s/SKILL]…`
+**Format:** <br> `addskill INDEX [sk/SKILL]…` or `as INDEX [sk/SKILL]…`
 
 * Adds one or more skills to the person at the specified `INDEX`.
 * At least one `INDEX` must be provided.
@@ -411,11 +411,11 @@ Add skill to an existing person from the address book.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
-`s/SKILL`: Skill of your contact. <br>
+`sk/SKILL`: Skill of your contact. <br>
 
 **Example Input:** <br>
 ```
-addskill 1 s/JavaScript s/Cycling
+addskill 1 sk/JavaScript sk/Cycling
 ```
 
 <box type="tip" seamless>
@@ -435,7 +435,7 @@ Added skill [Cycling], [JavaScript] to John Deez
 #### 12. Delete existing Skill
 Delete skills of an existing person from the address book.
 
-**Format:** <br> `dskill INDEX [s/SKILL]…` or `ds INDEX [s/SKILL]…`
+**Format:** <br> `dskill INDEX [sk/SKILL]…` or `ds INDEX [sk/SKILL]…`
 
 * Delete one or more skills of the person at the specified `INDEX`.
 * At least one `INDEX` must be provided.
@@ -443,11 +443,11 @@ Delete skills of an existing person from the address book.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
-`s/SKILL`: Skill of your contact. <br>
+`sk/SKILL`: Skill of your contact. <br>
 
 **Example Input:** <br>
 ```
-dskill 1 s/Cycling
+dskill 1 sk/Cycling
 ```
 
 **Expected Output:** <br>
@@ -555,16 +555,16 @@ Action | Command
 --------|------------------
 **Help**: <br> View a brief message on commands you can use | `help` or `h`
 **Exit**: <br> Exit LinkUp | `exit` or `ex`
-**Add**: <br> Add a contact | `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` or <br>`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [s/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [s/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Add**: <br> Add a contact | `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​` or <br>`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
+**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Delete**: <br> Delete contacts | `delete INDEX…` or `d INDEX…` <br> <br> e.g. `delete 3` or `delete 1 3 5`
 **Copy**: <br> Copy an existing contact to make it easier to add a person with similar parameters | `copy INDEX` or `c INDEX`<br> <br> e.g. `copy 2`
 **Clear**: <br> Delete all contacts | `clear`
 **List**: <br> List all contacts | `list` or `l`
 **Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]` <br> <br> e.g. `find James Jake`
-**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` or <br> `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [s/KEYWORD]` <br> <br> e.g. `filter ev/Hunt`
-**Add Skill**: <br> Add skill(s) to contact | `addskill INDEX [s/SKILL]…` or <br> `as INDEX [s/SKILL]…` <br> <br> e.g. `addSkill 1 s/JavaScript`
-**Delete Skill**: <br> Delete skill(s) from contact | `dskill INDEX [s/SKILL]…` or <br> `ds INDEX [s/SKILL]…` <br> <br> e.g. `dskill 2 s/Cycling`
+**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]` or <br> `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]` <br> <br> e.g. `filter ev/Hunt`
+**Add Skill**: <br> Add skill(s) to contact | `addskill INDEX [sk/SKILL]…` or <br> `as INDEX [sk/SKILL]…` <br> <br> e.g. `addSkill 1 sk/JavaScript`
+**Delete Skill**: <br> Delete skill(s) from contact | `dskill INDEX [sk/SKILL]…` or <br> `ds INDEX [sk/SKILL]…` <br> <br> e.g. `dskill 2 sk/Cycling`
 **Favourite**: <br> Add a contact to favourites | `fav INDEX`<br> <br> e.g. `fav 3`
 **Unfavourite**: <br> Remove a contact from favourites | `unfav INDEX`<br> <br> e.g. `unfav 3`
 **List favourites**: <br> List all favourite contacts | `lfav`
@@ -590,7 +590,7 @@ Install LinkUp on the other computer, then replace the new data file in your oth
 **How do I edit only 1 of my 2 skills for a specific contact?** <br>
 You would have to edit both skills in order for you to see the changes. So assuming
 you have `skills: Boxing, Drumming` but you wish to change Drumming to Singing, you can only do this by using the `edit` command
-and typing `edit [INDEX] s/Boxing s/Drumming` or `e [INDEX] s/Boxing s/Drumming`.
+and typing `edit [INDEX] sk/Boxing sk/Drumming` or `e [INDEX] sk/Boxing sk/Drumming`.
 
 **Why am I unable to run the `LinkUp.jar` file?** <br>
 Ensure you have Java `17` or above installed in your computer and the correct `LinkUp.jar` file. 

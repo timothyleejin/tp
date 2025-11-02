@@ -36,14 +36,14 @@ public class AddSkillCommandParserTest {
 
     @Test
     public void parse_invalidIndex_throwsParseException() {
-        String inp1 = "-1 s/friend";
+        String inp1 = "-1 sk/friend";
         assertThrows(ParseException.class, () -> parser.parse(inp1));
     }
 
     @Test
     public void parse_invalidSkill_throwsParseException() {
-        String input1 = "-1 s/frien$d";
-        String input2 = "-1 s/ friend";
+        String input1 = "-1 sk/frien$d";
+        String input2 = "-1 sk/ friend";
         assertThrows(ParseException.class, () -> parser.parse(input1));
         assertThrows(ParseException.class, () -> parser.parse(input2));
     }
@@ -51,7 +51,7 @@ public class AddSkillCommandParserTest {
     @Test
     public void parse_validSingleSkill_success() throws Exception {
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + SKILL_DESC_FRIEND; // e.g., "1 s/friend"
+        String userInput = targetIndex.getOneBased() + " " + SKILL_DESC_FRIEND; // e.g., "1 sk/friend"
 
         AddSkillCommand expectedCommand = new AddSkillCommand(targetIndex,
                 List.of(new Skill("JavaScript")));

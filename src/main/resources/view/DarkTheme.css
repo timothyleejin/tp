@@ -404,6 +404,12 @@
     -fx-font-size: 11;
 }
 
+.person-name-label {
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 21px;
+    -fx-text-fill: #010504;
+    -fx-font-weight: bold;
+}
 #skills {
     -fx-hgap: 7;
     -fx-vgap: 3;
@@ -420,10 +426,10 @@
 
 .bubble_blue {
     -fx-background-color: #24A1DE;
-    -fx-padding: 2 5 2 5;
+    -fx-padding: 5 5 5 5;
     -fx-border-radius: 2;
     -fx-background-radius: 25;
-    -fx-font-size: 11;
+    -fx-font-size: 13;
     -fx-text-fill: white !important;
 }
 

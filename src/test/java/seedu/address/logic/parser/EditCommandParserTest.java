@@ -103,11 +103,11 @@ public class EditCommandParserTest {
         // while parsing {@code PREFIX_SKILL} alone will reset the skills of the {@code Person} being edited,
         // parsing it together with a valid skill results in error
         assertParseFailure(parser, "1" + SKILL_DESC_FRIEND + SKILL_DESC_HUSBAND + SKILL_EMPTY,
-                Skill.MESSAGE_CONSTRAINTS);
+                Skill.MESSAGE_LIMIT_CONSTRAINTS);
         assertParseFailure(parser, "1" + SKILL_DESC_FRIEND + SKILL_EMPTY + SKILL_DESC_HUSBAND,
-                Skill.MESSAGE_CONSTRAINTS);
+                Skill.MESSAGE_LIMIT_CONSTRAINTS);
         assertParseFailure(parser, "1" + SKILL_EMPTY + SKILL_DESC_FRIEND + SKILL_DESC_HUSBAND,
-                Skill.MESSAGE_CONSTRAINTS);
+                Skill.MESSAGE_LIMIT_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_TELEGRAM_AMY + VALID_PHONE_AMY,
