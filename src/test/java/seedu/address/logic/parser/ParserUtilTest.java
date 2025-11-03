@@ -35,7 +35,7 @@ public class ParserUtilTest {
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_ROLE_LIMIT = "Javaaiaaaiiaiuaibibibisbbsbiksnsnsbsibasbbbsbbabaibsbbasbsbsbsbs";
     private static final String INVALID_ROLE_LIMIT1 = "a";
-    private static final String INVALID_SKILL = "#java";
+    private static final String INVALID_SKILL = "!java";
     private static final String INVALID_SKILL_LIMIT = "J";
     private static final String INVALID_SKILL_LIMIT2 = "dxgsxjhvdchjkwdcjkhvdhjvdxvhjwcevhjwcehjvwehjvjhvwcvhjwcvhjwc";
     private static final String INVALID_EVENT_LIMIT = "urrurhefhergeuhghhuhghhguhghhguhhhuhrhhruhghhrhguhghguruhu"
