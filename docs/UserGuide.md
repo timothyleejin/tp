@@ -583,8 +583,13 @@ Refer to [_Quick Start_](#quick-start) for the detailed LinkUp launching process
 **How do I save my data in LinkUp?** <br>
 LinkUp data is saved in your computer automatically after any command that changes the data. There is no need to save manually. This means that your contact list will be restored whenever you reopen LinkUp. <br>
 
-**How do I transfer my data to another computer?** <br>
-Install LinkUp on the other computer, then replace the new data file in your other computer with the data file from your original computer's LinkUp. <br>
+**Where is the LinkUp's contact data in my computer?** <br>
+The contact data is stored in `[LinkUp.jar file location]/data/addressbook.json`. So if you have downloaded the `LinkUp.jar` file
+into your Downloads folder of your computer, the contact data will be stored in `Downloads/data/addressbook.json`. <br>
+
+**How do I get the factory reset LinkUp and get the original sample contact list?** <br>
+Exit LinkUp, then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list
+should be back to the original sample contact list. <br>
 
 #### 3. Contact Detail Management
 **How do I edit only 1 of my 2 skills for a specific contact?** <br>
@@ -619,9 +624,12 @@ will be saved. Each event should have a corresponding role.
 **Can I add a new contact with the same phone number?** <br>
 Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
 
+**Can I add Chinese/Tamil names to LinkUp?** <br>
+Unfortunately, this current version of LinkUp can only save names with English letters. As such, names like "小明" are not allowed.
+
 ### Known Issues
 
-* **Issue:** When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. <br>
+* **Issue:** When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, LinkUp's interface will open off-screen. <br>
 **Solution:** Delete the `preferences.json` file created by the application before running the application again.
 * **Issue:** If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. <br>
 **Solution:** Manually restore the minimized Help Window.
