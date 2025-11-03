@@ -9,7 +9,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Phone {
 
-
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers can include digits, pluses, dashes, commas, brackets, "
                     + "may start with 0, and must contain between 3 and 18 digits.";
