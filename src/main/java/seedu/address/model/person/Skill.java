@@ -3,6 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
  * Represents a Skill in the address book.
  * Guarantees: immutable; name is valid as declared in {@link #isValidSkillName(String)}
@@ -21,8 +23,9 @@ public class Skill {
      */
     public Skill(String skillName) {
         requireNonNull(skillName);
-        checkArgument(isValidSkillName(skillName), MESSAGE_CONSTRAINTS);
-        this.skillName = skillName;
+        String normalized = StringUtil.normalizeWhitespace(skillName);
+        checkArgument(isValidSkillName(normalized), MESSAGE_CONSTRAINTS);
+        this.skillName = normalized;
     }
 
     /**

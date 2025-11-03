@@ -65,4 +65,17 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns a copy of the given string with leading and trailing whitespace removed,
+     * and all consecutive internal whitespace collapsed into a single space.
+     * <p>
+     * e.g. "   John     Doe   " → "John Doe"
+     * @param input The original string (must not be null).
+     * @return The normalized string with single spaces between words.
+     */
+    public static String normalizeWhitespace(String input) {
+        requireNonNull(input);
+        return input.trim().replaceAll("\\s+", " ");
+    }
 }

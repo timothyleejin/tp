@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
  * Represents an event in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEvent(String)}
@@ -20,7 +22,8 @@ public class Event {
      */
     public Event(String event) {
         requireNonNull(event);
-        this.value = event;
+        String normalized = StringUtil.normalizeWhitespace(event);
+        this.value = normalized;
     }
 
     /**
