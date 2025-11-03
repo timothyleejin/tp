@@ -592,8 +592,7 @@ The contact data is stored in `[LinkUp.jar file location]/data/addressbook.json`
 into your Downloads folder of your computer, the contact data will be stored in `Downloads/data/addressbook.json`. <br>
 
 **How do I factory reset LinkUp and get the original sample contact list?** <br>
-Exit LinkUp, and then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list
-should be back to the original sample contact list. <br>
+Exit LinkUp, and then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list should be back to the original sample contact list. <br>
 
 #### 3. Contact Detail Management
 **How do I edit only 1 of my 2 skills for a specific contact?** <br>

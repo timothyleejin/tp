@@ -37,9 +37,9 @@ public class SkillTest {
         // valid skill names
         assertTrue(Skill.isValidSkillName("Python"));
         assertTrue(Skill.isValidSkillName("java"));
-        assertTrue(Skill.isValidSkillName("Cplusplus"));
+        assertTrue(Skill.isValidSkillName("C++"));
         assertTrue(Skill.isValidSkillName("AI123"));
-        assertTrue(Skill.isValidSkillName("123"));
+        assertTrue(Skill.isValidSkillName("Business-Management"));
     }
 
     @Test

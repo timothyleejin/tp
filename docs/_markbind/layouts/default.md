@@ -32,6 +32,7 @@
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
   * [About LinkUp]({{ baseUrl }}/UserGuide.html#about-linkup)
   * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
+  * [Interface Walkthrough]({{ baseUrl }}/UserGuide.html#interface-walkthrough)
   * [Features]({{ baseUrl }}/UserGuide.html#features)
   * [Command Summary]({{ baseUrl }}/UserGuide.html#command-summary)
   * [Troubleshooting]({{ baseUrl }}/UserGuide.html#troubleshooting)

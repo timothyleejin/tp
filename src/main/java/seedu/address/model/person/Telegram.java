@@ -17,7 +17,7 @@ public class Telegram {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,32}$";
+    public static final String VALIDATION_REGEX = "^@?[a-zA-Z0-9_]{5,32}$";
 
     public final String value;
 
@@ -29,6 +29,9 @@ public class Telegram {
     public Telegram(String telegram) {
         requireNonNull(telegram);
         checkArgument(isValidTelegram(telegram), MESSAGE_CONSTRAINTS);
+        if (telegram.startsWith("@")) {
+            telegram = telegram.substring(1);
+        }
         value = telegram;
     }
 
