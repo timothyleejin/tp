@@ -566,7 +566,7 @@ Parameter | Details
 --------|------------------
 `INDEX` | Index number of person in contact list. <br><br> It **must** be a positive integer.
 `n/NAME` | Name of the person. <br><br> Names should only contain letters, numbers, spaces, hyphens, apostrophes, periods, commas, or @ symbol. Names should start with a letter or number, cannot be blank and cannot contain more than 50 characters.
-`p/PHONE` | Phone number of the person. <br><br> Phone numbers can include digits, pluses, fullstops, dashes, commas, brackets, may start with 0, and must contain between 3 and 18 digits.
+`p/PHONE` | Phone number of the person. <br><br> Phone numbers can include digits, pluses, fullstops, dashes, commas, rounded brackets, may start with 0, and must contain between 3 and 18 digits.
 `e/EMAIL` | Email address of the person. <br><br> Email addresses should be of the format local-part@domain and must not exceed 254 characters. The **local-part** must be between 1 and 64 characters, should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. This is followed by a '@' and then a domain name. The **domain name** must be between 2 and 190 characters long, should consist of alphanumeric characters, separated only by hyphens, if any. The domain name must start and end with alphanumeric characters.
 `t/TELGRAM` | Telegram handle of the person. <br><br> Telegram handles must not be empty and can only be made up of: English letters (a-z, A-Z), digits (0-9), and underscores (_). They must be between 5 and 32 characters long.
 `ev/EVENT` | Event of the person. <br><br> Events can take in any values and must be between 2 and 60 characters.
@@ -628,7 +628,7 @@ will be saved. Each event should have a corresponding role.
 Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
 
 **Can I add Chinese/Tamil names to LinkUp?** <br>
-Unfortunately, this current version of LinkUp can only save names with English letters. As such, names like "小明" are not allowed.
+Unfortunately, this current version of LinkUp can only save names with the specified English letters as shown in the [_Parameter Details_](#parameter-details). As such, names like "小明" are not allowed.
 
 ### Known Issues
 
