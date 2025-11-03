@@ -36,7 +36,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             + "When filtering, it should be less than 32 characters long.";
 
     private static final String PHONE_VALIDATION_REGEX = "\\d+";
-    private static final String TELEGRAM_VALIDATION_REGEX = "^[a-zA-Z0-9_]{0,32}$";
+    private static final String TELEGRAM_VALIDATION_REGEX = "^@?[a-zA-Z0-9_]{0,32}$";
 
 
     /**
@@ -158,6 +158,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             for (int i = 0; i < telegramsArguments; i++) {
                 String temp = split[i].trim();
                 boolean isValid = isValid(temp, TELEGRAM_VALIDATION_REGEX);
+                if (temp.startsWith("@")) {
+                    temp = temp.substring(1);
+                }
                 if (!isValid) {
                     throw new ParseException(TELEGRAM_MESSAGE_CONSTRAINTS);
                 }
