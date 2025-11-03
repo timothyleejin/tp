@@ -3,6 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
  * Represents a Person's phone number in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
@@ -23,8 +25,9 @@ public class Phone {
      */
     public Phone(String phone) {
         requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
-        value = phone;
+        String normalized = StringUtil.normalizeWhitespace(phone);
+        checkArgument(isValidPhone(normalized), MESSAGE_CONSTRAINTS);
+        value = normalized;
     }
 
     /**
@@ -36,6 +39,10 @@ public class Phone {
         }
         String digits = test.replaceAll("\\D", "");
         return digits.length() >= 3 && digits.length() <= 18;
+    }
+
+    private static String normalize(String phone) {
+        return phone.replaceAll("[+\\-,()\\s]", "");
     }
 
     @Override
@@ -55,7 +62,7 @@ public class Phone {
         }
 
         Phone otherPhone = (Phone) other;
-        return value.equals(otherPhone.value);
+        return normalize(value).equals(normalize(otherPhone.value));
     }
 
     @Override
