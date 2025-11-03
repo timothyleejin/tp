@@ -151,6 +151,102 @@ your contact list will be restored whenever you reopen LinkUp.
 <br>
 
 ### Contact Management
+
+#### Contact Information
+
+This a table of all the information stored about each contact.
+
+<table class="styled-contact-table">
+    <thead>
+        <tr>
+            <th>Prefix</th>
+            <th>Field</th>
+            <th>Description</th>
+            <th>Requirements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="prefix">n</td>
+            <td class="field-name">Name</td>
+            <td class="description">Name of the contact (e.g. John Tan)</td>
+            <td class="requirements">
+                Can contain letters, numbers, spaces and these special characters: 
+                <div class="special-chars"> - ' . , / @ </div> 
+            </td>
+        </tr>
+        <tr>
+            <td class="prefix">p</td>
+            <td class="field-name">Phone</td>
+            <td class="description">Phone number of the contact (e.g. 92343124 or +65 91112344)</td>
+            <td class="requirements">Can include digits, pluses, dashes, commas, brackets and must contain between 3 and 18 digits</td>
+        </tr>
+        <tr>
+            <td class="prefix">e</td>
+            <td class="field-name">Email</td>
+            <td class="description">Email address of the contact (e.g. john@gmail.com)</td>
+            <td class="requirements">
+                Should be of the format local-part@domain, can be up to 254 characters and must adhere to the following constraints:
+                <br><br>
+                1. The local-part should only contain letters, numbers and these special characters:
+                <div class="special-chars"> ! _ # $ % & ’ * + / = ? ` { | } ~ ^ . - </div>
+                The local-part can take in up to 64 characters.
+                <br><br>
+                2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.
+                <br>
+                The domain name must:
+                <ul>
+                    <li>end with a domain label at least 2 characters long</li>
+                    <li>have each domain label start and end with alphanumeric characters</li>
+                    <li>have each domain label consist of alphanumeric characters, separated only by hyphens, if any.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="prefix">t</td>
+            <td class="field-name">Telegram</td>
+            <td class="description">Telegram handle of the contact (e.g. @john123)</td>
+            <td class="requirements">
+                Must not be empty and can only be made up of: English letters (a-z, A-Z), digits (0-9), and underscores (_).
+                The '@' at the front is optional.
+            </td>
+        </tr>
+        <tr>
+            <td class="prefix">ev</td>
+            <td class="field-name">Events</td>
+            <td class="description">Events the contact is participating in (e.g. Orientation Camp)</td>
+            <td class="requirements">
+                Must be between 2 - 60 characters. <br>
+                Can store any number of events but each event must have an accompanying role!
+            </td>
+        </tr>
+        <tr>
+            <td class="prefix">r</td>
+            <td class="field-name">Roles</td>
+            <td class="description">Role of the contact at each event (e.g. Planning Committee)</td>
+            <td class="requirements">
+                Must be between 2 - 30 characters. <br>
+                Can store any number of roles but each role must have an accompanying event!
+            </td>
+        </tr>
+        <tr>
+            <td class="prefix">sk</td>
+            <td class="field-name">Skills</td>
+            <td class="description">Skills of the contact. (e.g. Pro Gamer)</td>
+            <td class="requirements">
+                <span class="optional-badge">OPTIONAL</span> <br>
+                Skills can only contain letters, numbers, spaces and these special characters:
+                <div class="special-chars"> - + # " </div>
+                Skills must contain at least one letter and be between 2 and 30 characters long.
+                <br> Can store any number of skills!
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
 #### 3. Add a Contact
 
 Add a person to the address book.
