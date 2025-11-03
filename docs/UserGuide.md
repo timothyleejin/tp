@@ -77,9 +77,7 @@ Let's walk you through the setup process of LinkUp.
     3. Type `java -jar LinkUp.jar` command to run the application.
     4. In a few seconds, the LinkUp interface will appear. 
    Scroll down for [_Interface Walkthrough_](#interface-walkthrough).
-    5. Use It: <br>
-   Now you can start using **LinkUp**. Refer to the [_Features_](#features) below for details of each command.
-
+    
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Interface Walkthrough**
@@ -139,7 +137,7 @@ View a brief message on commands you can use and a pop-up message explaining how
 **Format**: <br> `help` or `h`
 
 **Expected Output:** <br>
-![Example Output for Help Command](images/HelpOutput.png) <br>
+![Example Output for Help Command](images/Helpoutput1.png) <br>
 
 #### 2. Close LinkUp
 
@@ -175,7 +173,7 @@ As such, you **cannot** add 1 event and 2 roles, the 2nd role will be discarded.
 * Duplicate contacts with the same name, phone number, email, and telegram handle are not allowed.
 
 <box type="tip" seamless>
-A person can have <i>any non-negative number</i> of skills including 0. The order of fields,
+<b>Tip:</b> A person can have <i>any non-negative number</i> of skills including 0. The order of fields,
 apart from event and role, does not matter.
 </box>
 
@@ -197,7 +195,6 @@ Edit the details of an existing person in the address book.
 `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​`
 
 * Edit the details of the person at the specified `INDEX`, which refers to the index number shown in the contact list. 
-* The **index must be a positive integer** 1, 2, 3, …​
 * **At least** one of the optional fields must be provided.
 * When you perform the action of editing the skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `sk/` without specifying any skills after it.
@@ -253,7 +250,6 @@ Delete specified persons from the address book.
 
 * Delete the person at the specified `INDEX`.
 * At least one `INDEX` must be provided.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -289,7 +285,6 @@ Copy an existing contact to make it easier to add a person with similar paramete
 **Format:** <br> `copy INDEX` or `c INDEX`
 
 * Copies the Add Command input of the person at the specified `INDEX` to the clipboard so that you can paste (ctrl/cmd + v) into the command box.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -387,15 +382,15 @@ Using the sample AddressBook below:
 
 Typing the command `filter ev/charity gala` will show:
 
-![Example Output 1 for Filter Command](images/FilterCommandExampleOutput1.png)
+![Example Output 1 for Filter Command](images/FilterCommandOutput.png)
 
 All of your contacts with `Charity Gala` in their event will be listed out. 
 
-Another example command `filter n/Mike ev/Charity` will show:
+Another example command `filter n/Bernice ev/Charity` will show:
 
 ![Example Output 2 for Filter Command](images/FilterCommandExampleOutput2.png)
 
-This time, only contacts with both `Mike` in their name and `Charity` in their event will be listed.
+This time, only contacts with both `Bernice` in their name and `Charity` in their event will be listed.
 
 <br>
 
@@ -406,8 +401,7 @@ Add skill to an existing person from the address book.
 **Format:** <br> `addskill INDEX [sk/SKILL]…` or `as INDEX [sk/SKILL]…`
 
 * Adds one or more skills to the person at the specified `INDEX`.
-* At least one `INDEX` must be provided.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Only one `INDEX` must be provided.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -419,7 +413,7 @@ addskill 1 sk/JavaScript sk/Cycling
 ```
 
 <box type="tip" seamless>
-Adding skills using the addskill command is cumulative, unlike the edit command.
+<b>Tip:</b> Adding skills using the <code>addskill</code> command is cumulative, unlike the <code>edit</code> command.
 </box>
 
 **Expected Output:** <br>
@@ -438,8 +432,7 @@ Delete skills of an existing person from the address book.
 **Format:** <br> `dskill INDEX [sk/SKILL]…` or `ds INDEX [sk/SKILL]…`
 
 * Delete one or more skills of the person at the specified `INDEX`.
-* At least one `INDEX` must be provided.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Only one `INDEX` must be provided.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -469,8 +462,6 @@ Add a person from the address book to favourites and mark them with a heart icon
 **Format:** <br> `fav INDEX`
 
 * Add the person at the specified `INDEX` to favourites.
-* The index refers to the index number of the person shown in the contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -497,8 +488,6 @@ Remove a specified person from the address book from favourites and removes the 
 **Format:** <br> `unfav INDEX`
 
 * Remove the person at the specified `INDEX` from favourites.
-* The index refers to the index number of the person shown in the contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -571,6 +560,21 @@ Action | Command
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Parameter Details**
+
+Parameter | Details
+--------|------------------
+`INDEX` | Index number of person in contact list. <br><br> It **must** be a positive integer.
+`n/NAME` | Name of the person. <br><br> Names should only contain letters, numbers, spaces, hyphens, apostrophes, periods, commas, or @ symbol. Names should start with a letter or number, cannot be blank and cannot contain more than 50 characters.
+`p/PHONE` | Phone number of the person. <br><br> Phone numbers can include digits, pluses, fullstops, dashes, commas, rounded brackets, may start with 0, and must contain between 3 and 18 digits.
+`e/EMAIL` | Email address of the person. <br><br> Email addresses should be of the format local-part@domain and must not exceed 254 characters. The **local-part** must be between 1 and 64 characters, should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. This is followed by a '@' and then a domain name. The **domain name** must be between 2 and 190 characters long, should consist of alphanumeric characters, separated only by hyphens, if any. The domain name must start and end with alphanumeric characters.
+`t/TELEGRAM` | Telegram handle of the person. <br><br> Telegram handles must not be empty and can only be made up of: English letters (a-z, A-Z), digits (0-9), and underscores (_). They must be between 5 and 32 characters long.
+`ev/EVENT` | Event of the person. <br><br> Events can take in any values and must be between 2 and 60 characters.
+`r/ROLE` | Role of the person. <br><br> Roles can take in any values and must be between 2 and 30 characters.
+`sk/SKILL` | Skill of the person. <br><br> Skills should only contain letters, numbers, spaces, hyphens, plus signs, hash symbols, or double quotes. Skills must contain at least one letter, cannot be blank, and should be between 2 and 30 characters long.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Troubleshooting**
 ### Frequently Asked Questions
 
@@ -587,9 +591,8 @@ LinkUp data is saved in your computer automatically after any command that chang
 The contact data is stored in `[LinkUp.jar file location]/data/addressbook.json`. So if you have downloaded the `LinkUp.jar` file
 into your Downloads folder of your computer, the contact data will be stored in `Downloads/data/addressbook.json`. <br>
 
-**How do I get the factory reset LinkUp and get the original sample contact list?** <br>
-Exit LinkUp, then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list
-should be back to the original sample contact list. <br>
+**How do I factory reset LinkUp and get the original sample contact list?** <br>
+Exit LinkUp, and then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list should be back to the original sample contact list. <br>
 
 #### 3. Contact Detail Management
 **How do I edit only 1 of my 2 skills for a specific contact?** <br>
@@ -625,7 +628,7 @@ will be saved. Each event should have a corresponding role.
 Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
 
 **Can I add Chinese/Tamil names to LinkUp?** <br>
-Unfortunately, this current version of LinkUp can only save names with English letters. As such, names like "小明" are not allowed.
+Unfortunately, this current version of LinkUp can only save names with the specified English letters as shown in the [_Parameter Details_](#parameter-details). As such, names like "小明" are not allowed.
 
 ### Known Issues
 
