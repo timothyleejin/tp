@@ -12,9 +12,9 @@ import seedu.address.commons.util.StringUtil;
 public class Phone {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers can include digits, pluses, dashes, commas, brackets, "
+            "Phone numbers must only include digits, pluses, dashes, commas, round brackets, "
                     + "may start with 0, and must contain between 3 and 18 digits.";
-    public static final String VALIDATION_REGEX = "^(?:0)?[\\d\\s,+().-]*\\d[\\d\\s,+().-]*$";
+    public static final String VALIDATION_REGEX = "^(?:0)?[\\d\\s,+()-]*\\d[\\d\\s,+()-]*$";
     public final String value;
 
     /**
@@ -41,7 +41,7 @@ public class Phone {
     }
 
     private static String normalize(String phone) {
-        return phone.replaceAll("[+\\-,()\\s]", "");
+        return phone.replaceAll("[\\-,()\\s]", "");
     }
 
     @Override

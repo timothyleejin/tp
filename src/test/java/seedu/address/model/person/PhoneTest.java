@@ -43,6 +43,7 @@ public class PhoneTest {
     @Test
     public void equals() {
         Phone phone = new Phone("999");
+        Phone internationalPhone = new Phone("(+86)12345678910");
 
         // same values -> returns true
         assertTrue(phone.equals(new Phone("999")));
@@ -51,7 +52,13 @@ public class PhoneTest {
         assertTrue(phone.equals(new Phone("9 99 ")));
 
         // same values with other signs -> return true
-        assertTrue(phone.equals(new Phone("(+9)9-9")));
+        assertTrue(phone.equals(new Phone("(9)9-9")));
+
+        // same values without plus at the front -> return false
+        assertFalse(internationalPhone.equals(new Phone("8612345678910")));
+
+        // same values with plus at the front -> return true
+        assertTrue(internationalPhone.equals(new Phone("+8612345678910")));
 
         // same object -> returns true
         assertTrue(phone.equals(phone));

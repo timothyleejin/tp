@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_EVENT_ROLE_MISMATCH;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT;
@@ -45,6 +46,8 @@ public class AddCommandParser implements Parser<AddCommand> {
                 PREFIX_EVENT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_EVENT).size() != argMultimap.getAllValues(PREFIX_ROLE).size()) {
+            throw new ParseException(MESSAGE_EVENT_ROLE_MISMATCH);
         }
 
 
