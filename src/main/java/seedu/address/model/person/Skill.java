@@ -11,9 +11,11 @@ import seedu.address.commons.util.StringUtil;
  */
 public class Skill {
 
-    public static final String MESSAGE_CONSTRAINTS = "Skills should be alphanumeric "
-            + "and should be between 2-30 characters with no spacing";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Skills should only contain letters, numbers, spaces, hyphens (-), plus signs (+), "
+            + "hash symbols (#), or double quotes (\"). Skills must contain at least one letter, "
+            + "cannot be blank, and should be between 2 and 30 characters long.";
+    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z])[\\p{Alnum}\\- #+\"]+$";
     public final String skillName;
 
     /**
