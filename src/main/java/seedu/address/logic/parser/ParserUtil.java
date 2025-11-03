@@ -82,6 +82,10 @@ public class ParserUtil {
     public static Telegram parseTelegram(String telegram) throws ParseException {
         requireNonNull(telegram);
         String trimmedTelegram = telegram.trim();
+        if (trimmedTelegram.startsWith("@")) {
+            trimmedTelegram = trimmedTelegram.substring(1);
+            System.out.println("We accessed this line!!");
+        }
         if (!Telegram.isValidTelegram(trimmedTelegram)) {
             throw new ParseException(Telegram.MESSAGE_CONSTRAINTS);
         }
