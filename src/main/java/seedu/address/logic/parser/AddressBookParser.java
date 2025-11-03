@@ -87,10 +87,10 @@ public class AddressBookParser {
         case FilterCommand.COMMAND_WORD, FilterCommand.COMMAND_SHORTCUT:
             return new FilterCommandParser().parse(arguments);
 
-        case FavCommand.COMMAND_WORD:
+        case FavCommand.COMMAND_WORD, FavCommand.COMMAND_SHORTCUT:
             return new FavCommandParser().parse(arguments);
 
-        case UnfavCommand.COMMAND_WORD:
+        case UnfavCommand.COMMAND_WORD, UnfavCommand.COMMAND_SHORTCUT:
             return new UnfavCommandParser().parse(arguments);
 
         case ListFavCommand.COMMAND_WORD:
