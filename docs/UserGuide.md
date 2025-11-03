@@ -125,7 +125,7 @@ Moving from the top of the interface to the bottom:
   e.g. If you type in `help 123`, it will be treated as just `help`.
 
 * **Commands are case-insensitive.**<br>
-    e.g. If you type in `edit 1 ev/Orientation r/Organiser` or `EDIT 1 ev/Orientation r/Organiser`.
+    e.g. You can type `edit 1 ev/Orientation r/Organiser`, or `EDIT 1 ev/Orientation r/Organiser`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as
   space characters surrounding line-breaks may be omitted when copied over to the application.
