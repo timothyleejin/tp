@@ -168,11 +168,11 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 * are small-scale leaders and organizers who need a lightweight but effective way to manage and access
   their contacts without relying on large enterprise tools
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of contacts (200-300)
+* is actively managing events or activities and coordinating volunteers between time-constrained periods
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* has basic command-line familiarity
 
 **Primary Users**:
 
@@ -182,37 +182,46 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 **User Persona**:
 
-* Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them.
-He needs to store and access many contacts easily, but does not require integrated communication features.
+* Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them 
+where he manages **over 150+ members** in the club. He needs to **coordinate events and volunteers** which requires 
+him to **handle large contact list** and **track roles** efficiently. However, he **does not require integrated communication features**.
+Bryce also has **basic proficiency on the usage of command line interfaces** gained through his university modules 
+
+
 
 **Value proposition**:
 
-* provides a lightweight and simple contact management tool
-* manage contacts faster than a typical mouse/GUI driven app
-* helps small organizations and student leaders organize their contacts more effectively than spreadsheets
-* avoids unnecessary complexity while still supporting features like search, labeling, and grouping
+LinkUp empowers **club leaders and small organizations to streamline people and event management** offering a simple
+yet focused solution which is comprehensive enough to handle real world coordination, allowing leaders to focus on leading rather than organizing.
+
+* Optimize contact management through keyboard driven contact management minimizing time spent navigating traditional GUIs
+* Helps to strike ideal balance between complexity of full scale CRMS and simplicity of spreadsheets, giving leaders more control
+* Offers efficient and powerful features such as advanced search, event-role grouping and skill based tagging for better management
 
 <h3 class="developerHeader2">User stories</h3>
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​          | I want to …​                                              | So that I can…​                                                                      |
-|----------|------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `* *`    | new user         | see usage instructions/help                               | refer to instructions when I forget how to use the App                               |
-| `* * *`  | user             | add a contact                                             | record down people’s details                                                         |
-| `* * *`  | user             | delete a contact                                          | remove unnecessary entries                                                           |
-| `* * *`  | user             | view the contact list                                     | see all contacts                                                                     |
-| `* *`    | user             | edit a contact                                            | update their details                                                                 |
-| `* *`    | user             | search a contact by name                                  | find them quickly                                                                    |
-| `* *`    | leader           | tag contacts with skills                                  | assign them to tasks                                                                 |
-| `* *`    | leader           | add/remove skills from contacts                           | update contacts with their skills easily                                             |
-| `* *`    | leader           | see event/role/telegram information to contacts           | know their context                                                                   |
-| `* *`    | leader           | add/remove event/role information to contacts             | update contacts with their event/role easily                                         |
-| `* *`    | leader           | filter people by any field                                | find the relevant contacts                                                           |
-| `* *`    | leader           | add/remove favourite contacts and list favourite contacts | access key people easily                                                             |
-| `* *`    | leader           | have clearer duplicate contact information                | understand which fields are duplicate more easily given the large number of contacts |
-| `* *`    | experienced user | delete multiple contacts                                  | delete contacts faster after event                                                   |
-| `* *`    | experienced user | use command shortcuts                                     | speed up workflow                                                                    |
+| Priority | As a …​          | I want to …​                                    | So that I can…​                                                                      |
+|----------|------------------|-------------------------------------------------|--------------------------------------------------------------------------------------|
+| `* *`    | new user         | see usage instructions/help                     | refer to instructions when I forget how to use the App                               |
+| `* * *`  | user             | add a contact                                   | record down people’s details                                                         |
+| `* * *`  | user             | delete a contact                                | remove unnecessary entries                                                           |
+| `* * *`  | user             | view the contact list                           | see all contacts                                                                     |
+| `* *`    | user             | edit a contact                                  | update their details                                                                 |
+| `* *`    | user             | search a contact by name                        | find them quickly                                                                    |
+| `* *`    | leader           | tag contacts with skills                        | assign them to tasks                                                                 |
+| `* *`    | leader           | add skills from contacts                        | update contacts with their skills easily                                             |
+| `* *`    | leader           | remove skills from contacts                     | remove skills from contacts with ease                                                |
+| `* *`    | leader           | see event/role/telegram information to contacts | know their context                                                                   |
+| `* *`    | leader           | add/remove event/role information to contacts   | update contacts with their event/role easily                                         |
+| `* *`    | leader           | filter people by any field                      | find the relevant contacts                                                           |
+| `* *`    | leader           | add favourite contacts                          | access key people easily                                                             |
+| `* *`    | leader           | remove favourite contacts                       | manage key contacts with ease                                                        |
+| `* *`    | leader           | list favourite contacts                         | view all key contacts                                                                |
+| `* *`    | leader           | have clearer duplicate contact information      | understand which fields are duplicate more easily given the large number of contacts |
+| `* *`    | experienced user | delete multiple contacts                        | delete contacts faster after event                                                   |
+| `* *`    | experienced user | use command shortcuts                           | speed up workflow                                                                    |
 
 <h3 class="developerHeader2">Use cases</h3>
 
@@ -550,7 +559,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4. CLI: Command Line Interface
 4. JDK: Java Development Kit
 5. MSS: Main Success Scenario
-6. Organiser: A person who arranges an event or activity and has multiple contacts
+6. CRM : Customer Relationship Management System
 
 --------------------------------------------------------------------------------------------------------------------
 
