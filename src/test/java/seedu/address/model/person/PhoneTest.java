@@ -47,6 +47,12 @@ public class PhoneTest {
         // same values -> returns true
         assertTrue(phone.equals(new Phone("999")));
 
+        // same values with space -> return true
+        assertTrue(phone.equals(new Phone("9 99 ")));
+
+        // same values with other signs -> return true
+        assertTrue(phone.equals(new Phone("(+9)9-9")));
+
         // same object -> returns true
         assertTrue(phone.equals(phone));
 
