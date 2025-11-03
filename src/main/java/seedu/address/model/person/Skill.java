@@ -9,9 +9,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Skill {
 
-    public static final String MESSAGE_CONSTRAINTS = "Skills should be alphanumeric "
-            + "and should be between 2-30 characters with no spacing";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String MESSAGE_CONSTRAINTS = "Skills must contain at least one letter, can include alphanumeric"
+            + " characters and spaces, and the following special characters: -, +, #, \". "
+            + "Then length should be between 2-30 characters.";
+    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z])[\\p{Alnum}\\- #+\"]+$";
     public final String skillName;
 
     /**
