@@ -13,7 +13,8 @@ import seedu.address.model.person.Person;
  */
 public class FavCommand extends Command {
 
-    public static final String COMMAND_WORD = "fav";
+    public static final String COMMAND_WORD = "favourite";
+    public static final String COMMAND_SHORTCUT = "fav";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds the person identified by the index number in the displayed person list to favourites.\n"
             + "Parameters: INDEX (must be a positive integer)\n"

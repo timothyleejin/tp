@@ -13,7 +13,8 @@ import seedu.address.model.person.Person;
  */
 public class UnfavCommand extends Command {
 
-    public static final String COMMAND_WORD = "unfav";
+    public static final String COMMAND_WORD = "unfavourite";
+    public static final String COMMAND_SHORTCUT = "unfav";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the person identified by the index number in the displayed person list from favourites.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
