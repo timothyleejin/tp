@@ -41,7 +41,7 @@ public class Phone {
     }
 
     private static String normalize(String phone) {
-        return phone.replaceAll("[+\\-,()\\s]", "");
+        return phone.replaceAll("[\\-,()\\s]", "");
     }
 
     @Override
