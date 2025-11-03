@@ -76,7 +76,9 @@ public class PersonCard extends UiPart<Region> {
                     // Role label - will appear immediately to the right of the event
                     Label roleLabel = new Label(person.getRole(event).value);
                     roleLabel.getStyleClass().add("bubble");
-
+                    eventLabel.setWrapText(true);
+                    roleLabel.setWrapText(true);
+                    roleLabel.setMinWidth(25);
                     eventRolePair.getChildren().addAll(eventLabel, roleLabel);
                     eventsRolesContainer.getChildren().add(eventRolePair);
                 });
