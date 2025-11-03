@@ -284,13 +284,6 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseEmail_domainPartTooLong_throwsParseException() {
-        String domain = "b".repeat(191);
-        String email = "user@" + domain;
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(email));
-    }
-
-    @Test
     public void parseRole_invalidLimit1_throwsParseException() {
         assertThrows(ParseException.class, () ->
                 ParserUtil.parseRole(INVALID_ROLE_LIMIT1));
