@@ -191,12 +191,12 @@ Bryce also has **basic proficiency on the usage of command line interfaces** gai
 
 **Value proposition**:
 
-LinkUp empowers **club leaders and small organizations to streamline people and event management** offering a simple
-yet focused solution which is comprehensive enough to handle real world coordination, allowing leaders to focus on leading rather than organizing.
+LinkUp empowers *club leaders and small organizations to streamline people and event management*, offering a simple
+yet focused solution which is comprehensive enough to handle real-world coordination, allowing leaders to focus on leading rather than organizing.
 
-* Optimize contact management through keyboard driven contact management minimizing time spent navigating traditional GUIs
-* Helps to strike ideal balance between complexity of full scale CRMS and simplicity of spreadsheets, giving leaders more control
-* Offers efficient and powerful features such as advanced search, event-role grouping and skill based tagging for better management
+* Optimize contact management through keyboard-driven contact management, minimizing time spent navigating traditional GUIs
+* Helps to strike an ideal balance between the complexities of full-scale Customer Relationship Management Systems (CRM) and the simplicity of spreadsheets, giving leaders more control
+* Offers efficient and powerful features such as event-role grouping, favourites, filters and skill-based tagging for better management
 
 <h3 class="developerHeader2">User stories</h3>
 
@@ -204,7 +204,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​          | I want to …​                                    | So that I can…​                                                                      |
 |----------|------------------|-------------------------------------------------|--------------------------------------------------------------------------------------|
-| `* *`    | new user         | see usage instructions/help                     | refer to instructions when I forget how to use the App                               |
+| `* * *`  | new user         | see sample contact data/command instructions/help  | familiarise with LinkUp's interface and refer to instructions when needed            |
 | `* * *`  | user             | add a contact                                   | record down people’s details                                                         |
 | `* * *`  | user             | delete a contact                                | remove unnecessary entries                                                           |
 | `* * *`  | user             | view the contact list                           | see all contacts                                                                     |
@@ -219,8 +219,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | leader           | add favourite contacts                          | access key people easily                                                             |
 | `* *`    | leader           | remove favourite contacts                       | manage key contacts with ease                                                        |
 | `* *`    | leader           | list favourite contacts                         | view all key contacts                                                                |
-| `* *`    | leader           | have clearer duplicate contact information      | understand which fields are duplicate more easily given the large number of contacts |
-| `* *`    | experienced user | delete multiple contacts                        | delete contacts faster after event                                                   |
+| `* *`    | leader           | delete multiple contacts/clear all contacts    | delete contacts faster after event                                                   |
 | `* *`    | experienced user | use command shortcuts                           | speed up workflow                                                                    |
 
 <h3 class="developerHeader2">Use cases</h3>
@@ -541,27 +540,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <h3 class="developerHeader2">Non-Functional Requirements</h3>
 
-1. **LinkUp** should work on any Mainstream OS as long as it has Java 17 or above installed. 
-2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
-4. **LinkUp** responds to your inputs within 2 seconds.
-5. **LinkUp** is usable even if you're _non-tech savvy_ and have never used
-   **LinkUp** before.
-6. Data from **LinkUp** will not be able to be sent to other users easily through
-   **LinkUp**.
-7. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
-8. **LinkUp** should automatically save any changes to contacts every minute or after significant update to prevent data loss
-9. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long term project health
+1. **LinkUp** should work on any Mainstream OS as long as it has Java 17 or above installed.
+2. **LinkUp** shall provide an interface that is easily navigable and usable by first-time users with basic digital literacy.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
+5. **LinkUp** responds to your inputs within 2 seconds.
+6. Data from **LinkUp** is stored in your computer and cannot be sent to other users through the app.
+8. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
+9. **LinkUp** should automatically save any changes to contacts.
+10. Should a data file be corrupted, **LinkUp** will load an empty list of contacts.
+11. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long-term project health.
+12. **LinkUp** should prevent duplication of contacts with the same name, phone number, email, and telegram handle.
+13. ⁠Should allow *LinkUp* to be packaged in a file (eg. ⁠`.jar` ⁠file) for ease of distribution and deployment.
 
 <h3 class="developerHeader2">Glossary</h3>
 
 1. Mainstream OS: Windows, Linux, Unix, MacOS
-2. Non tech-savvy: Someone who has low experience and skill in using technology
+2. Basic digital literacy: The ability to perform fundamental computer operations such as downloading and installing software, typing commands, and navigating interfaces
 3. GUI: Graphical User Interface
 4. CLI: Command Line Interface
 4. JDK: Java Development Kit
 5. MSS: Main Success Scenario
-6. CRM : Customer Relationship Management System
+6. CRM: Customer Relationship Management System
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -616,7 +616,7 @@ Adding a person while all persons are being shown
    **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 4. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
-   **Expected:** Similar to previous.
+   **Expected:** Similar to test case 3.
 
 <h3 class="developerHeader2">Deleting a person</h3>
 
