@@ -216,8 +216,8 @@ This a table of all the information stored about each contact.
         </tr>
         <tr>
             <td class="prefix">ev</td>
-            <td class="field-name">Event(s)</td>
-            <td class="description">Events the contact is participating in (e.g. Orientation Camp)</td>
+            <td class="field-name">Event</td>
+            <td class="description">Event(s) the contact is participating in (e.g. Orientation Camp)</td>
             <td class="requirements">
                 Must be between 2 - 60 characters. <br>
                 Can store any number of events but each event must have an accompanying role!
@@ -225,7 +225,7 @@ This a table of all the information stored about each contact.
         </tr>
         <tr>
             <td class="prefix">r</td>
-            <td class="field-name">Role(s)</td>
+            <td class="field-name">Role</td>
             <td class="description">Role of the contact at each event (e.g. Planning Committee)</td>
             <td class="requirements">
                 Must be between 2 - 30 characters. <br>
@@ -234,8 +234,8 @@ This a table of all the information stored about each contact.
         </tr>
         <tr>
             <td class="prefix">sk</td>
-            <td class="field-name">Skill(s)</td>
-            <td class="description">Skills of the contact. (e.g. Pro Gamer)</td>
+            <td class="field-name">Skill</td>
+            <td class="description">Skill(s) of the contact. (e.g. Pro Gamer)</td>
             <td class="requirements">
                 Skills can only contain letters, numbers, spaces and these special characters:
                 <div class="special-chars"> - + # " </div>
@@ -430,6 +430,12 @@ Address book has been cleared!
 <br>
 
 <h3 class="developerHeader2">Contact Viewing & Searching</h3>
+
+These commands help you search through your contacts quickly and easily! 
+
+All commands will add an additional layer of filtering 
+(e.g. using the `find` command after `lfav` will only search through your favourites) except for `list` which
+resets all your previous searches.
 
 <h4 class="developerHeader3">8. List all Contacts</h4>
 
