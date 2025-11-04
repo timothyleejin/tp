@@ -12,7 +12,8 @@ import seedu.address.commons.util.StringUtil;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain letters, numbers, spaces, hyphens, apostrophes, periods, commas or @ symbol. "
+            "Names should only contain letters, numbers, spaces and these special characters, excluding parentheses, "
+                    + "( - ' . , / @ )"
                     + "Names should start with a letter or number. Names cannot be blank "
                     + "and cannot contain more than 50 characters";
     /*
