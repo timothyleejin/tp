@@ -823,3 +823,13 @@ New features from AB3:
     - Right now, there is no information on the date and time of each event. We plan to implement a command to allow users
    to include more specific information of each event and edit this information easily. Once an event has passed, the colour
    of the event bubble will turn to red. This will make it easier for our users to manage his contacts. <br><br>
+6. **Provide more specific error messages for the various errors**
+   - Currently, in the case that an invalid input is inputted, it does not clearly show a specific error message but rather
+    shows an error message with all the requirements for the input. (Example input : `edit 1 p/p1121211` ; 
+    Error Message : `Phone numbers must only include digits, pluses, dashes, commas, round brackets, may start with 0, and must contain between 3 and 18 digits.)`
+    This can be better improved by stating a more specific message such as `phone numbers cannot have alphabets in it`, so that
+    the users will be aware of the specific error instead of spending time figuring it out, improving their overall user experience.
+7. **Support Multiple Languages Name**
+   - LinkUp currently only supports names with english alphabet characters which limits usability for users with names in other languages
+    such as Tamil, Chinese, Arabic, etc. To cater to a wider range of users and enhance inclusivity LinkUp can be extended to support Unicode
+    characters allowing names in various languages.
