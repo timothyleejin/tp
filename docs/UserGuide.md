@@ -171,7 +171,7 @@ This a table of all the information stored about each contact.
             <td class="field-name">Name</td>
             <td class="description">Name of the contact (e.g. John Tan)</td>
             <td class="requirements">
-                Can contain letters, numbers, spaces and these special characters: 
+                Can only contain letters, numbers, spaces and these special characters: 
                 <div class="special-chars"> - ' . , / @ </div> 
             </td>
         </tr>
@@ -179,7 +179,7 @@ This a table of all the information stored about each contact.
             <td class="prefix">p</td>
             <td class="field-name">Phone</td>
             <td class="description">Phone number of the contact (e.g. 92343124 or +65 91112344)</td>
-            <td class="requirements">Can include digits, pluses, dashes, commas, brackets and must contain between 3 and 18 digits</td>
+            <td class="requirements">Can include digits, pluses, dashes, commas, round brackets and must contain between 3 and 18 digits.</td>
         </tr>
         <tr>
             <td class="prefix">e</td>
@@ -234,7 +234,6 @@ This a table of all the information stored about each contact.
             <td class="field-name">Skills</td>
             <td class="description">Skills of the contact. (e.g. Pro Gamer)</td>
             <td class="requirements">
-                <span class="optional-badge">OPTIONAL</span> <br>
                 Skills can only contain letters, numbers, spaces and these special characters:
                 <div class="special-chars"> - + # " </div>
                 Skills must contain at least one letter and be between 2 and 30 characters long.
@@ -243,8 +242,6 @@ This a table of all the information stored about each contact.
         </tr>
     </tbody>
 </table>
-
-
 
 
 #### 3. Add a Contact
@@ -264,9 +261,14 @@ Add a person to the address book.
 `sk/SKILL`: Skill of the person. <br>
 
 * Each event **must** have only one corresponding role. You are adding event-role pairs, not independent events or roles.
-As such, you **cannot** add 1 event and 2 roles, the 2nd role will be discarded.
-* You can add one or more event-role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
+As such, you **cannot** add 1 event and 2 roles. The number of events and roles you add must match.
+* You can add one or more event-role pairs, but note that each `ev/EVENT` must match its corresponding `r/ROLE` 
+by **order of appearance**, even if they are not directly beside each other. <br> For example:
+  `ev/Orientation ev/EWP r/Participant r/Organiser` means `ev/Orientation` pairs with `r/Participant`, 
+and `ev/EWP` pairs with `r/Organiser`.
 * Duplicate contacts with the same name, phone number, email, and telegram handle are not allowed.
+* Phone numbers are considered duplicates only if the digits and + symbol match.
+<br> For example: +66 676767 is not considered a duplicate of 6667 6767.
 
 <box type="tip" seamless>
 <b>Tip:</b> A person can have <i>any non-negative number</i> of skills including 0. The order of fields,
@@ -294,10 +296,15 @@ Edit the details of an existing person in the address book.
 * **At least** one of the optional fields must be provided.
 * When you perform the action of editing the skills, the existing skills of the person will all be removed and replaced with your skills input i.e adding of skills is not cumulative.
 * You can remove a person’s skills by typing `sk/` without specifying any skills after it.
-* Each event **must** have only one corresponding role. You cannot edit an event or role only.
+* Each event **must** have only one corresponding role. You cannot edit an event or role only. The number of events and roles you edit must match.
 * When editing an event and its corresponding role, the existing events and roles will all be removed and replaced with your new event and role input i.e adding of events and roles is not cumulative.
-* You can add one or more event-role pairs, but ensure that each `ev/EVENT` and its corresponding `r/ROLE` are **beside each other**.
+* You can add one or more event-role pairs, but note that each `ev/EVENT` must match its corresponding `r/ROLE`
+  by **order of appearance**, even if they are not directly beside each other. <br> For example:
+  `ev/Orientation ev/EWP r/Participant r/Organiser` means `ev/Orientation` pairs with `r/Participant`,
+  and `ev/EWP` pairs with `r/Organiser`.
 * Duplicate contacts with the same name, phone number, email, and telegram handle are not allowed.
+* Phone numbers are considered duplicates only if the digits and + symbol match.
+<br> For example: +66 676767 is not considered a duplicate of 6667 6767.
 
 **Parameters:** <br>
 `INDEX`: Index number of person in contact list. <br>
@@ -758,21 +765,6 @@ LinkUp data are saved automatically as a JSON file `[JAR file location]/data/add
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Parameter Details**
-
-Parameter | Details
---------|------------------
-`INDEX` | Index number of person in contact list. <br><br> It **must** be a positive integer.
-`n/NAME` | Name of the person. <br><br> Names should only contain letters, numbers, spaces, hyphens, apostrophes, periods, commas, or @ symbol. Names should start with a letter or number, cannot be blank and cannot contain more than 50 characters.
-`p/PHONE` | Phone number of the person. <br><br> Phone numbers can include digits, pluses, fullstops, dashes, commas, rounded brackets, may start with 0, and must contain between 3 and 18 digits.
-`e/EMAIL` | Email address of the person. <br><br> Email addresses should be of the format local-part@domain and must not exceed 254 characters. The **local-part** must be between 1 and 64 characters, should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. This is followed by a '@' and then a domain name. The **domain name** must be between 2 and 190 characters long, should consist of alphanumeric characters, separated only by hyphens, if any. The domain name must start and end with alphanumeric characters.
-`t/TELEGRAM` | Telegram handle of the person. <br><br> Telegram handles must not be empty and can only be made up of: English letters (a-z, A-Z), digits (0-9), and underscores (_). They must be between 5 and 32 characters long.
-`ev/EVENT` | Event of the person. <br><br> Events can take in any values and must be between 2 and 60 characters.
-`r/ROLE` | Role of the person. <br><br> Roles can take in any values and must be between 2 and 30 characters.
-`sk/SKILL` | Skill of the person. <br><br> Skills should only contain letters, numbers, spaces, hyphens, plus signs, hash symbols, or double quotes. Skills must contain at least one letter, cannot be blank, and should be between 2 and 30 characters long.
-
---------------------------------------------------------------------------------------------------------------------
-
 ## **Troubleshooting**
 ### Frequently Asked Questions
 
@@ -805,8 +797,8 @@ To ensure that the JDK version is correct, type `java -version` in the command t
 
 **How do I add multiple roles and events to an existing contact?** <br>
 You can use the `edit` command. So assuming your contact is a participant for an EWP event, and an invigilator for an exam event,
-you can type `edit [INDEX] ev/EWP r/Participant ev/Exam r/Invigilator`. Ensure that the `ev/EVENT` and the corresponding `r/ROLE` are
-beside each other.
+you can type `edit [INDEX] ev/EWP r/Participant ev/Exam r/Invigilator`. Each `ev/EVENT` must match its corresponding `r/ROLE`
+by **order of appearance**, even if they are not directly beside each other. 
 
 **How do I edit only 1 of my 2 event-role pairs for a specific contact?** <br>
 You would have to edit both event-role pairs in order for you to see the changes. So assuming
@@ -819,14 +811,13 @@ No. You would have to edit the role of the contact too. Each event should have a
 and typing `edit [INDEX] ev/Exam r/Organiser` or `e [INDEX] ev/Exam r/Organiser`. <br>
 
 **What if I type 2 events and 1 role when adding/editing a contact?** <br>
-Assuming you typed `edit [INDEX] ev/EWP r/Participant ev/Exam`, the 2nd event will not be saved. Only `Events: [EWP]; Roles: [Participant]`
-will be saved. Each event should have a corresponding role.
+There will be an error if you type `edit [INDEX] ev/EWP r/Participant ev/Exam`. Each event should have a corresponding role.
 
 **Can I add a new contact with the same phone number?** <br>
 Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
 
 **Can I add Chinese/Tamil names to LinkUp?** <br>
-Unfortunately, this current version of LinkUp can only save names with the specified English letters as shown in the [_Parameter Details_](#parameter-details). As such, names like "小明" are not allowed.
+Unfortunately, this current version of LinkUp can only save names with the specified English letters as shown in the [_Contact Management_](#contact-management). As such, names like "小明" are not allowed.
 
 ### Known Issues
 
