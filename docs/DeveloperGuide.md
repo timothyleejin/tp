@@ -168,11 +168,11 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 * are small-scale leaders and organizers who need a lightweight but effective way to manage and access
   their contacts without relying on large enterprise tools
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of contacts (200-300)
+* is actively managing events or activities and coordinating volunteers between time-constrained periods
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* has basic command-line familiarity
 
 **Primary Users**:
 
@@ -182,37 +182,45 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 **User Persona**:
 
-* Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them.
-He needs to store and access many contacts easily, but does not require integrated communication features.
+* Bryce is a university student studying a non-IT field. He is involved in many university clubs and leads some of them 
+where he manages **over 150+ members** in the club. He needs to **coordinate events and volunteers** which requires 
+him to **handle large contact list** and **track roles** efficiently. However, he **does not require integrated communication features**.
+Bryce also has **basic proficiency on the usage of command line interfaces** gained through his university modules 
+
+
 
 **Value proposition**:
 
-* provides a lightweight and simple contact management tool
-* manage contacts faster than a typical mouse/GUI driven app
-* helps small organizations and student leaders organize their contacts more effectively than spreadsheets
-* avoids unnecessary complexity while still supporting features like search, labeling, and grouping
+LinkUp empowers *club leaders and small organizations to streamline people and event management*, offering a simple
+yet focused solution which is comprehensive enough to handle real-world coordination, allowing leaders to focus on leading rather than organizing.
+
+* Optimize contact management through keyboard-driven contact management, minimizing time spent navigating traditional GUIs
+* Helps to strike an ideal balance between the complexities of full-scale Customer Relationship Management Systems (CRM) and the simplicity of spreadsheets, giving leaders more control
+* Offers efficient and powerful features such as event-role grouping, favourites, filters and skill-based tagging for better management
 
 <h3 class="developerHeader2">User stories</h3>
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​          | I want to …​                                              | So that I can…​                                                                      |
-|----------|------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `* *`    | new user         | see usage instructions/help                               | refer to instructions when I forget how to use the App                               |
-| `* * *`  | user             | add a contact                                             | record down people’s details                                                         |
-| `* * *`  | user             | delete a contact                                          | remove unnecessary entries                                                           |
-| `* * *`  | user             | view the contact list                                     | see all contacts                                                                     |
-| `* *`    | user             | edit a contact                                            | update their details                                                                 |
-| `* *`    | user             | search a contact by name                                  | find them quickly                                                                    |
-| `* *`    | leader           | tag contacts with skills                                  | assign them to tasks                                                                 |
-| `* *`    | leader           | add/remove skills from contacts                           | update contacts with their skills easily                                             |
-| `* *`    | leader           | see event/role/telegram information to contacts           | know their context                                                                   |
-| `* *`    | leader           | add/remove event/role information to contacts             | update contacts with their event/role easily                                         |
-| `* *`    | leader           | filter people by any field                                | find the relevant contacts                                                           |
-| `* *`    | leader           | add/remove favourite contacts and list favourite contacts | access key people easily                                                             |
-| `* *`    | leader           | have clearer duplicate contact information                | understand which fields are duplicate more easily given the large number of contacts |
-| `* *`    | experienced user | delete multiple contacts                                  | delete contacts faster after event                                                   |
-| `* *`    | experienced user | use command shortcuts                                     | speed up workflow                                                                    |
+| Priority | As a …​          | I want to …​                                    | So that I can…​                                                                      |
+|----------|------------------|-------------------------------------------------|--------------------------------------------------------------------------------------|
+| `* * *`  | new user         | see sample contact data/command instructions/help  | familiarise with LinkUp's interface and refer to instructions when needed            |
+| `* * *`  | user             | add a contact                                   | record down people’s details                                                         |
+| `* * *`  | user             | delete a contact                                | remove unnecessary entries                                                           |
+| `* * *`  | user             | view the contact list                           | see all contacts                                                                     |
+| `* *`    | user             | edit a contact                                  | update their details                                                                 |
+| `* *`    | user             | search a contact by name                        | find them quickly                                                                    |
+| `* *`    | leader           | tag contacts with skills                        | assign them to tasks                                                                 |
+| `* *`    | leader           | add skills from contacts                        | update contacts with their skills easily                                             |
+| `* *`    | leader           | remove skills from contacts                     | remove skills from contacts with ease                                                |
+| `* *`    | leader           | see event/role/telegram information of contacts | know their context                                                                   |
+| `* *`    | leader           | add/remove event/role information to contacts   | update contacts with their event/role easily                                         |
+| `* *`    | leader           | filter people by any field                      | find the relevant contacts                                                           |
+| `* *`    | leader           | add favourite contacts                          | access key people easily                                                             |
+| `* *`    | leader           | remove favourite contacts                       | manage key contacts with ease                                                        |
+| `* *`    | leader           | list favourite contacts                         | view all key contacts                                                                |
+| `* *`    | leader           | delete multiple contacts/clear all contacts    | delete contacts faster after event                                                   |
+| `* *`    | experienced user | use command shortcuts                           | speed up workflow                                                                    |
 
 <h3 class="developerHeader2">Use cases</h3>
 
@@ -532,25 +540,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <h3 class="developerHeader2">Non-Functional Requirements</h3>
 
-1. **LinkUp** should work on any Mainstream OS as long as it has Java 17 or above installed. 
-2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-3. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
-4. **LinkUp** responds to your inputs within 2 seconds.
-5. **LinkUp** is usable even if you're _non-tech savvy_ and have never used
-   **LinkUp** before.
-6. Data from **LinkUp** will not be able to be sent to other users easily through
-   **LinkUp**.
-7. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
+1. **LinkUp** should work on any Mainstream OS as long as it has Java 17 or above installed.
+2. **LinkUp** shall provide an interface that is easily navigable and usable by first-time users with basic digital literacy.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
+5. **LinkUp** responds to your inputs within 2 seconds.
+6. Data from **LinkUp** is stored in your computer and cannot be sent to other users through the app.
+8. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
+9. **LinkUp** should automatically save any changes to contacts.
+10. Should a data file be corrupted, **LinkUp** will load an empty list of contacts.
+11. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long-term project health.
+12. **LinkUp** should prevent duplication of contacts with the same name, phone number, email, and telegram handle.
+13. ⁠Should allow *LinkUp* to be packaged in a file (eg. ⁠`.jar` ⁠file) for ease of distribution and deployment.
 
 <h3 class="developerHeader2">Glossary</h3>
 
 1. Mainstream OS: Windows, Linux, Unix, MacOS
-2. Non tech-savvy: Someone who has low experience and skill in using technology
+2. Basic digital literacy: The ability to perform fundamental computer operations such as downloading and installing software, typing commands, and navigating interfaces
 3. GUI: Graphical User Interface
 4. CLI: Command Line Interface
 4. JDK: Java Development Kit
 5. MSS: Main Success Scenario
-6. Organiser: A person who arranges an event or activity and has multiple contacts
+6. CRM: Customer Relationship Management System
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -605,7 +616,7 @@ Adding a person while all persons are being shown
    **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 4. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
-   **Expected:** Similar to previous.
+   **Expected:** Similar to test case 3.
 
 <h3 class="developerHeader2">Deleting a person</h3>
 
