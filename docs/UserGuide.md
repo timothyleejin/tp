@@ -159,14 +159,16 @@ This a table of all the information stored about each contact.
 <table class="styled-contact-table">
     <thead>
         <tr>
-            <th>Parameter</th>
+            <th>Prefix</th>
+            <th>Field</th>
             <th>Description</th>
             <th>Requirements</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="parameter">n/NAME</td>
+            <td class="prefix">n</td>
+            <td class="field-name">Name</td>
             <td class="description">Name of the contact (e.g. John Tan)</td>
             <td class="requirements">
                 Can only contain letters, numbers, spaces and these special characters: 
@@ -174,12 +176,14 @@ This a table of all the information stored about each contact.
             </td>
         </tr>
         <tr>
-            <td class="parameter">p/PHONE</td>
+            <td class="prefix">p</td>
+            <td class="field-name">Phone</td>
             <td class="description">Phone number of the contact (e.g. 92343124 or +65 91112344)</td>
             <td class="requirements">Can include digits, pluses, dashes, commas, round brackets and must contain between 3 and 18 digits.</td>
         </tr>
         <tr>
-            <td class="parameter">e/EMAIL</td>
+            <td class="prefix">e</td>
+            <td class="field-name">Email</td>
             <td class="description">Email address of the contact (e.g. john@gmail.com)</td>
             <td class="requirements">
                 Should be of the format local-part@domain, can be up to 254 characters and must adhere to the following constraints:
@@ -199,7 +203,8 @@ This a table of all the information stored about each contact.
             </td>
         </tr>
         <tr>
-            <td class="parameter">t/TELEGRAM</td>
+            <td class="prefix">t</td>
+            <td class="field-name">Telegram</td>
             <td class="description">Telegram handle of the contact (e.g. @john123)</td>
             <td class="requirements">
                 Must not be empty and can only be made up of: English letters (a-z, A-Z), digits (0-9), and underscores (_).
@@ -207,7 +212,8 @@ This a table of all the information stored about each contact.
             </td>
         </tr>
         <tr>
-            <td class="parameter">ev/EVENT</td>
+            <td class="prefix">ev</td>
+            <td class="field-name">Events</td>
             <td class="description">Events the contact is participating in (e.g. Orientation Camp)</td>
             <td class="requirements">
                 Must be between 2 - 60 characters. <br>
@@ -215,7 +221,8 @@ This a table of all the information stored about each contact.
             </td>
         </tr>
         <tr>
-            <td class="parameter">r/ROLE</td>
+            <td class="prefix">r</td>
+            <td class="field-name">Roles</td>
             <td class="description">Role of the contact at each event (e.g. Planning Committee)</td>
             <td class="requirements">
                 Must be between 2 - 30 characters. <br>
@@ -223,7 +230,8 @@ This a table of all the information stored about each contact.
             </td>
         </tr>
         <tr>
-            <td class="parameter">sk/SKILL</td>
+            <td class="prefix">sk</td>
+            <td class="field-name">Skills</td>
             <td class="description">Skills of the contact. (e.g. Pro Gamer)</td>
             <td class="requirements">
                 Skills can only contain letters, numbers, spaces and these special characters:
