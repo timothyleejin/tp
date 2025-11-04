@@ -213,7 +213,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | leader           | tag contacts with skills                        | assign them to tasks                                                                 |
 | `* *`    | leader           | add skills from contacts                        | update contacts with their skills easily                                             |
 | `* *`    | leader           | remove skills from contacts                     | remove skills from contacts with ease                                                |
-| `* *`    | leader           | see event/role/telegram information to contacts | know their context                                                                   |
+| `* *`    | leader           | see event/role/telegram information of contacts | know their context                                                                   |
 | `* *`    | leader           | add/remove event/role information to contacts   | update contacts with their event/role easily                                         |
 | `* *`    | leader           | filter people by any field                      | find the relevant contacts                                                           |
 | `* *`    | leader           | add favourite contacts                          | access key people easily                                                             |
@@ -550,6 +550,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. Data from **LinkUp** will not be able to be sent to other users easily through
    **LinkUp**.
 7. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
+8. **LinkUp** should automatically save any changes to contacts every minute or after significant update to prevent data loss
+9. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long term project health
 
 <h3 class="developerHeader2">Glossary</h3>
 
