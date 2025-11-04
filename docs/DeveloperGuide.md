@@ -818,3 +818,7 @@ New features from AB3:
     Error Message : `Phone numbers must only include digits, pluses, dashes, commas, round brackets, may start with 0, and must contain between 3 and 18 digits.)`
     This can be better improved by stating a more specific message such as `phone numbers cannot have alphabets in it`, so that
     the users will be aware of the specific error instead of spending time figuring it out, improving their overall user experience.
+7. **Support Multiple Languages Name**
+   - LinkUp currently only supports names with english alphabet characters which limits usability for users with names in other languages
+    such as Tamil, Chinese, Arabic, etc. To cater to a wider range of users and enhance inclusivity LinkUp can be extended to support Unicode
+    characters allowing names in various languages.
