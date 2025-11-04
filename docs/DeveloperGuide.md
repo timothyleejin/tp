@@ -227,6 +227,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `LinkUp` and the **Actor** is the `user`, unless specified otherwise) <br>
 
+**Use case: Viewing Contacts**<br>
+
+**MSS**
+1. User requests to view all contacts.
+2. LinkUp displays all contacts.
+
 **Use case: Add Contact**<br>
 
 **MSS**
@@ -256,7 +262,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: Find Contact**<br>
 
 **MSS**
-1. User requests to contact by name.
+1. User requests to find a contact by name.
 2. LinkUp displays list of matching contacts.<br>
    Use case ends.
 
@@ -613,7 +619,7 @@ Adding a person while all persons are being shown
    **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 4. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
-   **Expected:** Invalid command format. No person is added. Error details shown in the status message.
+   **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Deleting a person</h3>
 
@@ -625,10 +631,10 @@ Deleting a person while all persons are being shown
    **Expected:** First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
 3. **Test case:** `delete 0`<br>
-   **Expected:** Invalid index. No person is deleted. Error details shown in the status message.
+   **Expected:** Invalid command. No person is deleted. Error details shown in the status message.
 
 4. **Other incorrect delete commands to try:** `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Invalid index. No person is deleted. Error details shown in the status message.
+   **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Editing a person</h3>
 
@@ -640,10 +646,10 @@ Editing a person while all persons are being shown
    **Expected:** First contact name is changed to `John`. Details of the deleted contact shown in the status message.
 
 3. **Test case:** `edit 0 n/John`<br>
-   **Expected:** Invalid index. No person is edited. Error details shown in the status message.
+   **Expected:** Invalid command. No person is edited. Error details shown in the status message.
 
 4. **Other incorrect edit commands to try:** `edit`, `edit 1 p/^^^`, `edit x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Invalid index. No person is edited. Error details shown in the status message.
+   **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Filtering contacts</h3>
 
@@ -678,10 +684,10 @@ Marking/Unmarking a person as favourite while all persons are being shown
   **Expected:** Message that says 1st contact is already marked as favourite is shown.
 
 4. **Test case:** `unfav 0`<br>
-   **Expected:** Invalid index. No person is unmarked from favourites. Error details shown in the status message.
+   **Expected:** Invalid command. No person is unmarked from favourites. Error details shown in the status message.
 
 5. **Other incorrect favourite commands to try:** `fav`, `fav x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Invalid index. No person is unmarked from favourites. Error details shown in the status message.
+   **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Adding skills to a person</h3>
 
@@ -695,14 +701,14 @@ Adding skills to a person while all persons are being shown
    **Expected:** Message that says 1st contact already has the inputted skill.
 
 4. **Test case:** `addskill 0 sk/jokes`<br>
-   **Expected:** Invalid index. No skill is added. Error details shown in the status message.
+   **Expected:** Invalid command. No skill is added. Error details shown in the status message.
    
-5. **Test case:** `addskill 0 sk/jok*91es `<br>
-      **Expected:** Invalid skill error message is shown.
+5. **Test case:** `addskill 1 sk/jok*91es `<br>
+      **Expected:** Invalid skill. No skill is added. Error details shown in the status message.
    
 6. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 sk/9%aggss ejd`, `addskill x sk/fight`
    (where x is larger than the list size)<br>
-     **Expected:** Invalid skill error message is shown.
+     **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Deleting skills from a person</h3>
 
@@ -716,14 +722,14 @@ Adding skills to a person while all persons are being shown
   **Expected:** Message that says the contact does not have the inputted skill.
 
 4. **Test case:** `dskill 0 sk/jokes`<br>
-   **Expected:** Invalid index. No skill is removed. Error details shown in the status message.
+   **Expected:** Invalid command. No skill is removed. Error details shown in the status message.
 
-5. **Test case:** `dskill 0 sk/jok*91es`<br>
-   **Expected:** Invalid skill error message is shown.
+5. **Test case:** `dskill 1 sk/jok*91es`<br>
+   **Expected:** Invalid skill. No skill is added. Error details shown in the status message.
 
 6. **Other incorrect skills commands to try:** `dskill`, `dskill 1 sk/9%aggss hi`, `dskill x sk/fight`
    (where x is larger than the list size)<br>
-   **Expected:** Invalid skill error message is shown.
+   **Expected:** Similar to test case 4.
 
 <h3 class="developerHeader2">Copy</h3>
 
@@ -735,11 +741,11 @@ Copy the command of the person while all persons are being shown
     Success message shown in the result display box.
 
 3. **Test case:** `copy 0`<br>
-   **Expected:** Invalid index. No command is copied. Error details shown in the status message.
+   **Expected:** Invalid command. No command is copied. Error details shown in the status message.
 
 4. **Other incorrect copy commands to try:** `copy abc`, `copy 9%aggss`, `copy x`
    (where x is larger than the list size)<br>
-   **Expected:** Invalid index. No command is copied. Error details shown in the status message.
+   **Expected:** Similar to previous.
 
 <h3 class="developerHeader2">Saving data</h3>
 
