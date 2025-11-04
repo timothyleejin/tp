@@ -555,7 +555,7 @@ Deleted skills [Cycling] from John Deez
 
 Add a person from the address book to favourites and mark them with a heart icon.
 
-**Format:** <br> `fav INDEX`
+**Format:** <br> `favourite INDEX` or `fav INDEX`
 
 * Add the person at the specified `INDEX` to favourites.
 
@@ -564,7 +564,7 @@ Add a person from the address book to favourites and mark them with a heart icon
 
 **Example Input:** <br>
 ```
-fav 1
+favourite 1
 ```
 This input adds the 1st person listed in the contact list to favourites.<br><br>
 **Expected Output:** <br>
@@ -581,7 +581,7 @@ Marked John Deez as favourite.
 
 Remove a specified person from the address book from favourites and removes the heart icon.
 
-**Format:** <br> `unfav INDEX`
+**Format:** <br> `unfavourite INDEX` or `unfav INDEX`
 
 * Remove the person at the specified `INDEX` from favourites.
 
@@ -590,7 +590,7 @@ Remove a specified person from the address book from favourites and removes the 
 
 **Example Input:** <br>
 ```
-unfav 1
+unfavourite 1
 ```
 This input removes the 1st person listed in the contact list from favourites.<br><br>
 **Expected Output** <br>
@@ -636,23 +636,125 @@ LinkUp data are saved automatically as a JSON file `[JAR file location]/data/add
 --------------------------------------------------------------------------------------------------------------------
 ## **Command Summary**
 
-Action | Command
---------|------------------
-**Help**: <br> View a brief message on commands you can use | `help` or `h`
-**Exit**: <br> Exit LinkUp | `exit` or `ex`
-**Add**: <br> Add a contact | `add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​` or <br>`a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT…​ r/ROLE…​ [sk/SKILL]…​` <br> <br> e.g. `add n/John Deez p/98765431 ev/Supernova r/Organiser e/johnde@example.com t/john123`
-**Edit**: <br> Edit a contact | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​` or <br>`e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]…​ [r/ROLE]…​ [sk/SKILL]…​`<br> <br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
-**Delete**: <br> Delete contacts | `delete INDEX…` or `d INDEX…` <br> <br> e.g. `delete 3` or `delete 1 3 5`
-**Copy**: <br> Copy an existing contact to make it easier to add a person with similar parameters | `copy INDEX` or `c INDEX`<br> <br> e.g. `copy 2`
-**Clear**: <br> Delete all contacts | `clear`
-**List**: <br> List all contacts | `list` or `l`
-**Find**: <br> Search for a contact by name | `find KEYWORD [MORE_KEYWORDS]` or <br> `f KEYWORD [MORE_KEYWORDS]` <br> <br> e.g. `find James Jake`
-**Filter**: <br> Filter contacts by any fields | `filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]` or <br> `fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]` <br> <br> e.g. `filter ev/Hunt`
-**Add Skill**: <br> Add skill(s) to contact | `addskill INDEX [sk/SKILL]…` or <br> `as INDEX [sk/SKILL]…` <br> <br> e.g. `addSkill 1 sk/JavaScript`
-**Delete Skill**: <br> Delete skill(s) from contact | `dskill INDEX [sk/SKILL]…` or <br> `ds INDEX [sk/SKILL]…` <br> <br> e.g. `dskill 2 sk/Cycling`
-**Favourite**: <br> Add a contact to favourites | `fav INDEX`<br> <br> e.g. `fav 3`
-**Unfavourite**: <br> Remove a contact from favourites | `unfav INDEX`<br> <br> e.g. `unfav 3`
-**List favourites**: <br> List all favourite contacts | `lfav`
+<table class="command-summary-table">
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Help</b>: <br> View a brief message on commands you can use</td>
+      <td><code>help</code> or <code>h</code></td>
+    </tr>
+    <tr>
+      <td><b>Exit</b>: <br> Exit LinkUp</td>
+      <td><code>exit</code> or <code>ex</code></td>
+    </tr>
+    <tr>
+      <td><b>Add</b>: <br> Add a contact</td>
+      <td>
+        <code>add n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT… r/ROLE… [sk/SKILL]…</code> or <br>
+        <code>a n/NAME p/PHONE e/EMAIL t/TELEGRAM ev/EVENT… r/ROLE… [sk/SKILL]…</code>
+        <br><br>
+        e.g. <code>add n/John Deez p/98765431 e/johnde@example.com t/john123 ev/Supernova r/Organiser</code> or <br/>
+        <code>a n/John Deez p/98765431 e/johnde@example.com t/john123 ev/Supernova r/Organiser</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Edit</b>: <br> Edit a contact</td>
+      <td>
+        <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]… [r/ROLE]… [sk/SKILL]…</code> or <br>
+        <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [ev/EVENT]… [r/ROLE]… [sk/SKILL]…</code>
+        <br><br>
+        e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code> or <br/><code>e 2 n/James Lee e/jameslee@example.com</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Delete</b>: <br> Delete contacts</td>
+      <td>
+        <code>delete INDEX…</code> or <code>d INDEX…</code>
+        <br><br>
+        e.g. <code>delete 3</code> or <code>delete 1 3 5</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Copy</b>: <br> Copy an existing contact to make it easier to add a person with similar parameters</td>
+      <td>
+        <code>copy INDEX</code> or <code>c INDEX</code>
+        <br><br>
+        e.g. <code>copy 2</code> or <code>c 2</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Clear</b>: <br> Delete all contacts</td>
+      <td><code>clear</code></td>
+    </tr>
+    <tr>
+      <td><b>List</b>: <br> List all contacts</td>
+      <td><code>list</code> or <code>l</code></td>
+    </tr>
+    <tr>
+      <td><b>Find</b>: <br> Search for a contact by name</td>
+      <td>
+        <code>find KEYWORD [MORE_KEYWORDS]</code> or <br>
+        <code>f KEYWORD [MORE_KEYWORDS]</code>
+        <br><br>
+        e.g. <code>find James Jake</code> or <code>f James Jake</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Filter</b>: <br> Filter contacts by any fields</td>
+      <td>
+        <code>filter [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]</code> or <br>
+        <code>fil [n/KEYWORD] [t/KEYWORD] [ev/KEYWORD] [r/KEYWORD] [sk/KEYWORD]</code>
+        <br><br>
+        e.g. <code>filter ev/Hunt</code> or <code>fil ev/Hunt</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Add Skill</b>: <br> Add skill(s) to contact</td>
+      <td>
+        <code>addskill INDEX [sk/SKILL]…</code> or <br>
+        <code>as INDEX [sk/SKILL]…</code>
+        <br><br>
+        e.g. <code>addSkill 1 sk/JavaScript</code> or <code>as 1 sk/JavaScript</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Delete Skill</b>: <br> Delete skill(s) from contact</td>
+      <td>
+        <code>dskill INDEX [sk/SKILL]…</code> or <br>
+        <code>ds INDEX [sk/SKILL]…</code>
+        <br><br>
+        e.g. <code>dskill 2 sk/Cycling</code> or <code>ds 2 sk/Cycling</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Favourite</b>: <br> Add a contact to favourites</td>
+      <td>
+        <code>favourite INDEX [sk/SKILL]…</code> or <br>
+        <code>fav INDEX</code>
+        <br><br>
+        e.g. <code>favourite 3</code> or <code>fav 3</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Unfavourite</b>: <br> Remove a contact from favourites</td>
+      <td>
+        <code>unfavourite INDEX [sk/SKILL]…</code> or <br>
+        <code>unfav INDEX</code>
+        <br><br>
+        e.g. <code>unfavourite 3</code> or <code>unfav 3</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>List favourites</b>: <br> List all favourite contacts</td>
+      <td><code>lfav</code></td>
+    </tr>
+  </tbody>
+</table>
 
 --------------------------------------------------------------------------------------------------------------------
 
