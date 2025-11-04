@@ -202,25 +202,26 @@ yet focused solution which is comprehensive enough to handle real-world coordina
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​          | I want to …​                                    | So that I can…​                                                                      |
-|----------|------------------|-------------------------------------------------|--------------------------------------------------------------------------------------|
-| `* * *`  | new user         | see sample contact data/command instructions/help  | familiarise with LinkUp's interface and refer to instructions when needed            |
-| `* * *`  | user             | add a contact                                   | record down people’s details                                                         |
-| `* * *`  | user             | delete a contact                                | remove unnecessary entries                                                           |
-| `* * *`  | user             | view the contact list                           | see all contacts                                                                     |
-| `* *`    | user             | edit a contact                                  | update their details                                                                 |
-| `* *`    | user             | search a contact by name                        | find them quickly                                                                    |
-| `* *`    | leader           | tag contacts with skills                        | assign them to tasks                                                                 |
-| `* *`    | leader           | add skills from contacts                        | update contacts with their skills easily                                             |
-| `* *`    | leader           | remove skills from contacts                     | remove skills from contacts with ease                                                |
-| `* *`    | leader           | see event/role/telegram information of contacts | know their context                                                                   |
-| `* *`    | leader           | add/remove event/role information to contacts   | update contacts with their event/role easily                                         |
-| `* *`    | leader           | filter people by any field                      | find the relevant contacts                                                           |
-| `* *`    | leader           | add favourite contacts                          | access key people easily                                                             |
-| `* *`    | leader           | remove favourite contacts                       | manage key contacts with ease                                                        |
-| `* *`    | leader           | list favourite contacts                         | view all key contacts                                                                |
-| `* *`    | leader           | delete multiple contacts/clear all contacts    | delete contacts faster after event                                                   |
-| `* *`    | experienced user | use command shortcuts                           | speed up workflow                                                                    |
+| Priority | As a(n) …​          | I want to …​                                      | So that I can…​                                                           |
+|----------|---------------------|---------------------------------------------------|---------------------------------------------------------------------------|
+| `* * *`  | new user            | see sample contact data/command instructions/help | familiarise with LinkUp's interface and refer to instructions when needed |
+| `* * *`  | user                | add a contact                                     | record down people’s details                                              |
+| `* * *`  | user                | delete a contact                                  | remove unnecessary entries                                                |
+| `* * *`  | user                | view the contact list                             | see all contacts                                                          |
+| `* *`    | user                | edit a contact                                    | update their details                                                      |
+| `* *`    | user                | search a contact by name                          | find them quickly                                                         |
+| `* *`    | leader              | tag contacts with skills                          | assign them to tasks                                                      |
+| `* *`    | leader              | add skills from contacts                          | update contacts with their skills easily                                  |
+| `* *`    | leader              | remove skills from contacts                       | remove skills from contacts with ease                                     |
+| `* *`    | leader              | view contacts participating in the same event     | know who to contact for that event                                        |
+| `* *`    | leader              | add additional events and roles to contacts       | update contacts with their event/role easily                              |
+| `* *`    | leader              | filter people by any field                        | find the relevant contacts for an event or role, etc.                     |
+| `* *`    | leader              | add favourite contacts                            | access key people easily                                                  |
+| `* *`    | leader              | remove favourite contacts                         | manage key contacts with ease                                             |
+| `* *`    | leader              | list favourite contacts                           | view all key contacts                                                     |
+| `* *`    | leader              | delete multiple contacts/clear all contacts       | delete contacts faster after event                                        |
+| `* *`    | experienced user    | use command shortcuts                             | speed up workflow                                                         |
+| `* *`    | new user            | remove all default contacts                       | start inputting my own contacts                                           | 
 
 <h3 class="developerHeader2">Use cases</h3>
 
@@ -545,13 +546,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. **LinkUp** can store up to 1000 contacts without any noticeable difference in performance for typical usage.
 5. **LinkUp** responds to your inputs within 2 seconds.
-6. Data from **LinkUp** is stored in your computer and cannot be sent to other users through the app.
-8. **LinkUp** should validate all input data and show clear error messages if the input data is invalid.
-9. **LinkUp** should automatically save any changes to contacts.
-10. Should a data file be corrupted, **LinkUp** will load an empty list of contacts.
-11. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long-term project health.
-12. **LinkUp** should prevent duplication of contacts with the same name, phone number, email, and telegram handle.
-13. ⁠Should allow *LinkUp* to be packaged in a file (eg. ⁠`.jar` ⁠file) for ease of distribution and deployment.
+6. **LinkUp** will ensure that all user data remains locally stored and is not transmitted online.
+7. **Linkup** will maintain consistent coding standards and 75% automated test coverage to ensure long-term project health.
+8. ⁠Should allow *LinkUp* to be packaged in a file (eg. ⁠`.jar` ⁠file) for ease of distribution and deployment.
 
 <h3 class="developerHeader2">Glossary</h3>
 
@@ -616,7 +613,7 @@ Adding a person while all persons are being shown
    **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 4. **Other incorrect add commands to try:** `add`, `add n/John Doe p/^^^^^5432 e/johnd@example.com t/abc123 ev/Double or Nothing r/Orientation Camp Organiser`, `...` <br>
-   **Expected:** Similar to test case 3.
+   **Expected:** Invalid command format. No person is added. Error details shown in the status message.
 
 <h3 class="developerHeader2">Deleting a person</h3>
 
@@ -631,7 +628,7 @@ Deleting a person while all persons are being shown
    **Expected:** Invalid index. No person is deleted. Error details shown in the status message.
 
 4. **Other incorrect delete commands to try:** `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Similar to previous.
+   **Expected:** Invalid index. No person is deleted. Error details shown in the status message.
 
 <h3 class="developerHeader2">Editing a person</h3>
 
@@ -646,7 +643,7 @@ Editing a person while all persons are being shown
    **Expected:** Invalid index. No person is edited. Error details shown in the status message.
 
 4. **Other incorrect edit commands to try:** `edit`, `edit 1 p/^^^`, `edit x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Similar to previous.
+   **Expected:** Invalid index. No person is edited. Error details shown in the status message.
 
 <h3 class="developerHeader2">Filtering contacts</h3>
 
@@ -656,7 +653,7 @@ Filtering persons while all persons are being shown
        **Expected:** All contacts with the role as Organiser are listed.
 
 2. **Test case:** `filter`<br>
-   **Expected:** Invalid command. No person is listed. Error details shown in the status message.
+   **Expected:** Invalid command. Error details shown in the status message.
 
 <h3 class="developerHeader2">Finding a person by name</h3>
 
@@ -666,7 +663,7 @@ Finding a person while all persons are being shown
        **Expected:** All contacts with the name as John are listed.
 
 2. **Test case:** `find`<br>
-   **Expected:** Invalid command. No person is listed. Error details shown in the status message.
+   **Expected:** Invalid command. Error details shown in the status message.
 
 <h3 class="developerHeader2">Marking/Unmarking a person as favourite</h3>
 
@@ -684,7 +681,7 @@ Marking/Unmarking a person as favourite while all persons are being shown
    **Expected:** Invalid index. No person is unmarked from favourites. Error details shown in the status message.
 
 5. **Other incorrect favourite commands to try:** `fav`, `fav x`, `...` (where x is larger than the list size)<br>
-   **Expected:** Similar to previous.
+   **Expected:** Invalid index. No person is unmarked from favourites. Error details shown in the status message.
 
 <h3 class="developerHeader2">Adding skills to a person</h3>
 
@@ -701,11 +698,11 @@ Adding skills to a person while all persons are being shown
    **Expected:** Invalid index. No skill is added. Error details shown in the status message.
    
 5. **Test case:** `addskill 0 sk/jok*91es `<br>
-      **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
+      **Expected:** Invalid skill error message is shown.
    
 6. **Other incorrect favourite commands to try:** `addskill`, `addskill 1 sk/9%aggss ejd`, `addskill x sk/fight`
    (where x is larger than the list size)<br>
-     **Expected:** Similar to previous.
+     **Expected:** Invalid skill error message is shown.
 
 <h3 class="developerHeader2">Deleting skills from a person</h3>
 
@@ -722,11 +719,11 @@ Adding skills to a person while all persons are being shown
    **Expected:** Invalid index. No skill is removed. Error details shown in the status message.
 
 5. **Test case:** `dskill 0 sk/jok*91es`<br>
-   **Expected:** Invalid skill error message is shown, skills should be alphanumeric with no spacing.
+   **Expected:** Invalid skill error message is shown.
 
 6. **Other incorrect skills commands to try:** `dskill`, `dskill 1 sk/9%aggss hi`, `dskill x sk/fight`
    (where x is larger than the list size)<br>
-   **Expected:** Similar to previous.
+   **Expected:** Invalid skill error message is shown.
 
 <h3 class="developerHeader2">Copy</h3>
 
@@ -742,7 +739,7 @@ Copy the command of the person while all persons are being shown
 
 4. **Other incorrect copy commands to try:** `copy abc`, `copy 9%aggss`, `copy x`
    (where x is larger than the list size)<br>
-   **Expected:** Similar to previous.
+   **Expected:** Invalid index. No command is copied. Error details shown in the status message.
 
 <h3 class="developerHeader2">Saving data</h3>
 

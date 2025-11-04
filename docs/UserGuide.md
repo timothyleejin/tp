@@ -5,7 +5,6 @@
 ---
 
 <h1 id="developerTitle">User Guide</h1>
-<br>
 
 Meet **LinkUp**, a desktop app designed to help team leaders manage their contacts more efficiently and effectively.
 Optimized for users who prefer typing commands to use systems, **LinkUp** helps you manage your contacts without 
@@ -14,12 +13,14 @@ ever taking your hands off your keyboard.
 --------------------------------------------------------------------------------------------------------------------
 <h2 class="developerHeader">About LinkUp</h2>
 <h3 class="developerHeader2">Target Users</h3>
+
 This app is tailored for **community and club leaders** responsible for:
 * Tracking members' events and roles
 * Recording members' skills to efficiently allocate work
 * Communicating with members via messaging platforms (e.g. Telegram)
 
 <h3 class="developerHeader2">What do you need?</h3>
+
 **Basic Digital Literacy:**
 * You should know how to download software and type commands
 * You should have experience with keyboard-driven workflows to tackle tasks efficiently
@@ -29,6 +30,7 @@ This app is tailored for **community and club leaders** responsible for:
 * 50MB of available storage space
 
 <h3 class="developerHeader2">Where do you start?</h3>
+
 * **New users:** Start from [_Quick Start_](#quick-start) to set up LinkUp on your computer
 * **Existing users:** Go to [_Features_](#features) for command details
 * **Advanced users:** Refer to the [_Command Summary_](#command-summary) for quick command guide
@@ -447,7 +449,7 @@ Find persons whose names contain any of the given keywords.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Only the name is searched.
 * Only full words will be matched. e.g. `Han` will not match `Hans`.
-  * Persons matching all keywords will be returned.
+  * Persons matching **all** keywords will be returned.
     e.g. `Hans Gruber` will return `Hans Gruber` and not `Hans Tan`.
 
 **Example Input:** <br>
@@ -770,11 +772,13 @@ LinkUp data are saved automatically as a JSON file `[JAR file location]/data/add
 <h3 class="developerHeader2">Frequently Asked Questions</h3>
 
 <h4 class="developerHeader3">1. Launching LinkUp</h4>
+
 **Why am I unable to run the `LinkUp.jar` file?** <br>
 Ensure you have Java `17` or above installed in your computer. After installing LinkUp, type `java -jar LinkUp.jar` in your command terminal to launch LinkUp.
 Refer to [_Quick Start_](#quick-start) for the detailed LinkUp launching process.
 
 <h4 class="developerHeader3">2. LinkUp Data</h4>
+
 **How do I save my data in LinkUp?** <br>
 LinkUp data is saved in your computer automatically after any command that changes the data. There is no need to save manually. This means that your contact list will be restored whenever you reopen LinkUp. <br>
 
@@ -786,15 +790,11 @@ into your Downloads folder of your computer, the contact data will be stored in 
 Exit LinkUp, and then delete the `addressbook.json` file in `[LinkUp.jar file location]/data/`. Relaunch the app and the contact list should be back to the original sample contact list. <br>
 
 <h4 class="developerHeader3">3. Contact Detail Management</h4>
+
 **How do I edit only 1 of my 2 skills for a specific contact?** <br>
 You would have to edit both skills in order for you to see the changes. So assuming
 you have `skills: Boxing, Drumming` but you wish to change Drumming to Singing, you can only do this by using the `edit` command
 and typing `edit [INDEX] sk/Boxing sk/Drumming` or `e [INDEX] sk/Boxing sk/Drumming`.
-
-**Why am I unable to run the `LinkUp.jar` file?** <br>
-Ensure you have Java `17` or above installed in your computer and the correct `LinkUp.jar` file. 
-Follow the instructions at [_Quick Start_ ](#quick-start) to re-download the Java Developer Kit (JDK) and `LinkUp.jar` file.
-To ensure that the JDK version is correct, type `java -version` in the command terminal of your computer to check.
 
 **How do I add multiple roles and events to an existing contact?** <br>
 You can use the `edit` command. So assuming your contact is a participant for an EWP event, and an invigilator for an exam event,
@@ -812,7 +812,7 @@ No. You would have to edit the role of the contact too. Each event should have a
 and typing `edit [INDEX] ev/Exam r/Organiser` or `e [INDEX] ev/Exam r/Organiser`. <br>
 
 **What if I type 2 events and 1 role when adding/editing a contact?** <br>
-There will be an error if you type `edit [INDEX] ev/EWP r/Participant ev/Exam`. Each event should have a corresponding role.
+There will be an error. Each event should have **exactly** one corresponding role.
 
 **Can I add a new contact with the same phone number?** <br>
 Adding a contact with an existing phone number / email address / name / telegram handle is not allowed.
@@ -828,6 +828,7 @@ Unfortunately, this current version of LinkUp can only save names with the speci
 **Solution:** Manually restore the minimized Help Window.
 
 <h3 class="developerHeader2">Further Help & Support</h3>
+
 * Visit our [GitHub Repository](https://github.com/AY2526S1-CS2103T-F13-2/tp) or [Developer Guide](https://ay2526s1-cs2103t-f13-2.github.io/tp/DeveloperGuide.html) for technical details.
 * Post your query [here](https://github.com/AY2526S1-CS2103T-F13-2/tp/issues) by creating a new issue, detailing 
   * Your exact command input
@@ -839,6 +840,7 @@ We will get back to you as soon as possible.
 
 --------------------------------------------------------------------------------------------------------------------
 <h2 class="developerHeader">Get in Touch with Us</h2>
+
 We’d love to hear from you! Whether you have questions, feedback, or suggestions for new features, feel free to reach out to us.
 
 **Who We Are:** <br>
